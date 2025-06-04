@@ -1,0 +1,28 @@
+:root {
+  --grid-max-width: 55rem;
+  --grid-gutter: var(--space-l-3xl, clamp(1.875rem, 0rem + 8.3333vw, 5rem));
+  --grid-columns: 4;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  // background-color: var(--background-primary);
+  // color: var(--font-primary);
+}
+
+.container {
+  max-width: var(--grid-max-width);
+  padding-inline: 40px;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--grid-gutter);
+
+  @media only screen and (width <= 480px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
