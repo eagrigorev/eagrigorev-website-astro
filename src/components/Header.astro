@@ -2,12 +2,12 @@
 
 ---
 
-<nav class="jost-uppercase">
-  <div class="wrapper">
+<nav class="wrapper jost-uppercase">
+  <div class="navigation">
     <div>
       <a href="/">eagrigorev</a>
     </div>
-    <div class="desktop-links">
+    <div class="desktop">
       <ul>
         <li>
           <a href="/">home</a>
@@ -23,11 +23,11 @@
         </li>
       </ul>
     </div>
-    <div class="mobile-links">
+    <div class="mobile">
       <button id="menu-button">menu</button>
     </div>
   </div>
-  <div id="menu-wrapper" class="mobile-links hidden">
+  <div id="menu-wrapper" class="mobile hidden">
     <ul>
       <li>
         <a href="/">home</a>
@@ -61,13 +61,16 @@
   .wrapper {
     padding-top: var(--space-30-40);
     padding-bottom: var(--space-30-40);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-size: var(--font-size-xs);
   }
 
-  .desktop-links {
+  .navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .desktop {
     display: block;
 
     @media only screen and (width < 880px) {
@@ -77,6 +80,7 @@
     & > ul {
       display: flex;
       gap: var(--space-15-25);
+      list-style: none;
     }
 
     & > ul > li {
@@ -96,7 +100,7 @@
     }
   }
 
-  .mobile-links {
+  .mobile {
     display: none;
 
     @media only screen and (width < 880px) {
@@ -107,20 +111,13 @@
       display: flex;
       flex-direction: column;
       gap: var(--space-15-25);
+      padding-top: var(--space-30-40);
+      list-style: none;
     }
   }
 
   .hidden {
     display: none;
-  }
-
-  #menu-wrapper {
-    padding-bottom: var(--space-30-40);
-    font-size: var(--font-size-xs);
-  }
-
-  ul {
-    list-style: none;
   }
 
   a {
