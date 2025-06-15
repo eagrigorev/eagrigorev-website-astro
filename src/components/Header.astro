@@ -1,9 +1,57 @@
-<nav>
-  <p>Evgenii Grigorev</p>
-  <ul>
-    <li>Home</li>
-    <li>About</li>
-    <li>Pages</li>
-    <li>Elsewhere</li>
-  </ul>
+---
+
+---
+
+<nav class="wrapper">
+  <div>
+    <a href="/">eagrigorev</a>
+  </div>
+  <div>
+    <ul>
+      <li>
+        <a href="/">home</a>
+      </li>
+      <li>
+        <a href="/">about</a>
+      </li>
+      <li>
+        <a href="/">pages</a>
+      </li>
+      <li>
+        <a href="/">elsewhere</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+
+<style lang="scss">
+  .wrapper {
+    padding-top: var(--space-30-40);
+    padding-bottom: var(--space-30-40);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ul {
+    display: flex;
+    gap: var(--space-15-25);
+    list-style: none;
+  }
+
+  li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-15-25);
+
+    &:not(:first-child) {
+      &::before {
+        display: block;
+        content: '';
+        width: 50px;
+        height: 1px;
+        background: #d2d2d2;
+      }
+    }
+  }
+</style>
