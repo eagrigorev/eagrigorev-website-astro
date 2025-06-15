@@ -1,9 +1,8 @@
 body {
   display: flex;
   flex-direction: column;
-
-  // background-color: var(--background-primary);
-  // color: var(--font-primary);
+  color: var(--font-primary);
+  background-color: var(--background-primary);
 }
 
 .container {

@@ -2,11 +2,32 @@
 
 ---
 
-<nav class="wrapper">
-  <div>
-    <a href="/">eagrigorev</a>
+<nav class="jost-uppercase">
+  <div class="wrapper">
+    <div>
+      <a href="/">eagrigorev</a>
+    </div>
+    <div class="desktop">
+      <ul>
+        <li>
+          <a href="/">home</a>
+        </li>
+        <li>
+          <a href="/">about</a>
+        </li>
+        <li>
+          <a href="/">pages</a>
+        </li>
+        <li>
+          <a href="/">elsewhere</a>
+        </li>
+      </ul>
+    </div>
+    <div class="mobile">
+      <button id="menu-button">menu</button>
+    </div>
   </div>
-  <div>
+  <div id="menu-wrapper" class="hidden">
     <ul>
       <li>
         <a href="/">home</a>
@@ -18,11 +39,23 @@
         <a href="/">pages</a>
       </li>
       <li>
-        <a href="/">elsewhere</a>
+        <a href="/">instagram</a>
+      </li>
+      <li>
+        <a href="/">github</a>
+      </li>
+      <li>
+        <a href="/">bluesky</a>
       </li>
     </ul>
   </div>
 </nav>
+
+<script>
+  document.querySelector('#menu-button').addEventListener('click', () => {
+    document.querySelector('#menu-wrapper').classList.toggle('hidden');
+  });
+</script>
 
 <style lang="scss">
   .wrapper {
@@ -31,6 +64,27 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    font-size: var(--font-size-xs);
+  }
+
+  .desktop {
+    display: block;
+
+    @media only screen and (width < 880px) {
+      display: none;
+    }
+  }
+
+  .mobile {
+    display: none;
+
+    @media only screen and (width < 880px) {
+      display: block;
+    }
+  }
+
+  .hidden {
+    display: none;
   }
 
   ul {
@@ -50,8 +104,18 @@
         content: '';
         width: 50px;
         height: 1px;
-        background: #d2d2d2;
+        background: var(--accent-primary);
       }
     }
+  }
+
+  a {
+    text-decoration: none;
+    color: var(--font-primary);
+  }
+
+  button {
+    border: none;
+    background: none;
   }
 </style>

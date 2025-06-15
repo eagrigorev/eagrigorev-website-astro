@@ -1,4 +1,9 @@
 :root {
+  /* Colors */
+  --font-primary: #141414;
+  --accent-primary: #d2d2d2;
+  --background-primary: #ffffff;
+
   /* Fonts */
   --font-size-2xl: clamp(1.4238rem, 1.0637rem + 1.6005vw, 1.944rem);
   --font-size-xl: clamp(1.2656rem, 1.0203rem + 1.0904vw, 1.62rem);
