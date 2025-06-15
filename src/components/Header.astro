@@ -7,7 +7,7 @@
     <div>
       <a href="/">eagrigorev</a>
     </div>
-    <div class="desktop">
+    <div class="desktop-links">
       <ul>
         <li>
           <a href="/">home</a>
@@ -23,11 +23,11 @@
         </li>
       </ul>
     </div>
-    <div class="mobile">
+    <div class="mobile-links">
       <button id="menu-button">menu</button>
     </div>
   </div>
-  <div id="menu-wrapper" class="hidden">
+  <div id="menu-wrapper" class="mobile-links hidden">
     <ul>
       <li>
         <a href="/">home</a>
@@ -67,19 +67,46 @@
     font-size: var(--font-size-xs);
   }
 
-  .desktop {
+  .desktop-links {
     display: block;
 
     @media only screen and (width < 880px) {
       display: none;
     }
+
+    & > ul {
+      display: flex;
+      gap: var(--space-15-25);
+    }
+
+    & > ul > li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-15-25);
+
+      &:not(:first-child) {
+        &::before {
+          display: block;
+          content: '';
+          width: 50px;
+          height: 1px;
+          background: var(--accent-primary);
+        }
+      }
+    }
   }
 
-  .mobile {
+  .mobile-links {
     display: none;
 
     @media only screen and (width < 880px) {
       display: block;
+    }
+
+    & > ul {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-15-25);
     }
   }
 
@@ -87,26 +114,13 @@
     display: none;
   }
 
-  ul {
-    display: flex;
-    gap: var(--space-15-25);
-    list-style: none;
+  #menu-wrapper {
+    padding-bottom: var(--space-30-40);
+    font-size: var(--font-size-xs);
   }
 
-  li {
-    display: flex;
-    align-items: center;
-    gap: var(--space-15-25);
-
-    &:not(:first-child) {
-      &::before {
-        display: block;
-        content: '';
-        width: 50px;
-        height: 1px;
-        background: var(--accent-primary);
-      }
-    }
+  ul {
+    list-style: none;
   }
 
   a {
