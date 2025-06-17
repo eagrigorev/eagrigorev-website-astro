@@ -1,52 +1,62 @@
 ---
-
+import { Image } from 'astro:assets';
+import logo from '../images/logo.svg';
+import navigationLinks from '../data/navigationLinks.json';
+import socialLinks from '../data/socialLinks.json';
 ---
 
 <nav class="wrapper jost-uppercase">
   <div class="navigation">
     <div>
-      <a href="/">eagrigorev</a>
+      <a href="/"
+        ><Image src={logo} alt="Website logo" width="61" height="60" /></a
+      >
     </div>
     <div class="desktop">
-      <ul>
-        <li>
-          <a href="/">home</a>
-        </li>
-        <li>
-          <a href="/">about</a>
-        </li>
-        <li>
-          <a href="/">pages</a>
-        </li>
-        <li>
-          <a href="/">elsewhere</a>
+      <ul class="desktop-nav">
+        {
+          navigationLinks.map((item) => (
+            <li class="desktop-nav-item">
+              <a href={item.url}>{item.title}</a>
+            </li>
+          ))
+        }
+        <li class="desktop-nav-item">
+          <button id="socials-button">Elsewhere</button>
         </li>
       </ul>
     </div>
     <div class="mobile">
-      <button id="menu-button">menu</button>
+      <button id="menu-button">Menu</button>
     </div>
   </div>
+  <div id="socials-wrapper" class="desktop hidden">
+    <ul class="desktop-socials">
+      {
+        socialLinks.map((item) => (
+          <li>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
   <div id="menu-wrapper" class="mobile hidden">
-    <ul>
-      <li>
-        <a href="/">home</a>
-      </li>
-      <li>
-        <a href="/">about</a>
-      </li>
-      <li>
-        <a href="/">pages</a>
-      </li>
-      <li>
-        <a href="/">instagram</a>
-      </li>
-      <li>
-        <a href="/">github</a>
-      </li>
-      <li>
-        <a href="/">bluesky</a>
-      </li>
+    <ul class="mobile-nav">
+      {
+        navigationLinks.map((item) => (
+          <li>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))
+      }
+      {
+        socialLinks.map((item) => (
+          <li>
+            <a href={item.url}>{item.title}</a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
@@ -54,6 +64,9 @@
 <script>
   document.querySelector('#menu-button').addEventListener('click', () => {
     document.querySelector('#menu-wrapper').classList.toggle('hidden');
+  });
+  document.querySelector('#socials-button').addEventListener('click', () => {
+    document.querySelector('#socials-wrapper').classList.toggle('hidden');
   });
 </script>
 
@@ -73,41 +86,48 @@
   .desktop {
     display: block;
 
-    @media only screen and (width < 880px) {
+    @media only screen and (width < 760px) {
       display: none;
     }
 
-    & > ul {
+    &-nav {
       display: flex;
       gap: var(--space-15-25);
       list-style: none;
-    }
 
-    & > ul > li {
-      display: flex;
-      align-items: center;
-      gap: var(--space-15-25);
+      &-item {
+        display: flex;
+        align-items: center;
+        gap: var(--space-15-25);
 
-      &:not(:first-child) {
-        &::before {
-          display: block;
-          content: '';
-          width: 50px;
-          height: 1px;
-          background: var(--accent-primary);
+        &:not(:first-child) {
+          &::before {
+            display: block;
+            content: '';
+            width: 50px;
+            height: 1px;
+            background: var(--accent-primary);
+          }
         }
       }
+    }
+
+    &-socials {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-15-25);
+      list-style: none;
     }
   }
 
   .mobile {
     display: none;
 
-    @media only screen and (width < 880px) {
+    @media only screen and (width < 760px) {
       display: block;
     }
 
-    & > ul {
+    &-nav {
       display: flex;
       flex-direction: column;
       gap: var(--space-15-25);
