@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import GlobalLayout from '../layouts/GlobalLayout.astro';
 import heroImage from '../images/hero.jpg';
+import PageTitle from '../components/PageTitle.astro';
 ---
 
 <GlobalLayout>
@@ -16,6 +17,7 @@ import heroImage from '../images/hero.jpg';
       loading="lazy"
     />
   </div>
+  <PageTitle />
 </GlobalLayout>
 
 <style lang="scss">
