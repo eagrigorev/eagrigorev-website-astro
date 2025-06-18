@@ -1,30 +1,29 @@
 ---
-
+import Tags from './Tags.astro';
 ---
 
-<header class="wrapper grid">
-  <div class="info">
-    <h1 class="title jost-regular">
-      I'm a frontend software developer based in Thessaloniki, Greece.
-    </h1>
-    <h2 class="subtitle jost-light">
-      I love clean and minimal interfaces, accessible homemade and local
-      applications, and digital gardens.
-    </h2>
+<header>
+  <div class="grid">
+    <div class="info">
+      <h1 class="title jost-regular">
+        I'm a frontend software developer based in Thessaloniki, Greece.
+      </h1>
+      <h2 class="subtitle jost-light">
+        I love clean and minimal interfaces, accessible homemade and local
+        applications, and digital gardens.
+      </h2>
+    </div>
   </div>
+  <Tags />
 </header>
 
 <style lang="scss">
-  .wrapper {
-    padding-bottom: var(--space-60-80);
-    border-bottom: var(--accent-primary) solid 1px;
-  }
-
   .info {
     grid-column: 1 / 4;
     display: flex;
     flex-direction: column;
     gap: var(--space-10-20);
+    padding-bottom: var(--space-60-80);
   }
 
   .title {
