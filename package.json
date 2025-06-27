@@ -23,16 +23,16 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@fontsource-variable/jost": "^5.2.6",
-    "astro": "^5.9.3",
+    "@fontsource-variable/hanken-grotesk": "^5.2.6",
+    "astro": "^5.10.1",
     "typescript": "^5.8.3"
   },
   "devDependencies": {
     "postcss-html": "^1.8.0",
-    "prettier": "^3.5.3",
+    "prettier": "^3.6.1",
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.89.2",
-    "stylelint": "^16.20.0",
+    "stylelint": "^16.21.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier-scss": "^1.0.0",
     "stylelint-config-standard-scss": "^15.0.1"

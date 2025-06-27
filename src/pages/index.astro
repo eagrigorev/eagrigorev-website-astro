@@ -1,33 +1,16 @@
 ---
-import { Image } from 'astro:assets';
-import GlobalLayout from '../layouts/GlobalLayout.astro';
-import heroImage from '../images/hero.jpg';
-import PageTitle from '../components/PageTitle.astro';
+import '../styles/global.scss';
 ---
 
-<GlobalLayout>
-  <div class="hero">
-    <Image
-      class="image"
-      src={heroImage}
-      alt="Website hero image"
-      width="800"
-      height="400"
-      decoding="async"
-      loading="lazy"
-    />
-  </div>
-  <PageTitle />
-</GlobalLayout>
-
-<style lang="scss">
-  .hero {
-    padding-bottom: var(--space-30-40);
-  }
-
-  .image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2/1;
-  }
-</style>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body class="container grid">
+    <p>TEST TEST TEST</p>
+  </body>
+</html>

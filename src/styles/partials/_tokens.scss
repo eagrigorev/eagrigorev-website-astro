@@ -1,22 +1,5 @@
 :root {
-  /* Colors */
-  --font-primary: #141414;
-  --font-secondary: #969696;
-  --accent-primary: #d2d2d2;
-  --background-primary: #ffffff;
-
-  /* Fonts */
-  --font-size-2xl: clamp(1.4238rem, 1.0637rem + 1.6005vw, 1.944rem);
-  --font-size-xl: clamp(1.2656rem, 1.0203rem + 1.0904vw, 1.62rem);
-  --font-size-l: clamp(1.125rem, 0.9692rem + 0.6923vw, 1.35rem);
-  --font-size-m: clamp(1rem, 0.9135rem + 0.3846vw, 1.125rem);
-  --font-size-s: clamp(0.8889rem, 0.8552rem + 0.1496vw, 0.9375rem);
-  --font-size-xs: clamp(0.7813rem, 0.7963rem + -0.0273vw, 0.7901rem);
-
   /* Space */
-  --space-60-80: clamp(3.75rem, 2.8846rem + 3.8462vw, 5rem);
-  --space-30-80: clamp(1.875rem, -0.2885rem + 9.6154vw, 5rem);
-  --space-30-40: clamp(1.875rem, 1.4423rem + 1.9231vw, 2.5rem);
-  --space-15-25: clamp(0.9375rem, 0.5048rem + 1.9231vw, 1.5625rem);
-  --space-10-20: clamp(0.625rem, 0.1923rem + 1.9231vw, 1.25rem);
+  --space-30-60: clamp(1.875rem, 0.8824rem + 4.4118vw, 3.75rem);
+  --space-30-40: clamp(1.875rem, 1.5441rem + 1.4706vw, 2.5rem);
 }

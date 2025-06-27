@@ -1,22 +1,22 @@
 body {
   display: flex;
   flex-direction: column;
-  color: var(--font-primary);
-  background-color: var(--background-primary);
+  // color: var(--font-primary);
+  // background-color: var(--background-primary);
 }
 
 .container {
-  max-width: 55rem;
+  max-width: 65rem;
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: var(--space-30-80);
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-30-60);
 
-  @media only screen and (width <= 480px) {
-    display: block;
+  @media only screen and (width <= 768px) {
+    grid-template-columns: repeat(6, 1fr);
   }
 }
