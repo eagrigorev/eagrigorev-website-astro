@@ -1,3 +1,46 @@
 @import "./partials/tokens";
 @import "./partials/normalize";
-@import "./partials/main";
+@import "./partials/typography";
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
+}
+
+.container {
+  max-width: 65rem;
+  padding-inline: var(--space-30-40);
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: var(--space-30-60);
+
+  @media only screen and (width <= 769px) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.desktop-visibility {
+  display: block;
+
+  @media only screen and (width < 769px) {
+    display: none;
+  }
+}
+
+.mobile-visibility {
+  display: none;
+
+  @media only screen and (width < 769px) {
+    display: block;
+  }
+}
+
+.is-hidden {
+  display: none;
+}
