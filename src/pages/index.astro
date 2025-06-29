@@ -1,5 +1,35 @@
 ---
 import GlobalLayout from '../layouts/GlobalLayout.astro';
+import { Image } from 'astro:assets';
+import heroImage from '../images/hero-image.jpg';
+import PageTitle from '../components/PageTitle.astro';
 ---
 
-<GlobalLayout> Text </GlobalLayout>
+<GlobalLayout>
+  <div class="wrapper">
+    <Image
+      class="image"
+      src={heroImage}
+      alt="Website hero image"
+      width="960"
+      height="480"
+      decoding="async"
+      loading="lazy"
+    />
+  </div>
+  <header>
+    <PageTitle />
+  </header>
+</GlobalLayout>
+
+<style lang="scss">
+  .wrapper {
+    padding-bottom: var(--space-30-40);
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2/1;
+  }
+</style>

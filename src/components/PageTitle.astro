@@ -1,0 +1,51 @@
+---
+
+---
+
+<div class="wrapper">
+  <div class="grid">
+    <h1 class="title font-hgv-regular">
+      I'm a frontend software developer based in Thessaloniki, Greece.
+    </h1>
+  </div>
+  <div class="grid">
+    <h2 class="subtitle font-hgv-light">
+      I love clean and minimal interfaces, accessible homemade and local
+      applications, and digital gardens.
+    </h2>
+  </div>
+</div>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+  }
+
+  .title {
+    grid-column: 1 / 10;
+    font-size: var(--font-size-2xl);
+
+    @media only screen and (width <= 768px) {
+      grid-column: 1 / 6;
+    }
+
+    @media only screen and (width <= 460px) {
+      grid-column: 1 / 7;
+    }
+  }
+
+  .subtitle {
+    grid-column: 1 / 8;
+    font-size: var(--font-size-m);
+
+    @media only screen and (width <= 768px) {
+      grid-column: 1 / 5;
+    }
+
+    @media only screen and (width <= 460px) {
+      grid-column: 1 / 7;
+    }
+  }
+</style>
