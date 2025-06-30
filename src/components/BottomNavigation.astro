@@ -49,6 +49,14 @@
     font-size: var(--font-size-l);
     text-align: center;
     grid-column: 4 / 10;
+
+    @media only screen and (width <= 768px) {
+      grid-column: 2 / 6;
+    }
+
+    @media only screen and (width <= 460px) {
+      grid-column: 1 / 7;
+    }
   }
 
   a {
