@@ -15,9 +15,11 @@
   --font-size-2xs: clamp(0.651rem, 0.7295rem + -0.1207vw, 0.7023rem);
 
   /* Space */
+  --space-60-80: clamp(3.75rem, 3.0882rem + 2.9412vw, 5rem);
   --space-30-60: clamp(1.875rem, 0.8824rem + 4.4118vw, 3.75rem);
   --space-30-50: clamp(1.875rem, 1.2132rem + 2.9412vw, 3.125rem);
   --space-30-40: clamp(1.875rem, 1.5441rem + 1.4706vw, 2.5rem);
   --space-20-30: clamp(1.25rem, 0.9191rem + 1.4706vw, 1.875rem);
+  --space-15-40: clamp(0.9375rem, 0.1103rem + 3.6765vw, 2.5rem);
   --space-10-20: clamp(0.625rem, 0.2941rem + 1.4706vw, 1.25rem);
 }

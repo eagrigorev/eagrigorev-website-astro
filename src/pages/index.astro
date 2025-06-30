@@ -3,6 +3,7 @@ import GlobalLayout from '../layouts/GlobalLayout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../images/hero-image.jpg';
 import PageTitle from '../components/PageTitle.astro';
+import TagCloud from '../components/TagCloud.astro';
 ---
 
 <GlobalLayout>
@@ -17,14 +18,42 @@ import PageTitle from '../components/PageTitle.astro';
       loading="lazy"
     />
   </div>
-  <header>
+  <header class="title-wrapper">
     <PageTitle />
+    <div class="tags-wrapper">
+      <span class="tags-title font-hgv-uppercase">Tags:</span>
+      <TagCloud showButton={true} />
+    </div>
   </header>
 </GlobalLayout>
 
 <style lang="scss">
   .wrapper {
     padding-bottom: var(--space-30-40);
+  }
+
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-bottom: var(--space-30-40);
+  }
+
+  .tags-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-15-40);
+    padding-bottom: var(--space-60-80);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .tags-title {
+    font-size: var(--font-size-xs);
   }
 
   .image {
