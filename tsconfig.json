@@ -4,6 +4,8 @@
   "exclude": ["dist"],
   "compilerOptions": {
     "verbatimModuleSyntax": true,
-    "baseUrl": "."
+    "baseUrl": ".",
+    "strictNullChecks": true,
+    "allowJs": true
   }
 }

@@ -1,6 +1,6 @@
-@import "./partials/tokens";
-@import "./partials/normalize";
-@import "./partials/typography";
+@use "./partials/tokens";
+@use "./partials/normalize";
+@use "./partials/typography";
 
 body {
   display: flex;
