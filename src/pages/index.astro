@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import heroImage from '../images/hero-image.jpg';
 import PageTitle from '../components/PageTitle.astro';
 import TagCloud from '../components/TagCloud.astro';
+import PostCard from '../components/PostCard.astro';
 ---
 
 <GlobalLayout>
@@ -25,6 +26,10 @@ import TagCloud from '../components/TagCloud.astro';
       <TagCloud showButton={true} />
     </div>
   </header>
+  <section class="posts">
+    <PostCard />
+    <PostCard />
+  </section>
 </GlobalLayout>
 
 <style lang="scss">
@@ -60,5 +65,11 @@ import TagCloud from '../components/TagCloud.astro';
     width: 100%;
     height: auto;
     aspect-ratio: 2/1;
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
   }
 </style>

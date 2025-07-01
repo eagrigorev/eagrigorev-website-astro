@@ -1,0 +1,86 @@
+---
+import { Image } from 'astro:assets';
+import previewImage from '../images/test-post-preview.jpg';
+import TagCloud from './TagCloud.astro';
+---
+
+<article class="wrapper grid">
+  <div class="description">
+    <header class="title">
+      <span class="post-date font-hgv-uppercase">November 17, 1994</span>
+      <h2 class="post-title font-hgv-regular">
+        Exploring the Pacific Northwest and Beyond
+      </h2>
+    </header>
+    <div class="excerpt font-hgv-light">
+      <p>
+        Did you know Robert Mapplethorpe thought that 'magic' disappears from a
+        photograph when you start talking about it? Sometimes I tend to agree
+        with that.
+      </p>
+    </div>
+    <TagCloud showButton={false} />
+  </div>
+  <div class="image">
+    <a href="/"
+      ><Image
+        class="img"
+        src={previewImage}
+        alt="Website logo"
+        width="400"
+        height="400"
+      /></a
+    >
+  </div>
+</article>
+
+<style lang="scss">
+  .wrapper {
+    padding-bottom: var(--space-30-40);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    @media only screen and (width <= 460px) {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: var(--space-30-40);
+    }
+  }
+
+  .description {
+    grid-column: 1 / 10;
+  }
+
+  .image {
+    grid-column: 10 / 13;
+  }
+
+  .img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .post-date {
+    font-size: var(--font-size-2xs);
+  }
+
+  .post-title {
+    font-size: var(--font-size-xl);
+  }
+
+  .excerpt {
+    font-size: var(--font-size-s);
+  }
+</style>
