@@ -2,35 +2,49 @@
 import { Image } from 'astro:assets';
 import previewImage from '../images/test-post-preview.jpg';
 import TagCloud from './TagCloud.astro';
+
+interface Props {
+  title: string;
+  slug: string;
+  datePublished: string;
+  excerpt: string;
+  image: {
+    url: string;
+    alt: string;
+  };
+  tags: string[];
+}
+
+const postData: Props = Astro.props;
 ---
 
 <article class="wrapper grid">
   <div class="description">
     <header class="title">
-      <span class="post-date font-hgv-uppercase">November 17, 1994</span>
+      <span class="post-date font-hgv-uppercase">
+        {postData.datePublished}
+      </span>
       <h2 class="post-title font-hgv-regular">
-        Exploring the Pacific Northwest and Beyond
+        {postData.title}
       </h2>
     </header>
     <div class="excerpt font-hgv-light">
       <p>
-        Did you know Robert Mapplethorpe thought that 'magic' disappears from a
-        photograph when you start talking about it? Sometimes I tend to agree
-        with that.
+        {postData.excerpt}
       </p>
     </div>
     <TagCloud showButton={false} />
   </div>
   <div class="image">
-    <a href="/"
-      ><Image
+    <a href="/">
+      <Image
         class="img"
         src={previewImage}
         alt="Website logo"
         width="400"
         height="400"
-      /></a
-    >
+      />
+    </a>
   </div>
 </article>
 

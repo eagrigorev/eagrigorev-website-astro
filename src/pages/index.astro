@@ -5,6 +5,10 @@ import heroImage from '../images/hero-image.jpg';
 import PageTitle from '../components/PageTitle.astro';
 import TagCloud from '../components/TagCloud.astro';
 import PostCard from '../components/PostCard.astro';
+
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
 ---
 
 <GlobalLayout>
@@ -27,8 +31,14 @@ import PostCard from '../components/PostCard.astro';
     </div>
   </header>
   <section class="posts">
-    <PostCard />
-    <PostCard />
+    <PostCard
+      title={posts[1].data.title}
+      slug={posts[1].data.slug}
+      datePublished={posts[1].data.datePublished}
+      excerpt={posts[1].data.excerpt}
+      image={posts[1].data.image}
+      tags={posts[1].data.tags}
+    />
   </section>
 </GlobalLayout>
 
