@@ -3,7 +3,7 @@ import GlobalLayout from '../layouts/GlobalLayout.astro';
 import { Image } from 'astro:assets';
 import heroImage from '../images/hero-image.jpg';
 import PageTitle from '../components/PageTitle.astro';
-import TagCloud from '../components/TagCloud.astro';
+import GlobalTags from 'src/components/tags/GlobalTags.astro';
 import PostCard from '../components/PostCard.astro';
 
 import { getCollection } from 'astro:content';
@@ -27,7 +27,7 @@ const posts = await getCollection('posts');
     <PageTitle />
     <div class="tags-wrapper">
       <span class="tags-title font-hgv-uppercase">Tags:</span>
-      <TagCloud showButton={true} />
+      <GlobalTags />
     </div>
   </header>
   <section class="posts">

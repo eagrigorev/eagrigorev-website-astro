@@ -1,0 +1,71 @@
+---
+import { uniqueTags } from 'src/scripts/generateUniqueTags';
+import Tag from './Tag.astro';
+
+const tagClassList = (index: number): string => {
+  return index > 4 ? 'global-tag is-hidden' : 'global-tag';
+};
+---
+
+<div>
+  <ul role="list" class="tags">
+    {
+      uniqueTags.map((tag: string, index: number) => (
+        <li class={tagClassList(index)}>
+          <Tag tag={tag} />
+        </li>
+      ))
+    }
+    <li>
+      <button id="tags-button" class="button-default font-hgv-regular"
+        >show more</button
+      >
+    </li>
+  </ul>
+</div>
+
+<script>
+  const button = document.getElementById('tags-button');
+  let tagsAreShown: boolean = false;
+  button?.addEventListener('click', () => {
+    if (button && tagsAreShown == false) {
+      document.querySelectorAll('.global-tag').forEach((tag: HTMLElement) => {
+        if (tag.classList.contains('is-hidden')) {
+          tag.classList.remove('is-hidden');
+        }
+      });
+      button.innerHTML = 'show less';
+      tagsAreShown = !tagsAreShown;
+    } else if (button && tagsAreShown == true) {
+      document
+        .querySelectorAll('.global-tag')
+        .forEach((tag: HTMLElement, index: number) => {
+          if (index > 4) {
+            tag.classList.add('is-hidden');
+          }
+        });
+      button.innerHTML = 'show more';
+      tagsAreShown = !tagsAreShown;
+    }
+  });
+</script>
+
+<style lang="scss">
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #tags-button {
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+</style>

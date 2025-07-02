@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import previewImage from '../images/test-post-preview.jpg';
-import TagCloud from './TagCloud.astro';
+import PostTags from './tags/PostTags.astro';
 
 interface Props {
   title: string;
@@ -33,7 +33,7 @@ const postData: Props = Astro.props;
         {postData.excerpt}
       </p>
     </div>
-    <TagCloud showButton={false} />
+    <PostTags tags={postData.tags} />
   </div>
   <div class="image">
     <a href="/">
