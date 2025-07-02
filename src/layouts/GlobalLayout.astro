@@ -1,7 +1,7 @@
 ---
 import '../styles/global.scss';
-import TopNavigation from '../components/TopNavigation.astro';
-import BottomNavigation from '../components/BottomNavigation.astro';
+import GlobalHeader from 'src/components/GlobalHeader.astro';
+import GlobalFooter from 'src/components/GlobalFooter.astro';
 ---
 
 <html lang="en">
@@ -13,8 +13,8 @@ import BottomNavigation from '../components/BottomNavigation.astro';
     <title>Astro</title>
   </head>
   <body class="container">
-    <TopNavigation />
+    <GlobalHeader />
     <slot />
-    <BottomNavigation />
+    <GlobalFooter />
   </body>
 </html>

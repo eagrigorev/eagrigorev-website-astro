@@ -1,0 +1,39 @@
+---
+import FooterNavigation from './navigation/FooterNavigation.astro';
+---
+
+<footer class="wrapper">
+  <div class="cta grid">
+    <h2 class="font-hgv-regular">
+      Thank you for stopping by. You can browse tags for more posts.
+    </h2>
+  </div>
+  <FooterNavigation />
+</footer>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+
+  .cta {
+    padding: var(--space-60-80) 0;
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    & h2 {
+      font-size: var(--font-size-l);
+      text-align: center;
+      grid-column: 4 / 10;
+
+      @media only screen and (width <= 768px) {
+        grid-column: 2 / 6;
+      }
+
+      @media only screen and (width <= 460px) {
+        grid-column: 1 / 7;
+      }
+    }
+  }
+</style>

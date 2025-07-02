@@ -44,3 +44,35 @@ body {
 .is-hidden {
   display: none;
 }
+
+.link-default {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: color 0.3s;
+
+  &:hover,
+  &:focus {
+    color: var(--color-secondary);
+  }
+}
+
+.link-inverted {
+  text-decoration: none;
+  color: var(--color-secondary);
+  transition: color 0.3s;
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary);
+  }
+}
+
+.button-default {
+  border: none;
+  background: none;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+  }
+}
