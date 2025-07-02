@@ -1,9 +1,6 @@
 ---
-import GlobalLayout from '../layouts/GlobalLayout.astro';
-import { Image } from 'astro:assets';
-import heroImage from '../images/hero-image.jpg';
-import PageTitle from '../components/PageTitle.astro';
-import GlobalTags from 'src/components/tags/GlobalTags.astro';
+import GlobalLayout from 'src/layouts/GlobalLayout.astro';
+import IndexPageLayout from 'src/layouts/IndexPageLayout.astro';
 import PostCard from '../components/PostCard.astro';
 
 import { getCollection } from 'astro:content';
@@ -12,71 +9,24 @@ const posts = await getCollection('posts');
 ---
 
 <GlobalLayout>
-  <div class="wrapper">
-    <Image
-      class="image"
-      src={heroImage}
-      alt="Website hero image"
-      width="960"
-      height="480"
-      decoding="async"
-      loading="lazy"
-    />
-  </div>
-  <header class="title-wrapper">
-    <PageTitle />
-    <div class="tags-wrapper">
-      <span class="tags-title font-hgv-uppercase">Tags:</span>
-      <GlobalTags />
-    </div>
-  </header>
-  <section class="posts">
-    <PostCard
-      title={posts[1].data.title}
-      slug={posts[1].data.slug}
-      datePublished={posts[1].data.datePublished}
-      excerpt={posts[1].data.excerpt}
-      image={posts[1].data.image}
-      tags={posts[1].data.tags}
-    />
-  </section>
+  <IndexPageLayout
+    title="I'm a frontend software developer based in Thessaloniki, Greece."
+    subtitle="I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens."
+  >
+    <section class="posts">
+      <PostCard
+        title={posts[1].data.title}
+        slug={posts[1].data.slug}
+        datePublished={posts[1].data.datePublished}
+        excerpt={posts[1].data.excerpt}
+        image={posts[1].data.image}
+        tags={posts[1].data.tags}
+      />
+    </section>
+  </IndexPageLayout>
 </GlobalLayout>
 
 <style lang="scss">
-  .wrapper {
-    padding-bottom: var(--space-30-40);
-  }
-
-  .title-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-30-40);
-    padding-bottom: var(--space-30-40);
-  }
-
-  .tags-wrapper {
-    display: flex;
-    align-items: center;
-    gap: var(--space-15-40);
-    padding-bottom: var(--space-60-80);
-    border-bottom: var(--color-bg-secondary) solid 1px;
-
-    @media only screen and (width <= 768px) {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  }
-
-  .tags-title {
-    font-size: var(--font-size-xs);
-  }
-
-  .image {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 2/1;
-  }
-
   .posts {
     display: flex;
     flex-direction: column;

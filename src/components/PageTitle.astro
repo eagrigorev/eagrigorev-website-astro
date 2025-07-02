@@ -1,17 +1,21 @@
 ---
+interface Props {
+  title: string;
+  subtitle: string;
+}
 
+const { title, subtitle } = Astro.props;
 ---
 
 <div class="wrapper">
   <div class="grid">
     <h1 class="title font-hgv-regular">
-      I'm a frontend software developer based in Thessaloniki, Greece.
+      {title}
     </h1>
   </div>
   <div class="grid">
     <h2 class="subtitle font-hgv-light">
-      I love clean and minimal interfaces, accessible homemade and local
-      applications, and digital gardens.
+      {subtitle}
     </h2>
   </div>
 </div>

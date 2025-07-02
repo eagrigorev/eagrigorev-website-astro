@@ -35,7 +35,6 @@ const tagClassList = (index: number): string => {
         }
       });
       button.innerHTML = 'show less';
-      tagsAreShown = !tagsAreShown;
     } else if (button && tagsAreShown == true) {
       document
         .querySelectorAll('.global-tag')
@@ -45,8 +44,8 @@ const tagClassList = (index: number): string => {
           }
         });
       button.innerHTML = 'show more';
-      tagsAreShown = !tagsAreShown;
     }
+    tagsAreShown = !tagsAreShown;
   });
 </script>
 
