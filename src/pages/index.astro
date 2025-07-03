@@ -1,7 +1,7 @@
 ---
 import GlobalLayout from 'src/layouts/GlobalLayout.astro';
 import IndexPageLayout from 'src/layouts/IndexPageLayout.astro';
-import PostCard from '../components/PostCard.astro';
+import PostCard from 'src/components/feed/PostCard.astro';
 
 import { getCollection } from 'astro:content';
 
@@ -14,14 +14,7 @@ const posts = await getCollection('posts');
     subtitle="I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens."
   >
     <section class="posts">
-      <PostCard
-        title={posts[1].data.title}
-        slug={posts[1].data.slug}
-        datePublished={posts[1].data.datePublished}
-        excerpt={posts[1].data.excerpt}
-        image={posts[1].data.image}
-        tags={posts[1].data.tags}
-      />
+      <PostCard postMeta={posts[0].data} />
     </section>
   </IndexPageLayout>
 </GlobalLayout>
