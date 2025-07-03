@@ -1,8 +1,10 @@
 ---
+import { sortPostsDesc } from 'src/scripts/sort';
 import PostCard from './PostCard.astro';
 import { getCollection } from 'astro:content';
 
 const posts = await getCollection('posts');
+const sortedPosts = sortPostsDesc(posts);
 
 interface Props {
   tag?: string;
@@ -11,8 +13,10 @@ interface Props {
 const { tag } = Astro.props;
 
 const displayedPosts = tag
-  ? posts.filter((post) => post.data.tags.includes(tag.replaceAll('-', ' ')))
-  : posts;
+  ? sortedPosts.filter((post) =>
+      post.data.tags.includes(tag.replaceAll('-', ' '))
+    )
+  : sortedPosts;
 ---
 
 <section class="wrapper">
