@@ -1,0 +1,27 @@
+---
+import { uniqueTags } from 'src/scripts/generateUniqueTags';
+import { generateSlug } from 'src/scripts/generateSlug';
+import GlobalLayout from 'src/layouts/GlobalLayout.astro';
+import IndexPageLayout from 'src/layouts/IndexPageLayout.astro';
+import PostList from 'src/components/feed/PostList.astro';
+
+export async function getStaticPaths() {
+  return uniqueTags.map((tag: string) => {
+    tag = generateSlug(tag);
+    return {
+      params: { tag },
+    };
+  });
+}
+
+const { tag } = Astro.params;
+---
+
+<GlobalLayout>
+  <IndexPageLayout
+    title=`Browsing tag: "${tag.replaceAll('-', ' ')}"`
+    subtitle="All posts filtered by selected tag."
+  >
+    <PostList tag={tag} />
+  </IndexPageLayout>
+</GlobalLayout>

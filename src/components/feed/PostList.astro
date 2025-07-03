@@ -9,13 +9,18 @@ interface Props {
 }
 
 const { tag } = Astro.props;
+
 const displayedPosts = tag
-  ? posts.filter((post) => post.data.tags.includes(tag))
+  ? posts.filter((post) => post.data.tags.includes(tag.replaceAll('-', ' ')))
   : posts;
 ---
 
 <section class="wrapper">
-  {displayedPosts.map((post) => <PostCard postMeta={post.data} />)}
+  {
+    displayedPosts.map((post, index: number) => (
+      <PostCard index={index} postMeta={post.data} />
+    ))
+  }
 </section>
 
 <style lang="scss">

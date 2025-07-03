@@ -8,7 +8,7 @@ interface Props {
 const { tag }: Props = Astro.props;
 ---
 
-<a class="tag font-hgv-regular" href={`/${generateSlug(tag)}`}>
+<a class="tag font-hgv-regular" href={`/tags/${generateSlug(tag)}`}>
   {tag}
 </a>
 

@@ -5,9 +5,10 @@ import PostTags from '../tags/PostTags.astro';
 
 interface Props {
   postMeta: PostMeta;
+  index: number;
 }
 
-const { postMeta }: Props = Astro.props;
+const { postMeta, index }: Props = Astro.props;
 ---
 
 <article class="wrapper grid">
@@ -17,7 +18,7 @@ const { postMeta }: Props = Astro.props;
         {postMeta.datePublished}
       </span>
       <h2 class="description__title font-hgv-regular">
-        <a class="link-default" href={`posts/${postMeta.slug}`}
+        <a class="link-default" href={`/posts/${postMeta.slug}`}
           >{postMeta.title}</a
         >
       </h2>
@@ -30,13 +31,15 @@ const { postMeta }: Props = Astro.props;
     <PostTags tags={postMeta.tags} />
   </div>
   <div class="featured-image">
-    <a href={`posts/${postMeta.slug}`} tabindex={-1}>
+    <a href={`/posts/${postMeta.slug}`} tabindex={-1}>
       <Image
         class="image image-default"
         src={postMeta.image.url}
         alt={postMeta.image.alt}
         width="400"
         height="400"
+        decoding="async"
+        loading={`${index > 0 ? 'lazy' : 'eager'}`}
       />
     </a>
   </div>
