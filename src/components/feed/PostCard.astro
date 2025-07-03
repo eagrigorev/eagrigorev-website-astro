@@ -17,7 +17,9 @@ const { postMeta }: Props = Astro.props;
         {postMeta.datePublished}
       </span>
       <h2 class="description__title font-hgv-regular">
-        {postMeta.title}
+        <a class="link-default" href={`posts/${postMeta.slug}`}
+          >{postMeta.title}</a
+        >
       </h2>
     </header>
     <div class="description__excerpt font-hgv-light">
@@ -28,9 +30,9 @@ const { postMeta }: Props = Astro.props;
     <PostTags tags={postMeta.tags} />
   </div>
   <div class="featured-image">
-    <a href="/">
+    <a href={`posts/${postMeta.slug}`} tabindex={-1}>
       <Image
-        class="image"
+        class="image image-default"
         src={postMeta.image.url}
         alt={postMeta.image.alt}
         width="400"

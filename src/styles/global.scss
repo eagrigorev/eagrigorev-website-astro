@@ -76,3 +76,12 @@ body {
     cursor: pointer;
   }
 }
+
+.image-default {
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+}
