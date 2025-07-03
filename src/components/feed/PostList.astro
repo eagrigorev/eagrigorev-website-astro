@@ -1,0 +1,27 @@
+---
+import PostCard from './PostCard.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('posts');
+
+interface Props {
+  tag?: string;
+}
+
+const { tag } = Astro.props;
+const displayedPosts = tag
+  ? posts.filter((post) => post.data.tags.includes(tag))
+  : posts;
+---
+
+<section class="wrapper">
+  {displayedPosts.map((post) => <PostCard postMeta={post.data} />)}
+</section>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>

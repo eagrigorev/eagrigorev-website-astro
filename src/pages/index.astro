@@ -1,11 +1,7 @@
 ---
 import GlobalLayout from 'src/layouts/GlobalLayout.astro';
 import IndexPageLayout from 'src/layouts/IndexPageLayout.astro';
-import PostCard from 'src/components/feed/PostCard.astro';
-
-import { getCollection } from 'astro:content';
-
-const posts = await getCollection('posts');
+import PostList from 'src/components/feed/PostList.astro';
 ---
 
 <GlobalLayout>
@@ -13,16 +9,6 @@ const posts = await getCollection('posts');
     title="I'm a frontend software developer based in Thessaloniki, Greece."
     subtitle="I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens."
   >
-    <section class="posts">
-      <PostCard postMeta={posts[0].data} />
-    </section>
+    <PostList />
   </IndexPageLayout>
 </GlobalLayout>
-
-<style lang="scss">
-  .posts {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-30-40);
-  }
-</style>
