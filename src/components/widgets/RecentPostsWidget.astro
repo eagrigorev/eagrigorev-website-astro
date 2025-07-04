@@ -13,9 +13,9 @@ const displayedPosts = sortPostsDesc(posts).slice(0, 5);
     {
       displayedPosts.map((post) => (
         <li>
-          <a class="link-default" href={`/posts/${post.data.slug}`}>
+          <a class="link-underline" href={`/posts/${post.data.slug}`}>
             {post.data.title}
-          </a>{' '}
+          </a>
           on {post.data.datePublished}
         </li>
       ))
