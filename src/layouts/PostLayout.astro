@@ -1,0 +1,99 @@
+---
+import type { PostMeta } from 'src/utils/types';
+import PageTitle from 'src/components/PageTitle.astro';
+import PostTags from 'src/components/tags/PostTags.astro';
+import AboutWidget from 'src/components/widgets/AboutWidget.astro';
+import RecentPostsWidget from 'src/components/widgets/RecentPostsWidget.astro';
+
+interface Props {
+  postMeta: PostMeta;
+}
+
+const { postMeta }: Props = Astro.props;
+---
+
+<main>
+  <header class="title-wrapper">
+    <PageTitle title={postMeta.title} subtitle={postMeta.excerpt} />
+    <div class="meta-wrapper">
+      <div>
+        <span class="date font-hgv-uppercase">{postMeta.datePublished}</span>
+      </div>
+      <div class="tags-wrapper">
+        <span class="tags-title font-hgv-uppercase">Tags:</span>
+        <PostTags tags={postMeta.tags} />
+      </div>
+    </div>
+  </header>
+  <section class="post-wrapper grid">
+    <div class="content font-hgv-light">
+      <slot />
+    </div>
+    <div class="sidebar">
+      <AboutWidget />
+      <RecentPostsWidget />
+    </div>
+  </section>
+</main>
+
+<style lang="scss">
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding: var(--space-60-80) 0 var(--space-30-40) 0;
+  }
+
+  .meta-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-60-80);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    @media only screen and (width <= 768px) {
+      gap: var(--space-30-40);
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .date {
+    font-size: var(--font-size-xs);
+  }
+
+  .tags-title {
+    font-size: var(--font-size-xs);
+  }
+
+  .tags-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-15-40);
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .post-wrapper {
+    padding-bottom: var(--space-30-40);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+  }
+
+  .content {
+    grid-column: 1 / 9;
+    font-size: var(--font-size-m);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+
+  .sidebar {
+    grid-column: 9 / 13;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>
