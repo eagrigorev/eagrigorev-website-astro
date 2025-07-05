@@ -1,0 +1,26 @@
+---
+import EmbedImage from './EmbedImage.astro';
+
+interface Props {
+  srcLeft: ImageMetadata;
+  descriptionLeft: string;
+  srcRight: ImageMetadata;
+  descriptionRight: string;
+}
+
+const { srcLeft, descriptionLeft, srcRight, descriptionRight } = Astro.props;
+---
+
+<div class="wrapper">
+  <EmbedImage src={srcLeft} description={descriptionLeft} />
+  <EmbedImage src={srcRight} description={descriptionRight} />
+</div>
+
+<style lang="scss">
+  .wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-30-60);
+  }
+</style>
