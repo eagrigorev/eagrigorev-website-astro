@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import GlobalLayout from 'src/layouts/GlobalLayout.astro';
 import PostLayout from 'src/layouts/PostLayout.astro';
+import MdxLink from 'src/components/mdx-typography/MdxLink.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -17,6 +18,6 @@ const { Content } = await render(post);
 
 <GlobalLayout>
   <PostLayout postMeta={post.data}>
-    <Content />
+    <Content components={{ a: MdxLink }} />
   </PostLayout>
 </GlobalLayout>
