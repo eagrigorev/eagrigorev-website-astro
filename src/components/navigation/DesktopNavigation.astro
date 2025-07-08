@@ -1,12 +1,12 @@
 ---
 import type { NavigationItem } from 'src/utils/types';
-import navigationItems from 'src/data/navigationItems.json';
+import { TOP_NAV_LINKS } from 'src/utils/const';
 ---
 
-<ul role="list" class="items">
+<ul role="list" class="wrapper">
   {
-    navigationItems.map((item: NavigationItem) => (
-      <li class="item">
+    TOP_NAV_LINKS.map((item: NavigationItem) => (
+      <li class="nav-item">
         <a class="link-default" href={item.url}>
           {item.title}
         </a>
@@ -16,12 +16,12 @@ import navigationItems from 'src/data/navigationItems.json';
 </ul>
 
 <style lang="scss">
-  .items {
+  .wrapper {
     display: flex;
     gap: var(--space-20-30);
   }
 
-  .item {
+  .nav-item {
     display: flex;
     align-items: center;
     gap: var(--space-20-30);

@@ -1,7 +1,7 @@
 ---
-import '../styles/global.scss';
-import GlobalHeader from 'src/components/GlobalHeader.astro';
-import GlobalFooter from 'src/components/GlobalFooter.astro';
+import '@styles/global.scss';
+import Header from '@components/global/Header.astro';
+import Footer from '@components/global/Footer.astro';
 ---
 
 <html lang="en">
@@ -13,8 +13,8 @@ import GlobalFooter from 'src/components/GlobalFooter.astro';
     <title>Astro</title>
   </head>
   <body class="container">
-    <GlobalHeader />
+    <Header />
     <slot />
-    <GlobalFooter />
+    <Footer />
   </body>
 </html>

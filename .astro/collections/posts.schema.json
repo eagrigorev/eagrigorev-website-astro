@@ -26,10 +26,7 @@
               "type": "string"
             }
           },
-          "required": [
-            "url",
-            "alt"
-          ],
+          "required": ["url", "alt"],
           "additionalProperties": false
         },
         "tags": {

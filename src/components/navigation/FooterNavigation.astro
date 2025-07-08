@@ -1,6 +1,6 @@
 ---
 import type { NavigationItem } from 'src/utils/types';
-import navigationItems from 'src/data/navigationItems.json';
+import { FOOTER_NAV_LINKS } from 'src/utils/const';
 ---
 
 <div class="wrapper font-hgv-regular">
@@ -10,7 +10,7 @@ import navigationItems from 'src/data/navigationItems.json';
   <div>
     <ul role="list" class="items">
       {
-        navigationItems.map((item: NavigationItem) => (
+        FOOTER_NAV_LINKS.map((item: NavigationItem) => (
           <li class="item">
             <a class="link-inverted" href={item.url}>
               {item.title}

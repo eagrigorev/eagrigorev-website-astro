@@ -10,20 +10,9 @@ body {
 }
 
 .container {
-  max-width: 65rem;
+  max-width: 70.5rem;
   padding-inline: var(--space-30-40);
   margin-inline: auto;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--space-30-60);
-
-  @media only screen and (width <= 768px) {
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: var(--space-30-40);
-  }
 }
 
 .desktop-visibility {

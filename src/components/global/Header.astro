@@ -1,23 +1,12 @@
 ---
-import { Image } from 'astro:assets';
-import websiteLogo from 'src/images/assets/website-logo.svg';
-import DesktopNavigation from './navigation/DesktopNavigation.astro';
-import MobileNavigation from './navigation/MobileNavigation.astro';
+import DesktopNavigation from '@components/navigation/DesktopNavigation.astro';
+import MobileNavigation from '@components/navigation/MobileNavigation.astro';
 ---
 
 <nav class="wrapper font-hgv-uppercase">
   <div class="navigation">
     <div>
-      <a href="/"
-        ><Image
-          src={websiteLogo}
-          alt="Website logo"
-          width="60"
-          height="60"
-          decoding="async"
-          loading="eager"
-        /></a
-      >
+      <span>Evgenii's Journal</span>
     </div>
     <div class="desktop-visibility">
       <DesktopNavigation />

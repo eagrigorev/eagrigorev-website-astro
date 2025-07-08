@@ -1,11 +1,11 @@
 ---
 import type { NavigationItem } from 'src/utils/types';
-import navigationItems from 'src/data/navigationItems.json';
+import { TOP_NAV_LINKS } from '@utils/const';
 ---
 
 <ul role="list" class="items">
   {
-    navigationItems.map((item: NavigationItem) => (
+    TOP_NAV_LINKS.map((item: NavigationItem) => (
       <li>
         <a class="link-default" href={item.url}>
           {item.title}

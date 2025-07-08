@@ -3,6 +3,11 @@ export interface NavigationItem {
   url: string;
 }
 
+export interface PageHeading {
+  title: string;
+  subtitle: string;
+}
+
 export interface PostMeta {
   title: string;
   slug: string;
