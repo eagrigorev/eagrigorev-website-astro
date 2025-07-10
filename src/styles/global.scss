@@ -15,77 +15,86 @@ body {
   margin-inline: auto;
 }
 
-.desktop-visibility {
-  display: block;
-
-  @media only screen and (width <= 768px) {
-    display: none;
-  }
-}
-
-.mobile-visibility {
-  display: none;
-
-  @media only screen and (width <= 768px) {
+.active {
+  &--desktop {
     display: block;
+
+    @media only screen and (width <= 768px) {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    display: none;
+
+    @media only screen and (width <= 768px) {
+      display: block;
+    }
   }
 }
 
-.is-hidden {
+.hidden {
   display: none;
 }
 
-.link-default {
-  text-decoration: none;
-  color: var(--color-primary);
-  transition: color 0.3s;
-
-  &:hover,
-  &:focus {
-    color: var(--color-secondary);
-  }
-}
-
-.link-inverted {
-  text-decoration: none;
-  color: var(--color-secondary);
-  transition: color 0.3s;
-
-  &:hover,
-  &:focus {
+.link {
+  &--default {
+    text-decoration: none;
     color: var(--color-primary);
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
   }
 }
 
-.link-underline {
-  text-decoration: none;
-  color: var(--color-primary);
-  transition: all 0.3s;
-  padding-bottom: 1px;
-  border-bottom: 1px solid var(--color-bg-secondary);
-
-  &:hover,
-  &:focus {
+.button {
+  &--default {
+    border: none;
+    background: none;
     color: var(--color-primary);
-    border-bottom: 1px solid var(--color-primary);
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: var(--color-secondary);
+    }
   }
 }
 
-.button-default {
-  border: none;
-  background: none;
+// .link-inverted {
+//   text-decoration: none;
+//   color: var(--color-secondary);
+//   transition: color 0.3s;
 
-  &:hover,
-  &:focus {
-    cursor: pointer;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     color: var(--color-primary);
+//   }
+// }
 
-.image-default {
-  transition: opacity 0.3s;
+// .link-underline {
+//   text-decoration: none;
+//   color: var(--color-primary);
+//   transition: all 0.3s;
+//   padding-bottom: 1px;
+//   border-bottom: 1px solid var(--color-bg-secondary);
 
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     color: var(--color-primary);
+//     border-bottom: 1px solid var(--color-primary);
+//   }
+// }
+
+// .image-default {
+//   transition: opacity 0.3s;
+
+//   &:hover,
+//   &:focus {
+//     opacity: 0.8;
+//   }
+// }
