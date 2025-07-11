@@ -1,0 +1,140 @@
+---
+const tags: { title: string; url: string }[] = [
+  {
+    title: 'travel',
+    url: '/travel',
+  },
+  {
+    title: 'music',
+    url: '/music',
+  },
+  {
+    title: 'film photos',
+    url: '/film-photos',
+  },
+  {
+    title: 'finland',
+    url: '/finland',
+  },
+  {
+    title: 'reading lists',
+    url: '/reading-lists',
+  },
+  {
+    title: 'thoughts',
+    url: '/thoughts',
+  },
+  {
+    title: 'art',
+    url: '/art',
+  },
+];
+
+const tagClassList = (index: number): string => {
+  return index > 4 ? 'global-tag hidden' : 'global-tag';
+};
+---
+
+<article class="widget-wrapper separator">
+  <header>
+    <h3 class="title font-hgv-uppercase">Tags</h3>
+  </header>
+  <div>
+    <ul role="list" class="tags">
+      {
+        tags.map((tag: { title: string; url: string }, index: number) => (
+          <li class={tagClassList(index)}>
+            <a class="tag font-hgv-regular" href={`/tags/${tag.url}`}>
+              {tag.title}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <button id="tags-button" class="button--default font-hgv-regular"
+          >show more</button
+        >
+      </li>
+    </ul>
+  </div>
+</article>
+
+<script>
+  const button = document.getElementById('tags-button');
+  let tagsAreShown: boolean = false;
+  button?.addEventListener('click', () => {
+    if (button && tagsAreShown == false) {
+      document.querySelectorAll('.global-tag').forEach((tag: HTMLElement) => {
+        if (tag.classList.contains('hidden')) {
+          tag.classList.remove('hidden');
+        }
+      });
+      button.innerHTML = 'show less';
+    } else if (button && tagsAreShown == true) {
+      document
+        .querySelectorAll('.global-tag')
+        .forEach((tag: HTMLElement, index: number) => {
+          if (index > 4) {
+            tag.classList.add('hidden');
+          }
+        });
+      button.innerHTML = 'show more';
+    }
+    tagsAreShown = !tagsAreShown;
+  });
+</script>
+
+<style lang="scss">
+  .widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+    padding-bottom: var(--space-30-40);
+  }
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .content {
+    font-size: var(--font-size-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #tags-button {
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: color 0.3s;
+    padding: 5px 0;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+
+  .tag {
+    display: block;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary) solid 1px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+</style>
