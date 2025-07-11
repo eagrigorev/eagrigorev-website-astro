@@ -65,6 +65,10 @@ body {
   }
 }
 
+.separator {
+  border-bottom: var(--color-bg-secondary) solid 1px;
+}
+
 // .link-inverted {
 //   text-decoration: none;
 //   color: var(--color-secondary);

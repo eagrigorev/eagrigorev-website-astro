@@ -2,6 +2,13 @@
 import '@styles/global.scss';
 import TopNavigation from '@components/TopNavigation.astro';
 import Hero from '@components/Hero.astro';
+import PageTitle from '@components/PageTitle.astro';
+
+const pageTitle: { heading: string; subheading: string } = {
+  heading: "I'm a frontend software developer based in Thessaloniki, Greece.",
+  subheading:
+    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
+};
 ---
 
 <html lang="en">
@@ -15,5 +22,6 @@ import Hero from '@components/Hero.astro';
   <body class="container">
     <TopNavigation />
     <Hero />
+    <PageTitle title={pageTitle} />
   </body>
 </html>
