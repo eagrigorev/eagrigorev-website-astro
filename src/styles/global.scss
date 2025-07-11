@@ -65,6 +65,17 @@ body {
   }
 }
 
+.image {
+  &--default {
+    transition: opacity 0.3s;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
+    }
+  }
+}
+
 .separator {
   border-bottom: var(--color-bg-secondary) solid 1px;
 }
@@ -94,11 +105,11 @@ body {
 //   }
 // }
 
-// .image-default {
-//   transition: opacity 0.3s;
+.image-default {
+  transition: opacity 0.3s;
 
-//   &:hover,
-//   &:focus {
-//     opacity: 0.8;
-//   }
-// }
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+}

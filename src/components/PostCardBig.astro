@@ -1,0 +1,145 @@
+---
+import { Image } from 'astro:assets';
+import testImage from '@assets/hero.jpg';
+
+const tags: { title: string; url: string }[] = [
+  {
+    title: 'travel',
+    url: '/travel',
+  },
+  {
+    title: 'film photos',
+    url: '/film-photos',
+  },
+  {
+    title: 'finland',
+    url: '/finland',
+  },
+];
+---
+
+<article class="post-card-wrapper separator">
+  <div>
+    <a href="/posts/test-post" tabindex={-1}>
+      <Image
+        class="featured-image image--default"
+        src={testImage}
+        alt="Test alt tag"
+        width="768"
+        height="768"
+        decoding="async"
+        loading="eager"
+      />
+    </a>
+  </div>
+  <div class="description">
+    <header class="description__heading">
+      <span class="description__meta font-hgv-uppercase">
+        January 15, 1992
+      </span>
+      <h2 class="description__title font-hgv-regular">
+        <a class="link--default" href="/posts/test-post"
+          >Exploring the Pacific Northwest and Beyond. A trip with a Camera</a
+        >
+      </h2>
+    </header>
+    <div class="description__excerpt font-hgv-light">
+      <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting
+        industry. Lorem Ipsum has been the industry's standard dummy text ever
+        since the 1500s, when an unknown printer took a galley of type and
+        scrambled it to make a type specimen book.
+      </p>
+    </div>
+  </div>
+  <div class="post-card-footer">
+    <div>
+      <a
+        class="description__meta link--default font-hgv-uppercase"
+        href="/posts/test-post">Read more</a
+      >
+    </div>
+    <div>
+      <ul role="list" class="tags">
+        {
+          tags.map((tag: { title: string; url: string }) => (
+            <li>
+              <a class="tag font-hgv-regular" href={`/tags/${tag.url}`}>
+                {tag.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .post-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-bottom: var(--space-30-40);
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    &__title {
+      font-size: var(--font-size-xl);
+    }
+
+    &__excerpt {
+      font-size: var(--font-size-s);
+    }
+
+    &__meta {
+      font-size: var(--font-size-2xs);
+    }
+  }
+
+  .post-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .tag {
+    display: block;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary) solid 1px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+
+  .featured-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+</style>
