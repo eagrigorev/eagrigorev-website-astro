@@ -48,6 +48,17 @@ body {
       color: var(--color-secondary);
     }
   }
+
+  &--inverted {
+    text-decoration: none;
+    color: var(--color-secondary);
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary);
+    }
+  }
 }
 
 .button {
