@@ -4,7 +4,7 @@ import { z, defineCollection } from "astro:content";
 const journal = defineCollection({
   loader: glob({
     pattern: "**/*.{md,mdx}",
-    base: "./src/content-collections/journal",
+    base: "./src/content/posts",
   }),
   schema: ({ image }) =>
     z.object({
