@@ -1,30 +1,53 @@
 ---
 import { Image } from 'astro:assets';
-import testImage from '@assets/hero.jpg';
 
-const tags: { title: string; url: string }[] = [
-  {
-    title: 'travel',
-    url: '/travel',
-  },
-  {
-    title: 'film photos',
-    url: '/film-photos',
-  },
-  {
-    title: 'finland',
-    url: '/finland',
-  },
-];
+interface Props {
+  postMeta: {
+    title: string;
+    slug: string;
+    datePublished: string;
+    excerpt: string;
+    image: {
+      url: {
+        src: string;
+        width: number;
+        height: number;
+        format:
+          | 'png'
+          | 'jpg'
+          | 'jpeg'
+          | 'tiff'
+          | 'webp'
+          | 'gif'
+          | 'svg'
+          | 'avif';
+      };
+      alt: string;
+    };
+    tags: string[];
+  };
+}
+
+const { postMeta }: Props = Astro.props;
+
+const postLink: string = `/posts/${postMeta.slug}`;
+const tagsList: { title: string; url: string }[] = postMeta.tags.map(
+  (tag: string) => {
+    return {
+      title: tag,
+      url: `/tags/${tag.toLowerCase().replaceAll(/ /g, '-').replaceAll('&', 'and')}`,
+    };
+  }
+);
 ---
 
-<article class="post-card-wrapper separator">
+<article class="post-card-wrapper">
   <div>
-    <a href="/posts/test-post" tabindex={-1}>
+    <a href={postLink} tabindex={-1}>
       <Image
         class="featured-image image--default"
-        src={testImage}
-        alt="Test alt tag"
+        src={postMeta.image.url}
+        alt={postMeta.image.alt}
         width="768"
         height="768"
         decoding="async"
@@ -35,20 +58,15 @@ const tags: { title: string; url: string }[] = [
   <div class="description">
     <header class="description__heading">
       <span class="description__meta font-hgv-uppercase">
-        January 15, 1992
+        {postMeta.datePublished}
       </span>
       <h2 class="description__title font-hgv-regular">
-        <a class="link--default" href="/posts/test-post"
-          >Exploring the Pacific Northwest and Beyond. A trip with a Camera</a
-        >
+        <a class="link--default" href={postLink}>{postMeta.title}</a>
       </h2>
     </header>
     <div class="description__excerpt font-hgv-light">
       <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book.
+        {postMeta.excerpt}
       </p>
     </div>
   </div>
@@ -56,15 +74,15 @@ const tags: { title: string; url: string }[] = [
     <div>
       <a
         class="description__meta link--default font-hgv-uppercase"
-        href="/posts/test-post">Read more</a
+        href={postLink}>Read more</a
       >
     </div>
     <div>
       <ul role="list" class="tags">
         {
-          tags.map((tag: { title: string; url: string }) => (
+          tagsList.map((tag: { title: string; url: string }) => (
             <li>
-              <a class="tag font-hgv-regular" href={`/tags/${tag.url}`}>
+              <a class="tag font-hgv-regular" href={tag.url}>
                 {tag.title}
               </a>
             </li>
@@ -80,7 +98,11 @@ const tags: { title: string; url: string }[] = [
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
-    padding-bottom: var(--space-30-40);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
   }
 
   .description {

@@ -1,7 +1,7 @@
 {
-  "$ref": "#/definitions/journal",
+  "$ref": "#/definitions/posts",
   "definitions": {
-    "journal": {
+    "posts": {
       "type": "object",
       "properties": {
         "title": {

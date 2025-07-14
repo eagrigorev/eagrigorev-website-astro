@@ -17,9 +17,8 @@
       "@assets/*": ["src/images/assets/*"],
       "@images/*": ["src/images/posts/*"],
       "@layouts/*": ["src/layouts/*"],
-      // "@scripts/*": ["src/scripts/*"],
+      "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]
-      // "@utils/*": ["src/utils/*"]
     }
   }
 }

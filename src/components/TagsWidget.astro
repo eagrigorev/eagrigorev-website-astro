@@ -1,63 +1,37 @@
 ---
-const tags: { title: string; url: string }[] = [
-  {
-    title: 'travel',
-    url: '/travel',
-  },
-  {
-    title: 'music',
-    url: '/music',
-  },
-  {
-    title: 'film photos',
-    url: '/film-photos',
-  },
-  {
-    title: 'finland',
-    url: '/finland',
-  },
-  {
-    title: 'reading lists',
-    url: '/reading-lists',
-  },
-  {
-    title: 'thoughts',
-    url: '/thoughts',
-  },
-  {
-    title: 'art',
-    url: '/art',
-  },
-];
+import { getCollection } from 'astro:content';
+import { generateUniqueTags } from '@utils/scripts';
+import WidgetLayout from '@layouts/WidgetLayout.astro';
+
+const posts = await getCollection('posts');
+const tags: { title: string; url: string }[] = generateUniqueTags(posts);
 
 const tagClassList = (index: number): string => {
   return index > 4 ? 'global-tag hidden' : 'global-tag';
 };
+
+const showButton: boolean = tags.length > 5;
 ---
 
-<article class="widget-wrapper separator">
-  <header>
-    <h3 class="title font-hgv-uppercase">Tags</h3>
-  </header>
-  <div>
-    <ul role="list" class="tags">
-      {
-        tags.map((tag: { title: string; url: string }, index: number) => (
-          <li class={tagClassList(index)}>
-            <a class="tag font-hgv-regular" href={`/tags/${tag.url}`}>
-              {tag.title}
-            </a>
-          </li>
-        ))
-      }
-      <li>
-        <button id="tags-button" class="button--default font-hgv-regular"
-          >show more</button
-        >
-      </li>
-    </ul>
-  </div>
-</article>
+<WidgetLayout>
+  <h3 slot="title" class="title font-hgv-uppercase">Tags</h3>
+  <ul slot="content" class="content" role="list">
+    {
+      tags.map((tag: { title: string; url: string }, index: number) => (
+        <li class={tagClassList(index)}>
+          <a class="tag font-hgv-regular" href={tag.url}>
+            {tag.title}
+          </a>
+        </li>
+      ))
+    }
+    <li class={showButton ? '' : 'hidden'}>
+      <button id="tags-button" class="button--default font-hgv-regular"
+        >show more</button
+      >
+    </li>
+  </ul>
+</WidgetLayout>
 
 <script>
   const button = document.getElementById('tags-button');
@@ -85,24 +59,11 @@ const tagClassList = (index: number): string => {
 </script>
 
 <style lang="scss">
-  .widget-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-    padding-bottom: var(--space-30-40);
-  }
   .title {
     font-size: var(--font-size-xs);
   }
 
   .content {
-    font-size: var(--font-size-s);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-  }
-
-  .tags {
     display: flex;
     align-items: center;
     flex-wrap: wrap;

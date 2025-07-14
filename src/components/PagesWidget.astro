@@ -1,29 +1,46 @@
 ---
+import WidgetLayout from '@layouts/WidgetLayout.astro';
 
+const pages: { title: string; url: string }[] = [
+  {
+    title: 'Reading Journal',
+    url: '/reading-journal',
+  },
+  {
+    title: 'Illustrations',
+    url: '/illustrations',
+  },
+  {
+    title: 'Boreal Heights Music',
+    url: '/boreal-heights-music',
+  },
+  {
+    title: 'Fingerstyle Arrangements',
+    url: '/arrangements',
+  },
+  {
+    title: 'Colophon',
+    url: '/colophon',
+  },
+];
 ---
 
-<article class="widget-wrapper separator">
-  <header>
-    <h3 class="title font-hgv-uppercase">Pages</h3>
-  </header>
-  <div>
-    <ul class="content font-hgv-light" role="list">
-      <li><a class="link--default" href="/">Reading Journal</a></li>
-      <li><a class="link--default" href="/">Illustrations</a></li>
-      <li><a class="link--default" href="/">Boreal Heights Music</a></li>
-      <li><a class="link--default" href="/">Fingerstyle Arrangements</a></li>
-      <li><a class="link--default" href="/">Colophon</a></li>
-    </ul>
-  </div>
-</article>
+<WidgetLayout>
+  <h3 slot="title" class="title font-hgv-uppercase">Pages</h3>
+  <ul slot="content" class="content font-hgv-light" role="list">
+    {
+      pages.map((page: { title: string; url: string }) => (
+        <li>
+          <a class="link--default" href={page.url}>
+            {page.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</WidgetLayout>
 
 <style lang="scss">
-  .widget-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-    padding-bottom: var(--space-30-40);
-  }
   .title {
     font-size: var(--font-size-xs);
   }

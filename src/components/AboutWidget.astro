@@ -1,27 +1,17 @@
 ---
-
+import WidgetLayout from '@layouts/WidgetLayout.astro';
 ---
 
-<article class="widget-wrapper separator">
-  <header>
-    <h3 class="title font-hgv-uppercase">About this Journal</h3>
-  </header>
-  <div>
-    <p class="content font-hgv-light">
-      I'm a frontend software developer based in Thessaloniki, Greece. I love
-      clean and minimal interfaces, accessible homemade and local applications,
-      and digital gardens.
-    </p>
-  </div>
-</article>
+<WidgetLayout>
+  <h3 slot="title" class="title font-hgv-uppercase">About this Journal</h3>
+  <p slot="content" class="content font-hgv-light">
+    I'm a frontend software developer based in Thessaloniki, Greece. I love
+    clean and minimal interfaces, accessible homemade and local applications,
+    and digital gardens.
+  </p>
+</WidgetLayout>
 
 <style lang="scss">
-  .widget-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-    padding-bottom: var(--space-30-40);
-  }
   .title {
     font-size: var(--font-size-xs);
   }

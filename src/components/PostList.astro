@@ -1,0 +1,18 @@
+---
+import { getCollection } from 'astro:content';
+import PostCardBig from './PostCardBig.astro';
+
+const posts = await getCollection('posts');
+---
+
+<section class="post-list-wrapper">
+  {posts.map((post) => <PostCardBig postMeta={post.data} />)}
+</section>
+
+<style lang="scss">
+  .post-list-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>

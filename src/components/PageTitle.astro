@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <div class="page-title-wrapper">
-  <div class="title separator">
+  <div class="title">
     <h1 class="heading font-hgv-regular">
       {title.heading}
     </h1>
@@ -30,6 +30,7 @@ const { title } = Astro.props;
     flex-direction: column;
     gap: var(--space-10-20);
     padding-bottom: var(--space-60-80);
+    border-bottom: var(--color-bg-secondary) solid 1px;
   }
 
   .heading {

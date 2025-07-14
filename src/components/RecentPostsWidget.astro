@@ -1,36 +1,30 @@
 ---
+import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
+import WidgetLayout from '@layouts/WidgetLayout.astro';
 
+const posts = await getCollection('posts');
 ---
 
-<article class="widget-wrapper separator">
-  <header>
-    <h3 class="title font-hgv-uppercase">Recent Posts</h3>
-  </header>
-  <div>
-    <ul class="content font-hgv-light" role="list">
-      <li>
-        <a class="link--default" href="/">Exploring the Pacific Northwest</a> on
-        November 15, 1999
-      </li>
-      <li>
-        <a class="link--default" href="/">Exploring the Pacific Northwest</a> on
-        November 15, 1999
-      </li>
-      <li>
-        <a class="link--default" href="/">Exploring the Pacific Northwest</a> on
-        November 15, 1999
-      </li>
-    </ul>
-  </div>
-</article>
+<WidgetLayout>
+  <h3 slot="title" class="title font-hgv-uppercase">Recent Posts</h3>
+  <ul slot="content" class="content font-hgv-light" role="list">
+    {
+      sortPostsDesc(posts)
+        .slice(0, 5)
+        .map((post) => (
+          <li>
+            <a class="link--default" href={`/posts/${post.data.slug}`}>
+              {post.data.title}
+            </a>{' '}
+            on {post.data.datePublished}
+          </li>
+        ))
+    }
+  </ul>
+</WidgetLayout>
 
 <style lang="scss">
-  .widget-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-    padding-bottom: var(--space-30-40);
-  }
   .title {
     font-size: var(--font-size-xs);
   }

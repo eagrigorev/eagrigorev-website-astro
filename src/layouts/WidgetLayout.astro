@@ -1,0 +1,25 @@
+---
+
+---
+
+<article class="widget-wrapper">
+  <header>
+    <slot name="title" />
+  </header>
+  <div>
+    <slot name="content" />
+  </div>
+</article>
+
+<style lang="scss">
+  .widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
+  }
+</style>

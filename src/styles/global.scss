@@ -87,21 +87,6 @@ body {
   }
 }
 
-.separator {
-  border-bottom: var(--color-bg-secondary) solid 1px;
-}
-
-// .link-inverted {
-//   text-decoration: none;
-//   color: var(--color-secondary);
-//   transition: color 0.3s;
-
-//   &:hover,
-//   &:focus {
-//     color: var(--color-primary);
-//   }
-// }
-
 // .link-underline {
 //   text-decoration: none;
 //   color: var(--color-primary);
@@ -115,12 +100,3 @@ body {
 //     border-bottom: 1px solid var(--color-primary);
 //   }
 // }
-
-.image-default {
-  transition: opacity 0.3s;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
-}
