@@ -1,14 +1,5 @@
 @use "@fontsource-variable/hanken-grotesk";
 
-.font-hgv-uppercase {
-  font-family: "Hanken Grotesk Variable", sans-serif;
-  font-style: normal;
-  font-weight: 600;
-  text-transform: uppercase;
-  line-height: 100%;
-  letter-spacing: 0.4em;
-}
-
 .font-hgv-regular {
   font-family: "Hanken Grotesk Variable", sans-serif;
   font-style: normal;
@@ -23,4 +14,13 @@
   font-weight: 300;
   line-height: 165%;
   letter-spacing: 0.015em;
+}
+
+.font-hgv-uppercase {
+  font-family: "Hanken Grotesk Variable", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 100%;
+  letter-spacing: 0.4em;
 }

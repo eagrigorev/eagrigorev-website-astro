@@ -1,7 +1,6 @@
 ---
 import '@styles/global.scss';
-import TopNavigation from '@components/TopNavigation.astro';
-import FooterNavigation from '@components/FooterNavigation.astro';
+import NavigationTop from '@components/navigation/NavigationTop.astro';
 ---
 
 <html lang="en">
@@ -10,11 +9,10 @@ import FooterNavigation from '@components/FooterNavigation.astro';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>Evgenii Grigorev</title>
   </head>
   <body class="container">
-    <TopNavigation />
+    <NavigationTop />
     <slot />
-    <FooterNavigation />
   </body>
 </html>
