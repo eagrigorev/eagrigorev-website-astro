@@ -1,19 +1,59 @@
 ---
 import PostCardBig from './PostCardBig.astro';
 
-const { posts } = Astro.props;
+const { posts, prevPage, nextPage } = Astro.props;
+const isPrevPageAvailable: string =
+  prevPage !== undefined ? 'pagination-link font-hgv-uppercase' : 'hidden';
+const isNextPageAvailable: string =
+  nextPage !== undefined ? 'pagination-link font-hgv-uppercase' : 'hidden';
 ---
 
-<section class="post-list-wrapper">
-  <div>
+<div class="post-list-wrapper">
+  <div class="posts">
     {posts.map((post) => <PostCardBig postMeta={post.data} />)}
   </div>
-</section>
+  <div class="pagination">
+    <a class={isPrevPageAvailable} href={prevPage}>Newer posts</a>
+    <a class={isNextPageAvailable} href={nextPage}>Older posts</a>
+  </div>
+</div>
 
 <style lang="scss">
   .post-list-wrapper {
     display: flex;
     flex-direction: column;
+    gap: var(--space-60-80);
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
     gap: var(--space-30-40);
+  }
+
+  .pagination {
+    padding-bottom: var(--space-60-80);
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .pagination-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 50px;
+    background: none;
+    text-decoration: none;
+    border: var(--color-bg-secondary) solid 1px;
+    color: var(--color-primary);
+    font-size: var(--font-size-2xs);
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
   }
 </style>
