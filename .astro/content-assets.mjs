@@ -1,4 +1,13 @@
 
+import __ASTRO_IMAGE_IMPORT_Z1hBJor from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-2.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1hxFcK from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-3.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1hpwOn from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-5.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1hhor0 from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-7.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1htB14 from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-4.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1hlsCG from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-6.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1h9g3C from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-9.mdx";
 import __ASTRO_IMAGE_IMPORT_Xjmtj from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post.mdx";
-export default new Map([["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post.mdx", __ASTRO_IMAGE_IMPORT_Xjmtj]]);
+import __ASTRO_IMAGE_IMPORT_Z1hdkfj from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-8.mdx";
+import __ASTRO_IMAGE_IMPORT_Z1hFNA8 from "@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-1.mdx";
+export default new Map([["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-2.mdx", __ASTRO_IMAGE_IMPORT_Z1hBJor], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-3.mdx", __ASTRO_IMAGE_IMPORT_Z1hxFcK], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-5.mdx", __ASTRO_IMAGE_IMPORT_Z1hpwOn], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-7.mdx", __ASTRO_IMAGE_IMPORT_Z1hhor0], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-4.mdx", __ASTRO_IMAGE_IMPORT_Z1htB14], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-6.mdx", __ASTRO_IMAGE_IMPORT_Z1hlsCG], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-9.mdx", __ASTRO_IMAGE_IMPORT_Z1h9g3C], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post.mdx", __ASTRO_IMAGE_IMPORT_Xjmtj], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-8.mdx", __ASTRO_IMAGE_IMPORT_Z1hdkfj], ["@images/test-post-img.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Ftest-post-1.mdx", __ASTRO_IMAGE_IMPORT_Z1hFNA8]]);
 		

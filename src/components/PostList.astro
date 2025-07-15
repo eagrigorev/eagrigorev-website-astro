@@ -1,12 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import PostCardBig from './PostCardBig.astro';
 
-const posts = await getCollection('posts');
+const { posts } = Astro.props;
 ---
 
 <section class="post-list-wrapper">
-  {posts.map((post) => <PostCardBig postMeta={post.data} />)}
+  <div>
+    {posts.map((post) => <PostCardBig postMeta={post.data} />)}
+  </div>
 </section>
 
 <style lang="scss">
