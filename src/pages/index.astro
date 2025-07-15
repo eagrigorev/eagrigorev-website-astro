@@ -1,7 +1,10 @@
 ---
+import { INDEX_PAGE_TITLE } from '@utils/const';
 // import type { GetStaticPaths } from 'astro';
 // import { getCollection } from 'astro:content';
-import GlobalLayout from '@layouts/GlobalLayout.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PageIndexTitle from '@components/title/PageIndexTitle.astro';
 
 // export const getStaticPaths = (async ({ paginate }) => {
 //   const posts = await getCollection('posts');
@@ -19,4 +22,8 @@ import GlobalLayout from '@layouts/GlobalLayout.astro';
 // };
 ---
 
-<GlobalLayout> Test </GlobalLayout>
+<GlobalWrapper>
+  <PageWithSidebar>
+    <PageIndexTitle slot="title" pageTitle={INDEX_PAGE_TITLE} />
+  </PageWithSidebar>
+</GlobalWrapper>

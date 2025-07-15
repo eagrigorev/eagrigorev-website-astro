@@ -1,0 +1,33 @@
+---
+
+---
+
+<main>
+  <slot name="title" />
+  <div class="content-section">
+    <div>
+      <slot name="content" />
+    </div>
+    <div>
+      <slot name="sidebar" />
+    </div>
+  </div>
+</main>
+
+<style lang="scss">
+  .content-section {
+    display: flex;
+    gap: var(--space-30-60);
+  }
+
+  .content {
+    max-width: 768px;
+  }
+
+  .sidebar {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>
