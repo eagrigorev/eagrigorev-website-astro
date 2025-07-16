@@ -1,11 +1,19 @@
 ---
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
 import { INDEX_PAGE_TITLE } from '@utils/const';
-// import type { GetStaticPaths } from 'astro';
-// import { getCollection } from 'astro:content';
+import { generateUniqueTags } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
 import PageIndexTitle from '@components/title/PageIndexTitle.astro';
+import WidgetAbout from '@components/widgets/WidgetAbout.astro';
+import WidgetPages from '@components/widgets/WidgetPages.astro';
+import WidgetRecentPosts from '@components/widgets/WidgetRecentPosts.astro';
+import WidgetTags from '@components/widgets/WidgetTags.astro';
 
+const posts = await getCollection('posts');
+const tags = generateUniqueTags(posts);
+const recentPosts = posts.slice(0, 5);
 // export const getStaticPaths = (async ({ paginate }) => {
 //   const posts = await getCollection('posts');
 //   return paginate(posts, {
@@ -25,5 +33,19 @@ import PageIndexTitle from '@components/title/PageIndexTitle.astro';
 <GlobalWrapper>
   <PageWithSidebar>
     <PageIndexTitle slot="title" pageTitle={INDEX_PAGE_TITLE} />
+    <div slot="sidebar" class="widgets-section">
+      <WidgetAbout />
+      <WidgetPages />
+      <WidgetTags tags={tags} />
+      <WidgetRecentPosts posts={recentPosts} />
+    </div>
   </PageWithSidebar>
 </GlobalWrapper>
+
+<style lang="scss">
+  .widgets-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>

@@ -1,0 +1,86 @@
+---
+import type { NavigationItem } from '@utils/types';
+import WidgetWrapper from '@layouts/WidgetWrapper.astro';
+
+interface Props {
+  tags: NavigationItem[];
+}
+
+const { tags } = Astro.props;
+
+const tagClassList = (index: number): string => {
+  return index > 4 ? 'tag hidden' : 'tag';
+};
+
+const showButton: boolean = tags.length > 5;
+---
+
+<WidgetWrapper>
+  <h3 slot="title" class="title font-hgv-uppercase">Tags</h3>
+  <ul slot="content" class="content" role="list">
+    {
+      tags.map((tag: NavigationItem, index: number) => (
+        <li class={tagClassList(index)}>
+          <a class="font-hgv-regular link--tag" href={tag.url}>
+            {tag.title}
+          </a>
+        </li>
+      ))
+    }
+    <li class={showButton ? '' : 'hidden'}>
+      <button id="tags-button" class="button--primary font-hgv-regular"
+        >show more</button
+      >
+    </li>
+  </ul>
+</WidgetWrapper>
+
+<script>
+  const button = document.getElementById('tags-button');
+  let tagsAreShown: boolean = false;
+  button?.addEventListener('click', () => {
+    if (button && tagsAreShown == false) {
+      document.querySelectorAll('.tag').forEach((tag: HTMLElement) => {
+        if (tag.classList.contains('hidden')) {
+          tag.classList.remove('hidden');
+        }
+      });
+      button.innerHTML = 'show less';
+    } else if (button && tagsAreShown == true) {
+      document
+        .querySelectorAll('.tag')
+        .forEach((tag: HTMLElement, index: number) => {
+          if (index > 4) {
+            tag.classList.add('hidden');
+          }
+        });
+      button.innerHTML = 'show more';
+    }
+    tagsAreShown = !tagsAreShown;
+  });
+</script>
+
+<style lang="scss">
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #tags-button {
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: color 0.3s;
+    padding: 5px 0;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+</style>

@@ -20,6 +20,23 @@
       color: var(--color-primary);
     }
   }
+
+  &--tag {
+    display: block;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary) solid 1px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
 }
 
 .button {
