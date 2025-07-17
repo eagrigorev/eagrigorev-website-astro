@@ -1,5 +1,12 @@
 ---
+import type { Post } from '@utils/types';
+import Sidebar from '@components/Sidebar.astro';
 
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
 ---
 
 <main>
@@ -9,7 +16,7 @@
       <slot name="content" />
     </div>
     <div class="sidebar">
-      <slot name="sidebar" />
+      <Sidebar posts={posts} />
     </div>
   </div>
 </main>
