@@ -25,10 +25,16 @@ const { posts } = Astro.props;
   .content-section {
     display: flex;
     gap: var(--space-30-60);
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      gap: 0px;
+    }
   }
 
   .content {
     max-width: 768px;
+    min-width: 60%;
   }
 
   .sidebar {
@@ -36,5 +42,9 @@ const { posts } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
+
+    @media only screen and (width <= 768px) {
+      max-width: none;
+    }
   }
 </style>

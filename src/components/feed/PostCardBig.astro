@@ -1,0 +1,131 @@
+---
+import type { NavigationItem } from '@utils/types';
+import type { InferEntrySchema } from 'astro:content';
+import { generateUrlFromTag } from '@utils/scripts';
+import { Image } from 'astro:assets';
+
+interface Props {
+  postMeta: InferEntrySchema<'posts'>;
+}
+
+const { postMeta }: Props = Astro.props;
+
+const postLink: string = `/posts/${postMeta.slug}`;
+const tagsList: NavigationItem[] = postMeta.tags.map((tag: string) => {
+  return {
+    title: tag,
+    url: generateUrlFromTag(tag),
+  };
+});
+---
+
+<article class="post-card-big">
+  <div>
+    <a href={postLink} tabindex={-1}>
+      <Image
+        class="featured-image image--default"
+        src={postMeta.image.url}
+        alt={postMeta.image.alt}
+        width="768"
+        height="768"
+        decoding="async"
+        loading="eager"
+      />
+    </a>
+  </div>
+  <div class="description">
+    <header>
+      <span class="date font-hgv-uppercase">
+        {postMeta.datePublished}
+      </span>
+      <h2 class="title font-hgv-regular">
+        <a class="link--primary" href={postLink}>{postMeta.title}</a>
+      </h2>
+    </header>
+    <div class="excerpt font-hgv-light">
+      <p>
+        {postMeta.excerpt}
+      </p>
+    </div>
+  </div>
+  <div class="meta">
+    <div>
+      <a class="read-more-link link--primary font-hgv-uppercase" href={postLink}
+        >Read more</a
+      >
+    </div>
+    <div>
+      <ul class="tags" role="list">
+        {
+          tagsList.map((tag: { title: string; url: string }) => (
+            <li>
+              <a class="link--tag font-hgv-regular" href={tag.url}>
+                {tag.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .post-card-big {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+  }
+
+  .date {
+    font-size: var(--font-size-2xs);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+  }
+
+  .excerpt {
+    font-size: var(--font-size-s);
+  }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column-reverse;
+      gap: var(--space-30-40);
+      align-items: flex-start;
+    }
+  }
+
+  .read-more-link {
+    font-size: var(--font-size-2xs);
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .featured-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+</style>

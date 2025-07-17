@@ -5,6 +5,7 @@ import { INDEX_PAGE_TITLE } from '@utils/const';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
 import PageIndexTitle from '@components/title/PageIndexTitle.astro';
+import PostList from '@components/feed/PostList.astro';
 
 const posts = await getCollection('posts');
 // export const getStaticPaths = (async ({ paginate }) => {
@@ -26,6 +27,7 @@ const posts = await getCollection('posts');
 <GlobalWrapper>
   <PageWithSidebar posts={posts}>
     <PageIndexTitle slot="title" pageTitle={INDEX_PAGE_TITLE} />
+    <PostList slot="content" posts={posts} />
   </PageWithSidebar>
 </GlobalWrapper>
 

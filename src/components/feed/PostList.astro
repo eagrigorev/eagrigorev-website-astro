@@ -1,0 +1,28 @@
+---
+import type { Post } from '@utils/types';
+import PostCardBig from './PostCardBig.astro';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="posts-section">
+  <div class="posts">
+    {posts.map((post: Post) => <PostCardBig postMeta={post.data} />)}
+  </div>
+  <!-- <div class="pagination">
+    <a class={isPrevPageAvailable} href={prevPage}>Newer posts</a>
+    <a class={isNextPageAvailable} href={nextPage}>Older posts</a>
+  </div> -->
+</div>
+
+<style lang="scss">
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>
