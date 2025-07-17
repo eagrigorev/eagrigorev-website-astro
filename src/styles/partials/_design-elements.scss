@@ -37,6 +37,25 @@
       border-color: var(--color-primary);
     }
   }
+
+  &--pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 50px;
+    background: none;
+    text-decoration: none;
+    border: var(--color-bg-secondary) solid 1px;
+    color: var(--color-primary);
+    font-size: var(--font-size-2xs);
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
 }
 
 .button {
