@@ -15,6 +15,36 @@ export const TOP_NAV_ITEMS: NavigationItem[] = [
   },
 ];
 
+export const FOOTER_NAV_ITEMS: NavigationItem[] = [
+  {
+    title: "RSS Feed",
+    url: "/",
+  },
+  {
+    title: "Privacy & Security",
+    url: "/privacy-and-security",
+  },
+  {
+    title: "Sitemap",
+    url: "/",
+  },
+];
+
+export const SOCIAL_LINKS: NavigationItem[] = [
+  {
+    title: "Instagram",
+    url: "https://www.instagram.com/eagrigorev/",
+  },
+  {
+    title: "Bluesky",
+    url: "https://bsky.app/profile/eagrigorev.bsky.social/",
+  },
+  {
+    title: "GitHub",
+    url: "https://github.com/eagrigorev/",
+  },
+];
+
 export const INDEX_PAGE_TITLE: PageTitle = {
   heading: "I'm a frontend software developer based in Thessaloniki, Greece.",
   subheading:

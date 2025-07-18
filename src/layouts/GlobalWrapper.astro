@@ -1,6 +1,7 @@
 ---
 import '@styles/global.scss';
-import NavigationTop from '@components/navigation/NavigationTop.astro';
+import NavigationTop from '@components/NavigationTop.astro';
+import NavigationFooter from '@components/NavigationFooter.astro';
 ---
 
 <html lang="en">
@@ -14,5 +15,6 @@ import NavigationTop from '@components/navigation/NavigationTop.astro';
   <body class="container">
     <NavigationTop />
     <slot />
+    <NavigationFooter />
   </body>
 </html>

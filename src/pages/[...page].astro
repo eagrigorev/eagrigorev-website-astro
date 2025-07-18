@@ -2,28 +2,31 @@
 import type { Post } from '@utils/types';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
 import { INDEX_PAGE_TITLE } from '@utils/const';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import PageIndexTitle from '@components/title/PageIndexTitle.astro';
-import PostList from '@components/feed/PostList.astro';
+import PageIndexTitle from '@components/PageIndexTitle.astro';
+import PostList from '@components/PostList.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
   return paginate(posts, {
-    pageSize: 2,
+    pageSize: 5,
   });
 }) satisfies GetStaticPaths;
+
+const allPosts: Post[] = await getCollection('posts');
 
 const { page } = Astro.props;
 ---
 
 <GlobalWrapper>
-  <PageWithSidebar posts={page.data}>
+  <PageWithSidebar posts={sortPostsDesc(allPosts)}>
     <PageIndexTitle slot="title" pageTitle={INDEX_PAGE_TITLE} />
     <PostList
       slot="content"
-      posts={page.data}
+      posts={sortPostsDesc(page.data)}
       prevPage={page.url.prev}
       nextPage={page.url.next}
     />
