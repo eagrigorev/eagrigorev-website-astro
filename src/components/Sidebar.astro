@@ -74,7 +74,7 @@ const showButton: boolean = tags.length > 5;
         {
           tags.map((tag: NavigationItem, index: number) => (
             <li class={tagClassList(index)}>
-              <a class="font-hgv-regular link--tag" href={tag.url}>
+              <a class="font-hgv-regular link--tag" href={`/tags/${tag.url}`}>
                 {tag.title}
               </a>
             </li>

@@ -1,0 +1,43 @@
+---
+import type { NavigationItem, PageTitle, Post } from '@utils/types';
+import { sortPostsDesc, generateUniqueTags } from '@utils/scripts';
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PageIndexTitle from '@components/PageIndexTitle.astro';
+import PostList from '@components/PostList.astro';
+
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getCollection('posts');
+  return generateUniqueTags(posts).map((tag: NavigationItem) => {
+    return {
+      params: { tag: tag.url },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const allPosts: Post[] = await getCollection('posts');
+
+const { tag } = Astro.params;
+
+const title: PageTitle = {
+  heading: `Browsing tag: ${tag.replaceAll('-', ' ')}`,
+  subheading: 'All posts filtered by selected tag.',
+};
+
+const posts: Post[] = tag
+  ? sortPostsDesc(
+      allPosts.filter((post: Post) =>
+        post.data.tags.includes(tag.replaceAll('-', ' '))
+      )
+    )
+  : [];
+---
+
+<GlobalWrapper>
+  <PageWithSidebar posts={sortPostsDesc(allPosts)}>
+    <PageIndexTitle slot="title" pageTitle={title} />
+    <PostList slot="content" posts={posts} isBigCard={false} />
+  </PageWithSidebar>
+</GlobalWrapper>

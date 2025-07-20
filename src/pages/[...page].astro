@@ -27,6 +27,7 @@ const { page } = Astro.props;
     <PostList
       slot="content"
       posts={sortPostsDesc(page.data)}
+      isBigCard={true}
       prevPage={page.url.prev}
       nextPage={page.url.next}
     />

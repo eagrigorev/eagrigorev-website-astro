@@ -59,7 +59,7 @@ const tagsList: NavigationItem[] = postMeta.tags.map((tag: string) => {
         {
           tagsList.map((tag: { title: string; url: string }) => (
             <li>
-              <a class="link--tag font-hgv-regular" href={tag.url}>
+              <a class="link--tag font-hgv-regular" href={`/tags/${tag.url}`}>
                 {tag.title}
               </a>
             </li>

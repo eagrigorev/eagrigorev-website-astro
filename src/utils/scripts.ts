@@ -9,7 +9,7 @@ export const sortPostsDesc = (posts: Post[]): Post[] => {
 };
 
 export const generateUrlFromTag = (tag: string): string => {
-  return `/tags/${tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and")}`;
+  return `${tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and")}`;
 };
 
 export const generateUniqueTags = (posts: Post[]): NavigationItem[] => {
