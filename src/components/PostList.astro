@@ -12,6 +12,9 @@ interface Props {
 
 const { posts, isBigCard, prevPage, nextPage } = Astro.props;
 
+const showPagination: string =
+  prevPage == undefined && nextPage == undefined ? 'hidden' : 'pagination';
+
 const isPrevPageAvailable: string =
   prevPage !== undefined ? 'link--pagination font-hgv-uppercase' : 'hidden';
 const isNextPageAvailable: string =
@@ -26,7 +29,7 @@ const isNextPageAvailable: string =
         : posts.map((post: Post) => <PostCardMedium postMeta={post.data} />)
     }
   </div>
-  <div class="pagination">
+  <div class=`${showPagination}`>
     <a class={isPrevPageAvailable} href={prevPage}>Newer posts</a>
     <a class={isNextPageAvailable} href={nextPage}>Older posts</a>
   </div>
@@ -37,10 +40,11 @@ const isNextPageAvailable: string =
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
+    padding-bottom: var(--space-60-80);
   }
 
   .pagination {
-    padding: var(--space-60-80) 0;
+    padding-bottom: var(--space-60-80);
     display: flex;
     justify-content: center;
     gap: var(--space-10-20);
