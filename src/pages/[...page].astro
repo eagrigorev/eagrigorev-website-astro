@@ -21,7 +21,7 @@ const allPosts: Post[] = await getCollection('posts');
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper>
+<GlobalWrapper pageTitle="Home">
   <PageWithSidebar posts={sortPostsDesc(allPosts)}>
     <PageIndexTitle slot="title" pageTitle={INDEX_PAGE_TITLE} />
     <PostList

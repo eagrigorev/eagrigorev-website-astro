@@ -1,6 +1,31 @@
 ---
 import type { NavigationItem } from '@utils/types';
-import { FOOTER_NAV_ITEMS, SOCIAL_LINKS } from '@utils/const';
+
+const navigationItems: NavigationItem[] = [
+  {
+    title: 'Dummy 1',
+    url: '/',
+  },
+  {
+    title: 'Dummy 2',
+    url: '/privacy-and-security',
+  },
+];
+
+const socialLinks: NavigationItem[] = [
+  {
+    title: 'Instagram',
+    url: 'https://www.instagram.com/eagrigorev/',
+  },
+  {
+    title: 'Bluesky',
+    url: 'https://bsky.app/profile/eagrigorev.bsky.social/',
+  },
+  {
+    title: 'GitHub',
+    url: 'https://github.com/eagrigorev/',
+  },
+];
 ---
 
 <footer class="footer-section">
@@ -13,7 +38,7 @@ import { FOOTER_NAV_ITEMS, SOCIAL_LINKS } from '@utils/const';
     <div>
       <ul role="list" class="social-links">
         {
-          SOCIAL_LINKS.map((item: NavigationItem) => (
+          socialLinks.map((item: NavigationItem) => (
             <li class="social-link font-hgv-light">
               <a class="link--primary" href={item.url}>
                 {item.title}
@@ -31,7 +56,7 @@ import { FOOTER_NAV_ITEMS, SOCIAL_LINKS } from '@utils/const';
     <div>
       <ul role="list" class="items">
         {
-          FOOTER_NAV_ITEMS.map((item: NavigationItem) => (
+          navigationItems.map((item: NavigationItem) => (
             <li class="item">
               <a class="link--secondary" href={item.url}>
                 {item.title}

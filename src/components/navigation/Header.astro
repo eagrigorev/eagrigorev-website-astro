@@ -1,6 +1,12 @@
 ---
 import type { NavigationItem } from '@utils/types';
-import { TOP_NAV_ITEMS } from '@utils/const';
+
+const navigationItems: NavigationItem[] = [
+  {
+    title: 'Home',
+    url: '/',
+  },
+];
 ---
 
 <nav class="nav-section font-hgv-uppercase">
@@ -11,7 +17,7 @@ import { TOP_NAV_ITEMS } from '@utils/const';
     <div class="active--desktop">
       <ul class="nav-items" role="list">
         {
-          TOP_NAV_ITEMS.map((item: NavigationItem) => (
+          navigationItems.map((item: NavigationItem) => (
             <li class="nav-item">
               <a class="link--primary" href={item.url}>
                 {item.title}
@@ -28,7 +34,7 @@ import { TOP_NAV_ITEMS } from '@utils/const';
   <div id="nav-dropdown" class="active--mobile hidden">
     <ul class="nav-items" role="list">
       {
-        TOP_NAV_ITEMS.map((item: NavigationItem) => (
+        navigationItems.map((item: NavigationItem) => (
           <li>
             <a class="link--primary" href={item.url}>
               {item.title}

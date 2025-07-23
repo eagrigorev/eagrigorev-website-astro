@@ -23,7 +23,7 @@ const title: PageTitle = {
 };
 ---
 
-<GlobalWrapper>
+<GlobalWrapper pageTitle={post.data.title}>
   <PostWithSidebar postMeta={post.data}>
     <PageIndexTitle slot="title" pageTitle={title} />
     <Content slot="content" />

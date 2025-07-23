@@ -35,7 +35,7 @@ const posts: Post[] = tag
   : [];
 ---
 
-<GlobalWrapper>
+<GlobalWrapper pageTitle={`Posts by tag: ${tag}`}>
   <PageWithSidebar posts={sortPostsDesc(allPosts)}>
     <PageIndexTitle slot="title" pageTitle={title} />
     <PostList slot="content" posts={posts} isBigCard={false} />
