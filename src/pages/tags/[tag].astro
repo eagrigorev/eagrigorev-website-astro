@@ -1,27 +1,43 @@
 ---
-import { uniqueTags } from 'src/scripts/generateUniqueTags';
-import { generateSlug } from 'src/scripts/generateSlug';
-import GlobalLayout from 'src/layouts/GlobalLayout.astro';
-import IndexPageLayout from 'src/layouts/IndexPageLayout.astro';
-import PostList from 'src/components/feed/PostList.astro';
+import type { NavigationItem, PageTitle, Post } from '@utils/types';
+import { sortPostsDesc, generateUniqueTags } from '@utils/scripts';
+import type { GetStaticPaths } from 'astro';
+import { getCollection } from 'astro:content';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PageIndexTitle from '@components/PageIndexTitle.astro';
+import PostList from '@components/PostList.astro';
 
-export async function getStaticPaths() {
-  return uniqueTags.map((tag: string) => {
-    tag = generateSlug(tag);
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getCollection('posts');
+  return generateUniqueTags(posts).map((tag: NavigationItem) => {
     return {
-      params: { tag },
+      params: { tag: tag.url },
     };
   });
-}
+}) satisfies GetStaticPaths;
+
+const allPosts: Post[] = await getCollection('posts');
 
 const { tag } = Astro.params;
+
+const title: PageTitle = {
+  heading: `Browsing tag: ${tag.replaceAll('-', ' ')}`,
+  subheading: 'All posts filtered by selected tag.',
+};
+
+const posts: Post[] = tag
+  ? sortPostsDesc(
+      allPosts.filter((post: Post) =>
+        post.data.tags.includes(tag.replaceAll('-', ' '))
+      )
+    )
+  : [];
 ---
 
-<GlobalLayout>
-  <IndexPageLayout
-    title=`Browsing tag: "${tag.replaceAll('-', ' ')}"`
-    subtitle="All posts filtered by selected tag."
-  >
-    <PostList tag={tag} />
-  </IndexPageLayout>
-</GlobalLayout>
+<GlobalWrapper>
+  <PageWithSidebar posts={sortPostsDesc(allPosts)}>
+    <PageIndexTitle slot="title" pageTitle={title} />
+    <PostList slot="content" posts={posts} isBigCard={false} />
+  </PageWithSidebar>
+</GlobalWrapper>

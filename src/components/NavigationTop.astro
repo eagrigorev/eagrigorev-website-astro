@@ -1,0 +1,91 @@
+---
+import type { NavigationItem } from '@utils/types';
+import { TOP_NAV_ITEMS } from '@utils/const';
+---
+
+<nav class="nav-section font-hgv-uppercase">
+  <div class="nav-main">
+    <div>
+      <a class="link--primary" href="/">Eagrigorev.com</a>
+    </div>
+    <div class="active--desktop">
+      <ul class="nav-items" role="list">
+        {
+          TOP_NAV_ITEMS.map((item: NavigationItem) => (
+            <li class="nav-item">
+              <a class="link--primary" href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div class="active--mobile">
+      <button id="dropdown-button" class="button--primary">Menu</button>
+    </div>
+  </div>
+  <div id="nav-dropdown" class="active--mobile hidden">
+    <ul class="nav-items" role="list">
+      {
+        TOP_NAV_ITEMS.map((item: NavigationItem) => (
+          <li>
+            <a class="link--primary" href={item.url}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.querySelector('#dropdown-button')?.addEventListener('click', () => {
+    document.querySelector('#nav-dropdown')?.classList.toggle('hidden');
+  });
+</script>
+
+<style lang="scss">
+  .nav-section {
+    padding: var(--space-30-40) 0;
+    font-size: var(--font-size-xs);
+  }
+
+  .nav-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    &:not(:first-child) {
+      &::before {
+        display: block;
+        content: '';
+        width: var(--space-30-50);
+        height: 1px;
+        background: var(--color-bg-secondary);
+      }
+    }
+  }
+
+  #nav-dropdown {
+    padding-top: var(--space-30-40);
+  }
+</style>

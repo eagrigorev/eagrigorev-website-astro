@@ -1,23 +1,31 @@
 ---
+import type { PageTitle, Post } from '@utils/types';
+import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
-import GlobalLayout from 'src/layouts/GlobalLayout.astro';
-import PostLayout from 'src/layouts/PostLayout.astro';
-import MdxLink from 'src/components/mdx-typography/MdxLink.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PostWithSidebar from '@layouts/PostWithSidebar.astro';
+import PageIndexTitle from '@components/PageIndexTitle.astro';
 
-export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => ({
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getCollection('posts');
+  return posts.map((post: Post) => ({
     params: { slug: post.data.slug },
     props: { post },
   }));
-}
+}) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const title: PageTitle = {
+  heading: post.data.title,
+  subheading: post.data.excerpt,
+};
 ---
 
-<GlobalLayout>
-  <PostLayout postMeta={post.data}>
-    <Content components={{ a: MdxLink }} />
-  </PostLayout>
-</GlobalLayout>
+<GlobalWrapper>
+  <PostWithSidebar postMeta={post.data}>
+    <PageIndexTitle slot="title" pageTitle={title} />
+    <Content slot="content" />
+  </PostWithSidebar>
+</GlobalWrapper>

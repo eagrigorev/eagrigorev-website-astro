@@ -1,6 +1,7 @@
 @use "./partials/tokens";
 @use "./partials/normalize";
 @use "./partials/typography";
+@use "./partials//design-elements";
 
 body {
   display: flex;
@@ -10,93 +11,29 @@ body {
 }
 
 .container {
-  max-width: 65rem;
+  max-width: 75.5rem;
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: var(--space-30-60);
-
-  @media only screen and (width <= 768px) {
-    grid-template-columns: repeat(6, 1fr);
-    row-gap: var(--space-30-40);
-  }
-}
-
-.desktop-visibility {
-  display: block;
-
-  @media only screen and (width <= 768px) {
-    display: none;
-  }
-}
-
-.mobile-visibility {
-  display: none;
-
-  @media only screen and (width <= 768px) {
+.active {
+  &--desktop {
     display: block;
+
+    @media only screen and (width <= 768px) {
+      display: none;
+    }
+  }
+
+  &--mobile {
+    display: none;
+
+    @media only screen and (width <= 768px) {
+      display: block;
+    }
   }
 }
 
-.is-hidden {
+.hidden {
   display: none;
-}
-
-.link-default {
-  text-decoration: none;
-  color: var(--color-primary);
-  transition: color 0.3s;
-
-  &:hover,
-  &:focus {
-    color: var(--color-secondary);
-  }
-}
-
-.link-inverted {
-  text-decoration: none;
-  color: var(--color-secondary);
-  transition: color 0.3s;
-
-  &:hover,
-  &:focus {
-    color: var(--color-primary);
-  }
-}
-
-.link-underline {
-  text-decoration: none;
-  color: var(--color-primary);
-  transition: all 0.3s;
-  padding-bottom: 1px;
-  border-bottom: 1px solid var(--color-bg-secondary);
-
-  &:hover,
-  &:focus {
-    color: var(--color-primary);
-    border-bottom: 1px solid var(--color-primary);
-  }
-}
-
-.button-default {
-  border: none;
-  background: none;
-
-  &:hover,
-  &:focus {
-    cursor: pointer;
-  }
-}
-
-.image-default {
-  transition: opacity 0.3s;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
 }

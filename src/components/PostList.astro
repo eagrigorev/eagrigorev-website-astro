@@ -1,0 +1,57 @@
+---
+import type { Post } from '@utils/types';
+import PostCardBig from './PostCardBig.astro';
+import PostCardMedium from './PostCardMedium.astro';
+
+interface Props {
+  posts: Post[];
+  isBigCard: boolean;
+  prevPage?: string | undefined;
+  nextPage?: string | undefined;
+}
+
+const { posts, isBigCard, prevPage, nextPage } = Astro.props;
+
+const showPagination: string =
+  prevPage == undefined && nextPage == undefined ? 'hidden' : 'pagination';
+
+const isPrevPageAvailable: string =
+  prevPage !== undefined ? 'link--pagination font-hgv-uppercase' : 'hidden';
+const isNextPageAvailable: string =
+  nextPage !== undefined ? 'link--pagination font-hgv-uppercase' : 'hidden';
+---
+
+<div class="posts-section">
+  <div class="posts">
+    {
+      isBigCard
+        ? posts.map((post: Post) => <PostCardBig postMeta={post.data} />)
+        : posts.map((post: Post) => <PostCardMedium postMeta={post.data} />)
+    }
+  </div>
+  <div class=`${showPagination}`>
+    <a class={isPrevPageAvailable} href={prevPage}>Newer posts</a>
+    <a class={isNextPageAvailable} href={nextPage}>Older posts</a>
+  </div>
+</div>
+
+<style lang="scss">
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-bottom: var(--space-60-80);
+  }
+
+  .pagination {
+    padding-bottom: var(--space-60-80);
+    display: flex;
+    justify-content: center;
+    gap: var(--space-10-20);
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

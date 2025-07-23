@@ -1,21 +1,20 @@
+import type { InferEntrySchema, RenderedContent } from "astro:content";
+
 export interface NavigationItem {
   title: string;
   url: string;
 }
 
-export interface PostMeta {
-  title: string;
-  slug: string;
-  datePublished: string;
-  excerpt: string;
-  image: {
-    url: {
-      src: string;
-      width: number;
-      height: number;
-      format: "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "svg" | "avif";
-    };
-    alt: string;
-  };
-  tags: string[];
+export interface PageTitle {
+  heading: string;
+  subheading: string;
+}
+
+export interface Post {
+  id: string;
+  body?: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">;
+  rendered?: RenderedContent;
+  filePath?: string;
 }

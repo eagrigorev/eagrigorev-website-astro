@@ -11,6 +11,14 @@
     "verbatimModuleSyntax": true,
     "baseUrl": ".",
     "strictNullChecks": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@assets/*": ["src/images/assets/*"],
+      "@images/*": ["src/images/posts/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@utils/*": ["src/utils/*"],
+      "@styles/*": ["src/styles/*"]
+    }
   }
 }

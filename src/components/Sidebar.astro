@@ -1,0 +1,139 @@
+---
+import type { NavigationItem, Post } from '@utils/types';
+import { generateUniqueTags } from '@utils/scripts';
+import { ABOUT_THIS_JOURNAL_INFO, PAGES } from '@utils/const';
+import Widget from './Widget.astro';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+
+const tags = generateUniqueTags(posts);
+const recentPosts = posts.slice(0, 5);
+const tagClassList = (index: number): string => {
+  return index > 4 ? 'tag hidden' : 'tag';
+};
+const showButton: boolean = tags.length > 5;
+---
+
+<div class="widgets-section">
+  <Widget>
+    <h3 slot="title" class="title font-hgv-uppercase">About this Journal</h3>
+    <p slot="content" class="content font-hgv-light">
+      {ABOUT_THIS_JOURNAL_INFO}
+    </p>
+  </Widget>
+  <Widget>
+    <h3 slot="title" class="title font-hgv-uppercase">Pages</h3>
+    <ul slot="content" class="content font-hgv-light" role="list">
+      {
+        PAGES.map((page: NavigationItem) => (
+          <li>
+            <a class="link--primary" href={page.url}>
+              {page.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </Widget>
+  <Widget>
+    <h3 slot="title" class="title font-hgv-uppercase">Recent Posts</h3>
+    <ul slot="content" class="content font-hgv-light" role="list">
+      {
+        recentPosts.map((post: Post) => (
+          <li>
+            <a class="link--primary" href={`/posts/${post.data.slug}`}>
+              {post.data.title}
+            </a>{' '}
+            on {post.data.datePublished}
+          </li>
+        ))
+      }
+    </ul>
+  </Widget>
+  <Widget>
+    <h3 slot="title" class="title font-hgv-uppercase">Tags</h3>
+    <ul slot="content" class="tags" role="list">
+      {
+        tags.map((tag: NavigationItem, index: number) => (
+          <li class={tagClassList(index)}>
+            <a class="font-hgv-regular link--tag" href={`/tags/${tag.url}`}>
+              {tag.title}
+            </a>
+          </li>
+        ))
+      }
+      <li class={showButton ? '' : 'hidden'}>
+        <button id="tags-button" class="button--primary font-hgv-regular"
+          >show more</button
+        >
+      </li>
+    </ul>
+  </Widget>
+</div>
+
+<script>
+  const button = document.getElementById('tags-button');
+  let tagsAreShown: boolean = false;
+  button?.addEventListener('click', () => {
+    if (button && tagsAreShown == false) {
+      document.querySelectorAll('.tag').forEach((tag: HTMLElement) => {
+        if (tag.classList.contains('hidden')) {
+          tag.classList.remove('hidden');
+        }
+      });
+      button.innerHTML = 'show less';
+    } else if (button && tagsAreShown == true) {
+      document
+        .querySelectorAll('.tag')
+        .forEach((tag: HTMLElement, index: number) => {
+          if (index > 4) {
+            tag.classList.add('hidden');
+          }
+        });
+      button.innerHTML = 'show more';
+    }
+    tagsAreShown = !tagsAreShown;
+  });
+</script>
+
+<style lang="scss">
+  .widgets-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .content {
+    font-size: var(--font-size-s);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-10-20);
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #tags-button {
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: color 0.3s;
+    padding: 5px 0;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+</style>

@@ -1,0 +1,20 @@
+---
+import '@styles/global.scss';
+import NavigationTop from '@components/NavigationTop.astro';
+import NavigationFooter from '@components/NavigationFooter.astro';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Evgenii Grigorev</title>
+  </head>
+  <body class="container">
+    <NavigationTop />
+    <slot />
+    <NavigationFooter />
+  </body>
+</html>
