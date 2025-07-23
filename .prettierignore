@@ -1,8 +1,0 @@
-node_modules
-.next
-.astro
-.husky
-coverage
-.prettierignore
-.stylelintignore
-.eslintignore
