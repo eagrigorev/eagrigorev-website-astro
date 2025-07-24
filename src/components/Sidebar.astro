@@ -1,14 +1,11 @@
 ---
+import { getCollection } from 'astro:content';
 import type { NavigationItem, Post } from '@utils/types';
 import { generateUniqueTags } from '@utils/scripts';
 import { ABOUT_THIS_JOURNAL_INFO, PAGES } from '@utils/const';
 import Widget from './Widget.astro';
 
-interface Props {
-  posts: Post[];
-}
-
-const { posts } = Astro.props;
+const posts: Post[] = await getCollection('posts');
 
 const tags = generateUniqueTags(posts);
 const recentPosts = posts.slice(0, 5);

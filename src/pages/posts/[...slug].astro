@@ -1,10 +1,13 @@
 ---
-import type { PageTitle, Post } from '@utils/types';
+import type { Post } from '@utils/types';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PostWithSidebar from '@layouts/PostWithSidebar.astro';
-import PageIndexTitle from '@components/PageIndexTitle.astro';
+import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PostTitle from '@components/title/PostTitle.astro';
+import Heading2 from '@components/markdown/Heading2.astro';
+import Heading3 from '@components/markdown/Heading3.astro';
+import Heading4 from '@components/markdown/Heading4.astro';
 
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
@@ -16,16 +19,18 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
-
-const title: PageTitle = {
-  heading: post.data.title,
-  subheading: post.data.excerpt,
-};
 ---
 
 <GlobalWrapper pageTitle={post.data.title}>
-  <PostWithSidebar postMeta={post.data}>
-    <PageIndexTitle slot="title" pageTitle={title} />
-    <Content slot="content" />
-  </PostWithSidebar>
+  <PageWithSidebar postMeta={post.data}>
+    <PostTitle slot="title" postMeta={post.data} />
+    <Content
+      slot="content"
+      components={{
+        h2: Heading2,
+        h3: Heading3,
+        h4: Heading4,
+      }}
+    />
+  </PageWithSidebar>
 </GlobalWrapper>
