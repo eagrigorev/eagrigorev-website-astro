@@ -1,10 +1,15 @@
 ---
+interface Props {
+  quote: string;
+  author: string;
+}
 
+const { quote, author } = Astro.props;
 ---
 
 <blockquote class="quote-wrapper">
-  <p class="quote font-hgv-regular"><slot name="quote" /></p>
-  <p class="author font-hgv-uppercase"><slot name="author" /></p>
+  <p class="quote font-hgv-regular">{quote}</p>
+  <p class="author font-hgv-uppercase">{author}</p>
 </blockquote>
 
 <style lang="scss">
