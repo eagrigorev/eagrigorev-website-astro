@@ -1,10 +1,4 @@
-import type { NavigationItem, PageTitle } from "./types";
-
-export const INDEX_PAGE_TITLE: PageTitle = {
-  heading: "I'm a frontend software developer based in Thessaloniki, Greece.",
-  subheading:
-    "I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.",
-};
+import type { NavigationItem } from "./types";
 
 export const ABOUT_THIS_JOURNAL_INFO: string =
   "I'm a frontend software developer based in Thessaloniki, Greece. I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.";

@@ -8,25 +8,23 @@ export const sortPostsDesc = (posts: Post[]): Post[] => {
   );
 };
 
-export const generateUrlFromTag = (tag: string): string => {
-  return `${tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and")}`;
+export const generateTagItem = (tag: string): NavigationItem => {
+  return {
+    title: tag,
+    url: `${tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and")}`,
+  };
 };
 
 export const generateUniqueTags = (posts: Post[]): NavigationItem[] => {
   const allTags: string[] = [];
-  const uniqueTags: NavigationItem[] = [];
   posts.forEach((post: Post) => {
     post.data.tags.map((tag: string) => {
       allTags.push(tag);
     });
   });
+  const uniqueTags: NavigationItem[] = [];
   allTags
     .filter((tag: string, index: number) => allTags.indexOf(tag) === index)
-    .map((tag: string) =>
-      uniqueTags.push({
-        title: tag,
-        url: generateUrlFromTag(tag),
-      }),
-    );
+    .map((tag: string) => uniqueTags.push(generateTagItem(tag)));
   return uniqueTags;
 };

@@ -1,22 +1,21 @@
 ---
-import type { NavigationItem } from '@utils/types';
 import type { InferEntrySchema } from 'astro:content';
-import { generateUrlFromTag } from '@utils/scripts';
 import { Image } from 'astro:assets';
+import type { NavigationItem } from '@utils/types';
+import { generateTagItem } from '@utils/scripts';
 
 interface Props {
   postMeta: InferEntrySchema<'posts'>;
+  index: number;
 }
 
-const { postMeta }: Props = Astro.props;
+const { postMeta, index }: Props = Astro.props;
 
 const postLink: string = `/posts/${postMeta.slug}`;
-const tagsList: NavigationItem[] = postMeta.tags.map((tag: string) => {
-  return {
-    title: tag,
-    url: generateUrlFromTag(tag),
-  };
-});
+const tags: NavigationItem[] = postMeta.tags.map((tag: string) =>
+  generateTagItem(tag)
+);
+const loadingSchema: 'eager' | 'lazy' = index > 0 ? 'lazy' : 'eager';
 ---
 
 <article class="post-card-big">
@@ -29,7 +28,7 @@ const tagsList: NavigationItem[] = postMeta.tags.map((tag: string) => {
         width="768"
         height="768"
         decoding="async"
-        loading="eager"
+        loading={loadingSchema}
       />
     </a>
   </div>
@@ -57,7 +56,7 @@ const tagsList: NavigationItem[] = postMeta.tags.map((tag: string) => {
     <div>
       <ul class="tags" role="list">
         {
-          tagsList.map((tag: { title: string; url: string }) => (
+          tags.map((tag: NavigationItem) => (
             <li>
               <a class="link--tag font-hgv-regular" href={`/tags/${tag.url}`}>
                 {tag.title}

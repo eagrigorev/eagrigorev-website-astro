@@ -5,7 +5,7 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import PageIndexTitle from '@components/PageIndexTitle.astro';
+import TagsPageTitle from '@components/title/TagsPageTitle.astro';
 import PostList from '@components/PostList.astro';
 
 export const getStaticPaths = (async () => {
@@ -23,7 +23,6 @@ const { tag } = Astro.params;
 
 const title: PageTitle = {
   heading: `Browsing tag: ${tag.replaceAll('-', ' ')}`,
-  subheading: 'All posts filtered by selected tag.',
 };
 
 const posts: Post[] = tag
@@ -37,7 +36,7 @@ const posts: Post[] = tag
 
 <GlobalWrapper pageTitle={`Posts by tag: ${tag}`}>
   <PageWithSidebar posts={sortPostsDesc(allPosts)}>
-    <PageIndexTitle slot="title" pageTitle={title} />
-    <PostList slot="content" posts={posts} isBigCard={false} />
+    <TagsPageTitle slot="title" pageTitle={title} />
+    <PostList slot="content" posts={posts} />
   </PageWithSidebar>
 </GlobalWrapper>

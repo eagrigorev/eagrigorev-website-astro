@@ -25,6 +25,7 @@ const { posts } = Astro.props;
   .content-section {
     display: flex;
     gap: var(--space-30-60);
+    padding-bottom: var(--space-60-80);
 
     @media only screen and (width <= 768px) {
       flex-direction: column;
@@ -36,6 +37,11 @@ const { posts } = Astro.props;
   .content {
     max-width: 768px;
     min-width: 60%;
+
+    @media only screen and (width <= 768px) {
+      max-width: none;
+      padding-bottom: var(--space-60-80);
+    }
   }
 
   .sidebar {

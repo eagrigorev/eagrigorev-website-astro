@@ -7,7 +7,7 @@ export interface NavigationItem {
 
 export interface PageTitle {
   heading: string;
-  subheading: string;
+  subheading?: string | undefined;
 }
 
 export interface Post {

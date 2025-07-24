@@ -1,16 +1,14 @@
 ---
 import type { Post } from '@utils/types';
-import PostCardBig from './PostCardBig.astro';
-import PostCardMedium from './PostCardMedium.astro';
+import PostCard from './cards/PostCard.astro';
 
 interface Props {
   posts: Post[];
-  isBigCard: boolean;
   prevPage?: string | undefined;
   nextPage?: string | undefined;
 }
 
-const { posts, isBigCard, prevPage, nextPage } = Astro.props;
+const { posts, prevPage, nextPage } = Astro.props;
 
 const showPagination: string =
   prevPage == undefined && nextPage == undefined ? 'hidden' : 'pagination';
@@ -24,9 +22,9 @@ const isNextPageAvailable: string =
 <div class="posts-section">
   <div class="posts">
     {
-      isBigCard
-        ? posts.map((post: Post) => <PostCardBig postMeta={post.data} />)
-        : posts.map((post: Post) => <PostCardMedium postMeta={post.data} />)
+      posts.map((post: Post, index: number) => (
+        <PostCard postMeta={post.data} index={index} />
+      ))
     }
   </div>
   <div class=`${showPagination}`>
@@ -36,15 +34,18 @@ const isNextPageAvailable: string =
 </div>
 
 <style lang="scss">
+  .posts-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-60-80);
+  }
   .posts {
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
-    padding-bottom: var(--space-60-80);
   }
 
   .pagination {
-    padding-bottom: var(--space-60-80);
     display: flex;
     justify-content: center;
     gap: var(--space-10-20);
