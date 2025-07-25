@@ -1,5 +1,16 @@
 ---
-import Sidebar from '@components/Sidebar.astro';
+import { getCollection } from 'astro:content';
+import type { Post } from '@utils/types';
+import { generateUniqueTags } from '@utils/scripts';
+import About from '@components/widgets/About.astro';
+import Pages from '@components/widgets/Pages.astro';
+import RecentPosts from '@components/widgets/RecentPosts.astro';
+import Tags from '@components/widgets/Tags.astro';
+
+const posts: Post[] = await getCollection('posts');
+const recentPosts = posts.slice(0, 5);
+
+const tags = generateUniqueTags(posts);
 ---
 
 <main>
@@ -9,7 +20,10 @@ import Sidebar from '@components/Sidebar.astro';
       <slot name="content" />
     </div>
     <div class="sidebar">
-      <Sidebar />
+      <About />
+      <Pages />
+      <Tags tags={tags} />
+      <RecentPosts posts={recentPosts} />
     </div>
   </div>
 </main>

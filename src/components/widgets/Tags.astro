@@ -1,59 +1,25 @@
 ---
-import { getCollection } from 'astro:content';
-import type { NavigationItem, Post } from '@utils/types';
-import { generateUniqueTags } from '@utils/scripts';
-import { ABOUT_THIS_JOURNAL_INFO, PAGES } from '@utils/const';
-import Widget from './Widget.astro';
+import type { NavigationItem } from '@utils/types';
 
-const posts: Post[] = await getCollection('posts');
+interface Props {
+  tags: NavigationItem[];
+}
 
-const tags = generateUniqueTags(posts);
-const recentPosts = posts.slice(0, 5);
+const { tags } = Astro.props;
+
 const tagClassList = (index: number): string => {
   return index > 4 ? 'tag hidden' : 'tag';
 };
+
 const showButton: boolean = tags.length > 5;
 ---
 
-<div class="widgets-section">
-  <Widget>
-    <h3 slot="title" class="title font-hgv-uppercase">About this Journal</h3>
-    <p slot="content" class="content font-hgv-light">
-      {ABOUT_THIS_JOURNAL_INFO}
-    </p>
-  </Widget>
-  <Widget>
-    <h3 slot="title" class="title font-hgv-uppercase">Pages</h3>
-    <ul slot="content" class="content font-hgv-light" role="list">
-      {
-        PAGES.map((page: NavigationItem) => (
-          <li>
-            <a class="link--primary" href={page.url}>
-              {page.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </Widget>
-  <Widget>
-    <h3 slot="title" class="title font-hgv-uppercase">Recent Posts</h3>
-    <ul slot="content" class="content font-hgv-light" role="list">
-      {
-        recentPosts.map((post: Post) => (
-          <li>
-            <a class="link--primary" href={`/posts/${post.data.slug}`}>
-              {post.data.title}
-            </a>{' '}
-            on {post.data.datePublished}
-          </li>
-        ))
-      }
-    </ul>
-  </Widget>
-  <Widget>
-    <h3 slot="title" class="title font-hgv-uppercase">Tags</h3>
-    <ul slot="content" class="tags" role="list">
+<article class="widget">
+  <header>
+    <h3 class="title font-hgv-uppercase">Tags</h3>
+  </header>
+  <div>
+    <ul class="content" role="list">
       {
         tags.map((tag: NavigationItem, index: number) => (
           <li class={tagClassList(index)}>
@@ -69,8 +35,8 @@ const showButton: boolean = tags.length > 5;
         >
       </li>
     </ul>
-  </Widget>
-</div>
+  </div>
+</article>
 
 <script>
   const button = document.getElementById('tags-button');
@@ -98,10 +64,15 @@ const showButton: boolean = tags.length > 5;
 </script>
 
 <style lang="scss">
-  .widgets-section {
+  .widget {
     display: flex;
     flex-direction: column;
-    gap: var(--space-30-40);
+    gap: var(--space-10-20);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
   }
 
   .title {
@@ -109,13 +80,6 @@ const showButton: boolean = tags.length > 5;
   }
 
   .content {
-    font-size: var(--font-size-s);
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-10-20);
-  }
-
-  .tags {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
