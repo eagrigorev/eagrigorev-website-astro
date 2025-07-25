@@ -1,0 +1,29 @@
+---
+import ImageWithCaption from './ImageWithCaption.astro';
+
+interface Props {
+  srcLeft: ImageMetadata;
+  captionLeft: string;
+  srcRight: ImageMetadata;
+  captionRight: string;
+}
+
+const { srcLeft, captionLeft, srcRight, captionRight } = Astro.props;
+---
+
+<div class="gallery">
+  <ImageWithCaption src={srcLeft} caption={captionLeft} />
+  <ImageWithCaption src={srcRight} caption={captionRight} />
+</div>
+
+<style lang="scss">
+  .gallery {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-60);
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+    }
+  }
+</style>
