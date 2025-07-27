@@ -35,7 +35,7 @@ const posts: Post[] = tag
 ---
 
 <GlobalWrapper pageTitle={`Posts by tag: ${tag}`}>
-  <PageWithSidebar posts={sortPostsDesc(allPosts)}>
+  <PageWithSidebar>
     <TagsPageTitle slot="title" pageTitle={title} />
     <PostList slot="content" posts={posts} />
   </PageWithSidebar>

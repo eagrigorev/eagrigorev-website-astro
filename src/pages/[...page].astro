@@ -22,12 +22,10 @@ export const pageTitle: PageTitle = {
   subheading:
     'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
 };
-
-const allPosts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Home">
-  <PageWithSidebar posts={sortPostsDesc(allPosts)}>
+  <PageWithSidebar>
     <IndexPageTitle slot="title" pageTitle={pageTitle} />
     <PostList
       slot="content"

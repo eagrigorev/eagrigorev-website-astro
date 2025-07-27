@@ -22,7 +22,7 @@ const { Content } = await render(post);
 ---
 
 <GlobalWrapper pageTitle={post.data.title}>
-  <PageWithSidebar postMeta={post.data}>
+  <PageWithSidebar>
     <PostTitle slot="title" postMeta={post.data} />
     <Content
       slot="content"
