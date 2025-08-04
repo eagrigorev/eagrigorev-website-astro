@@ -1,5 +1,26 @@
 ---
+import type { PageTitle } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import Title from '@components/Title.astro';
+
+const pageTitle: PageTitle = {
+  heading: "I'm a frontend software developer based in Thessaloniki, Greece.",
+  subheading:
+    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
+};
 ---
 
-<GlobalWrapper pageTitle="Home" />
+<GlobalWrapper pageTitle="Home">
+  <section class="title-wrapper">
+    <Title hasImage={true} title={pageTitle} />
+  </section>
+</GlobalWrapper>
+
+<style lang="scss">
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-bottom: var(--space-30-40);
+  }
+</style>

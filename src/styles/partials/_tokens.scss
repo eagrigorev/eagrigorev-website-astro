@@ -39,6 +39,8 @@
   ); // 11.24px → 10.42px
 
   /* Space */
+  --space-60-80: clamp(3.75rem, 3.2386rem + 2.2727vw, 5rem);
   --space-30-50: clamp(1.875rem, 1.3636rem + 2.2727vw, 3.125rem);
   --space-30-40: clamp(1.875rem, 1.6193rem + 1.1364vw, 2.5rem);
+  --space-15-20: clamp(0.9375rem, 0.8097rem + 0.5682vw, 1.25rem);
 }

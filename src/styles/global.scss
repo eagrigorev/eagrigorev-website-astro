@@ -1,7 +1,6 @@
 @use "./partials/tokens";
 @use "./partials/normalize";
 @use "./partials/typography";
-@use "./partials//design-elements";
 
 body {
   display: flex;
@@ -36,4 +35,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.hero-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 2/1;
 }
