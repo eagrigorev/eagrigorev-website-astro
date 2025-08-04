@@ -11,12 +11,12 @@ body {
 }
 
 .container {
-  max-width: 75.5rem;
+  max-width: 77.5rem; // 1240px
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
 
-.active {
+.visible {
   &--desktop {
     display: block;
 

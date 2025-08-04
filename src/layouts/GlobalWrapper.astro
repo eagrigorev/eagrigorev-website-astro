@@ -1,7 +1,6 @@
 ---
 import '@styles/global.scss';
-import Header from '@components/navigation/Header.astro';
-import Footer from '@components/navigation/Footer.astro';
+import Header from '@components/Header.astro';
 
 interface Props {
   pageTitle: string;
@@ -21,6 +20,5 @@ const { pageTitle } = Astro.props;
   <body class="container">
     <Header />
     <slot />
-    <Footer />
   </body>
 </html>
