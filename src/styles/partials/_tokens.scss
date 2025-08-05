@@ -6,37 +6,13 @@
   --color-bg-secondary: #d2d2d2;
 
   /* Font Size */
-  --font-size-2xl: clamp(
-    1.4238rem,
-    1.211rem + 0.9458vw,
-    1.944rem
-  ); // 22.78px → 31.10px
-  --font-size-xl: clamp(
-    1.2656rem,
-    1.1207rem + 0.6443vw,
-    1.62rem
-  ); // 20.25px → 25.92px
-  --font-size-l: clamp(
-    1.125rem,
-    1.033rem + 0.4091vw,
-    1.35rem
-  ); // 18px → 21.60px
-  --font-size-m: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem); // 16px → 18px
-  --font-size-s: clamp(
-    0.8889rem,
-    0.869rem + 0.0884vw,
-    0.9375rem
-  ); // 14.22px → 15px
-  --font-size-xs: clamp(
-    0.7813rem,
-    0.7938rem + -0.0161vw,
-    0.7901rem
-  ); // 12.64px → 12.5px
-  --font-size-2xs: clamp(
-    0.651rem,
-    0.7233rem + -0.0933vw,
-    0.7023rem
-  ); // 11.24px → 10.42px
+  --font-size-2xl: clamp(1.4238rem, 1.211rem + 0.9458vw, 1.944rem);
+  --font-size-xl: clamp(1.2656rem, 1.1207rem + 0.6443vw, 1.62rem);
+  --font-size-l: clamp(1.125rem, 1.033rem + 0.4091vw, 1.35rem);
+  --font-size-m: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  --font-size-s: clamp(0.8889rem, 0.869rem + 0.0884vw, 0.9375rem);
+  --font-size-xs: clamp(0.7813rem, 0.7938rem + -0.0161vw, 0.7901rem);
+  --font-size-2xs: clamp(0.651rem, 0.7233rem + -0.0933vw, 0.7023rem);
 
   /* Space */
   --space-60-80: clamp(3.75rem, 3.2386rem + 2.2727vw, 5rem);
