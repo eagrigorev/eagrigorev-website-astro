@@ -1,0 +1,101 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+const navigationItems: NavigationItem[] = [
+  {
+    title: 'Home',
+    url: '/',
+  },
+];
+---
+
+<nav class="navigation-wrapper">
+  <div class="main">
+    <a class="link font-hgv-uppercase link--primary" href="/">eagrigorev.com</a>
+    <div class="visible--desktop">
+      <ul class="items" role="list">
+        {
+          navigationItems.map((item: NavigationItem) => (
+            <li class="item">
+              <a class="link font-hgv-uppercase link--primary" href={item.url}>
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <button
+      id="dropdown-button"
+      class="link font-hgv-uppercase visible--mobile button--primary"
+    >
+      Menu
+    </button>
+  </div>
+  <div id="dropdown-wrapper" class="visible--mobile hidden">
+    <ul class="items" role="list">
+      {
+        navigationItems.map((item: NavigationItem) => (
+          <li>
+            <a class="link font-hgv-uppercase link--primary" href={item.url}>
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</nav>
+
+<script>
+  document.querySelector('#dropdown-button')?.addEventListener('click', () => {
+    document.querySelector('#dropdown-wrapper')?.classList.toggle('hidden');
+  });
+</script>
+
+<style lang="scss">
+  .navigation-wrapper {
+    padding: var(--space-30-40) 0;
+  }
+
+  .main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .link {
+    font-size: var(--font-size-xs);
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    @media only screen and (width <= 800px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    &:not(:first-child) {
+      &::before {
+        display: block;
+        content: '';
+        width: var(--space-30-50);
+        height: 1px;
+        background: var(--color-bg-secondary);
+      }
+    }
+  }
+
+  #dropdown-wrapper {
+    padding-top: var(--space-30-40);
+  }
+</style>

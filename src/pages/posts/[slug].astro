@@ -4,7 +4,9 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import PostTitle from '@components/title/PostTitle.astro';
+import TitleWithMeta from '@components/TitleWithMeta.astro';
+import Sidebar from '@components/Sidebar.astro';
+import PostTags from '@components/PostTags.astro';
 import Heading2 from '@components/markdown/Heading2.astro';
 import Heading3 from '@components/markdown/Heading3.astro';
 import Heading4 from '@components/markdown/Heading4.astro';
@@ -19,11 +21,13 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const allPosts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle={post.data.title}>
   <PageWithSidebar>
-    <PostTitle slot="title" postMeta={post.data} />
+    <TitleWithMeta slot="title" postMeta={post.data} />
     <Content
       slot="content"
       components={{
@@ -32,5 +36,7 @@ const { Content } = await render(post);
         h4: Heading4,
       }}
     />
+    <PostTags slot="content" postTags={post.data.tags} />
+    <Sidebar slot="sidebar" posts={allPosts} />
   </PageWithSidebar>
 </GlobalWrapper>

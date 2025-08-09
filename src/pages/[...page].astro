@@ -1,12 +1,13 @@
 ---
-import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
 import type { PageTitle, Post } from '@utils/types';
+import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import IndexPageTitle from '@components/title/IndexPageTitle.astro';
+import TitleWithImage from '@components/TitleWithImage.astro';
 import PostList from '@components/PostList.astro';
+import Sidebar from '@components/Sidebar.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
@@ -15,6 +16,10 @@ export const getStaticPaths = (async ({ paginate }) => {
   });
 }) satisfies GetStaticPaths;
 
+interface Props {
+  page: Page<Post>;
+}
+
 const { page } = Astro.props;
 
 export const pageTitle: PageTitle = {
@@ -22,24 +27,19 @@ export const pageTitle: PageTitle = {
   subheading:
     'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
 };
+
+const allPosts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Home">
   <PageWithSidebar>
-    <IndexPageTitle slot="title" pageTitle={pageTitle} />
+    <TitleWithImage slot="title" pageTitle={pageTitle} />
     <PostList
       slot="content"
       posts={sortPostsDesc(page.data)}
       prevPage={page.url.prev}
       nextPage={page.url.next}
     />
+    <Sidebar slot="sidebar" posts={allPosts} />
   </PageWithSidebar>
 </GlobalWrapper>
-
-<style lang="scss">
-  .widgets-section {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-30-40);
-  }
-</style>

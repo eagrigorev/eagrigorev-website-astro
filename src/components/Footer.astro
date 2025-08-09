@@ -1,0 +1,136 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+const navigationItems: NavigationItem[] = [
+  {
+    title: 'Dummy 1',
+    url: '/',
+  },
+];
+
+const socialLinks: NavigationItem[] = [
+  {
+    title: 'Instagram',
+    url: 'https://www.instagram.com/eagrigorev/',
+  },
+  {
+    title: 'Bluesky',
+    url: 'https://bsky.app/profile/eagrigorev.bsky.social/',
+  },
+  {
+    title: 'GitHub',
+    url: 'https://github.com/eagrigorev/',
+  },
+];
+---
+
+<footer class="footer-wrapper">
+  <div class="top">
+    <h2 class="outro font-hgv-regular">
+      Thank you for stopping by. You can browse pages and tags for more posts.
+    </h2>
+    <ul class="social-links" role="list">
+      {
+        socialLinks.map((item: NavigationItem) => (
+          <li>
+            <a
+              class="social-link font-hgv-uppercase link--primary"
+              href={item.url}
+            >
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div class="bottom">
+    <span class="copyright font-hgv-regular">© 2025 Evgenii Grigorev</span>
+    <ul class="bottom-links" role="list">
+      {
+        navigationItems.map((item: NavigationItem) => (
+          <li>
+            <a
+              class="bottom-link font-hgv-regular link--secondary"
+              href={item.url}
+            >
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</footer>
+
+<style lang="scss">
+  .footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    border-top: var(--color-bg-secondary) solid 1px;
+  }
+
+  .top {
+    padding: var(--space-60-80) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-30-40);
+  }
+
+  .outro {
+    font-size: var(--font-size-l);
+    text-align: center;
+    max-width: 450px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: var(--space-30-40);
+
+    @media only screen and (width <= 460px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .social-link {
+    font-size: var(--font-size-2xs);
+  }
+
+  .bottom {
+    padding: var(--space-30-40) 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+    line-height: 100%;
+    border-top: var(--color-bg-secondary) solid 1px;
+
+    @media only screen and (width <= 460px) {
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  .bottom-links {
+    display: flex;
+    gap: 5px;
+  }
+
+  .bottom-link {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    &:not(:first-child) {
+      &::before {
+        display: block;
+        content: '|';
+      }
+    }
+  }
+</style>

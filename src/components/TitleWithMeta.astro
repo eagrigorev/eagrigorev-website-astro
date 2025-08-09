@@ -1,0 +1,61 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+
+interface Props {
+  postMeta: InferEntrySchema<'posts'>;
+}
+
+const { postMeta } = Astro.props;
+---
+
+<section class="title-wrapper">
+  <div class="title">
+    <h1 class="title__heading font-hgv-regular">
+      {postMeta.title}
+    </h1>
+    <h2 class="title__subheading font-hgv-light">
+      {postMeta.excerpt}
+    </h2>
+    <p class="title__date font-hgv-uppercase">{postMeta.datePublished}</p>
+  </div>
+</section>
+
+<style lang="scss">
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding: var(--space-60-80) 0 var(--space-30-40) 0;
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+    padding-bottom: var(--space-60-80);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    &__heading {
+      max-width: 75%;
+      font-size: var(--font-size-2xl);
+
+      @media only screen and (width <= 800px) {
+        max-width: 100%;
+      }
+    }
+
+    &__subheading {
+      max-width: 50%;
+      font-size: var(--font-size-m);
+
+      @media only screen and (width <= 800px) {
+        max-width: 100%;
+      }
+    }
+
+    &__date {
+      font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
+    }
+  }
+</style>

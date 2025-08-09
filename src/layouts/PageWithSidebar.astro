@@ -1,67 +1,46 @@
 ---
-import { getCollection } from 'astro:content';
-import type { Post } from '@utils/types';
-import { generateUniqueTags } from '@utils/scripts';
-import About from '@components/widgets/About.astro';
-import Pages from '@components/widgets/Pages.astro';
-import RecentPosts from '@components/widgets/RecentPosts.astro';
-import Tags from '@components/widgets/Tags.astro';
 
-const posts: Post[] = await getCollection('posts');
-const recentPosts = posts.slice(0, 5);
-
-const tags = generateUniqueTags(posts);
 ---
 
 <main>
   <slot name="title" />
-  <div class="content-section">
+  <div class="content-wrapper">
     <div class="content font-hgv-light">
       <slot name="content" />
     </div>
     <div class="sidebar">
-      <About />
-      <Pages />
-      <Tags tags={tags} />
-      <RecentPosts posts={recentPosts} />
+      <slot name="sidebar" />
     </div>
   </div>
 </main>
 
 <style lang="scss">
-  .content-section {
+  .content-wrapper {
     display: flex;
     gap: var(--space-30-60);
-    padding-bottom: var(--space-60-80);
+    padding-bottom: var(--space-30-40);
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       flex-direction: column;
-      gap: 0px;
-      padding-bottom: var(--space-30-40);
     }
   }
 
   .content {
-    max-width: 768px;
-    min-width: 60%;
-    font-size: var(--font-size-m);
     display: flex;
     flex-direction: column;
+    max-width: 800px;
+    font-size: var(--font-size-m);
     gap: var(--space-30-40);
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       max-width: none;
-      padding-bottom: var(--space-60-80);
     }
   }
 
   .sidebar {
-    max-width: 300px;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-30-40);
+    min-width: 180px;
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       max-width: none;
     }
   }

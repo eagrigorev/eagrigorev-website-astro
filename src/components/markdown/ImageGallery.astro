@@ -11,18 +11,18 @@ interface Props {
 const { srcLeft, captionLeft, srcRight, captionRight } = Astro.props;
 ---
 
-<div class="gallery">
+<div class="gallery-wrapper">
   <ImageWithCaption src={srcLeft} caption={captionLeft} />
   <ImageWithCaption src={srcRight} caption={captionRight} />
 </div>
 
 <style lang="scss">
-  .gallery {
+  .gallery-wrapper {
     display: flex;
     align-items: center;
     gap: var(--space-30-60);
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       flex-direction: column;
     }
   }

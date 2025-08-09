@@ -15,8 +15,8 @@ const { src, caption } = Astro.props;
       class="image"
       src={src}
       alt={caption}
-      width="768"
-      height="768"
+      width="800"
+      height="800"
       decoding="async"
       loading="eager"
     />
@@ -38,7 +38,7 @@ const { src, caption } = Astro.props;
   }
 
   .caption {
-    color: var(--color-secondary);
     font-size: var(--font-size-s);
+    color: var(--color-secondary);
   }
 </style>

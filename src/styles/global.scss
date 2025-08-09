@@ -11,16 +11,16 @@ body {
 }
 
 .container {
-  max-width: 75.5rem;
+  max-width: 77.5rem;
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
 
-.active {
+.visible {
   &--desktop {
     display: block;
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       display: none;
     }
   }
@@ -28,7 +28,7 @@ body {
   &--mobile {
     display: none;
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 800px) {
       display: block;
     }
   }

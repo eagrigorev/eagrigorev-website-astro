@@ -1,0 +1,71 @@
+---
+import type { NavigationItem } from '@utils/types';
+import { generateTagItem } from '@utils/scripts';
+
+interface Props {
+  postTags: string[];
+}
+
+const { postTags } = Astro.props;
+
+const tags: NavigationItem[] = postTags.map((tag: string) =>
+  generateTagItem(tag)
+);
+---
+
+<div class="post-tags-wrapper">
+  <header>
+    <h3 class="title font-hgv-uppercase">Tags:</h3>
+  </header>
+  <ul class="tags" role="list">
+    {
+      tags.map((tag: NavigationItem) => (
+        <li>
+          <a class="font-hgv-regular link-tag" href={`/tags/${tag.url}`}>
+            {tag.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .post-tags-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-15-20);
+
+    @media only screen and (width <= 800px) {
+      flex-direction: column;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .link-tag {
+    display: block;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary) solid 1px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+</style>

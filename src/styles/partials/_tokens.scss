@@ -6,18 +6,19 @@
   --color-bg-secondary: #d2d2d2;
 
   /* Font Size */
-  --font-size-2xl: clamp(1.4238rem, 1.203rem + 0.9815vw, 1.944rem);
-  --font-size-xl: clamp(1.2656rem, 1.1152rem + 0.6686vw, 1.62rem);
-  --font-size-l: clamp(1.125rem, 1.0295rem + 0.4245vw, 1.35rem);
-  --font-size-m: clamp(1rem, 0.9469rem + 0.2358vw, 1.125rem);
-  --font-size-s: clamp(0.8889rem, 0.8683rem + 0.0917vw, 0.9375rem);
-  --font-size-xs: clamp(0.7813rem, 0.7939rem + -0.0167vw, 0.7901rem);
-  --font-size-2xs: clamp(0.651rem, 0.7241rem + -0.0968vw, 0.7023rem);
+  --font-size-2xl: clamp(1.4238rem, 1.211rem + 0.9458vw, 1.944rem);
+  --font-size-xl: clamp(1.2656rem, 1.1207rem + 0.6443vw, 1.62rem);
+  --font-size-l: clamp(1.125rem, 1.033rem + 0.4091vw, 1.35rem);
+  --font-size-m: clamp(1rem, 0.9489rem + 0.2273vw, 1.125rem);
+  --font-size-s: clamp(0.8889rem, 0.869rem + 0.0884vw, 0.9375rem);
+  --font-size-xs: clamp(0.7813rem, 0.7938rem + -0.0161vw, 0.7901rem);
+  --font-size-2xs: clamp(0.651rem, 0.7233rem + -0.0933vw, 0.7023rem);
 
   /* Space */
-  --space-60-80: clamp(3.75rem, 3.2193rem + 2.3585vw, 5rem);
-  --space-30-60: clamp(1.875rem, 1.079rem + 3.5377vw, 3.75rem);
-  --space-30-50: clamp(1.875rem, 1.3443rem + 2.3585vw, 3.125rem);
-  --space-30-40: clamp(1.875rem, 1.6097rem + 1.1792vw, 2.5rem);
-  --space-10-20: clamp(0.625rem, 0.3597rem + 1.1792vw, 1.25rem);
+  --space-60-80: clamp(3.75rem, 3.2386rem + 2.2727vw, 5rem);
+  --space-30-60: clamp(1.875rem, 1.108rem + 3.4091vw, 3.75rem);
+  --space-30-50: clamp(1.875rem, 1.3636rem + 2.2727vw, 3.125rem);
+  --space-30-40: clamp(1.875rem, 1.6193rem + 1.1364vw, 2.5rem);
+  --space-15-20: clamp(0.9375rem, 0.8097rem + 0.5682vw, 1.25rem);
+  --space-10-20: clamp(0.625rem, 0.3693rem + 1.1364vw, 1.25rem);
 }
