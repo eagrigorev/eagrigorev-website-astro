@@ -1,6 +1,6 @@
 {
   "name": "eagrigorev-website-astro",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "homepage": "https://github.com/eagrigorev/eagrigorev-website-astro#readme",
   "bugs": {
@@ -25,6 +25,7 @@
     "@astrojs/check": "^0.9.4",
     "@astrojs/mdx": "^4.3.3",
     "@astrojs/ts-plugin": "^1.10.4",
+    "@astrojs/vercel": "^8.2.5",
     "@fontsource-variable/hanken-grotesk": "^5.2.6",
     "astro": "^5.12.9",
     "typescript": "^5.9.2"
