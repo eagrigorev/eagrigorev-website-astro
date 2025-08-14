@@ -12,7 +12,7 @@ import Sidebar from '@components/Sidebar.astro';
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
   return paginate(sortPostsDesc(posts), {
-    pageSize: 2,
+    pageSize: 5,
   });
 }) satisfies GetStaticPaths;
 
@@ -23,9 +23,10 @@ interface Props {
 const { page } = Astro.props;
 
 export const pageTitle: PageTitle = {
-  heading: "I'm a frontend software developer based in Thessaloniki, Greece.",
+  heading:
+    'My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music.',
   subheading:
-    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
+    'I decided to create this journal in order to cope with anxiety, preserve knowledge and memories, and reflect on my life.',
 };
 
 const allPosts: Post[] = await getCollection('posts');
