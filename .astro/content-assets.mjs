@@ -1,4 +1,5 @@
 
 import __ASTRO_IMAGE_IMPORT_Zsy2Eg from "@images/a-kitchen-in-athens.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fa-kitchen-in-athens.mdx";
-export default new Map([["@images/a-kitchen-in-athens.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fa-kitchen-in-athens.mdx", __ASTRO_IMAGE_IMPORT_Zsy2Eg]]);
+import __ASTRO_IMAGE_IMPORT_1WACy0 from "@images/exploring-the-acropolis-of-athens/featured.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fexploring-the-acropolis-of-athens.mdx";
+export default new Map([["@images/a-kitchen-in-athens.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fa-kitchen-in-athens.mdx", __ASTRO_IMAGE_IMPORT_Zsy2Eg], ["@images/exploring-the-acropolis-of-athens/featured.jpg?astroContentImageFlag=&importer=src%2Fcontent%2Fposts%2Fexploring-the-acropolis-of-athens.mdx", __ASTRO_IMAGE_IMPORT_1WACy0]]);
 		
