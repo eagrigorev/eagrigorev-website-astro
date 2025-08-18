@@ -1,0 +1,24 @@
+---
+import type { Page, Post } from '@utils/types';
+import { getCollection } from 'astro:content';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import TitleOneLine from '@components/TitleOneLine.astro';
+import PageContent from '@components/PageContent.astro';
+import Sidebar from '@components/Sidebar.astro';
+
+const allPages: Page[] = await getCollection('pages');
+const aboutPage = allPages.filter(
+  (page: Page) => page.data.slug === 'about'
+)[0];
+
+const allPosts: Post[] = await getCollection('posts');
+---
+
+<GlobalWrapper pageTitle={aboutPage.data.title}>
+  <PageWithSidebar>
+    <TitleOneLine slot="title" pageTitle={{ heading: aboutPage.data.title }} />
+    <PageContent slot="content" page={aboutPage} />
+    <Sidebar slot="sidebar" posts={allPosts} />
+  </PageWithSidebar>
+</GlobalWrapper>

@@ -1,0 +1,14 @@
+---
+import type { PageTitle } from '@utils/types';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import TitleWithImage from '@components/TitleWithImage.astro';
+
+export const pageTitle: PageTitle = {
+  heading: '500',
+  subheading: 'Server error.',
+};
+---
+
+<GlobalWrapper pageTitle="500">
+  <TitleWithImage pageTitle={pageTitle} />
+</GlobalWrapper>

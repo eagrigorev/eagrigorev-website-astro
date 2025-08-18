@@ -6,6 +6,10 @@ const navigationItems: NavigationItem[] = [
     title: 'Home',
     url: '/',
   },
+  {
+    title: 'About',
+    url: '/about',
+  },
 ];
 
 const socialLinks: NavigationItem[] = [
@@ -49,11 +53,8 @@ const socialLinks: NavigationItem[] = [
     <ul class="bottom-links" role="list">
       {
         navigationItems.map((item: NavigationItem) => (
-          <li>
-            <a
-              class="bottom-link font-hgv-regular link--secondary"
-              href={item.url}
-            >
+          <li class="bottom-link">
+            <a class="font-hgv-regular link--secondary" href={item.url}>
               {item.title}
             </a>
           </li>
