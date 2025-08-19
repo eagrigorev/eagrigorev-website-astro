@@ -1,0 +1,116 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+interface Props {
+  tags: NavigationItem[];
+}
+
+const { tags } = Astro.props;
+
+const tagClassList = (index: number): string => {
+  return index > 4 ? 'tag-item hidden' : 'tag-item';
+};
+
+const showButton: boolean = tags.length > 5;
+---
+
+<article class="tags-widget-wrapper">
+  <header>
+    <h3 class="title font-hgv-uppercase">Tags</h3>
+  </header>
+  <ul class="tags" role="list">
+    {
+      tags.map((tag: NavigationItem, index: number) => (
+        <li class={tagClassList(index)}>
+          <a class="font-hgv-regular link-tag" href={`/tags/${tag.url}`}>
+            {tag.title}
+          </a>
+        </li>
+      ))
+    }
+    <li class={showButton ? '' : 'hidden'}>
+      <button id="tags-button" class="button--primary font-hgv-regular"
+        >show more</button
+      >
+    </li>
+  </ul>
+</article>
+
+<script>
+  const button = document.getElementById('tags-button');
+  let tagsAreShown: boolean = false;
+  button?.addEventListener('click', () => {
+    if (button && tagsAreShown == false) {
+      document.querySelectorAll('.tag-item').forEach((tag: HTMLElement) => {
+        if (tag.classList.contains('hidden')) {
+          tag.classList.remove('hidden');
+        }
+      });
+      button.innerHTML = 'show less';
+    } else if (button && tagsAreShown == true) {
+      document
+        .querySelectorAll('.tag-item')
+        .forEach((tag: HTMLElement, index: number) => {
+          if (index > 4) {
+            tag.classList.add('hidden');
+          }
+        });
+      button.innerHTML = 'show more';
+    }
+    tagsAreShown = !tagsAreShown;
+  });
+</script>
+
+<style lang="scss">
+  .tags-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+    line-height: 165%;
+  }
+
+  .link-tag {
+    display: block;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary) solid 1px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  #tags-button {
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    transition: color 0.3s;
+    padding: 5px 0;
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+</style>

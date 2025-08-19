@@ -1,0 +1,60 @@
+---
+import type { Post } from '@utils/types';
+
+interface Props {
+  recentPosts: Post[];
+}
+
+const { recentPosts } = Astro.props;
+---
+
+<article class="recent-posts-widget-wrapper">
+  <header>
+    <h3 class="title font-hgv-uppercase">Recent Posts</h3>
+  </header>
+  <ul class="content" role="list">
+    {
+      recentPosts.map((post: Post) => (
+        <li>
+          <a
+            class="font-hgv-light link--primary"
+            href={`/posts/${post.data.slug}`}
+          >
+            {post.data.title}
+          </a>
+          <p class="date font-hgv-regular">{post.data.datePublished}</p>
+        </li>
+      ))
+    }
+  </ul>
+</article>
+
+<style lang="scss">
+  .recent-posts-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+    line-height: 165%;
+  }
+
+  .content {
+    font-size: var(--font-size-s);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .date {
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+  }
+</style>

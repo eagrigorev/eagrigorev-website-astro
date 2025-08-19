@@ -1,0 +1,52 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+const pages: NavigationItem[] = [
+  {
+    title: 'Now',
+    url: '/now',
+  },
+];
+---
+
+<article class="pages-widget-wrapper">
+  <header>
+    <h3 class="title font-hgv-uppercase">Pages</h3>
+  </header>
+  <ul class="content" role="list">
+    {
+      pages.map((page: NavigationItem) => (
+        <li>
+          <a class="font-hgv-light link--primary" href={page.url}>
+            {page.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</article>
+
+<style lang="scss">
+  .pages-widget-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+
+    &:not(:last-child) {
+      padding-bottom: var(--space-30-40);
+      border-bottom: var(--color-bg-secondary) solid 1px;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+    line-height: 165%;
+  }
+
+  .content {
+    font-size: var(--font-size-s);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+</style>
