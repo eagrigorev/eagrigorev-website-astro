@@ -1,10 +1,7 @@
 ---
 import type { Post } from '@utils/types';
 import { render } from 'astro:content';
-import Heading2 from '@components/markdown/Heading2.astro';
-import Heading3 from '@components/markdown/Heading3.astro';
-import Heading4 from '@components/markdown/Heading4.astro';
-import Link from '@components/markdown/Link.astro';
+import { customTypography } from '@utils/customTypography';
 import PostTags from './PostTags.astro';
 
 interface Props {
@@ -17,14 +14,7 @@ const { Content } = await render(post);
 
 <div class="post-content-wrapper">
   <div class="post">
-    <Content
-      components={{
-        h2: Heading2,
-        h3: Heading3,
-        h4: Heading4,
-        a: Link,
-      }}
-    />
+    <Content components={customTypography} />
   </div>
   <div class="tags">
     <PostTags postTags={post.data.tags} />

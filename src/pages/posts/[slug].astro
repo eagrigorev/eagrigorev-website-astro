@@ -4,7 +4,7 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleWithMeta from '@components/TitleWithMeta.astro';
+import TitleWithMeta from '@components/title/TitleWithMeta.astro';
 import PostContent from '@components/PostContent.astro';
 
 export const getStaticPaths = (async () => {
