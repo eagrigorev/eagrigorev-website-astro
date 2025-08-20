@@ -7,17 +7,20 @@ import PageWithSidebar from '@layouts/PageWithSidebar.astro';
 import TitleOneLine from '@components/title/TitleOneLine.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 
-const aboutPage: Page | undefined = await getEntry('pages', 'about');
-if (!aboutPage) {
+const colophonPage: Page | undefined = await getEntry('pages', 'colophon');
+if (!colophonPage) {
   throw new Error('Could not find requested page');
 }
 
-const { Content } = await render(aboutPage);
+const { Content } = await render(colophonPage);
 ---
 
-<GlobalWrapper pageTitle={aboutPage.data.title}>
+<GlobalWrapper pageTitle={colophonPage.data.title}>
   <PageWithSidebar>
-    <TitleOneLine slot="title" pageTitle={{ heading: aboutPage.data.title }} />
+    <TitleOneLine
+      slot="title"
+      pageTitle={{ heading: colophonPage.data.title }}
+    />
     <MarkdownWrapper slot="content" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
     </MarkdownWrapper>

@@ -1,11 +1,13 @@
 ---
 import type { Post } from '@utils/types';
+import { customTypography } from '@utils/customTypography';
 import type { GetStaticPaths } from 'astro';
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 import TitleWithMeta from '@components/title/TitleWithMeta.astro';
-import PostContent from '@components/PostContent.astro';
+import PostTags from '@components/PostTags.astro';
 
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
@@ -16,11 +18,15 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
+const { Content } = await render(post);
 ---
 
 <GlobalWrapper pageTitle={post.data.title}>
   <PageWithSidebar>
     <TitleWithMeta slot="title" postMeta={post.data} />
-    <PostContent slot="content" post={post} />
+    <MarkdownWrapper slot="content" hasBottomSection={true}>
+      <Content slot="content" components={customTypography} />
+      <PostTags slot="tags" postTags={post.data.tags} />
+    </MarkdownWrapper>
   </PageWithSidebar>
 </GlobalWrapper>

@@ -7,17 +7,23 @@ import PageWithSidebar from '@layouts/PageWithSidebar.astro';
 import TitleOneLine from '@components/title/TitleOneLine.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 
-const aboutPage: Page | undefined = await getEntry('pages', 'about');
-if (!aboutPage) {
+const privacyPage: Page | undefined = await getEntry(
+  'pages',
+  'privacy-and-security'
+);
+if (!privacyPage) {
   throw new Error('Could not find requested page');
 }
 
-const { Content } = await render(aboutPage);
+const { Content } = await render(privacyPage);
 ---
 
-<GlobalWrapper pageTitle={aboutPage.data.title}>
+<GlobalWrapper pageTitle={privacyPage.data.title}>
   <PageWithSidebar>
-    <TitleOneLine slot="title" pageTitle={{ heading: aboutPage.data.title }} />
+    <TitleOneLine
+      slot="title"
+      pageTitle={{ heading: privacyPage.data.title }}
+    />
     <MarkdownWrapper slot="content" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
     </MarkdownWrapper>
