@@ -1,0 +1,37 @@
+---
+
+---
+
+<main>
+  <slot name="title" />
+  <div class="content-wrapper">
+    <div class="content font-hgv-light">
+      <slot name="content-left" />
+    </div>
+    <div class="content font-hgv-light">
+      <slot name="content-right" />
+    </div>
+  </div>
+</main>
+
+<style lang="scss">
+  .content-wrapper {
+    display: flex;
+    gap: var(--space-30-60);
+    padding-bottom: var(--space-30-40);
+
+    @media only screen and (width <= 800px) {
+      flex-direction: column;
+    }
+  }
+
+  .content {
+    max-width: 550px;
+    min-width: 300px;
+    font-size: var(--font-size-m);
+
+    @media only screen and (width <= 800px) {
+      max-width: none;
+    }
+  }
+</style>

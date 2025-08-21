@@ -3,7 +3,7 @@ import type { Page } from '@utils/types';
 import { customTypography } from '@utils/customTypography';
 import { getEntry, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PageWide from '@layouts/PageWide.astro';
 import TitleOneLine from '@components/title/TitleOneLine.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 
@@ -19,7 +19,7 @@ const { Content } = await render(privacyPage);
 ---
 
 <GlobalWrapper pageTitle={privacyPage.data.title}>
-  <PageWithSidebar>
+  <PageWide>
     <TitleOneLine
       slot="title"
       pageTitle={{ heading: privacyPage.data.title }}
@@ -27,5 +27,5 @@ const { Content } = await render(privacyPage);
     <MarkdownWrapper slot="content" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
     </MarkdownWrapper>
-  </PageWithSidebar>
+  </PageWide>
 </GlobalWrapper>
