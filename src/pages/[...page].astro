@@ -5,9 +5,8 @@ import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleWithImage from '@components/TitleWithImage.astro';
+import TitleWithImage from '@components/title/TitleWithImage.astro';
 import PostList from '@components/PostList.astro';
-import Sidebar from '@components/Sidebar.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
@@ -28,8 +27,6 @@ export const pageTitle: PageTitle = {
   subheading:
     'I decided to create this journal in order to cope with anxiety, preserve knowledge and memories, and reflect on my life.',
 };
-
-const allPosts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Home">
@@ -41,6 +38,5 @@ const allPosts: Post[] = await getCollection('posts');
       prevPage={page.url.prev}
       nextPage={page.url.next}
     />
-    <Sidebar slot="sidebar" posts={allPosts} />
   </PageWithSidebar>
 </GlobalWrapper>

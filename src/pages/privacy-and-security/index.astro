@@ -1,0 +1,31 @@
+---
+import type { Page } from '@utils/types';
+import { customTypography } from '@utils/customTypography';
+import { getEntry, render } from 'astro:content';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWide from '@layouts/PageWide.astro';
+import TitleOneLine from '@components/title/TitleOneLine.astro';
+import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
+
+const privacyPage: Page | undefined = await getEntry(
+  'pages',
+  'privacy-and-security'
+);
+if (!privacyPage) {
+  throw new Error('Could not find requested page');
+}
+
+const { Content } = await render(privacyPage);
+---
+
+<GlobalWrapper pageTitle={privacyPage.data.title}>
+  <PageWide>
+    <TitleOneLine
+      slot="title"
+      pageTitle={{ heading: privacyPage.data.title }}
+    />
+    <MarkdownWrapper slot="content" hasBottomSection={false}>
+      <Content slot="content" components={customTypography} />
+    </MarkdownWrapper>
+  </PageWide>
+</GlobalWrapper>

@@ -1,5 +1,5 @@
 ---
-
+import Sidebar from '@components/Sidebar.astro';
 ---
 
 <main>
@@ -9,7 +9,7 @@
       <slot name="content" />
     </div>
     <div class="sidebar">
-      <slot name="sidebar" />
+      <Sidebar />
     </div>
   </div>
 </main>
@@ -26,11 +26,8 @@
   }
 
   .content {
-    // display: flex;
-    // flex-direction: column;
     max-width: 800px;
     font-size: var(--font-size-m);
-    // gap: var(--space-30-40);
 
     @media only screen and (width <= 800px) {
       max-width: none;

@@ -5,9 +5,8 @@ import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleOneLine from '@components/TitleOneLine.astro';
+import TitleOneLine from '@components/title/TitleOneLine.astro';
 import PostList from '@components/PostList.astro';
-import Sidebar from '@components/Sidebar.astro';
 
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
@@ -38,6 +37,5 @@ const posts: Post[] = tag
   <PageWithSidebar>
     <TitleOneLine slot="title" pageTitle={title} />
     <PostList slot="content" posts={posts} />
-    <Sidebar slot="sidebar" posts={allPosts} />
   </PageWithSidebar>
 </GlobalWrapper>

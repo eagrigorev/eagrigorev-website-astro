@@ -1,0 +1,12 @@
+---
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import TitleOneLine from '@components/title/TitleOneLine.astro';
+import PageWide from '@layouts/PageWide.astro';
+---
+
+<GlobalWrapper pageTitle="404">
+  <PageWide>
+    <TitleOneLine slot="title" pageTitle={{ heading: 'Page 404' }} />
+    <p slot="content">This page doesn't exist.</p>
+  </PageWide>
+</GlobalWrapper>

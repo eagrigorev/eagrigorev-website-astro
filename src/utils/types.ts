@@ -18,3 +18,12 @@ export interface Post {
   rendered?: RenderedContent;
   filePath?: string;
 }
+
+export interface Page {
+  id: string;
+  body?: string;
+  collection: "pages";
+  data: InferEntrySchema<"pages">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}

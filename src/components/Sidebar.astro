@@ -1,126 +1,23 @@
 ---
-import { generateUniqueTags, sortPostsDesc } from '@utils/scripts';
 import type { NavigationItem, Post } from '@utils/types';
+import { getCollection } from 'astro:content';
+import { generateUniqueTags, sortPostsDesc } from '@utils/scripts';
+import AboutWidget from './widgets/AboutWidget.astro';
+import PagesWidget from './widgets/PagesWidget.astro';
+import RecentPostsWidget from './widgets/RecentPostsWidget.astro';
+import TagsWidget from './widgets/TagsWidget.astro';
 
-interface Props {
-  posts: Post[];
-}
-
-const { posts } = Astro.props;
-
-const pages: NavigationItem[] = [
-  {
-    title: 'Home',
-    url: '/',
-  },
-];
-
-const recentPosts = sortPostsDesc(posts.slice(0, 5));
-const tags = generateUniqueTags(posts);
-
-const tagClassList = (index: number): string => {
-  return index > 4 ? 'tag-item hidden' : 'tag-item';
-};
-
-const showButton: boolean = tags.length > 5;
+const allPosts: Post[] = await getCollection('posts');
+const recentPosts = sortPostsDesc(allPosts.slice(0, 5));
+const tags: NavigationItem[] = generateUniqueTags(allPosts);
 ---
 
 <div class="sidebar-wrapper">
-  <article class="widget-wrapper">
-    <header>
-      <h3 class="title font-hgv-uppercase">About me</h3>
-    </header>
-    <div>
-      <p class="content font-hgv-light">
-        I'm a frontend software developer based in Thessaloniki, Greece. I love
-        clean and minimal interfaces, accessible homemade and local
-        applications, and digital gardens.
-      </p>
-    </div>
-  </article>
-  <article class="widget-wrapper">
-    <header>
-      <h3 class="title font-hgv-uppercase">Pages</h3>
-    </header>
-    <ul class="content" role="list">
-      {
-        pages.map((page: NavigationItem) => (
-          <li>
-            <a class="font-hgv-light link--primary" href={page.url}>
-              {page.title}
-            </a>
-          </li>
-        ))
-      }
-    </ul>
-  </article>
-  <article class="widget-wrapper">
-    <header>
-      <h3 class="title font-hgv-uppercase">Recent Posts</h3>
-    </header>
-    <ul class="content" role="list">
-      {
-        recentPosts.map((post: Post) => (
-          <li>
-            <a
-              class="font-hgv-light link--primary"
-              href={`/posts/${post.data.slug}`}
-            >
-              {post.data.title}
-            </a>
-            <p class="date font-hgv-regular">{post.data.datePublished}</p>
-          </li>
-        ))
-      }
-    </ul>
-  </article>
-  <article class="widget-wrapper">
-    <header>
-      <h3 class="title font-hgv-uppercase">Tags</h3>
-    </header>
-    <ul class="tags" role="list">
-      {
-        tags.map((tag: NavigationItem, index: number) => (
-          <li class={tagClassList(index)}>
-            <a class="font-hgv-regular link-tag" href={`/tags/${tag.url}`}>
-              {tag.title}
-            </a>
-          </li>
-        ))
-      }
-      <li class={showButton ? '' : 'hidden'}>
-        <button id="tags-button" class="button--primary font-hgv-regular"
-          >show more</button
-        >
-      </li>
-    </ul>
-  </article>
+  <AboutWidget />
+  <PagesWidget />
+  <TagsWidget tags={tags} />
+  <RecentPostsWidget recentPosts={recentPosts} />
 </div>
-
-<script>
-  const button = document.getElementById('tags-button');
-  let tagsAreShown: boolean = false;
-  button?.addEventListener('click', () => {
-    if (button && tagsAreShown == false) {
-      document.querySelectorAll('.tag-item').forEach((tag: HTMLElement) => {
-        if (tag.classList.contains('hidden')) {
-          tag.classList.remove('hidden');
-        }
-      });
-      button.innerHTML = 'show less';
-    } else if (button && tagsAreShown == true) {
-      document
-        .querySelectorAll('.tag-item')
-        .forEach((tag: HTMLElement, index: number) => {
-          if (index > 4) {
-            tag.classList.add('hidden');
-          }
-        });
-      button.innerHTML = 'show more';
-    }
-    tagsAreShown = !tagsAreShown;
-  });
-</script>
 
 <style lang="scss">
   .sidebar-wrapper {
@@ -131,70 +28,6 @@ const showButton: boolean = tags.length > 5;
 
     @media only screen and (width <= 800px) {
       max-width: none;
-    }
-  }
-
-  .widget-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-15-20);
-
-    &:not(:last-child) {
-      padding-bottom: var(--space-30-40);
-      border-bottom: var(--color-bg-secondary) solid 1px;
-    }
-  }
-
-  .title {
-    font-size: var(--font-size-xs);
-    line-height: 165%;
-  }
-
-  .content {
-    font-size: var(--font-size-s);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .date {
-    font-size: var(--font-size-xs);
-    color: var(--color-secondary);
-  }
-
-  .link-tag {
-    display: block;
-    text-decoration: none;
-    color: var(--color-primary);
-    font-size: var(--font-size-xs);
-    line-height: 100%;
-    padding: 5px 10px;
-    border: var(--color-bg-secondary) solid 1px;
-    border-radius: 20px;
-    transition: border-color 0.3s;
-
-    &:hover,
-    &:focus {
-      border-color: var(--color-primary);
-    }
-  }
-
-  .tags {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  #tags-button {
-    font-size: var(--font-size-xs);
-    line-height: 100%;
-    transition: color 0.3s;
-    padding: 5px 0;
-
-    &:hover,
-    &:focus {
-      color: var(--color-secondary);
     }
   }
 </style>
