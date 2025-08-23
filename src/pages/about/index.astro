@@ -7,7 +7,7 @@ import PageSplit from '@layouts/PageSplit.astro';
 import TitleOneLine from '@components/title/TitleOneLine.astro';
 import ImageWithCaption from '@components/embeds/ImageWithCaption.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
-import img from '@images/a-kitchen-in-athens.jpg';
+import img from '@assets/about-me.jpg';
 
 const aboutPage: Page | undefined = await getEntry('pages', 'about');
 if (!aboutPage) {
@@ -23,7 +23,7 @@ const { Content } = await render(aboutPage);
     <ImageWithCaption
       slot="content-left"
       src={img}
-      caption="A view from our kitchen in Athens"
+      caption="A portrait of me in England"
     />
     <MarkdownWrapper slot="content-right" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
