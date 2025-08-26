@@ -1,0 +1,20 @@
+---
+import type { PageTitle } from '@utils/types';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWide from '@layouts/PageWide.astro';
+import TitleWithImage from '@components/title/TitleWithImage.astro';
+import AlbumGrid from '@components/AlbumGrid.astro';
+
+export const pageTitle: PageTitle = {
+  heading: 'Boreal Heights',
+  subheading:
+    'Boreal Heights is a musical project I started in 2013. I experiment with different styles, drawing inspiration from nature. The project is currently on hold.',
+};
+---
+
+<GlobalWrapper pageTitle={pageTitle.heading}>
+  <PageWide>
+    <TitleWithImage slot="title" pageTitle={pageTitle} image="music" />
+    <AlbumGrid slot="content" />
+  </PageWide>
+</GlobalWrapper>

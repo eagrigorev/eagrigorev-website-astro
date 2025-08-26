@@ -16,6 +16,7 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/images/assets/*"],
       "@images/*": ["src/images/posts/*"],
+      "@albums/*": ["src/images/music/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]

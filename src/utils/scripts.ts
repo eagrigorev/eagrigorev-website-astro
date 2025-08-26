@@ -1,7 +1,15 @@
-import type { Post, NavigationItem } from "@utils/types";
+import type { Album, Post, NavigationItem } from "@utils/types";
 
 export const sortPostsDesc = (posts: Post[]): Post[] => {
   return posts.sort((prev: Post, next: Post) =>
+    new Date(prev.data.datePublished) < new Date(next.data.datePublished)
+      ? 1
+      : -1,
+  );
+};
+
+export const sortAlbumsDesc = (posts: Album[]): Album[] => {
+  return posts.sort((prev: Album, next: Album) =>
     new Date(prev.data.datePublished) < new Date(next.data.datePublished)
       ? 1
       : -1,
