@@ -27,3 +27,12 @@ export interface Page {
   rendered?: RenderedContent;
   filePath?: string;
 }
+
+export interface Album {
+  id: string;
+  body?: string;
+  collection: "music";
+  data: InferEntrySchema<"music">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}

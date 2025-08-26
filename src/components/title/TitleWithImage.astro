@@ -2,20 +2,27 @@
 import type { PageTitle } from '@utils/types';
 import { Image } from 'astro:assets';
 import heroImage from '@assets/hero.jpg';
+import musicImage from '@assets/music.jpg';
 
 interface Props {
   pageTitle: PageTitle;
+  image: 'index' | 'music';
 }
 
-const { pageTitle } = Astro.props;
+const { pageTitle, image } = Astro.props;
+
+const imgAlt =
+  image === 'index'
+    ? 'Website hero banner depicting a countryside in Greece'
+    : 'Me and my guitar';
 ---
 
 <section class="title-wrapper">
   <div>
     <Image
       class="image"
-      src={heroImage}
-      alt="Website hero banner depicting a countryside in Greece"
+      src={image === 'index' ? heroImage : musicImage}
+      alt={imgAlt}
       width="1160"
       height="580"
       decoding="async"
