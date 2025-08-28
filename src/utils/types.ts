@@ -36,3 +36,12 @@ export interface Album {
   rendered?: RenderedContent;
   filePath?: string;
 }
+
+export interface Book {
+  id: string;
+  body?: string;
+  collection: "books";
+  data: InferEntrySchema<"books">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}

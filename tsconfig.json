@@ -17,6 +17,7 @@
       "@assets/*": ["src/images/assets/*"],
       "@images/*": ["src/images/posts/*"],
       "@albums/*": ["src/images/music/*"],
+      "@books/*": ["src/images/books/*"],
       "@layouts/*": ["src/layouts/*"],
       "@utils/*": ["src/utils/*"],
       "@styles/*": ["src/styles/*"]
