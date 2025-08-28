@@ -30,7 +30,7 @@
     "@astrojs/vercel": "^8.2.6",
     "@fontsource-variable/hanken-grotesk": "^5.2.6",
     "@vercel/analytics": "^1.5.0",
-    "astro": "^5.13.3",
+    "astro": "^5.13.4",
     "astro-robots-txt": "^1.0.0",
     "typescript": "^5.9.2"
   },
