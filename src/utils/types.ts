@@ -45,3 +45,12 @@ export interface Book {
   rendered?: RenderedContent;
   filePath?: string;
 }
+
+export interface ReadingArchive {
+  id: string;
+  body?: string;
+  collection: "readingArchive";
+  data: InferEntrySchema<"readingArchive">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}

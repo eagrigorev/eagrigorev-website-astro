@@ -67,4 +67,16 @@ const books = defineCollection({
     }),
 });
 
-export const collections = { posts, pages, music, books };
+const readingArchive = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/reading-archive",
+  }),
+  schema: z.object({
+    title: z.string(),
+    slug: z.string(),
+    datePublished: z.coerce.date(),
+  }),
+});
+
+export const collections = { posts, pages, music, books, readingArchive };
