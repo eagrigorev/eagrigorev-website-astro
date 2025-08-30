@@ -1,11 +1,11 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
-import type { PageTitle, Post } from '@utils/types';
+import type { Post, PageTitleOptions } from '@utils/types';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleWithImage from '@components/title/TitleWithImage.astro';
+import PageTitle from '@components/PageTitle.astro';
 import PostList from '@components/PostList.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
@@ -21,17 +21,22 @@ interface Props {
 
 const { page } = Astro.props;
 
-export const pageTitle: PageTitle = {
+const titleOptions: PageTitleOptions = {
   heading:
     'My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music.',
   subheading:
     'I decided to create this journal in order to cope with anxiety, preserve knowledge and memories, and reflect on my life.',
+  image: {
+    isShown: true,
+    name: 'index',
+    alt: 'Website hero banner depicting a countryside in Greece',
+  },
 };
 ---
 
 <GlobalWrapper pageTitle="Home">
   <PageWithSidebar>
-    <TitleWithImage slot="title" pageTitle={pageTitle} image="index" />
+    <PageTitle slot="title" titleOptions={titleOptions} />
     <PostList
       slot="content"
       posts={page.data}

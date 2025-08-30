@@ -1,29 +1,30 @@
 ---
-import type { Page } from '@utils/types';
+import type { Page, PageTitleOptions } from '@utils/types';
 import { customTypography } from '@utils/customTypography';
 import { getEntry, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleOneLine from '@components/title/TitleOneLine.astro';
+import PageTitle from '@components/PageTitle.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 
-const readingJournalPage: Page | undefined = await getEntry(
-  'pages',
-  'reading-journal'
-);
-if (!readingJournalPage) {
+const page: Page | undefined = await getEntry('pages', 'reading-journal');
+if (!page) {
   throw new Error('Could not find requested page');
 }
 
-const { Content } = await render(readingJournalPage);
+const { Content } = await render(page);
+
+const titleOptions: PageTitleOptions = {
+  heading: page.data.title,
+  image: {
+    isShown: false,
+  },
+};
 ---
 
-<GlobalWrapper pageTitle={readingJournalPage.data.title}>
+<GlobalWrapper pageTitle={page.data.title}>
   <PageWithSidebar>
-    <TitleOneLine
-      slot="title"
-      pageTitle={{ heading: readingJournalPage.data.title }}
-    />
+    <PageTitle slot="title" titleOptions={titleOptions} />
     <MarkdownWrapper slot="content" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
     </MarkdownWrapper>

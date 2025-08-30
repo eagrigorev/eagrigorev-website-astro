@@ -1,0 +1,60 @@
+[
+  {
+    "id": 1,
+    "title": "Beyond the Sea of Ghosts",
+    "externalLink": "https://borealheights.bandcamp.com/track/beyond-the-sea-of-ghosts-single",
+    "datePublished": "June 30, 2018",
+    "image": {
+      "url": "@albums/beyond-the-sea-of-ghosts.jpg",
+      "alt": "Beyond the Sea of Ghosts"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Crystal Maze",
+    "externalLink": "https://borealheights.bandcamp.com/album/crystal-maze-ep",
+    "datePublished": "November 10, 2013",
+    "image": { "url": "@albums/crystal-maze.jpg", "alt": "Crystal Maze" }
+  },
+  {
+    "id": 3,
+    "title": "Early Rains",
+    "externalLink": "https://borealheights.bandcamp.com/track/early-rains-single",
+    "datePublished": "August 13, 2019",
+    "image": { "url": "@albums/early-rains.jpg", "alt": "Early Rains" }
+  },
+  {
+    "id": 4,
+    "title": "Far Lands",
+    "externalLink": "https://borealheights.bandcamp.com/track/far-lands-single",
+    "datePublished": "May 9, 2019",
+    "image": { "url": "@albums/far-lands.jpg", "alt": "Far Lands" }
+  },
+  {
+    "id": 5,
+    "title": "Morning Star",
+    "externalLink": "https://borealheights.bandcamp.com/album/morning-star-ep",
+    "datePublished": "August 15, 2015",
+    "image": { "url": "@albums/morning-star.jpg", "alt": "Morning Star" }
+  },
+  {
+    "id": 6,
+    "title": "Under Åpen Himmel",
+    "externalLink": "https://borealheights.bandcamp.com/album/under-pen-himmel-ep",
+    "datePublished": "September 4, 2016",
+    "image": {
+      "url": "@albums/under-apen-himmel.jpg",
+      "alt": "Under Åpen Himmel"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Winds & Windows",
+    "externalLink": "https://borealheights.bandcamp.com/album/winds-windows",
+    "datePublished": "May 28, 2020",
+    "image": {
+      "url": "@albums/winds-and-windows.jpg",
+      "alt": "Winds & Windows"
+    }
+  }
+]

@@ -1,4 +1,10 @@
-import type { Album, Post, Book, NavigationItem } from "@utils/types";
+import type {
+  Album,
+  Post,
+  Book,
+  ReadingArchive,
+  NavigationItem,
+} from "@utils/types";
 
 export const sortPostsDesc = (posts: Post[]): Post[] => {
   return posts.sort((prev: Post, next: Post) =>
@@ -19,6 +25,16 @@ export const sortAlbumsDesc = (albums: Album[]): Album[] => {
 export const sortBooksDesc = (books: Book[]): Book[] => {
   return books.sort((prev: Book, next: Book) =>
     new Date(prev.data.dateRead) < new Date(next.data.dateRead) ? 1 : -1,
+  );
+};
+
+export const sortReadingArchivesDesc = (
+  readingArchives: ReadingArchive[],
+): ReadingArchive[] => {
+  return readingArchives.sort((prev: ReadingArchive, next: ReadingArchive) =>
+    new Date(prev.data.datePublished) < new Date(next.data.datePublished)
+      ? 1
+      : -1,
   );
 };
 

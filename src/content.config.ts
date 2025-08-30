@@ -1,4 +1,4 @@
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 const posts = defineCollection({
@@ -32,11 +32,25 @@ const pages = defineCollection({
   }),
 });
 
-const music = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/music",
-  }),
+// const music = defineCollection({
+//   loader: glob({
+//     pattern: "**/*.{md,mdx}",
+//     base: "./src/content/music",
+//   }),
+//   schema: ({ image }) =>
+//     z.object({
+//       title: z.string(),
+//       externalLink: z.string(),
+//       datePublished: z.string(),
+//       image: z.object({
+//         url: image(),
+//         alt: z.string(),
+//       }),
+//     }),
+// });
+
+const albums = defineCollection({
+  loader: file("src/data/albums.json"),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -50,10 +64,7 @@ const music = defineCollection({
 });
 
 const books = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/books",
-  }),
+  loader: file("src/data/books.json"),
   schema: ({ image }) =>
     z.object({
       title: z.string(),
@@ -79,4 +90,4 @@ const readingArchive = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, music, books, readingArchive };
+export const collections = { posts, pages, albums, books, readingArchive };
