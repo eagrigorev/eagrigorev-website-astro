@@ -1,11 +1,11 @@
 ---
-import type { NavigationItem, PageTitle, Post } from '@utils/types';
+import type { NavigationItem, Post, PageTitleOptions } from '@utils/types';
 import { sortPostsDesc, generateUniqueTags } from '@utils/scripts';
 import type { GetStaticPaths } from 'astro';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
-import TitleOneLine from '@components/title/TitleOneLine.astro';
+import PageTitle from '@components/PageTitle.astro';
 import PostList from '@components/PostList.astro';
 
 export const getStaticPaths = (async () => {
@@ -21,21 +21,24 @@ export const getStaticPaths = (async () => {
 const { tag } = Astro.params;
 const { tagName } = Astro.props;
 
-const title: PageTitle = {
-  heading: `Browsing tag: ${tagName}`,
-};
-
 const allPosts: Post[] = await getCollection('posts');
 const posts: Post[] = tag
   ? sortPostsDesc(
       allPosts.filter((post: Post) => post.data.tags.includes(tagName))
     )
   : [];
+
+const titleOptions: PageTitleOptions = {
+  heading: `Browsing tag: ${tagName}`,
+  image: {
+    isShown: false,
+  },
+};
 ---
 
 <GlobalWrapper pageTitle={`Posts by tag: ${tag}`}>
   <PageWithSidebar>
-    <TitleOneLine slot="title" pageTitle={title} />
+    <PageTitle slot="title" titleOptions={titleOptions} />
     <PostList slot="content" posts={posts} />
   </PageWithSidebar>
 </GlobalWrapper>

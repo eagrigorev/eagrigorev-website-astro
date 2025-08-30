@@ -1,6 +1,7 @@
 ---
 import '@styles/global.scss';
 import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
 import Header from '@components/common/Header.astro';
 import Footer from '@components/common/Footer.astro';
 
@@ -26,6 +27,7 @@ const { pageTitle } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <title>{`${pageTitle} • Evgenii Grigorev`}</title>
     <Analytics />
+    <SpeedInsights />
   </head>
   <body class="container">
     <Header />

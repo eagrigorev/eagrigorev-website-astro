@@ -9,6 +9,13 @@
 			"status": 301
 		},
 		{
+			"src": "^/reading-journal/year$",
+			"headers": {
+				"Location": "/reading-journal"
+			},
+			"status": 301
+		},
+		{
 			"src": "^/tags$",
 			"headers": {
 				"Location": "/"

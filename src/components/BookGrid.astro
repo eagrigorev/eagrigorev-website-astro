@@ -1,0 +1,49 @@
+---
+import type { Book } from '@utils/types';
+import { sortBooksDesc } from '@utils/scripts';
+import { getCollection } from 'astro:content';
+import { Image } from 'astro:assets';
+
+const allBooks: Book[] = await getCollection('books');
+const books = sortBooksDesc(allBooks);
+---
+
+<div class="album-grid-wrapper">
+  {
+    books.map((book: Book) => (
+      <a class="image--default" href={book.data.externalLink}>
+        <Image
+          class="image"
+          src={book.data.image.url}
+          alt={book.data.image.alt}
+          width="185"
+          height="250"
+          decoding="async"
+          loading="eager"
+        />
+      </a>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .album-grid-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-10-20);
+
+    @media only screen and (width <= 800px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @media only screen and (width <= 460px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+</style>

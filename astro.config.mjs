@@ -11,6 +11,7 @@ export default defineConfig({
   redirects: {
     "/posts": "/",
     "/tags": "/",
+    "/reading-journal/year": "/reading-journal",
   },
   adapter: vercel(),
 });

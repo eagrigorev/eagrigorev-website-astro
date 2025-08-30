@@ -1,12 +1,12 @@
 ---
-import type { Post } from '@utils/types';
+import type { Post, PageTitleOptions } from '@utils/types';
 import { customTypography } from '@utils/customTypography';
 import type { GetStaticPaths } from 'astro';
 import { getCollection, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageWithSidebar from '@layouts/PageWithSidebar.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
-import TitleWithMeta from '@components/title/TitleWithMeta.astro';
+import PageTitle from '@components/PageTitle.astro';
 import PostTags from '@components/PostTags.astro';
 
 export const getStaticPaths = (async () => {
@@ -19,11 +19,20 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const titleOptions: PageTitleOptions = {
+  heading: post.data.title,
+  subheading: post.data.excerpt,
+  image: {
+    isShown: false,
+  },
+  datePublished: post.data.datePublished,
+};
 ---
 
 <GlobalWrapper pageTitle={post.data.title}>
   <PageWithSidebar>
-    <TitleWithMeta slot="title" postMeta={post.data} />
+    <PageTitle slot="title" titleOptions={titleOptions} />
     <MarkdownWrapper slot="content" hasBottomSection={true}>
       <Content slot="content" components={customTypography} />
       <PostTags slot="tags" postTags={post.data.tags} />

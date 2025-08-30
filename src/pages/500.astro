@@ -1,12 +1,20 @@
 ---
+import type { PageTitleOptions } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import TitleOneLine from '@components/title/TitleOneLine.astro';
+import PageTitle from '@components/PageTitle.astro';
 import PageWide from '@layouts/PageWide.astro';
+
+const titleOptions: PageTitleOptions = {
+  heading: 'Page 500',
+  image: {
+    isShown: false,
+  },
+};
 ---
 
 <GlobalWrapper pageTitle="500">
   <PageWide>
-    <TitleOneLine slot="title" pageTitle={{ heading: 'Page 500' }} />
+    <PageTitle slot="title" titleOptions={titleOptions} />
     <p slot="content">Internal server error.</p>
   </PageWide>
 </GlobalWrapper>

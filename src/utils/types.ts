@@ -5,9 +5,15 @@ export interface NavigationItem {
   url: string;
 }
 
-export interface PageTitle {
+export interface PageTitleOptions {
   heading: string;
-  subheading?: string | undefined;
+  subheading?: string;
+  image: {
+    isShown: boolean;
+    name?: "index" | "music";
+    alt?: string;
+  };
+  datePublished?: string;
 }
 
 export interface Post {
@@ -31,8 +37,26 @@ export interface Page {
 export interface Album {
   id: string;
   body?: string;
-  collection: "music";
-  data: InferEntrySchema<"music">;
+  collection: "albums";
+  data: InferEntrySchema<"albums">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}
+
+export interface Book {
+  id: string;
+  body?: string;
+  collection: "books";
+  data: InferEntrySchema<"books">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}
+
+export interface ReadingArchive {
+  id: string;
+  body?: string;
+  collection: "readingArchive";
+  data: InferEntrySchema<"readingArchive">;
   rendered?: RenderedContent;
   filePath?: string;
 }
