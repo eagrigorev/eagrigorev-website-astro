@@ -13,15 +13,15 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
+      "@albums/*": ["src/images/music/*"],
+      "@assets/*": ["src/images/assets/*"],
+      "@books/*": ["src/images/books/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
-      "@assets/*": ["src/images/assets/*"],
       "@images/*": ["src/images/posts/*"],
-      "@albums/*": ["src/images/music/*"],
-      "@books/*": ["src/images/books/*"],
       "@layouts/*": ["src/layouts/*"],
-      "@utils/*": ["src/utils/*"],
-      "@styles/*": ["src/styles/*"]
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"]
     }
   }
 }
