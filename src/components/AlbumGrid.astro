@@ -4,7 +4,7 @@ import { sortAlbumsDesc } from '@utils/scripts';
 import { getCollection } from 'astro:content';
 import { Image } from 'astro:assets';
 
-const allAlbums: Album[] = await getCollection('music');
+const allAlbums: Album[] = await getCollection('albums');
 const albums = sortAlbumsDesc(allAlbums);
 ---
 
