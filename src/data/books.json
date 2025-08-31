@@ -6,7 +6,7 @@
     "externalLink": "https://www.goodreads.com/book/show/17800.Dance_Dance_Dance",
     "dateRead": "January 13, 2025",
     "image": {
-      "url": "@books/dance-dance-dance.jpg",
+      "url": "@images/books/dance-dance-dance.jpg",
       "alt": "Dance Dance Dance"
     }
   },
@@ -16,7 +16,7 @@
     "author": "Adele Schlombs",
     "externalLink": "https://www.goodreads.com/book/show/59688330-hiroshige",
     "dateRead": "August 8, 2025",
-    "image": { "url": "@books/hiroshige.jpg", "alt": "Hiroshige" }
+    "image": { "url": "@images/books/hiroshige.jpg", "alt": "Hiroshige" }
   },
   {
     "id": 3,
@@ -25,7 +25,7 @@
     "externalLink": "https://www.goodreads.com/book/show/12448.Look_Homeward_Angel",
     "dateRead": "April 20, 2025",
     "image": {
-      "url": "@books/look-homeward-angel.jpg",
+      "url": "@images/books/look-homeward-angel.jpg",
       "alt": "Look Homeward, Angel"
     }
   },
@@ -36,7 +36,7 @@
     "externalLink": "https://www.goodreads.com/book/show/219130813-lost-in-the-forest",
     "dateRead": "June 25, 2025",
     "image": {
-      "url": "@books/lost-in-the-forest.jpg",
+      "url": "@images/books/lost-in-the-forest.jpg",
       "alt": "Lost in the Forest"
     }
   },
@@ -46,7 +46,10 @@
     "author": "Haruki Murakami",
     "externalLink": "https://www.goodreads.com/book/show/11297.Norwegian_Wood",
     "dateRead": "June 7, 2025",
-    "image": { "url": "@books/norwegian-wood.jpg", "alt": "Norwegian Wood" }
+    "image": {
+      "url": "@images/books/norwegian-wood.jpg",
+      "alt": "Norwegian Wood"
+    }
   },
   {
     "id": 6,
@@ -55,7 +58,7 @@
     "externalLink": "https://www.goodreads.com/book/show/209192695-the-city-and-its-uncertain-walls",
     "dateRead": "March 15, 2025",
     "image": {
-      "url": "@books/the-city-and-its-uncertain-walls.jpg",
+      "url": "@images/books/the-city-and-its-uncertain-walls.jpg",
       "alt": "The City and Its Uncertain Walls"
     }
   },
@@ -66,7 +69,7 @@
     "externalLink": "https://www.goodreads.com/book/show/87280.Too_Loud_a_Solitude",
     "dateRead": "August 16, 2025",
     "image": {
-      "url": "@books/too-loud-a-solitude.jpg",
+      "url": "@images/books/too-loud-a-solitude.jpg",
       "alt": "Too Loud a Solitude"
     }
   },
@@ -76,6 +79,6 @@
     "author": "Jack Lohmann",
     "externalLink": "https://www.goodreads.com/book/show/214986265-white-light",
     "dateRead": "July 26, 2025",
-    "image": { "url": "@books/white-light.jpg", "alt": "White Light" }
+    "image": { "url": "@images/books/white-light.jpg", "alt": "White Light" }
   }
 ]
