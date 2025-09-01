@@ -73,4 +73,29 @@ const readingArchive = defineCollection({
   }),
 });
 
-export const collections = { posts, pages, albums, books, readingArchive };
+const illustrations = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/illustrations",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      datePublished: z.string(),
+      excerpt: z.string(),
+      image: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+    }),
+});
+
+export const collections = {
+  posts,
+  pages,
+  albums,
+  books,
+  readingArchive,
+  illustrations,
+};
