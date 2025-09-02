@@ -2,6 +2,13 @@
 	"version": 3,
 	"routes": [
 		{
+			"src": "^/illustrations/art$",
+			"headers": {
+				"Location": "/illustrations"
+			},
+			"status": 301
+		},
+		{
 			"src": "^/posts$",
 			"headers": {
 				"Location": "/"

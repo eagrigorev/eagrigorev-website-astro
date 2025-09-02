@@ -12,6 +12,7 @@ export default defineConfig({
     "/posts": "/",
     "/tags": "/",
     "/reading-journal/year": "/reading-journal",
+    "/illustrations/art": "/illustrations",
   },
   adapter: vercel(),
 });

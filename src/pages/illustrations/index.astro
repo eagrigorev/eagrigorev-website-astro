@@ -1,0 +1,25 @@
+---
+import type { PageTitleOptions } from '@utils/types';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWide from '@layouts/PageWide.astro';
+import PageTitle from '@components/PageTitle.astro';
+import IllustrationGrid from '@components/IllustrationGrid.astro';
+
+const titleOptions: PageTitleOptions = {
+  heading: 'Illustrations',
+  subheading:
+    'Boreal Heights is a musical project I started in 2013. I experiment with different styles, drawing inspiration from nature. The project is currently on hold.',
+  image: {
+    isShown: true,
+    name: 'music',
+    alt: 'Me and my guitar',
+  },
+};
+---
+
+<GlobalWrapper pageTitle={titleOptions.heading}>
+  <PageWide>
+    <PageTitle slot="title" titleOptions={titleOptions} />
+    <IllustrationGrid slot="content" />
+  </PageWide>
+</GlobalWrapper>

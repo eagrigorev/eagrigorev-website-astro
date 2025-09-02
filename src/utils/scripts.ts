@@ -3,6 +3,7 @@ import type {
   Post,
   Book,
   ReadingArchive,
+  Illustration,
   NavigationItem,
 } from "@utils/types";
 
@@ -32,6 +33,16 @@ export const sortReadingArchivesDesc = (
   readingArchives: ReadingArchive[],
 ): ReadingArchive[] => {
   return readingArchives.sort((prev: ReadingArchive, next: ReadingArchive) =>
+    new Date(prev.data.datePublished) < new Date(next.data.datePublished)
+      ? 1
+      : -1,
+  );
+};
+
+export const sortIllustrationsDesc = (
+  readingArchives: Illustration[],
+): Illustration[] => {
+  return readingArchives.sort((prev: Illustration, next: Illustration) =>
     new Date(prev.data.datePublished) < new Date(next.data.datePublished)
       ? 1
       : -1,
