@@ -207,5 +207,82 @@
       "url": "@images/illustrations/2021/12.jpg",
       "alt": "Pale Views VI"
     }
+  },
+  {
+    "id": 20,
+    "title": "The Undead Asylum",
+    "slug": "the-undead-asylum",
+    "datePublished": "May 11, 2022",
+    "description": "Based on the Dark Souls game series",
+    "image": {
+      "url": "@images/illustrations/2022/01.jpg",
+      "alt": "The Undead Asylum"
+    }
+  },
+  {
+    "id": 21,
+    "title": "Tales from Earthsea",
+    "slug": "tales-from-earthsea",
+    "datePublished": "May 21, 2022",
+    "description": "Based on 'Tales from Earthsea' (2006) by Gorō Miyazaki and Studio Ghibli",
+    "image": {
+      "url": "@images/illustrations/2022/02.jpg",
+      "alt": "Tales from Earthsea"
+    }
+  },
+  {
+    "id": 22,
+    "title": "The Eurasian Tree Sparrow",
+    "slug": "the-eurasian-tree-sparrow",
+    "datePublished": "June 30, 2022",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2022/03.jpg",
+      "alt": "The Eurasian Tree Sparrow"
+    }
+  },
+  {
+    "id": 23,
+    "title": "The Frog",
+    "slug": "the-frog",
+    "datePublished": "July 16, 2022",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2022/04.jpg",
+      "alt": "The Frog"
+    }
+  },
+  {
+    "id": 24,
+    "title": "The Whooping Crane",
+    "slug": "the-whooping-crane",
+    "datePublished": "July 20, 2022",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2022/05.jpg",
+      "alt": "The Whooping Crane"
+    }
+  },
+  {
+    "id": 25,
+    "title": "Dreadwolf",
+    "slug": "dreadwolf",
+    "datePublished": "August 7, 2022",
+    "description": "Based on Dragon Age media franchise",
+    "image": {
+      "url": "@images/illustrations/2022/06.jpg",
+      "alt": "Dreadwolf"
+    }
+  },
+  {
+    "id": 26,
+    "title": "Solas",
+    "slug": "solas",
+    "datePublished": "August 14, 2022",
+    "description": "Based on Dragon Age media franchise",
+    "image": {
+      "url": "@images/illustrations/2022/07.jpg",
+      "alt": "Solas"
+    }
   }
 ]
