@@ -284,5 +284,115 @@
       "url": "@images/illustrations/2022/07.jpg",
       "alt": "Solas"
     }
+  },
+  {
+    "id": 27,
+    "title": "Zojo-ji Temple in Shiba",
+    "slug": "zojo-ji-temple-in-shiba",
+    "datePublished": "June 15, 2023",
+    "description": "I didn't draw since the last August, and this one was hard to begin. I'm glad that I started doing pixel arts again. Kawase Hasui is one of my favourite Japanese artists. All his woodblock prints are serene.",
+    "image": {
+      "url": "@images/illustrations/2023/01.jpg",
+      "alt": "Zojo-ji Temple in Shiba"
+    }
+  },
+  {
+    "id": 28,
+    "title": "The Procession",
+    "slug": "the-procession",
+    "datePublished": "September 4, 2023",
+    "description": "Into a Vanished Age I",
+    "image": {
+      "url": "@images/illustrations/2023/02.jpg",
+      "alt": "The Procession"
+    }
+  },
+  {
+    "id": 29,
+    "title": "Krog of the Boreal Marshlands",
+    "slug": "krog-from-the-boreal-marshlands",
+    "datePublished": "September 10, 2023",
+    "description": "Into a Vanished Age II",
+    "image": {
+      "url": "@images/illustrations/2023/03.jpg",
+      "alt": "Krog of the Boreal Marshlands"
+    }
+  },
+  {
+    "id": 30,
+    "title": "The Jackalope King",
+    "slug": "the-jackalope-king",
+    "datePublished": "September 13, 2023",
+    "description": "Into a Vanished Age III",
+    "image": {
+      "url": "@images/illustrations/2023/04.jpg",
+      "alt": "The Jackalope King"
+    }
+  },
+  {
+    "id": 31,
+    "title": "Otter Pilgrims",
+    "slug": "otter-pilgrims",
+    "datePublished": "September 21, 2023",
+    "description": "Into a Vanished Age IV",
+    "image": {
+      "url": "@images/illustrations/2023/05.jpg",
+      "alt": "Otter Pilgrims"
+    }
+  },
+  {
+    "id": 32,
+    "title": "The Crane Scout",
+    "slug": "the-crane-scout",
+    "datePublished": "September 23, 2023",
+    "description": "Into a Vanished Age V",
+    "image": {
+      "url": "@images/illustrations/2023/06.jpg",
+      "alt": "The Crane Scout"
+    }
+  },
+  {
+    "id": 33,
+    "title": "Cuckoo in Summer Rain over Isozaki",
+    "slug": "cuckoo-in-summer-rain-over-isozaki",
+    "datePublished": "January 8, 2025",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2025/01.jpg",
+      "alt": "Cuckoo in Summer Rain over Isozaki"
+    }
+  },
+  {
+    "id": 34,
+    "title": "American Gothic",
+    "slug": "american-gothic",
+    "datePublished": "January 17, 2025",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2025/02.jpg",
+      "alt": "American Gothic"
+    }
+  },
+  {
+    "id": 35,
+    "title": "A New Hand Touches the Beacon",
+    "slug": "a-new-hand-touches-the-beacon",
+    "datePublished": "January 21, 2025",
+    "description": "Based on TES V: Skyrim",
+    "image": {
+      "url": "@images/illustrations/2025/03.jpg",
+      "alt": "A New Hand Touches the Beacon"
+    }
+  },
+  {
+    "id": 36,
+    "title": "The Mushroom Frog",
+    "slug": "the-mushroom-frog",
+    "datePublished": "February 5, 2025",
+    "description": "Reference study",
+    "image": {
+      "url": "@images/illustrations/2025/04.jpg",
+      "alt": "The Mushroom Frog"
+    }
   }
 ]
