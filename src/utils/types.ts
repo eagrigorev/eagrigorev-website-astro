@@ -60,3 +60,12 @@ export interface ReadingArchive {
   rendered?: RenderedContent;
   filePath?: string;
 }
+
+export interface Illustration {
+  id: string;
+  body?: string;
+  collection: "illustrations";
+  data: InferEntrySchema<"illustrations">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}

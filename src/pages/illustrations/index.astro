@@ -1,0 +1,22 @@
+---
+import type { PageTitleOptions } from '@utils/types';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageWide from '@layouts/PageWide.astro';
+import PageTitle from '@components/PageTitle.astro';
+import IllustrationGrid from '@components/IllustrationGrid.astro';
+
+const titleOptions: PageTitleOptions = {
+  heading: 'Illustrations',
+  subheading: 'Selected artworks.',
+  image: {
+    isShown: false,
+  },
+};
+---
+
+<GlobalWrapper pageTitle={titleOptions.heading}>
+  <PageWide>
+    <PageTitle slot="title" titleOptions={titleOptions} />
+    <IllustrationGrid slot="content" />
+  </PageWide>
+</GlobalWrapper>

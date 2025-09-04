@@ -28,7 +28,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     slug: z.string(),
-    datePublished: z.coerce.date(),
+    datePublished: z.string(),
   }),
 });
 
@@ -69,8 +69,30 @@ const readingArchive = defineCollection({
   schema: z.object({
     title: z.string(),
     slug: z.string(),
-    datePublished: z.coerce.date(),
+    datePublished: z.string(),
   }),
 });
 
-export const collections = { posts, pages, albums, books, readingArchive };
+const illustrations = defineCollection({
+  loader: file("src/data/illustrations.json"),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      datePublished: z.string(),
+      description: z.string(),
+      image: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+    }),
+});
+
+export const collections = {
+  posts,
+  pages,
+  albums,
+  books,
+  readingArchive,
+  illustrations,
+};

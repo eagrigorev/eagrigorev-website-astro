@@ -1,0 +1,120 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  illustrationMeta: InferEntrySchema<'illustrations'>;
+}
+
+const { illustrationMeta }: Props = Astro.props;
+---
+
+<article class="illustration-wide-wrapper">
+  <div class="image-wrapper">
+    <Image
+      class="image"
+      src={illustrationMeta.image.url}
+      alt={illustrationMeta.image.alt}
+      width="800"
+      height="800"
+      decoding="async"
+      loading="eager"
+    />
+  </div>
+  <div class="description-wrapper">
+    <div class="close-wrapper">
+      <a class="close link--secondary font-hgv-uppercase" href="/illustrations">
+        Close
+      </a>
+    </div>
+    <div class="image-description">
+      <header>
+        <h3 class="title font-hgv-uppercase">{illustrationMeta.title}</h3>
+      </header>
+      <div class="info">
+        <p class="content font-hgv-light">
+          {illustrationMeta.description}
+        </p>
+        <p class="date font-hgv-regular">{illustrationMeta.datePublished}</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .illustration-wide-wrapper {
+    display: flex;
+    // align-items: flex-end;
+    gap: var(--space-30-60);
+    padding-bottom: var(--space-30-40);
+    border-bottom: var(--color-bg-secondary) solid 1px;
+
+    @media only screen and (width <= 800px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .image-wrapper {
+    max-width: 800px;
+    font-size: var(--font-size-m);
+
+    @media only screen and (width <= 800px) {
+      max-width: none;
+    }
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .description-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 300px;
+    min-width: 180px;
+
+    @media only screen and (width <= 800px) {
+      width: 100%;
+      max-width: none;
+      flex-direction: column-reverse;
+      gap: var(--space-30-40);
+    }
+  }
+
+  .image-description {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+    line-height: 165%;
+  }
+
+  .content {
+    font-size: var(--font-size-s);
+  }
+
+  .date {
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+  }
+
+  .close-wrapper {
+    display: flex;
+    justify-content: flex-end;
+
+    @media only screen and (width <= 800px) {
+      justify-content: flex-start;
+    }
+  }
+
+  .close {
+    font-size: var(--font-size-2xs);
+  }
+</style>

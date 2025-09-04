@@ -13,12 +13,9 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
-      "@albums/*": ["src/images/music/*"],
-      "@assets/*": ["src/images/assets/*"],
-      "@books/*": ["src/images/books/*"],
       "@components/*": ["src/components/*"],
       "@data/*": ["src/data/*"],
-      "@images/*": ["src/images/posts/*"],
+      "@images/*": ["src/images/*"],
       "@layouts/*": ["src/layouts/*"],
       "@styles/*": ["src/styles/*"],
       "@utils/*": ["src/utils/*"]
