@@ -18,9 +18,12 @@ const { Content } = await render(page);
 
 const titleOptions: PageTitleOptions = {
   heading: page.data.title,
+  subheading:
+    'I am a frontend software developer at T-Digital by Deutsche Telekom in Thessaloniki, Greece.',
   image: {
     isShown: false,
   },
+  datePublished: page.data.datePublished,
 };
 ---
 

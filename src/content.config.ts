@@ -28,7 +28,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     slug: z.string(),
-    datePublished: z.coerce.date(),
+    datePublished: z.string(),
   }),
 });
 
@@ -69,7 +69,7 @@ const readingArchive = defineCollection({
   schema: z.object({
     title: z.string(),
     slug: z.string(),
-    datePublished: z.coerce.date(),
+    datePublished: z.string(),
   }),
 });
 
