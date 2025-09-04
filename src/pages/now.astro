@@ -3,7 +3,7 @@ import type { Page, PageTitleOptions } from '@utils/types';
 import { customTypography } from '@utils/customTypography';
 import { getEntry, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageWithSidebar from '@layouts/PageWithSidebar.astro';
+import PageWide from '@layouts/PageWide.astro';
 import PageTitle from '@components/PageTitle.astro';
 import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
 
@@ -23,10 +23,10 @@ const titleOptions: PageTitleOptions = {
 ---
 
 <GlobalWrapper pageTitle={page.data.title}>
-  <PageWithSidebar>
+  <PageWide>
     <PageTitle slot="title" titleOptions={titleOptions} />
     <MarkdownWrapper slot="content" hasBottomSection={false}>
       <Content slot="content" components={customTypography} />
     </MarkdownWrapper>
-  </PageWithSidebar>
+  </PageWide>
 </GlobalWrapper>
