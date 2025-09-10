@@ -1,6 +1,7 @@
 {
   "extends": "astro/tsconfigs/base",
-  "include": [".astro/types.d.ts", "**/*"],
+  // REMOVE TEMP LATER
+  "include": [".astro/types.d.ts", "**/*", ".astro/TEMP"],
   "exclude": ["dist"],
   "compilerOptions": {
     "plugins": [
