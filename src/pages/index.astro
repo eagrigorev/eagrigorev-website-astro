@@ -1,7 +1,7 @@
 ---
 import type { PageTitleOptions } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/PageTitle.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
 
 const pageTitleOptions: PageTitleOptions = {
   heading: 'I am a frontend software developer based in Thessaloniki, Greece.',
@@ -16,11 +16,11 @@ const pageTitleOptions: PageTitleOptions = {
   meta: {
     isVisible: true,
     datePublished: 'November 14, 1992',
-    category: 'journal',
+    category: 'Journal',
   },
 };
 ---
 
 <GlobalWrapper pageTitle="Home"
-  ><PageTitle pageTitleOptions={pageTitleOptions} /></GlobalWrapper
+  ><PageTitle pageTitle={pageTitleOptions} /></GlobalWrapper
 >

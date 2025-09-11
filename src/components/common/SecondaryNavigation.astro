@@ -11,7 +11,7 @@ const { title, navigationItems }: Props = Astro.props;
 
 <div class="post-tags-wrapper">
   <header>
-    <h3 class="title font-hgv--uppercase">{title}</h3>
+    <h3 class="title font-hgv--uppercase">{title}:</h3>
   </header>
   <ul class="items" role="list">
     <li>
@@ -21,7 +21,7 @@ const { title, navigationItems }: Props = Astro.props;
       navigationItems.map((item: NavigationItem) => (
         <li>
           <a class="item font-hgv--regular" href={item.url}>
-            {item.title}
+            {item.title.toLowerCase()}
           </a>
         </li>
       ))

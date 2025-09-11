@@ -1,0 +1,43 @@
+---
+interface Props {
+  heading: string;
+  subheading: string;
+}
+
+const { heading, subheading }: Props = Astro.props;
+---
+
+<div class="title-wrapper">
+  <h1 class="heading font-hgv--regular">
+    {heading}
+  </h1>
+  <h2 class="subheading font-hgv--light">
+    {subheading}
+  </h2>
+</div>
+
+<style lang="scss">
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+  }
+
+  .heading {
+    max-width: 800px;
+    font-size: var(--font-size-2xl);
+
+    @media only screen and (width <= 800px) {
+      max-width: 100%;
+    }
+  }
+
+  .subheading {
+    max-width: 640px;
+    font-size: var(--font-size-m);
+
+    @media only screen and (width <= 800px) {
+      max-width: 100%;
+    }
+  }
+</style>
