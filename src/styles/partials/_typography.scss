@@ -38,6 +38,17 @@
       color: var(--color-secondary);
     }
   }
+
+  &--secondary {
+    text-decoration: none;
+    transition: color 0.3s;
+    color: var(--color-secondary);
+
+    &:hover,
+    &:focus {
+      color: var(--color-primary);
+    }
+  }
 }
 
 .button {
@@ -51,6 +62,17 @@
     &:focus {
       cursor: pointer;
       color: var(--color-secondary);
+    }
+  }
+}
+
+.image {
+  &--default {
+    transition: opacity 0.3s;
+
+    &:hover,
+    &:focus {
+      opacity: 0.8;
     }
   }
 }

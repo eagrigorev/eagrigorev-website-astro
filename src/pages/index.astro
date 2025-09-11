@@ -2,6 +2,7 @@
 import type { PageTitleOptions } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
+import PostGrid from '@components/feed/PostGrid.astro';
 
 const pageTitleOptions: PageTitleOptions = {
   heading: 'I am a frontend software developer based in Thessaloniki, Greece.',
@@ -14,13 +15,14 @@ const pageTitleOptions: PageTitleOptions = {
     areVisible: true,
   },
   meta: {
-    isVisible: true,
+    isVisible: false,
     datePublished: 'November 14, 1992',
     category: 'Journal',
   },
 };
 ---
 
-<GlobalWrapper pageTitle="Home"
-  ><PageTitle pageTitle={pageTitleOptions} /></GlobalWrapper
->
+<GlobalWrapper pageTitle="Home">
+  <PageTitle pageTitle={pageTitleOptions} />
+  <PostGrid />
+</GlobalWrapper>

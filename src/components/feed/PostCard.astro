@@ -1,0 +1,60 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { Image } from 'astro:assets';
+import testImage from '@images/assets/test.jpg';
+---
+
+<article class="post-card-wrapper">
+  <a href="/" tabindex={-1}>
+    <Image
+      class="image image--default"
+      src={testImage}
+      alt="TEST"
+      width="300"
+      height="400"
+      decoding="async"
+      loading="eager"
+      layout="constrained"
+    />
+  </a>
+  <div>
+    <h2>
+      <a class="title font-hgv--regular link--primary" href="/">
+        Exploring the Pacific Northwest
+      </a>
+    </h2>
+    <div class="meta-wrapper">
+      <p class="date font-hgv--regular">November 14, 1987</p>
+      <a class="font-hgv--regular link--secondary" href="/">Illustrations</a>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .post-card-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 3/4;
+  }
+
+  .title {
+    font-size: var(--font-size-s);
+  }
+
+  .meta-wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+    font-size: var(--font-size-xs);
+  }
+
+  .date {
+    color: var(--color-secondary);
+  }
+</style>
