@@ -1,5 +1,26 @@
 ---
+import type { PageTitleOptions } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/PageTitle.astro';
+
+const pageTitleOptions: PageTitleOptions = {
+  heading: 'I am a frontend software developer based in Thessaloniki, Greece.',
+  subheading:
+    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
+  image: {
+    isVisible: true,
+  },
+  categories: {
+    areVisible: true,
+  },
+  meta: {
+    isVisible: true,
+    datePublished: 'November 14, 1992',
+    category: 'journal',
+  },
+};
 ---
 
-<GlobalWrapper pageTitle="Home"> TEST </GlobalWrapper>
+<GlobalWrapper pageTitle="Home"
+  ><PageTitle pageTitleOptions={pageTitleOptions} /></GlobalWrapper
+>

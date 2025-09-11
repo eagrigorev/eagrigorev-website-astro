@@ -1,0 +1,127 @@
+---
+import type { PageTitleOptions } from '@utils/types';
+import categories from '@data/categories.json';
+import { Image } from 'astro:assets';
+import pageTitleImage from '@images/assets/test.jpg';
+import SecondaryNavigation from '@components/SecondaryNavigation.astro';
+
+interface Props {
+  pageTitleOptions: PageTitleOptions;
+}
+
+const { pageTitleOptions }: Props = Astro.props;
+---
+
+<section class="page-title-wrapper">
+  {
+    pageTitleOptions.image.isVisible ? (
+      <Image
+        class="image"
+        src={pageTitleImage}
+        alt="PAGE TITLE IMAGE DESCRIPTION"
+        width="1260"
+        height="450"
+        decoding="async"
+        loading="eager"
+      />
+    ) : null
+  }
+  <div class="title-wrapper">
+    <div class="title">
+      <h1 class="title__heading font-hgv--regular">
+        {pageTitleOptions.heading}
+      </h1>
+      <h2 class="title__subheading font-hgv--light">
+        {pageTitleOptions.subheading}
+      </h2>
+    </div>
+    {
+      pageTitleOptions.categories.areVisible ? (
+        <SecondaryNavigation title="Categories:" navigationItems={categories} />
+      ) : null
+    }
+    {
+      pageTitleOptions.meta.isVisible && pageTitleOptions.meta.datePublished ? (
+        <div class="meta">
+          <p class="meta__item font-hgv--uppercase">
+            {pageTitleOptions.meta.datePublished}
+          </p>
+          {pageTitleOptions.meta.category ? (
+            <a
+              class="meta__item font-hgv--uppercase link--primary"
+              href={`/categories/${pageTitleOptions.meta.category}`}
+            >
+              {pageTitleOptions.meta.category}
+            </a>
+          ) : null}
+        </div>
+      ) : null
+    }
+  </div>
+</section>
+
+<style lang="scss">
+  .page-title-wrapper {
+    padding-bottom: var(--space-30-60);
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: auto;
+  }
+
+  .title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-top: var(--space-30-80);
+  }
+
+  .title {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+
+    &__heading {
+      max-width: 800px;
+      font-size: var(--font-size-2xl);
+
+      @media only screen and (width <= 800px) {
+        max-width: 100%;
+      }
+    }
+
+    &__subheading {
+      max-width: 640px;
+      font-size: var(--font-size-m);
+
+      @media only screen and (width <= 800px) {
+        max-width: 100%;
+      }
+    }
+  }
+
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-30-40);
+      font-size: var(--font-size-xs);
+
+      &:not(:first-child) {
+        &::before {
+          display: block;
+          content: '';
+          width: var(--space-30-50);
+          height: 1px;
+          background: var(--color-bg-secondary-1);
+        }
+      }
+    }
+  }
+</style>

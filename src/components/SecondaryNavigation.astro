@@ -1,0 +1,70 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+interface Props {
+  title: string;
+  navigationItems: NavigationItem[];
+}
+
+const { title, navigationItems }: Props = Astro.props;
+---
+
+<div class="post-tags-wrapper">
+  <header>
+    <h3 class="title font-hgv--uppercase">{title}</h3>
+  </header>
+  <ul class="items" role="list">
+    <li>
+      <a class="item font-hgv--regular" href="/"> see all </a>
+    </li>
+    {
+      navigationItems.map((item: NavigationItem) => (
+        <li>
+          <a class="item font-hgv--regular" href={item.url}>
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .post-tags-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-15-20);
+
+    @media only screen and (width <= 800px) {
+      flex-direction: column;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .item {
+    display: block;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 100%;
+    padding: 5px 10px;
+    border: var(--color-bg-secondary-1) solid 1px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+</style>
