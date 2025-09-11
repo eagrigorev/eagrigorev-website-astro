@@ -26,3 +26,31 @@
     letter-spacing: 0.4em;
   }
 }
+
+.link {
+  &--primary {
+    text-decoration: none;
+    transition: color 0.3s;
+    color: var(--color-primary);
+
+    &:hover,
+    &:focus {
+      color: var(--color-secondary);
+    }
+  }
+}
+
+.button {
+  &--primary {
+    border: none;
+    background: none;
+    color: var(--color-primary);
+    transition: color 0.3s;
+
+    &:hover,
+    &:focus {
+      cursor: pointer;
+      color: var(--color-secondary);
+    }
+  }
+}

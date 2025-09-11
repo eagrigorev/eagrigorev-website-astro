@@ -1,0 +1,42 @@
+---
+import DropdownMenu from '@components/DropdownMenu.astro';
+---
+
+<nav class="header-wrapper">
+  <div class="header">
+    <a class="link font-hgv--uppercase link--primary" href="/">Eagrigorev.com</a
+    >
+    <button id="menu-button" class="link font-hgv--uppercase button--primary">
+      Menu
+    </button>
+  </div>
+  <div id="dropdown-menu" class="hidden">
+    <DropdownMenu />
+  </div>
+</nav>
+
+<script>
+  document.querySelector('#menu-button')?.addEventListener('click', () => {
+    document.querySelector('#dropdown-menu')?.classList.toggle('hidden');
+  });
+</script>
+
+<style lang="scss">
+  .header-wrapper {
+    padding: var(--space-30-40) 0;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .link {
+    font-size: var(--font-size-xs);
+  }
+
+  .hidden {
+    display: none;
+  }
+</style>
