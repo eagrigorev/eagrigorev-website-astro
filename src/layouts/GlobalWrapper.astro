@@ -3,6 +3,7 @@ import '@styles/global.scss';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Header from '@components/header/Header.astro';
+import Footer from '@components/footer/Footer.astro';
 
 interface Props {
   pageTitle: string;
@@ -28,9 +29,11 @@ const { pageTitle } = Astro.props;
     <Analytics />
     <SpeedInsights />
   </head>
-  <body class="container">
-    <Header />
-    <slot />
-    <!-- <Footer /> -->
+  <body>
+    <div class="container">
+      <Header />
+      <slot />
+    </div>
+    <Footer />
   </body>
 </html>

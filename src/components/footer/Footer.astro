@@ -1,0 +1,24 @@
+---
+import FooterTop from './FooterTop.astro';
+import FooterBottom from './FooterBottom.astro';
+---
+
+<footer class="footer-wrapper">
+  <div class="background-area">
+    <div class="container">
+      <FooterTop />
+      <FooterBottom />
+    </div>
+  </div>
+</footer>
+
+<style lang="scss">
+  .footer-wrapper {
+    padding-top: var(--space-30-80);
+  }
+
+  .background-area {
+    background-color: var(--color-bg-secondary-2);
+    border-top: var(--color-bg-secondary-1) solid 1px;
+  }
+</style>
