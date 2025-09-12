@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import menuIcon from '@images/assets/icons/icons8-menu.svg';
 import closeIcon from '@images/assets/icons/icons8-close.svg';
+import DropdownMenu from './DropdownMenu.astro';
 ---
 
 <nav class="header">
@@ -35,7 +36,9 @@ import closeIcon from '@images/assets/icons/icons8-close.svg';
       </button>
     </div>
   </div>
-  <div id="dropdown-menu" class="hidden">MENU GOES HERE</div>
+  <div id="dropdown-menu" class="hidden">
+    <DropdownMenu />
+  </div>
 </nav>
 
 <script>

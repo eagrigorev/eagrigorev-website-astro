@@ -1,0 +1,49 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+interface Props {
+  sectionTitle: string;
+  navigationItems: NavigationItem[];
+}
+
+const { sectionTitle, navigationItems }: Props = Astro.props;
+---
+
+<div class="menu-section">
+  <p class="font-hg-uppercase section-title">{sectionTitle}</p>
+  <ul class="items" role="list">
+    {
+      navigationItems.map((item: NavigationItem) => (
+        <li>
+          <a class="font-hg-regular link-primary item" href={item.url}>
+            {item.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-15-20);
+  }
+
+  .section-title {
+    font-size: var(--font-size-xs);
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+    flex-wrap: wrap;
+    row-gap: var(--space-15-20);
+  }
+
+  .item {
+    font-size: var(--font-size-s);
+  }
+</style>
