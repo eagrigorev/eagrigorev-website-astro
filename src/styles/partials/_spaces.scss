@@ -1,4 +1,7 @@
 :root {
+  --space-250-450: clamp(15.625rem, 11.0332rem + 20.4082vw, 28.125rem);
+  --space-60-80: clamp(3.75rem, 3.2908rem + 2.0408vw, 5rem);
+  --space-40-50: clamp(2.5rem, 2.2704rem + 1.0204vw, 3.125rem);
   --space-30-40: clamp(1.875rem, 1.6454rem + 1.0204vw, 2.5rem);
   --space-15-20: clamp(0.9375rem, 0.8227rem + 0.5102vw, 1.25rem);
 }

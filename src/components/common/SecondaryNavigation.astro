@@ -1,0 +1,71 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+interface Props {
+  title: string;
+  navigationItems: NavigationItem[];
+}
+
+const { title, navigationItems }: Props = Astro.props;
+---
+
+<div class="secondary-navigation">
+  <h3 class="font-hg-uppercase title">{title}:</h3>
+  <ul class="items" role="list">
+    <li>
+      <a class="font-hg-regular item" href="/"> see all </a>
+    </li>
+    {
+      navigationItems.map((item: NavigationItem) => (
+        <li>
+          <a class="font-hg-regular item" href={item.url}>
+            {item.title.toLowerCase()}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .secondary-navigation {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-15-20);
+    row-gap: var(--space-15-20);
+
+    @media only screen and (width <= 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-xs);
+  }
+
+  .items {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-15-20);
+  }
+
+  .item {
+    display: block;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-size: var(--font-size-s);
+    line-height: 100%;
+    padding: 7px 12px;
+    border: var(--color-bg-secondary-1) solid 1px;
+    border-radius: 20px;
+    transition: border-color 0.3s;
+
+    &:hover,
+    &:focus {
+      border-color: var(--color-primary);
+    }
+  }
+</style>

@@ -1,0 +1,59 @@
+---
+interface Props {
+  datePublished: string;
+  category?: string;
+}
+
+const { datePublished, category }: Props = Astro.props;
+---
+
+<div class="meta">
+  <p class="font-hg-uppercase item">
+    {datePublished}
+  </p>
+  {
+    category ? (
+      <a
+        class="item font-hg-uppercase link-primary"
+        href={`/categories/${category.toLowerCase()}`}
+      >
+        {category}
+      </a>
+    ) : null
+  }
+</div>
+
+<style lang="scss">
+  .meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+
+    @media only screen and (width <= 480px) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var(--space-15-20);
+    }
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-30-40);
+    font-size: var(--font-size-xs);
+
+    &:not(:last-child) {
+      &::after {
+        display: block;
+        content: '';
+        width: var(--space-40-50);
+        height: 1px;
+        background: var(--color-bg-secondary-1);
+
+        @media only screen and (width <= 480px) {
+          display: none;
+        }
+      }
+    }
+  }
+</style>

@@ -1,6 +1,21 @@
 ---
+import type { Title } from '@utils/types';
 import '@styles/global.scss';
 import Header from '@components/header/Header.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+
+const pageTitle: Title = {
+  heading: `I'm a frontend software developer based in Thessaloniki, Greece.`,
+  subheading:
+    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
+  hasImage: true,
+  hasCategories: true,
+  hasMeta: true,
+  meta: {
+    datePublished: 'November 14, 1992',
+    category: 'Journal',
+  },
+};
 ---
 
 <html lang="en">
@@ -21,7 +36,7 @@ import Header from '@components/header/Header.astro';
   <body class="container">
     <div>
       <Header />
-      Test
+      <PageTitle pageTitle={pageTitle} />
     </div>
   </body>
 </html>
