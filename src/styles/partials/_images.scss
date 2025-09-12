@@ -1,0 +1,8 @@
+.image-primary {
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+}

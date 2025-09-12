@@ -1,0 +1,12 @@
+.button-primary {
+  border: none;
+  background: none;
+  color: var(--color-primary);
+  transition: color 0.3s;
+
+  &:hover,
+  &:focus {
+    cursor: pointer;
+    color: var(--color-secondary);
+  }
+}

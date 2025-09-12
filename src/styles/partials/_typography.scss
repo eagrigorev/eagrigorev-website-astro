@@ -1,78 +1,10 @@
 @use "@fontsource-variable/hanken-grotesk";
 
-.font-hgv {
-  &--regular {
-    font-family: "Hanken Grotesk Variable", sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 165%;
-    letter-spacing: 0.015em;
-  }
-
-  &--light {
-    font-family: "Hanken Grotesk Variable", sans-serif;
-    font-style: normal;
-    font-weight: 300;
-    line-height: 165%;
-    letter-spacing: 0.015em;
-  }
-
-  &--uppercase {
-    font-family: "Hanken Grotesk Variable", sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    text-transform: uppercase;
-    line-height: 100%;
-    letter-spacing: 0.4em;
-  }
-}
-
-.link {
-  &--primary {
-    text-decoration: none;
-    transition: color 0.3s;
-    color: var(--color-primary);
-
-    &:hover,
-    &:focus {
-      color: var(--color-secondary);
-    }
-  }
-
-  &--secondary {
-    text-decoration: none;
-    transition: color 0.3s;
-    color: var(--color-secondary);
-
-    &:hover,
-    &:focus {
-      color: var(--color-primary);
-    }
-  }
-}
-
-.button {
-  &--primary {
-    border: none;
-    background: none;
-    color: var(--color-primary);
-    transition: color 0.3s;
-
-    &:hover,
-    &:focus {
-      cursor: pointer;
-      color: var(--color-secondary);
-    }
-  }
-}
-
-.image {
-  &--default {
-    transition: opacity 0.3s;
-
-    &:hover,
-    &:focus {
-      opacity: 0.8;
-    }
-  }
+.font-hg-uppercase {
+  font-family: "Hanken Grotesk Variable", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 100%;
+  letter-spacing: 0.4em;
 }

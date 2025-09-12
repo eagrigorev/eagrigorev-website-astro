@@ -1,28 +1,27 @@
 ---
-import type { PageTitleOptions } from '@utils/types';
-import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/page-title/PageTitle.astro';
-import PostGrid from '@components/feed/PostGrid.astro';
-
-const pageTitleOptions: PageTitleOptions = {
-  heading: 'I am a frontend software developer based in Thessaloniki, Greece.',
-  subheading:
-    'I love clean and minimal interfaces, accessible homemade and local applications, and digital gardens.',
-  image: {
-    isVisible: true,
-  },
-  categories: {
-    areVisible: true,
-  },
-  meta: {
-    isVisible: false,
-    datePublished: 'November 14, 1992',
-    category: 'Journal',
-  },
-};
+import '@styles/global.scss';
+import Header from '@components/header/Header.astro';
 ---
 
-<GlobalWrapper pageTitle="Home">
-  <PageTitle pageTitle={pageTitleOptions} />
-  <PostGrid />
-</GlobalWrapper>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Evgenii Grigorev"
+      href={new URL('rss.xml', Astro.site)}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`Home • Evgenii Grigorev`}</title>
+  </head>
+  <body class="container">
+    <div>
+      <Header />
+      Test
+    </div>
+  </body>
+</html>

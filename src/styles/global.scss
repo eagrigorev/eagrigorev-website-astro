@@ -1,6 +1,11 @@
-@use "./partials/tokens";
+@use "./partials/colors";
+@use "./partials/font-sizes";
+@use "./partials/spaces";
 @use "./partials/normalize";
 @use "./partials/typography";
+@use "./partials/links";
+@use "./partials/buttons";
+@use "./partials//images";
 
 body {
   display: flex;
