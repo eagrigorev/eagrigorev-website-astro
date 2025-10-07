@@ -1,25 +1,22 @@
 ---
 import type { InferEntrySchema } from 'astro:content';
 import { Image } from 'astro:assets';
-import type { NavigationItem } from '@utils/types';
-import featuredImage from '@images/posts/a-kitchen-in-athens/featured.jpg';
 
-// interface Props {
-//   postMeta: InferEntrySchema<'posts'>;
-//   index: number;
-// }
+interface Props {
+  contentMeta: InferEntrySchema<'posts'>;
+}
 
-// const { postMeta, index }: Props = Astro.props;
+const { contentMeta }: Props = Astro.props;
 
-// const postLink: string = `/posts/${postMeta.slug}`;
+const postLink: string = `/posts/${contentMeta.slug}`;
 ---
 
 <article class="post-card">
-  <a href="/" tabindex={-1}>
+  <a href={postLink} tabindex={-1}>
     <Image
       class="image"
-      src={featuredImage}
-      alt="Featured image alt description"
+      src={contentMeta.image.url}
+      alt={contentMeta.image.alt}
       width="300"
       height="225"
       decoding="async"
@@ -28,7 +25,7 @@ import featuredImage from '@images/posts/a-kitchen-in-athens/featured.jpg';
     />
   </a>
   <h2 class="title font-geist-regular">
-    <a class="link" href="/"> Exploring the Pacific Northwest </a>
+    <a class="link" href={postLink}>{contentMeta.title}</a>
   </h2>
 </article>
 

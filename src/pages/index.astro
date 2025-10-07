@@ -1,14 +1,21 @@
 ---
+import { getCollection } from 'astro:content';
+import type { Content } from '@utils/types';
+import { sortContentDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import JournalSection from '@components/JournalSection.astro';
 import Pagination from '@components/Pagination.astro';
+
+const posts: Content[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Home">
   <main>
     <div class="content">
-      <JournalSection />
-      <JournalSection />
+      <JournalSection
+        sectionTitle="August of '25"
+        content={sortContentDesc(posts)}
+      />
     </div>
     <Pagination />
   </main>

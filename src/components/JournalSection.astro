@@ -1,23 +1,29 @@
 ---
+import type { Content } from '@utils/types';
+import journalSections from '@data/journalSections.json';
 import PostCard from '@components/PostCard.astro';
+
+interface Props {
+  sectionTitle: string;
+  content: Content[];
+}
+
+const { sectionTitle, content }: Props = Astro.props;
+
+const journalSection = journalSections.find(
+  (section) => section.title === sectionTitle
+);
 ---
 
 <section class="journal-section">
   <header class="section-title">
-    <h2 class="title font-geist-mono-uppercase">December of '92</h2>
+    <h2 class="title font-geist-mono-uppercase">{journalSection?.title}</h2>
     <p class="description font-geist-light">
-      Before visiting Cardiff, we went to the city of Bath, located in Somerset,
-      South West England.
+      {journalSection?.description}
     </p>
   </header>
   <div class="post-grid">
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
-    <PostCard />
+    {content.map((item: Content) => <PostCard contentMeta={item.data} />)}
   </div>
 </section>
 
