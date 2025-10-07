@@ -14,3 +14,15 @@ body {
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
+
+.link {
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &:hover,
+  &:focus {
+    color: var(--color-accent-primary);
+    text-decoration: underline;
+    text-underline-offset: 5px;
+  }
+}
