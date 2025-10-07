@@ -18,6 +18,8 @@
   /* Space */
   --space-90-120: clamp(5.625rem, 5.1213rem + 2.2388vw, 7.5rem);
   --space-70-100: clamp(4.375rem, 3.8713rem + 2.2388vw, 6.25rem);
+  --space-60-80: clamp(3.75rem, 3.4142rem + 1.4925vw, 5rem);
   --space-40-60: clamp(2.5rem, 2.1642rem + 1.4925vw, 3.75rem);
   --space-30-40: clamp(1.875rem, 1.7071rem + 0.7463vw, 2.5rem);
+  --space-10-20: clamp(0.625rem, 0.4571rem + 0.7463vw, 1.25rem);
 }

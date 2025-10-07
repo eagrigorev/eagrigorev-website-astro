@@ -1,0 +1,51 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { Image } from 'astro:assets';
+import type { NavigationItem } from '@utils/types';
+import featuredImage from '@images/posts/a-kitchen-in-athens/featured.jpg';
+
+// interface Props {
+//   postMeta: InferEntrySchema<'posts'>;
+//   index: number;
+// }
+
+// const { postMeta, index }: Props = Astro.props;
+
+// const postLink: string = `/posts/${postMeta.slug}`;
+---
+
+<article class="post-card">
+  <a href="/" tabindex={-1}>
+    <Image
+      class="image"
+      src={featuredImage}
+      alt="Featured image alt description"
+      width="300"
+      height="225"
+      decoding="async"
+      loading="eager"
+      layout="constrained"
+    />
+  </a>
+  <h2 class="title font-geist-regular">
+    <a class="link" href="/"> Exploring the Pacific Northwest </a>
+  </h2>
+</article>
+
+<style lang="scss">
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4/3;
+  }
+
+  .title {
+    font-size: var(--font-size-s);
+  }
+</style>

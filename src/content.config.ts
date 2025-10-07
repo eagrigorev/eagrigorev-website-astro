@@ -1,24 +1,24 @@
-// import { glob, file } from "astro/loaders";
-// import { z, defineCollection } from "astro:content";
+import { glob, file } from "astro/loaders";
+import { z, defineCollection } from "astro:content";
 
-// const posts = defineCollection({
-//   loader: glob({
-//     pattern: "**/*.{md,mdx}",
-//     base: "./src/content/posts",
-//   }),
-//   schema: ({ image }) =>
-//     z.object({
-//       title: z.string(),
-//       slug: z.string(),
-//       datePublished: z.string(),
-//       excerpt: z.string(),
-//       image: z.object({
-//         url: image(),
-//         alt: z.string(),
-//       }),
-//       tags: z.array(z.string()),
-//     }),
-// });
+const posts = defineCollection({
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/posts",
+  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      datePublished: z.string(),
+      section: z.string(),
+      image: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+      tags: z.array(z.string()),
+    }),
+});
 
 // const pages = defineCollection({
 //   loader: glob({
@@ -88,11 +88,11 @@
 //     }),
 // });
 
-// export const collections = {
-//   posts,
-//   pages,
-//   albums,
-//   books,
-//   readingArchive,
-//   illustrations,
-// };
+export const collections = {
+  posts,
+  // pages,
+  // albums,
+  // books,
+  // readingArchive,
+  // illustrations,
+};
