@@ -1,58 +1,22 @@
 ---
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PostCard from '@components/PostCard.astro';
+import JournalSection from '@components/JournalSection.astro';
 ---
 
 <GlobalWrapper pageTitle="Home">
-  <main class="container">
-    <section class="journal-section">
-      <header class="section-title">
-        <h2 class="title font-geist-mono-uppercase">December of '92</h2>
-        <p class="description font-geist-light">
-          Before visiting Cardiff, we went to the city of Bath, located in
-          Somerset, South West England.
-        </p>
-      </header>
-      <div class="post-grid">
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-        <PostCard />
-      </div>
-    </section>
+  <main>
+    <div class="content">
+      <JournalSection />
+      <JournalSection />
+    </div>
   </main>
 </GlobalWrapper>
 
 <style lang="scss">
-  .journal-section {
-    display: flex;
-    gap: var(--space-40-60);
+  .content {
     padding-top: var(--space-60-80);
-  }
-
-  .section-title {
     display: flex;
     flex-direction: column;
-    gap: var(--space-10-20);
-    max-width: 300px;
-  }
-
-  .title {
-    font-size: var(--font-size-2xs);
-  }
-
-  .description {
-    font-size: var(--font-size-xs);
-    color: var(--color-secondary);
-  }
-
-  .post-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
-    row-gap: 20px;
+    gap: var(--space-30-40);
   }
 </style>

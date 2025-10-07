@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import instagramIcon from '@images/icons8-instagram.png';
+import githubIcon from '@images/icons8-github.png';
+import linkedInIcon from '@images/icons8-linkedin.png';
+import rssIcon from '@images/icons8-rss.png';
+---
+
+<footer class="footer">
+  <p class="copyright font-geist-regular">© 2025 Evgenii Grigorev</p>
+  <ul class="icons" role="list">
+    <li>
+      <a href="/"
+        ><Image
+          src={githubIcon}
+          alt="Social icon"
+          width="25"
+          height="25"
+          decoding="async"
+          loading="eager"
+        /></a
+      >
+    </li>
+    <li>
+      <a href="/"
+        ><Image
+          src={instagramIcon}
+          alt="Social icon"
+          width="25"
+          height="25"
+          decoding="async"
+          loading="eager"
+        /></a
+      >
+    </li>
+    <li>
+      <a href="/"
+        ><Image
+          src={linkedInIcon}
+          alt="Social icon"
+          width="25"
+          height="25"
+          decoding="async"
+          loading="eager"
+        /></a
+      >
+    </li>
+    <li>
+      <a href="/"
+        ><Image
+          src={rssIcon}
+          alt="Social icon"
+          width="25"
+          height="25"
+          decoding="async"
+          loading="eager"
+        /></a
+      >
+    </li>
+  </ul>
+</footer>
+
+<style lang="scss">
+  .footer {
+    padding: var(--space-150-200) 0 var(--space-40-60) 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .copyright {
+    font-size: var(--font-size-xs);
+    color: var(--color-secondary);
+  }
+
+  .icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+</style>
