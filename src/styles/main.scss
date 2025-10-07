@@ -1,0 +1,16 @@
+@use "./partials/variables";
+@use "./partials/normalize";
+@use "./partials/fonts";
+
+body {
+  display: flex;
+  flex-direction: column;
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
+}
+
+.container {
+  max-width: 106.25rem;
+  padding-inline: var(--space-30-40);
+  margin-inline: auto;
+}

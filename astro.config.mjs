@@ -8,11 +8,11 @@ import robotsTxt from "astro-robots-txt";
 export default defineConfig({
   site: "https://www.eagrigorev.com",
   integrations: [mdx(), sitemap(), robotsTxt()],
-  redirects: {
-    "/posts": "/",
-    "/tags": "/",
-    "/reading-journal/year": "/reading-journal",
-    "/illustrations/art": "/illustrations",
-  },
+  // redirects: {
+  //   "/posts": "/",
+  //   "/tags": "/",
+  //   "/reading-journal/year": "/reading-journal",
+  //   "/illustrations/art": "/illustrations",
+  // },
   adapter: vercel(),
 });
