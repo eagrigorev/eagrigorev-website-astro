@@ -9,9 +9,25 @@ const posts = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      slug: z.string(),
+      slug: z.string().optional(),
       datePublished: z.string(),
-      section: z.string(),
+      journalSection: z.string(),
+      image: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+      tags: z.array(z.string()),
+    }),
+});
+
+const albums = defineCollection({
+  loader: file("src/data/albums.json"),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      slug: z.string().optional(),
+      datePublished: z.string(),
+      journalSection: z.string(),
       image: z.object({
         url: image(),
         alt: z.string(),
@@ -30,20 +46,6 @@ const posts = defineCollection({
 //     slug: z.string(),
 //     datePublished: z.string(),
 //   }),
-// });
-
-// const albums = defineCollection({
-//   loader: file("src/data/albums.json"),
-//   schema: ({ image }) =>
-//     z.object({
-//       title: z.string(),
-//       externalLink: z.string(),
-//       datePublished: z.string(),
-//       image: z.object({
-//         url: image(),
-//         alt: z.string(),
-//       }),
-//     }),
 // });
 
 // const books = defineCollection({
@@ -90,6 +92,7 @@ const posts = defineCollection({
 
 export const collections = {
   posts,
+  albums,
   // pages,
   // albums,
   // books,

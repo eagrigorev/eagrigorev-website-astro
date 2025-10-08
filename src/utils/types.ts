@@ -8,8 +8,8 @@ export interface NavigationItem {
 export interface Content {
   id: string;
   body?: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">;
+  collection: "posts" | "albums";
+  data: InferEntrySchema<"posts" | "albums">;
   rendered?: RenderedContent;
   filePath?: string;
 }

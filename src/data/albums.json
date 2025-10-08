@@ -1,0 +1,73 @@
+[
+  {
+    "title": "Winds & Windows",
+    "slug": "https://borealheights.bandcamp.com/album/winds-windows",
+    "datePublished": "May 28, 2020",
+    "journalSection": "May of '20",
+    "image": {
+      "url": "@images/albums/winds-and-windows.png",
+      "alt": "Winds & Windows"
+    },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Early Rains",
+    "slug": "https://borealheights.bandcamp.com/track/early-rains-single",
+    "datePublished": "August 13, 2019",
+    "journalSection": "August of '19",
+    "image": { "url": "@images/albums/early-rains.jpg", "alt": "Early Rains" },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Far Lands",
+    "slug": "https://borealheights.bandcamp.com/track/far-lands-single",
+    "datePublished": "May 9, 2019",
+    "journalSection": "May of '19",
+    "image": { "url": "@images/albums/far-lands.jpg", "alt": "Far Lands" },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Beyond the Sea of Ghosts",
+    "slug": "https://borealheights.bandcamp.com/track/beyond-the-sea-of-ghosts-single",
+    "datePublished": "June 30, 2018",
+    "journalSection": "June of '18",
+    "image": {
+      "url": "@images/albums/beyond-the-sea-of-ghosts.jpg",
+      "alt": "Beyond the Sea of Ghosts"
+    },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Under Åpen Himmel",
+    "slug": "https://borealheights.bandcamp.com/album/under-pen-himmel-ep",
+    "datePublished": "September 4, 2016",
+    "journalSection": "September of '16",
+    "image": {
+      "url": "@images/albums/under-apen-himmel.jpg",
+      "alt": "Under Åpen Himmel"
+    },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Morning Star",
+    "slug": "https://borealheights.bandcamp.com/album/morning-star-ep",
+    "datePublished": "August 15, 2015",
+    "journalSection": "August of '15",
+    "image": {
+      "url": "@images/albums/morning-star.jpg",
+      "alt": "Morning Star"
+    },
+    "tags": ["music", "boreal heights"]
+  },
+  {
+    "title": "Crystal Maze",
+    "slug": "https://borealheights.bandcamp.com/album/crystal-maze-ep",
+    "datePublished": "November 10, 2013",
+    "journalSection": "November of '13",
+    "image": {
+      "url": "@images/albums/crystal-maze.jpg",
+      "alt": "Crystal Maze"
+    },
+    "tags": ["music", "boreal heights"]
+  }
+]
