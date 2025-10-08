@@ -6,8 +6,8 @@ import linkedInIcon from '@images/icons8-linkedin.png';
 import rssIcon from '@images/icons8-rss.png';
 ---
 
-<footer class="footer">
-  <p class="copyright font-geist-regular">© 2025 Evgenii Grigorev</p>
+<div class="copyright">
+  <p class="author font-geist-regular">© 2025 Evgenii Grigorev</p>
   <ul class="icons" role="list">
     <li>
       <a href="/"
@@ -58,17 +58,17 @@ import rssIcon from '@images/icons8-rss.png';
       >
     </li>
   </ul>
-</footer>
+</div>
 
 <style lang="scss">
-  .footer {
+  .copyright {
     padding: var(--space-150-200) 0 var(--space-40-60) 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
-  .copyright {
+  .author {
     font-size: var(--font-size-xs);
     color: var(--color-secondary);
   }
