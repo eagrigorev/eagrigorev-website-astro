@@ -55,5 +55,9 @@ const journalSection = journalSections.find(
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
     row-gap: 20px;
+
+    @media only screen and (width <= 1280px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
