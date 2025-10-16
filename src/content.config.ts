@@ -1,40 +1,40 @@
 import { glob, file } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
-const posts = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/posts",
-  }),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      slug: z.string().optional(),
-      datePublished: z.string(),
-      journalSection: z.string(),
-      image: z.object({
-        url: image(),
-        alt: z.string(),
-      }),
-      tags: z.array(z.string()),
-    }),
-});
+// const posts = defineCollection({
+//   loader: glob({
+//     pattern: "**/*.{md,mdx}",
+//     base: "./src/content/posts",
+//   }),
+//   schema: ({ image }) =>
+//     z.object({
+//       title: z.string(),
+//       slug: z.string().optional(),
+//       datePublished: z.string(),
+//       journalSection: z.string(),
+//       image: z.object({
+//         url: image(),
+//         alt: z.string(),
+//       }),
+//       tags: z.array(z.string()),
+//     }),
+// });
 
-const albums = defineCollection({
-  loader: file("src/data/albums.json"),
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      slug: z.string().optional(),
-      datePublished: z.string(),
-      journalSection: z.string(),
-      image: z.object({
-        url: image(),
-        alt: z.string(),
-      }),
-      tags: z.array(z.string()),
-    }),
-});
+// const albums = defineCollection({
+//   loader: file("src/data/albums.json"),
+//   schema: ({ image }) =>
+//     z.object({
+//       title: z.string(),
+//       slug: z.string().optional(),
+//       datePublished: z.string(),
+//       journalSection: z.string(),
+//       image: z.object({
+//         url: image(),
+//         alt: z.string(),
+//       }),
+//       tags: z.array(z.string()),
+//     }),
+// });
 
 // const pages = defineCollection({
 //   loader: glob({
@@ -90,12 +90,12 @@ const albums = defineCollection({
 //     }),
 // });
 
-export const collections = {
-  posts,
-  albums,
-  // pages,
-  // albums,
-  // books,
-  // readingArchive,
-  // illustrations,
-};
+// export const collections = {
+//   //posts,
+//   //albums,
+//   // pages,
+//   // albums,
+//   // books,
+//   // readingArchive,
+//   // illustrations,
+// };
