@@ -1,25 +1,24 @@
-@use "@fontsource-variable/geist";
-@use "@fontsource-variable/geist-mono";
+@use "@fontsource-variable/hanken-grotesk";
 
-.font-geist-regular {
-  font-family: "Geist Variable", sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 165%;
-}
-
-.font-geist-light {
-  font-family: "Geist Variable", sans-serif;
+.font-light {
+  font-family: "Hanken Grotesk Variable", sans-serif;
   font-style: normal;
   font-weight: 300;
-  line-height: 165%;
+  // line-height: 165%;
 }
 
-.font-geist-mono-uppercase {
-  font-family: "Geist Mono Variable", monospace;
+.font-regular {
+  font-family: "Hanken Grotesk Variable", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  // line-height: 165%;
+}
+
+.font-uppercase {
+  font-family: "Hanken Grotesk Variable", sans-serif;
   font-style: normal;
   font-weight: 500;
-  line-height: 165%;
   text-transform: uppercase;
+  // line-height: 165%;
   letter-spacing: 0.2em;
 }

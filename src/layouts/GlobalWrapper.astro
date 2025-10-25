@@ -1,0 +1,40 @@
+---
+import '@styles/main.scss';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import Navigation from '@components/Navigation.astro';
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle }: Props = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Evgenii Grigorev"
+      href={new URL('rss.xml', Astro.site)}
+    />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{`${pageTitle} • Evgenii Grigorev`}</title>
+    <Analytics />
+    <SpeedInsights />
+  </head>
+  <body>
+    <header>
+      <Navigation />
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer></footer>
+  </body>
+</html>

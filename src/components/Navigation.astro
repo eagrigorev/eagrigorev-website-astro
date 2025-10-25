@@ -1,0 +1,66 @@
+---
+import type { NavigationItem } from '@utils/types';
+import navigationLinks from '@data/navigation.json';
+---
+
+<div class="navigation">
+  <div class="navigation__main">
+    <a class="logo" href="/">
+      <span class="logo__title font-uppercase">Boreal Heights</span>
+      <span class="logo__subtitle font-light">Journal of Evgenii Grigorev</span>
+    </a>
+    <nav class="links">
+      <ul class="links__desktop" role="list">
+        {
+          navigationLinks.map((link: NavigationItem) => (
+            <li>
+              <a class="links__item font-regular" href={link.url}>
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <!-- <button class="links__mobile" id="dropdown-button">Menu</button> -->
+    </nav>
+  </div>
+  <div class="navigation__dropdown"></div>
+</div>
+
+<script></script>
+
+<style lang="scss">
+  .navigation {
+    padding: 40px 100px;
+
+    &__main {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .logo {
+    &__title {
+      display: block;
+      font-size: var(--font-size-xs);
+    }
+
+    &__subtitle {
+      display: block;
+      font-size: var(--font-size-2xs);
+    }
+  }
+
+  .links {
+    &__desktop {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    &__item {
+      font-size: var(--font-size-s);
+    }
+  }
+</style>
