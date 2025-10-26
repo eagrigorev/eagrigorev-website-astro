@@ -6,9 +6,17 @@ import arrowRight from '@images/assets/arrow-right.svg';
 import PostCard from '@components/PostCard.astro';
 interface Props {
   posts: Post[];
+  prevPage?: string;
+  nextPage?: string;
+  currentPage?: number;
+  lastPage?: number;
 }
 
-const { posts }: Props = Astro.props;
+const { posts, prevPage, nextPage, currentPage, lastPage }: Props = Astro.props;
+
+const showPagination: boolean = !prevPage && !nextPage ? false : true;
+
+const pageIndicator: string = `Page ${currentPage} of ${lastPage}`;
 ---
 
 <div class="posts">
@@ -19,31 +27,41 @@ const { posts }: Props = Astro.props;
       ))
     }
   </div>
-  <div class="posts__pagination">
-    <a href="/">
-      <Image
-        class="posts__pagination__arrow"
-        src={arrowLeft}
-        alt="Newer posts"
-        width="25"
-        height="25"
-        decoding="async"
-        loading="eager"
-      /></a
-    >
-    <p class="posts__pagination__indicator font-uppercase">Page 1 of 30</p>
-    <a href="/"
-      ><Image
-        class="posts__pagination__arrow"
-        src={arrowRight}
-        alt="Older posts"
-        width="25"
-        height="25"
-        decoding="async"
-        loading="eager"
-      /></a
-    >
-  </div>
+  {
+    showPagination ? (
+      <div class="posts__pagination">
+        {prevPage ? (
+          <a href={prevPage}>
+            <Image
+              class="posts__pagination__arrow"
+              src={arrowLeft}
+              alt="Newer posts"
+              width="25"
+              height="25"
+              decoding="async"
+              loading="eager"
+            />
+          </a>
+        ) : null}
+        <p class="posts__pagination__indicator font-uppercase">
+          {pageIndicator}
+        </p>
+        {nextPage ? (
+          <a href={nextPage}>
+            <Image
+              class="posts__pagination__arrow"
+              src={arrowRight}
+              alt="Older posts"
+              width="25"
+              height="25"
+              decoding="async"
+              loading="eager"
+            />
+          </a>
+        ) : null}
+      </div>
+    ) : null
+  }
 </div>
 
 <style lang="scss">
