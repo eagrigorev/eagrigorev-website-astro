@@ -39,7 +39,7 @@ const pageIndicator: string = `Page ${currentPage} of ${lastPage}`;
               width="25"
               height="25"
               decoding="async"
-              loading="eager"
+              loading="lazy"
             />
           </a>
         ) : null}
@@ -55,7 +55,7 @@ const pageIndicator: string = `Page ${currentPage} of ${lastPage}`;
               width="25"
               height="25"
               decoding="async"
-              loading="eager"
+              loading="lazy"
             />
           </a>
         ) : null}
@@ -66,12 +66,20 @@ const pageIndicator: string = `Page ${currentPage} of ${lastPage}`;
 
 <style lang="scss">
   .posts {
-    padding-top: 80px;
+    padding-top: var(--space-60-80);
 
     &__grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: var(--space-30-40);
+
+      @media only screen and (width <= 768px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media only screen and (width <= 480px) {
+        grid-template-columns: repeat(1, 1fr);
+      }
     }
 
     &__pagination {
@@ -79,7 +87,7 @@ const pageIndicator: string = `Page ${currentPage} of ${lastPage}`;
       align-items: center;
       justify-content: center;
       gap: var(--space-30-40);
-      padding-top: 160px;
+      padding-top: var(--space-120-160);
 
       &__arrow {
         width: 100%;

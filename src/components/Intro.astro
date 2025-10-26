@@ -5,6 +5,7 @@ import avatar from '@images/assets/avatar.png';
 
 <div class="intro">
   <Image
+    class="avatar"
     src={avatar}
     alt="Avatar"
     width="100"
@@ -26,14 +27,20 @@ import avatar from '@images/assets/avatar.png';
   .intro {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    padding-top: 160px;
+    gap: var(--space-20-30);
+    padding-top: var(--space-120-160);
+  }
+
+  .avatar {
+    width: var(--space-70-100);
+    height: var(--space-70-100);
+    aspect-ratio: 1/1;
   }
 
   .description {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: var(--space-5-10);
 
     &__title {
       font-size: var(--font-size-xs);

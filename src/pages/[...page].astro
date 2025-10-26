@@ -2,12 +2,13 @@
 import type { GetStaticPaths, Page } from 'astro';
 import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PostGrid from '@components/PostGrid.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
-  return paginate(posts, {
+  return paginate(sortPostsDesc(posts), {
     pageSize: 3,
   });
 }) satisfies GetStaticPaths;

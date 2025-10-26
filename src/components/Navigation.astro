@@ -1,6 +1,8 @@
 ---
 import type { NavigationItem } from '@utils/types';
 import navigationLinks from '@data/navigation.json';
+import { Image } from 'astro:assets';
+import menu from '@images/assets/menu.svg';
 ---
 
 <div class="navigation">
@@ -21,17 +23,49 @@ import navigationLinks from '@data/navigation.json';
           ))
         }
       </ul>
-      <!-- <button class="links__mobile" id="dropdown-button">Menu</button> -->
+      <button class="links__mobile" id="dropdown-button"
+        ><Image
+          class="posts__pagination__arrow"
+          src={menu}
+          alt="Dropdown menu"
+          width="25"
+          height="25"
+          decoding="async"
+          loading="lazy"
+        /></button
+      >
     </nav>
   </div>
-  <div class="navigation__dropdown"></div>
+  <div class="navigation__dropdown hidden" id="dropdown-wrapper">
+    <nav>
+      <ul role="list">
+        {
+          navigationLinks.map((link: NavigationItem) => (
+            <li>
+              <a class="font-regular" href={link.url}>
+                {link.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
 </div>
 
-<script></script>
+<script>
+  document.querySelector('#dropdown-button')?.addEventListener('click', () => {
+    document.querySelector('#dropdown-wrapper')?.classList.toggle('hidden');
+  });
+</script>
 
 <style lang="scss">
   .navigation {
-    padding: 40px 100px;
+    padding: var(--space-30-40) var(--space-40-100-wide);
+
+    @media only screen and (width <= 1420px) {
+      padding: var(--space-30-40);
+    }
 
     &__main {
       display: flex;
@@ -57,10 +91,33 @@ import navigationLinks from '@data/navigation.json';
       display: flex;
       align-items: center;
       gap: 30px;
+
+      @media only screen and (width <= 768px) {
+        display: none;
+      }
+    }
+
+    &__mobile {
+      display: none;
+      background: none;
+      border: none;
+
+      &:hover,
+      &:focus {
+        cursor: pointer;
+      }
+
+      @media only screen and (width <= 768px) {
+        display: block;
+      }
     }
 
     &__item {
       font-size: var(--font-size-s);
     }
+  }
+
+  .hidden {
+    display: none;
   }
 </style>

@@ -1,5 +1,7 @@
 ---
-
+import type { NavigationItem } from '@utils/types';
+import socialLinks from '@data/socialLinks.json';
+import footerLinks from '@data/footerLinks.json';
 ---
 
 <div class="footer">
@@ -13,16 +15,18 @@
         </p>
         <nav>
           <ul class="outro__elsewhere" role="list">
-            <li>
-              <a class="copyright__elsewhere__item font-regular" href="/"
-                >Instagram</a
-              >
-            </li>
-            <li>
-              <a class="copyright__elsewhere__item font-regular" href="/"
-                >GitHub</a
-              >
-            </li>
+            {
+              socialLinks.map((link: NavigationItem) => (
+                <li>
+                  <a
+                    class="outro__elsewhere__item font-regular"
+                    href={link.url}
+                  >
+                    {link.title}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </nav>
       </div>
@@ -30,13 +34,15 @@
         <p class="copyright__author font-light">© 2025 Evgenii Grigorev</p>
         <nav>
           <ul class="copyright__links" role="list">
-            <li>
-              <a class="copyright__links__item font-light" href="/">Instagram</a
-              >
-            </li>
-            <li>
-              <a class="copyright__links__item font-light" href="/">GitHub</a>
-            </li>
+            {
+              footerLinks.map((link: NavigationItem) => (
+                <li>
+                  <a class="copyright__links__item font-light" href={link.url}>
+                    {link.title}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </nav>
       </div>
@@ -46,11 +52,11 @@
 
 <style lang="scss">
   .footer {
-    padding-top: 160px;
+    padding-top: var(--space-120-160);
   }
 
   .wrapper {
-    padding-top: 80px;
+    padding-top: var(--space-60-80);
     border-top: 1px solid var(--color-accent-secondary);
     background-color: var(--color-bg-secondary);
   }
@@ -72,6 +78,11 @@
       align-items: center;
       gap: 30px;
 
+      @media only screen and (width <= 480px) {
+        flex-wrap: wrap;
+        row-gap: var(--space-20-30);
+      }
+
       &__item {
         font-size: var(--font-size-s);
       }
@@ -84,6 +95,12 @@
     justify-content: space-between;
     border-top: 1px solid var(--color-accent-secondary);
     padding: var(--space-30-40) 0;
+
+    @media only screen and (width <= 480px) {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: var(--space-20-30);
+    }
 
     &__author {
       font-size: var(--font-size-xs);
