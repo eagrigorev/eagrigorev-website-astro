@@ -1,0 +1,63 @@
+---
+import type { InferEntrySchema } from 'astro:content';
+import { Image } from 'astro:assets';
+
+interface Props {
+  data: InferEntrySchema<'posts'>;
+  index: number;
+}
+
+const { data, index }: Props = Astro.props;
+
+const url: string = data.slug.includes('http')
+  ? data.slug
+  : `/posts/${data.slug}`;
+
+const loadingSchema: 'eager' | 'lazy' = index > 2 ? 'lazy' : 'eager';
+---
+
+<article class="post-card">
+  <a href={url} tabindex={-1}>
+    <Image
+      class="post-card__image"
+      src={data.featuredImage.url}
+      alt={data.featuredImage.alt}
+      width="420"
+      height="280"
+      decoding="async"
+      loading={loadingSchema}
+    />
+  </a>
+  <div>
+    <header>
+      <h2 class="post-card__title font-regular">
+        <a href={url}>{data.title}</a>
+      </h2>
+    </header>
+    <p class="post-card__date font-regular">{data.datePublished}</p>
+  </div>
+</article>
+
+<style lang="scss">
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__image {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 3/2;
+    }
+
+    &__title {
+      font-size: var(--font-size-s);
+      line-height: 165%;
+    }
+
+    &__date {
+      font-size: var(--font-size-xs);
+      color: var(--color-secondary);
+    }
+  }
+</style>

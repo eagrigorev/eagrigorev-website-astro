@@ -8,16 +8,13 @@ const posts = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
-      title: z.string().optional(),
-      excerpt: z.string().optional(),
+      title: z.string(),
       slug: z.string(),
       datePublished: z.string(),
-      featuredImage: z
-        .object({
-          url: image(),
-          alt: z.string(),
-        })
-        .optional(),
+      featuredImage: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
       tags: z.array(z.string()),
     }),
 });

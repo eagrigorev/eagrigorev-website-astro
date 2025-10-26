@@ -1,0 +1,102 @@
+---
+
+---
+
+<div class="footer">
+  <div class="wrapper">
+    <div class="container">
+      <div class="outro">
+        <p class="outro__cta font-light">
+          Thank you for stopping by. I decided to create this journal in order
+          to cope with anxiety, preserve knowledge and memories, and reflect on
+          my life. You can browse pages and tags for more posts.
+        </p>
+        <nav>
+          <ul class="outro__elsewhere" role="list">
+            <li>
+              <a class="copyright__elsewhere__item font-regular" href="/"
+                >Instagram</a
+              >
+            </li>
+            <li>
+              <a class="copyright__elsewhere__item font-regular" href="/"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="copyright">
+        <p class="copyright__author font-light">© 2025 Evgenii Grigorev</p>
+        <nav>
+          <ul class="copyright__links" role="list">
+            <li>
+              <a class="copyright__links__item font-light" href="/">Instagram</a
+              >
+            </li>
+            <li>
+              <a class="copyright__links__item font-light" href="/">GitHub</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .footer {
+    padding-top: 160px;
+  }
+
+  .wrapper {
+    padding-top: 80px;
+    border-top: 1px solid var(--color-accent-secondary);
+    background-color: var(--color-bg-secondary);
+  }
+
+  .outro {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: var(--space-30-40);
+
+    &__cta {
+      font-size: var(--font-size-s);
+      line-height: 165%;
+      max-width: 640px;
+    }
+
+    &__elsewhere {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      &__item {
+        font-size: var(--font-size-s);
+      }
+    }
+  }
+
+  .copyright {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--color-accent-secondary);
+    padding: var(--space-30-40) 0;
+
+    &__author {
+      font-size: var(--font-size-xs);
+    }
+
+    &__links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+
+      &__item {
+        font-size: var(--font-size-xs);
+      }
+    }
+  }
+</style>

@@ -1,5 +1,10 @@
 ---
+import { getCollection } from 'astro:content';
+import type { Post } from '@utils/types';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PostGrid from '@components/PostGrid.astro';
+
+const posts: Post[] = await getCollection('posts');
 ---
 
-<GlobalWrapper pageTitle="Home"> test </GlobalWrapper>
+<GlobalWrapper pageTitle="Home"><PostGrid posts={posts} /></GlobalWrapper>
