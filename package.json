@@ -27,7 +27,7 @@
     "@astrojs/rss": "^4.0.13",
     "@astrojs/sitemap": "^3.6.0",
     "@astrojs/ts-plugin": "^1.10.5",
-    "@astrojs/vercel": "^8.2.11",
+    "@astrojs/vercel": "^9.0.0",
     "@fontsource-variable/hanken-grotesk": "^5.2.8",
     "@vercel/analytics": "^1.5.0",
     "@vercel/speed-insights": "^1.2.0",
