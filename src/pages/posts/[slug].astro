@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { Post } from '@utils/types';
+import { getCollection, render } from 'astro:content';
+import { customTypography } from '@utils/customTypography';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
+import PageTitle from '@components/PageTitle.astro';
+
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getCollection('posts');
+  return posts.map((post: Post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<GlobalWrapper pageTitle={post.data.title}>
+  <PageTitle
+    slot="title"
+    title={post.data.title}
+    datePublished={post.data.datePublished}
+  />
+  <MarkdownWrapper slot="main">
+    <Content slot="content" components={customTypography} />
+    <div slot="tags" class="tags">
+      <p class="tags__title font-regular">Tags:</p>
+      <div class="tags__cloud">
+        {
+          post.data.tags.map((tag: string) => (
+            <a class="tags__item font-light" href={`/tags/${tag}`}>
+              {tag}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </MarkdownWrapper>
+</GlobalWrapper>
+
+<style lang="scss">
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: var(--space-20-30);
+
+    &__title {
+      font-size: var(--font-size-s);
+    }
+
+    &__cloud {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__item {
+      font-size: var(--font-size-s);
+    }
+  }
+</style>

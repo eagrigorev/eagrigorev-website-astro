@@ -1,0 +1,36 @@
+---
+
+---
+
+<div class="markdown-wrapper">
+  <div class="content-wrapper font-light">
+    <slot name="content" />
+  </div>
+  <div class="tags-wrapper">
+    <slot name="tags" />
+  </div>
+</div>
+
+<style lang="scss">
+  .markdown-wrapper {
+    padding-top: var(--space-60-80);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: var(--font-size-s);
+    line-height: 165%;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    max-width: 600px;
+  }
+
+  .tags-wrapper {
+    padding-top: var(--space-60-80);
+    width: 100%;
+    max-width: 600px;
+  }
+</style>
