@@ -32,7 +32,7 @@ const { Content } = await render(post);
       <div class="tags__cloud">
         {
           post.data.tags.map((tag: string) => (
-            <a class="tags__item font-light" href={`/tags/${tag}`}>
+            <a class="tags__item font-light link" href={`/tags/${tag}`}>
               {tag}
             </a>
           ))

@@ -14,3 +14,30 @@ body {
   padding-inline: var(--space-30-40);
   margin-inline: auto;
 }
+
+.link {
+  transition: color 0.3s;
+  color: var(--color-accent-primary);
+
+  &:hover,
+  &:focus {
+    color: var(--color-primary);
+  }
+}
+
+.link-simple {
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+.link-inverted {
+  transition: color 0.3s;
+  text-decoration: none;
+  color: var(--color-primary);
+
+  &:hover,
+  &:focus {
+    color: var(--color-accent-primary);
+    text-decoration: underline;
+  }
+}

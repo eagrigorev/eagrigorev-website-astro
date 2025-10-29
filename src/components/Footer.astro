@@ -19,7 +19,7 @@ import footerLinks from '@data/footerLinks.json';
               socialLinks.map((link: NavigationItem) => (
                 <li>
                   <a
-                    class="outro__elsewhere__item font-regular"
+                    class="outro__elsewhere__item font-regular link-inverted"
                     href={link.url}
                   >
                     {link.title}
@@ -37,7 +37,10 @@ import footerLinks from '@data/footerLinks.json';
             {
               footerLinks.map((link: NavigationItem) => (
                 <li>
-                  <a class="copyright__links__item font-light" href={link.url}>
+                  <a
+                    class="copyright__links__item font-light link-inverted"
+                    href={link.url}
+                  >
                     {link.title}
                   </a>
                 </li>

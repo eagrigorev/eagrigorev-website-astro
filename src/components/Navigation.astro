@@ -10,7 +10,7 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
 ---
 
 <div class="navigation">
-  <a class="logo" href="/">
+  <a class="logo link-simple" href="/">
     <span class="logo__title font-uppercase">Boreal Heights</span>
     <span class="logo__subtitle font-light">Journal of Evgenii Grigorev</span>
   </a>
@@ -18,7 +18,9 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
     <div class="navigation__desktop">
       <ul class="navigation__links" role="list">
         <li class="categories">
-          <a class="navigation__item font-regular" href="/">Journal</a>
+          <a class="navigation__item font-regular link-inverted" href="/"
+            >Journal</a
+          >
           <div class="categories-wrapper">
             <button class="navigation__button" id="categories-button"
               ><Image
@@ -49,7 +51,10 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
                 {
                   journalCategories.map((link: NavigationItem) => (
                     <li>
-                      <a class="navigation__item font-regular" href={link.url}>
+                      <a
+                        class="navigation__item font-regular link-inverted"
+                        href={link.url}
+                      >
                         {link.title}
                       </a>
                     </li>
@@ -60,10 +65,14 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
           </div>
         </li>
         <li>
-          <a class="navigation__item font-regular" href="/">About</a>
+          <a class="navigation__item font-regular link-inverted" href="/"
+            >About</a
+          >
         </li>
         <li>
-          <a class="navigation__item font-regular" href="/">Reading</a>
+          <a class="navigation__item font-regular link-inverted" href="/"
+            >Reading</a
+          >
         </li>
       </ul>
     </div>
@@ -94,7 +103,10 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
           {
             mobileNavigationLinks.map((link: NavigationItem) => (
               <li>
-                <a class="navigation__item font-regular" href={link.url}>
+                <a
+                  class="navigation__item font-regular link-inverted"
+                  href={link.url}
+                >
                   {link.title}
                 </a>
               </li>
@@ -179,6 +191,7 @@ import collapseIcon from '@images/assets/collapse-icon.svg';
     &__subtitle {
       display: block;
       font-size: var(--font-size-2xs);
+      color: var(--color-secondary);
     }
   }
 
