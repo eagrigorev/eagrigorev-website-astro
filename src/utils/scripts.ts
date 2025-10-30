@@ -1,4 +1,4 @@
-import type { Post } from "@utils/types";
+import type { Post, NavigationItem } from "@utils/types";
 
 export const sortPostsDesc = (posts: Post[]): Post[] => {
   return posts.sort((prev: Post, next: Post) =>
@@ -6,4 +6,23 @@ export const sortPostsDesc = (posts: Post[]): Post[] => {
       ? 1
       : -1,
   );
+};
+
+export const generateUniqueTags = (posts: Post[]): NavigationItem[] => {
+  const allTags: string[] = [];
+  posts.forEach((post: Post) => {
+    post.data.tags.map((tag: string) => {
+      allTags.push(tag);
+    });
+  });
+  const uniqueTags: NavigationItem[] = [];
+  allTags
+    .filter((tag: string, index: number) => allTags.indexOf(tag) === index)
+    .map((tag: string) =>
+      uniqueTags.push({
+        title: tag,
+        url: tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and"),
+      }),
+    );
+  return uniqueTags;
 };
