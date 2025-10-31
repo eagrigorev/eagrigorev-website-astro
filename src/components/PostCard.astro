@@ -9,15 +9,11 @@ interface Props {
 
 const { data, index }: Props = Astro.props;
 
-const url: string = data.slug.includes('http')
-  ? data.slug
-  : `/posts/${data.slug}`;
-
 const loadingSchema: 'eager' | 'lazy' = index > 2 ? 'lazy' : 'eager';
 ---
 
 <article class="post-card">
-  <a href={url} tabindex={-1}>
+  <a href={data.slug} tabindex={-1}>
     <Image
       class="post-card__image"
       src={data.featuredImage.url}
@@ -31,7 +27,7 @@ const loadingSchema: 'eager' | 'lazy' = index > 2 ? 'lazy' : 'eager';
   <div>
     <header>
       <h2 class="post-card__title font-regular">
-        <a class="link-inverted" href={url}>{data.title}</a>
+        <a class="link-inverted" href={data.slug}>{data.title}</a>
       </h2>
     </header>
     <p class="post-card__date font-regular">{data.datePublished}</p>
