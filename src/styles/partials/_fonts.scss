@@ -1,0 +1,20 @@
+@use "@fontsource-variable/jost";
+@use "@fontsource/spectral";
+
+.font-jost {
+  &--uppercase {
+    font-family: "Jost Variable", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+}
+
+.font-spectral {
+  &--regular {
+    font-family: "Spectral", serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+}

@@ -13,11 +13,11 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
-      // "@components/*": ["src/components/*"],
+      "@components/*": ["src/components/*"],
       // "@data/*": ["src/data/*"],
       // "@images/*": ["src/images/*"],
-      // "@layouts/*": ["src/layouts/*"],
-      // "@styles/*": ["src/styles/*"],
+      "@layouts/*": ["src/layouts/*"],
+      "@styles/*": ["src/styles/*"]
       // "@utils/*": ["src/utils/*"]
     }
   }

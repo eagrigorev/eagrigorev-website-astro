@@ -1,0 +1,16 @@
+@use "./partials/tokens";
+@use "./partials/normalize";
+@use "./partials/fonts";
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  margin-inline: auto;
+  max-width: 88.75rem; //1420px
+  padding-inline: 40px;
+}

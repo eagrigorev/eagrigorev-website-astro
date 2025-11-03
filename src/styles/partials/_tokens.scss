@@ -1,0 +1,13 @@
+:root {
+  /* Color */
+  --color-primary: #141414;
+  --color-bg-primary: #fff;
+  --color-accent-secondary: #595959;
+
+  /* Font Size */
+  --font-size-l: clamp(1.125rem, 1.0772rem + 0.2123vw, 1.2656rem);
+  --font-size-m: clamp(1rem, 0.9575rem + 0.1887vw, 1.125rem);
+  --font-size-s: clamp(0.8889rem, 0.8512rem + 0.1677vw, 1rem);
+  --font-size-xs: clamp(0.7901rem, 0.7566rem + 0.1491vw, 0.8889rem);
+  --font-size-2xs: clamp(0.7023rem, 0.6725rem + 0.1325vw, 0.7901rem);
+}
