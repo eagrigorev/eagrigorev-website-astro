@@ -1,13 +1,18 @@
 ---
+import DesktopLinks from '@components/navigation/DesktopLinks.astro';
 import Logo from '@components/navigation/Logo.astro';
 ---
 
 <div class="navigation">
   <Logo />
+  <nav><DesktopLinks /></nav>
 </div>
 
 <style lang="scss">
   .navigation {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
     padding: 40px 100px;
   }
 </style>

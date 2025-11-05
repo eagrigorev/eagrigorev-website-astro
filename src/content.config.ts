@@ -8,17 +8,25 @@ const posts = defineCollection({
   }),
   schema: ({ image }) =>
     z.object({
+      datePublished: z.string(),
       title: z.string(),
       slug: z.string(),
-      datePublished: z.string(),
-      featuredImage: z.object({
-        url: image(),
-        alt: z.string(),
-      }),
       tags: z.array(z.string()),
+      featuredImage: z
+        .object({
+          url: image(),
+          alt: z.string(),
+        })
+        .optional(),
+      excerpt: z.string().optional(),
+      options: z
+        .object({
+          hideTitle: z.boolean(),
+        })
+        .optional(),
     }),
 });
 
-// export const collections = {
-//   posts,
-// };
+export const collections = {
+  posts,
+};

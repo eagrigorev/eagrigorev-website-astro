@@ -1,0 +1,45 @@
+---
+import type { Post } from '@utils/types';
+import { Image } from 'astro:assets';
+import avatar from '@images/assets/avatar.jpg';
+import MarkdownIt from 'markdown-it';
+
+interface Props {
+  post: Post;
+}
+
+const { post }: Props = Astro.props;
+
+const md = new MarkdownIt();
+const processedExcerpt = post.data.excerpt
+  ? md.render(post.data.excerpt)
+  : '<p>Read more...</p>';
+---
+
+<article class="post-card">
+  <a class="date font-spectral--regular" href={post.data.slug}
+    >{post.data.datePublished}</a
+  >
+  <div class="excerpt" set:html={processedExcerpt} />
+</article>
+
+<style lang="scss">
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 660px;
+  }
+
+  .date {
+    color: var(--color-accent-secondary);
+    font-size: var(--font-size-s);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--color-accent-primary);
+      text-decoration: underline;
+    }
+  }
+</style>

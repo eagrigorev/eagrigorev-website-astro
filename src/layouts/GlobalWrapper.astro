@@ -31,8 +31,15 @@ const { pageTitle } = Astro.props;
   <body>
     <header>
       <Navigation />
+      <div class="container">
+        <slot name="title" />
+      </div>
     </header>
-    <main></main>
+    <main>
+      <div class="container">
+        <slot name="main" />
+      </div>
+    </main>
     <footer></footer>
   </body>
 </html>

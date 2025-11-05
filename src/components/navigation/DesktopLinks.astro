@@ -1,0 +1,50 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+const desktopLinks: NavigationItem[] = [
+  {
+    title: 'Journal',
+    url: '/',
+  },
+  {
+    title: 'Archive',
+    url: '/',
+  },
+  {
+    title: 'About',
+    url: '/',
+  },
+];
+---
+
+<ul class="desktop-links" role="list">
+  {
+    desktopLinks.map((link: NavigationItem) => (
+      <li>
+        <a class="link font-spectral--regular" href={link.url}>
+          {link.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .desktop-links {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+  }
+
+  .link {
+    color: var(--color-primary);
+    font-size: var(--font-size-s);
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: var(--color-accent-primary);
+      text-decoration: underline;
+    }
+  }
+</style>

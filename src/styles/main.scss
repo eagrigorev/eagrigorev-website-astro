@@ -10,6 +10,8 @@ body {
 }
 
 .container {
+  display: flex;
+  justify-content: center;
   margin-inline: auto;
   max-width: 88.75rem; //1420px
   padding-inline: 40px;

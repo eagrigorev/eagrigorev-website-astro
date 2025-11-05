@@ -1,5 +1,14 @@
 ---
+import type { Post } from '@utils/types';
+import { getCollection, render } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import JournalTitle from '@components/page-title/JournalTitle.astro';
+import PostCard from '@components/feed/PostCard.astro';
+
+const posts: Post[] = await getCollection('posts');
 ---
 
-<GlobalWrapper pageTitle="Boreal Heights">TEST</GlobalWrapper>
+<GlobalWrapper pageTitle="Boreal Heights">
+  <JournalTitle slot="title" />
+  <PostCard slot="main" post={posts[0]} />
+</GlobalWrapper>
