@@ -33,7 +33,11 @@ const desktopLinks: NavigationItem[] = [
   .desktop-links {
     align-items: center;
     display: flex;
-    gap: 30px;
+    gap: var(--space-20-30);
+
+    @media only screen and (width <= 768px) {
+      display: none;
+    }
   }
 
   .link {

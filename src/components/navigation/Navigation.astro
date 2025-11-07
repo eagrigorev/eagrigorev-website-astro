@@ -1,11 +1,15 @@
 ---
 import DesktopLinks from '@components/navigation/DesktopLinks.astro';
 import Logo from '@components/navigation/Logo.astro';
+import MobileLinks from '@components/navigation/MobileLinks.astro';
 ---
 
 <div class="navigation">
   <Logo />
-  <nav><DesktopLinks /></nav>
+  <nav>
+    <DesktopLinks />
+    <MobileLinks />
+  </nav>
 </div>
 
 <style lang="scss">
@@ -13,6 +17,10 @@ import Logo from '@components/navigation/Logo.astro';
     align-items: center;
     display: flex;
     justify-content: space-between;
-    padding: 40px 100px;
+    padding: var(--space-30-40) var(--space-40-100-wide);
+
+    @media only screen and (width <= 1420px) {
+      padding: var(--space-30-40);
+    }
   }
 </style>
