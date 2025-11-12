@@ -1,26 +1,46 @@
-@use "@fontsource-variable/jost";
-@use "@fontsource/spectral";
+@use "@fontsource-variable/eb-garamond";
+@use "@fontsource-variable/eb-garamond/wght-italic.css";
 
-.font-jost {
-  &--uppercase {
-    font-family: "Jost Variable", sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-  }
+.font-medium {
+  font-style: normal;
+  font-weight: 500;
 }
 
-.font-spectral {
-  &--regular {
-    font-family: "Spectral", serif;
-    font-style: normal;
-    font-weight: 400;
-  }
+.font-italic {
+  font-style: italic;
+  font-weight: 400;
+}
 
-  &--light {
-    font-family: "Spectral", serif;
-    font-style: normal;
-    font-weight: 300;
+.link-primary {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: var(--color-accent-primary);
+    text-decoration: underline;
   }
 }
+// .font-jost {
+//   &--uppercase {
+//     font-family: "Jost Variable", sans-serif;
+//     font-style: normal;
+//     font-weight: 500;
+//     letter-spacing: 0.2em;
+//     text-transform: uppercase;
+//   }
+// }
+
+// .font-spectral {
+//   &--regular {
+//     font-family: "Spectral", serif;
+//     font-style: normal;
+//     font-weight: 400;
+//   }
+
+//   &--light {
+//     font-family: "Spectral", serif;
+//     font-style: normal;
+//     font-weight: 300;
+//   }
+// }

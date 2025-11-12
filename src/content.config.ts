@@ -1,4 +1,4 @@
-import { glob, file } from "astro/loaders";
+import { glob } from "astro/loaders";
 import { z, defineCollection } from "astro:content";
 
 const posts = defineCollection({
@@ -6,24 +6,16 @@ const posts = defineCollection({
     pattern: "**/*.{md,mdx}",
     base: "./src/content/posts",
   }),
-  schema: ({ image }) =>
+  schema: () =>
     z.object({
-      datePublished: z.string(),
-      title: z.string(),
+      title: z.object({
+        value: z.string(),
+        isHidden: z.boolean(),
+      }),
       slug: z.string(),
+      datePublished: z.string(),
       tags: z.array(z.string()),
-      featuredImage: z
-        .object({
-          url: image(),
-          alt: z.string(),
-        })
-        .optional(),
-      excerpt: z.string().optional(),
-      options: z
-        .object({
-          hideTitle: z.boolean(),
-        })
-        .optional(),
+      description: z.string(),
     }),
 });
 

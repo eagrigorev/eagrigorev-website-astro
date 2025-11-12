@@ -1,17 +1,17 @@
 ---
 import type { NavigationItem } from '@utils/types';
 
-const desktopLinks: NavigationItem[] = [
+const links: NavigationItem[] = [
   {
     title: 'Journal',
     url: '/',
   },
   {
-    title: 'Archive',
+    title: 'About',
     url: '/',
   },
   {
-    title: 'About',
+    title: 'Archive',
     url: '/',
   },
 ];
@@ -19,9 +19,9 @@ const desktopLinks: NavigationItem[] = [
 
 <ul class="desktop-links" role="list">
   {
-    desktopLinks.map((link: NavigationItem) => (
+    links.map((link: NavigationItem) => (
       <li>
-        <a class="link font-spectral--regular" href={link.url}>
+        <a class="link font-medium link-primary" href={link.url}>
           {link.title}
         </a>
       </li>
@@ -41,14 +41,6 @@ const desktopLinks: NavigationItem[] = [
   }
 
   .link {
-    color: var(--color-primary);
-    font-size: var(--font-size-s);
-    text-decoration: none;
-
-    &:hover,
-    &:focus {
-      color: var(--color-accent-primary);
-      text-decoration: underline;
-    }
+    font-size: var(--font-size-m);
   }
 </style>

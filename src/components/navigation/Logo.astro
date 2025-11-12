@@ -1,23 +1,23 @@
 ---
 import { Image } from 'astro:assets';
-import avatar from '@images/assets/avatar.jpg';
+import logo from '@images/assets/logo.jpg';
 ---
 
 <div class="logo">
   <a href="/">
     <Image
       class="image"
-      src={avatar}
+      src={logo}
       alt="Evgenii Grigorev"
-      width="60"
-      height="60"
+      width="50"
+      height="50"
       decoding="async"
       loading="eager"
     />
   </a>
-  <div>
-    <p class="title font-jost--uppercase">Boreal Heights</p>
-    <p class="subtitle font-spectral--regular">Journal of Evgenii</p>
+  <div class="description">
+    <p class="title font-medium">Evgenii Grigorev</p>
+    <p class="subtitle font-italic">A Journal of the Buried Life</p>
   </div>
 </div>
 
@@ -32,15 +32,20 @@ import avatar from '@images/assets/avatar.jpg';
     aspect-ratio: 1/1;
     border-radius: 50%;
     height: auto;
-    width: var(--space-40-60);
+    width: 50px;
+  }
+
+  .description {
+    @media only screen and (width <= 768px) {
+      display: none;
+    }
   }
 
   .title {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-m);
   }
 
   .subtitle {
-    color: var(--color-accent-secondary);
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-s);
   }
 </style>

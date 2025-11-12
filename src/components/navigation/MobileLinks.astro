@@ -1,9 +1,20 @@
 ---
-
+import { Image } from 'astro:assets';
+import menuIcon from '@images/assets/menu-icon.svg';
 ---
 
 <div class="mobile-links">
-  <button>Menu</button>
+  <button class="dropdown-button">
+    <Image
+      class="image"
+      src={menuIcon}
+      alt="Menu icon"
+      width="25"
+      height="25"
+      decoding="async"
+      loading="eager"
+    />
+  </button>
 </div>
 
 <style lang="scss">
@@ -13,5 +24,21 @@
     @media only screen and (width <= 768px) {
       display: block;
     }
+  }
+
+  .dropdown-button {
+    background: none;
+    border: none;
+
+    &:focus,
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .image {
+    aspect-ratio: 1/1;
+    height: auto;
+    width: 25px;
   }
 </style>
