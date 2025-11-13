@@ -12,7 +12,7 @@ body {
 
 .container {
   margin-inline: auto;
-  max-width: 50rem; //800px
+  max-width: 50rem; // 800px
   padding-inline: var(--space-30-40);
 }
 
@@ -24,5 +24,16 @@ body {
   &:hover {
     color: var(--color-accent-primary);
     text-decoration: underline;
+  }
+}
+
+.link-secondary {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+
+  &:focus,
+  &:hover {
+    color: var(--color-primary);
+    text-decoration: none;
   }
 }

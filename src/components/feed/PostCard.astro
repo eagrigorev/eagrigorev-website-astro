@@ -1,0 +1,89 @@
+---
+import type { Post } from '@utils/types';
+import { customTypography } from '@utils/scripts';
+import { render } from 'astro:content';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<article class="post-card">
+  <div class="content">
+    <header>
+      <a class="post-header link-primary" href={post.data.slug}>
+        <p class="date font-italic">{post.data.datePublished}</p>
+        {
+          post.data.title.isHidden ? null : (
+            <h2 class="title font-uppercase">{post.data.title.value}</h2>
+          )
+        }
+      </a>
+    </header>
+    <ContentWrapper>
+      <Content components={customTypography} />
+    </ContentWrapper>
+    <div class="tags">
+      {
+        post.data.tags.map((tag: string) => (
+          <a class="tag font-regular link-primary" href={`/tags/${tag}`}>
+            #{tag}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .post-card {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-50-80);
+
+    &:not(:last-child) {
+      &::after {
+        background: var(--color-accent-secondary);
+        content: '';
+        display: block;
+        height: 1px;
+        //padding-bottom: var(--space-50-80);
+        width: var(--space-100-160);
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+
+  .post-header {
+    display: block;
+  }
+
+  .date {
+    font-size: var(--font-size-s);
+  }
+
+  .title {
+    font-size: var(--font-size-l);
+    line-height: 150%;
+  }
+
+  .tags {
+    align-items: center;
+    display: flex;
+    gap: 20px;
+  }
+
+  .tag {
+    font-size: var(--font-size-s);
+  }
+</style>
