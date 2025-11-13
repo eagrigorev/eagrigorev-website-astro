@@ -5,12 +5,13 @@ import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import JournalTitle from '@components/title/JournalTitle.astro';
+import Pagination from '@components/feed/Pagination.astro';
 import PostList from '@components/feed/PostList.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
   return paginate(sortPostsDesc(posts), {
-    pageSize: 10,
+    pageSize: 3,
   });
 }) satisfies GetStaticPaths;
 
@@ -23,5 +24,21 @@ const { page } = Astro.props;
 
 <GlobalWrapper pageTitle="Boreal Heights">
   <JournalTitle slot="title" />
-  <PostList slot="main" posts={page.data} />
+  <div slot="main" class="content">
+    <PostList posts={page.data} />
+    <Pagination
+      prevPage={page.url.prev}
+      nextPage={page.url.next}
+      currentPage={page.currentPage}
+      pagesTotal={page.lastPage}
+    />
+  </div>
 </GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+  }
+</style>
