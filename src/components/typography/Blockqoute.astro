@@ -4,7 +4,7 @@ interface Props {
   author: string;
 }
 
-const { quote, author } = Astro.props;
+const { quote, author }: Props = Astro.props;
 ---
 
 <blockquote class="blockquote">

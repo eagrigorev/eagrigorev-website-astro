@@ -1,6 +1,6 @@
 ---
 import type { Post } from '@utils/types';
-import { customTypography } from '@utils/scripts';
+import { customTypography, generateTagItem } from '@utils/scripts';
 import { render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 
@@ -8,7 +8,7 @@ interface Props {
   post: Post;
 }
 
-const { post } = Astro.props;
+const { post }: Props = Astro.props;
 const { Content } = await render(post);
 ---
 
@@ -30,7 +30,10 @@ const { Content } = await render(post);
     <div class="tags">
       {
         post.data.tags.map((tag: string) => (
-          <a class="tag font-regular link-primary" href={`/tags/${tag}`}>
+          <a
+            class="tag font-regular link-primary"
+            href={generateTagItem(tag).url}
+          >
             #{tag}
           </a>
         ))
