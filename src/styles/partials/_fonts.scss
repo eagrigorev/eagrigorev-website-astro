@@ -6,41 +6,19 @@
   font-weight: 500;
 }
 
+.font-regular {
+  font-style: normal;
+  font-weight: 400;
+}
+
 .font-italic {
   font-style: italic;
   font-weight: 400;
 }
 
-.link-primary {
-  color: var(--color-primary);
-  text-decoration: none;
-
-  &:focus,
-  &:hover {
-    color: var(--color-accent-primary);
-    text-decoration: underline;
-  }
+.font-uppercase {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
-// .font-jost {
-//   &--uppercase {
-//     font-family: "Jost Variable", sans-serif;
-//     font-style: normal;
-//     font-weight: 500;
-//     letter-spacing: 0.2em;
-//     text-transform: uppercase;
-//   }
-// }
-
-// .font-spectral {
-//   &--regular {
-//     font-family: "Spectral", serif;
-//     font-style: normal;
-//     font-weight: 400;
-//   }
-
-//   &--light {
-//     font-family: "Spectral", serif;
-//     font-style: normal;
-//     font-weight: 300;
-//   }
-// }
