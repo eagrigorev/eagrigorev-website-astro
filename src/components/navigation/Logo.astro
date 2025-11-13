@@ -3,29 +3,31 @@ import { Image } from 'astro:assets';
 import logo from '@images/assets/logo.jpg';
 ---
 
-<div class="logo">
-  <a href="/">
-    <Image
-      class="image"
-      src={logo}
-      alt="Evgenii Grigorev"
-      width="50"
-      height="50"
-      decoding="async"
-      loading="eager"
-    />
-  </a>
+<!-- <div class="logo"> -->
+<a class="logo" href="/">
+  <Image
+    class="image"
+    src={logo}
+    alt="Evgenii Grigorev"
+    width="50"
+    height="50"
+    decoding="async"
+    loading="eager"
+  />
+
   <div class="description">
     <p class="title font-medium">Evgenii Grigorev</p>
     <p class="subtitle font-italic">A Journal of the Buried Life</p>
   </div>
-</div>
+</a>
+<!-- </div> -->
 
 <style lang="scss">
   .logo {
     align-items: center;
     display: flex;
     gap: var(--space-10-20);
+    text-decoration: none;
   }
 
   .image {
@@ -42,10 +44,12 @@ import logo from '@images/assets/logo.jpg';
   }
 
   .title {
+    color: var(--color-primary);
     font-size: var(--font-size-m);
   }
 
   .subtitle {
+    color: var(--color-primary);
     font-size: var(--font-size-s);
   }
 </style>
