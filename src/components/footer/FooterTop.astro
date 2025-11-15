@@ -1,0 +1,65 @@
+---
+import type { NavigationItem } from '@utils/types';
+
+const socialLinks: NavigationItem[] = [
+  {
+    title: 'Instagram',
+    url: 'https://www.instagram.com/eagrigorev/',
+  },
+  {
+    title: 'Bluesky',
+    url: 'https://bsky.app/profile/eagrigorev.bsky.social/',
+  },
+  {
+    title: 'GitHub',
+    url: 'https://github.com/eagrigorev/',
+  },
+];
+---
+
+<div class="footer-top">
+  <p class="outro font-regular">
+    Lorem ipsum dolor sit amet consectetur. Magna arcu dis arcu adipiscing nibh
+    natoque sed hendrerit. Sollicitudin eget quam a diam viverra et pretium. Leo
+    tellus pretium adipiscing non. Magna condimentum ullamcorper iaculis
+    pellentesque viverra.
+  </p>
+  <nav>
+    <ul class="social-links" role="list">
+      {
+        socialLinks.map((link: NavigationItem) => (
+          <li>
+            <a class="social-link font-uppercase link-primary" href={link.url}>
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style lang="scss">
+  .footer-top {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .outro {
+    font-size: var(--font-size-s);
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .social-links {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+  }
+
+  .social-link {
+    font-size: var(--font-size-xs);
+  }
+</style>

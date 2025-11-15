@@ -1,6 +1,7 @@
 ---
 import '@styles/main.scss';
 import Analytics from '@vercel/analytics/astro';
+import FooterNavigation from '@components/footer/FooterNavigation.astro';
 import Navigation from '@components/navigation/Navigation.astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 
@@ -40,6 +41,16 @@ const { pageTitle } = Astro.props;
         <slot name="main" />
       </div>
     </main>
-    <footer></footer>
+    <footer class="sticky-footer">
+      <FooterNavigation />
+    </footer>
   </body>
 </html>
+
+<style lang="scss">
+  .sticky-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+</style>
