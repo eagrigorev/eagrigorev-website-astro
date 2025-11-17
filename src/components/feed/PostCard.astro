@@ -32,7 +32,7 @@ const { Content } = await render(post);
         post.data.tags.map((tag: string) => (
           <a
             class="tag font-regular link-primary"
-            href={generateTagItem(tag).url}
+            href={`/tags/${generateTagItem(tag).url}`}
           >
             #{tag}
           </a>

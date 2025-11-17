@@ -20,7 +20,7 @@ export const customTypography = {
 export const generateTagItem = (tag: string): NavigationItem => {
   return {
     title: tag,
-    url: `tags/${tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and")}`,
+    url: tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and"),
   };
 };
 
