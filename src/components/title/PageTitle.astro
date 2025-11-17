@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  date?: string;
+}
+
+const { title, date }: Props = Astro.props;
+---
+
+<div class="page-title">
+  <h1 class="title font-uppercase">{title}</h1>
+  {date ? <p class="date font-italic">{date}</p> : null}
+</div>
+
+<style lang="scss">
+  .page-title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: var(--space-100-160);
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .date {
+    font-size: var(--font-size-s);
+  }
+</style>
