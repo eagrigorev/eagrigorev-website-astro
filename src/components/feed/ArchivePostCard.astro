@@ -1,0 +1,57 @@
+---
+import type { Post } from '@utils/types';
+
+interface Props {
+  post: Post;
+  index: number;
+}
+
+const { post, index }: Props = Astro.props;
+
+const postTitle: string = `${index + 1}. ${post.data.title.value}`;
+---
+
+<article class="archive-post-card">
+  <div class="description">
+    <a class="link-primary" href={post.data.slug}>
+      <h2 class="title font-medium">{postTitle}</h2>
+    </a>
+    <p class="description font-regular">{post.data.description}</p>
+  </div>
+  <p class="date font-italic">{post.data.datePublished}</p>
+</article>
+
+<style lang="scss">
+  .archive-post-card {
+    display: flex;
+    justify-content: space-between;
+
+    @media only screen and (width <= 768px) {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+
+  .description {
+    max-width: 480px;
+
+    @media only screen and (width <= 768px) {
+      max-width: none;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-m);
+    line-height: 150%;
+  }
+
+  .description {
+    color: var(--color-secondary);
+    font-size: var(--font-size-s);
+    line-height: 150%;
+  }
+
+  .date {
+    font-size: var(--font-size-s);
+  }
+</style>

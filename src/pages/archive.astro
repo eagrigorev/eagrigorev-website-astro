@@ -1,0 +1,38 @@
+---
+import type { Post } from '@utils/types';
+import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
+import ArchiveSection from '@components/feed/ArchiveSection.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/title/PageTitle.astro';
+
+const posts: Post[] = await getCollection('posts');
+const sections = ['2025'];
+---
+
+<GlobalWrapper pageTitle="Archive">
+  <PageTitle slot="title" title="Archive" />
+  <div slot="main" class="content">
+    {
+      sections.map((section: string) => (
+        <ArchiveSection
+          posts={sortPostsDesc(
+            posts.filter((post: Post) =>
+              post.data.datePublished.includes(section)
+            )
+          )}
+          title={section}
+        />
+      ))
+    }
+  </div>
+</GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-50-80);
+    padding-top: var(--space-100-160);
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+import type { Post } from '@utils/types';
+import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
+
+interface Props {
+  posts: Post[];
+  title: string;
+}
+
+const { posts, title }: Props = Astro.props;
+---
+
+<div class="archive-section">
+  <h2 class="title font-medium">{title}</h2>
+  <div class="posts">
+    {
+      posts.map((post: Post, index: number) => (
+        <ArchivePostCard post={post} index={index} />
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .archive-section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+
+  .title {
+    font-size: var(--font-size-l);
+  }
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>
