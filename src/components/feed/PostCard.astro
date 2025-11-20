@@ -15,7 +15,7 @@ const { Content } = await render(post);
 <article class="post-card">
   <div class="content">
     <header>
-      <a class="post-header link-primary" href={post.data.slug}>
+      <a class="post-header link-primary" href={`/${post.data.slug}`}>
         <p class="date font-italic">{post.data.datePublished}</p>
         {
           post.data.title.isHidden ? null : (
