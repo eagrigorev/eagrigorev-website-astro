@@ -11,7 +11,7 @@ import PostList from '@components/feed/PostList.astro';
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
   return paginate(sortPostsDesc(posts), {
-    pageSize: 3,
+    pageSize: 10,
   });
 }) satisfies GetStaticPaths;
 

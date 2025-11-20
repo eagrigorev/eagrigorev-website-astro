@@ -10,8 +10,6 @@ export default defineConfig({
   integrations: [mdx(), sitemap(), robotsTxt()],
   redirects: {
     "/tags": "/",
-    //   "/reading-journal/year": "/reading-journal",
-    //   "/illustrations/art": "/illustrations",
   },
   adapter: vercel(),
 });

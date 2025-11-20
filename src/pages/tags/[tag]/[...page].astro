@@ -18,7 +18,7 @@ export const getStaticPaths = (async ({ paginate }) => {
     return paginate(sortPostsDesc(tagPosts), {
       params: { tag: tag.url },
       props: { tagName: tag.title },
-      pageSize: 1,
+      pageSize: 10,
     });
   });
 }) satisfies GetStaticPaths;
@@ -29,7 +29,6 @@ interface Props {
 }
 
 const { page, tagName }: Props = Astro.props;
-const { tag } = Astro.params;
 ---
 
 <GlobalWrapper pageTitle=`Tag: ${tagName}`>
