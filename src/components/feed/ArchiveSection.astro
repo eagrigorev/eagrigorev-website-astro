@@ -15,7 +15,13 @@ const { posts, title }: Props = Astro.props;
   <div class="posts">
     {
       posts.map((post: Post, index: number) => (
-        <ArchivePostCard post={post} index={index} />
+        <ArchivePostCard
+          title={post.data.title.value}
+          slug={post.data.slug}
+          description={post.data.description}
+          datePublished={post.data.datePublished}
+          index={index}
+        />
       ))
     }
   </div>

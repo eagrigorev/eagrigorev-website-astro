@@ -1,24 +1,25 @@
 ---
-import type { Post } from '@utils/types';
-
 interface Props {
-  post: Post;
+  title: string;
+  slug: string;
+  description: string;
+  datePublished: string;
   index: number;
 }
 
-const { post, index }: Props = Astro.props;
+const { title, slug, description, datePublished, index }: Props = Astro.props;
 
-const postTitle: string = `${index + 1}. ${post.data.title.value}`;
+const postTitle: string = `${index + 1}. ${title}`;
 ---
 
 <article class="archive-post-card">
   <div class="description">
-    <a class="link-primary" href={post.data.slug}>
+    <a class="link-primary" href={slug}>
       <h2 class="title font-medium">{postTitle}</h2>
     </a>
-    <p class="description font-regular">{post.data.description}</p>
+    <p class="description font-regular">{description}</p>
   </div>
-  <p class="date font-italic">{post.data.datePublished}</p>
+  <p class="date font-italic">{datePublished}</p>
 </article>
 
 <style lang="scss">

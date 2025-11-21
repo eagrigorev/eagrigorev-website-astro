@@ -5,6 +5,12 @@ export interface NavigationItem {
   url: string;
 }
 
+export interface TopicItem {
+  title: string;
+  url: string;
+  description: string;
+}
+
 export interface Post {
   id: string;
   body?: string;
