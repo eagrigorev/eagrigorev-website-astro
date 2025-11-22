@@ -1,0 +1,50 @@
+---
+import type { NavigationItem, Post } from '@utils/types';
+import { getCollection } from 'astro:content';
+import { generateUniqueTags } from '@utils/scripts';
+import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/title/PageTitle.astro';
+
+const posts = await getCollection('posts');
+const uniqueTags: NavigationItem[] = generateUniqueTags(posts);
+const tagItems: { title: string; url: string; count: number }[] =
+  uniqueTags.map((tag: NavigationItem) => {
+    return {
+      title: tag.title,
+      url: tag.url,
+      count: posts.filter((post: Post) => post.data.tags.includes(tag.title))
+        .length,
+    };
+  });
+---
+
+<GlobalWrapper pageTitle="Tags">
+  <PageTitle slot="title" title="Tags" />
+  <div slot="main" class="content">
+    {
+      tagItems.map(
+        (
+          tagItem: { title: string; url: string; count: number },
+          index: number
+        ) => (
+          <ArchivePostCard
+            title={tagItem.title}
+            slug={`/tags/${tagItem.url}`}
+            datePublished={tagItem.count.toString()}
+            index={index}
+          />
+        )
+      )
+    }
+  </div>
+</GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: var(--space-100-160);
+  }
+</style>

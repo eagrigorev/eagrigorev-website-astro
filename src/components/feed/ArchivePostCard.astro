@@ -2,7 +2,7 @@
 interface Props {
   title: string;
   slug: string;
-  description: string;
+  description?: string;
   datePublished: string;
   index: number;
 }
@@ -17,7 +17,7 @@ const postTitle: string = `${index + 1}. ${title}`;
     <a class="link-primary" href={slug}>
       <h2 class="title font-medium">{postTitle}</h2>
     </a>
-    <p class="description font-regular">{description}</p>
+    {description ? <p class="description font-regular">{description}</p> : null}
   </div>
   <p class="date font-italic">{datePublished}</p>
 </article>
