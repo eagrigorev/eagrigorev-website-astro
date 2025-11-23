@@ -17,13 +17,17 @@ const tagItems: { title: string; url: string; count: number }[] =
         .length,
     };
   });
+
+const sortedTagItems = () => {
+  return tagItems.sort((prev, next) => (prev.count < next.count ? 1 : -1));
+};
 ---
 
 <GlobalWrapper pageTitle="Tags">
   <PageTitle slot="title" title="Tags" />
   <div slot="main" class="content">
     {
-      tagItems.map(
+      sortedTagItems().map(
         (
           tagItem: { title: string; url: string; count: number },
           index: number
