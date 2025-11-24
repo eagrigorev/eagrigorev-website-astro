@@ -8,7 +8,5 @@ import robotsTxt from "astro-robots-txt";
 export default defineConfig({
   site: "https://www.eagrigorev.com",
   integrations: [mdx(), sitemap(), robotsTxt()],
-  // redirects: {
-  // },
   adapter: vercel(),
 });

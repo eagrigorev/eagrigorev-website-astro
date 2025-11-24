@@ -1,31 +1,9 @@
 ---
 import type { NavigationItem } from '@utils/types';
 import { Image } from 'astro:assets';
+import links from '@data/links.json';
 import menuIcon from '@images/assets/menu-icon.svg';
 import closeMenuIcon from '@images/assets/close-icon.svg';
-
-const links: NavigationItem[] = [
-  {
-    title: 'Journal',
-    url: '/',
-  },
-  {
-    title: 'About',
-    url: '/',
-  },
-  {
-    title: 'Archive',
-    url: '/archive',
-  },
-  {
-    title: 'Topics',
-    url: '/topics',
-  },
-  {
-    title: 'Tags',
-    url: '/tags',
-  },
-];
 ---
 
 <div class="mobile-links">

@@ -2,12 +2,12 @@
 import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
+import sections from '@data/sections.json';
 import ArchiveSection from '@components/feed/ArchiveSection.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/title/PageTitle.astro';
 
 const posts: Post[] = await getCollection('posts');
-const sections = ['2025'];
 ---
 
 <GlobalWrapper pageTitle="Archive">
