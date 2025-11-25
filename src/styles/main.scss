@@ -1,0 +1,39 @@
+@use "./partials/tokens";
+@use "./partials/normalize";
+@use "./partials/fonts";
+
+body {
+  background-color: var(--color-bg-primary);
+  color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  font-family: "EB Garamond Variable", serif;
+}
+
+.container {
+  margin-inline: auto;
+  max-width: 50rem; // 800px
+  padding-inline: var(--space-30-40);
+}
+
+.link-primary {
+  color: var(--color-primary);
+  text-decoration: none;
+
+  &:focus,
+  &:hover {
+    color: var(--color-accent-primary);
+    text-decoration: underline;
+  }
+}
+
+.link-secondary {
+  color: var(--color-accent-primary);
+  text-decoration: underline;
+
+  &:focus,
+  &:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+}

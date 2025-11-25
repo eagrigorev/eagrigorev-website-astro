@@ -1,13 +1,10 @@
 ---
-import type { Page, PageTitleOptions } from '@utils/types';
-import { customTypography } from '@utils/customTypography';
+import type { Page } from '@utils/types';
+import { customTypography } from '@utils/scripts';
 import { getEntry, render } from 'astro:content';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageSplit from '@layouts/PageSplit.astro';
-import PageTitle from '@components/PageTitle.astro';
-import ImageWithCaption from '@components/embeds/ImageWithCaption.astro';
-import MarkdownWrapper from '@layouts/MarkdownWrapper.astro';
-import img from '@images/pages/about-me.jpg';
+import PageTitle from '@components/title/PageTitle.astro';
 
 const page: Page | undefined = await getEntry('pages', 'about');
 if (!page) {
@@ -15,28 +12,22 @@ if (!page) {
 }
 
 const { Content } = await render(page);
-
-const titleOptions: PageTitleOptions = {
-  heading: page.data.title,
-  subheading:
-    'I am a frontend software developer at T-Digital by Deutsche Telekom in Thessaloniki, Greece.',
-  image: {
-    isShown: false,
-  },
-  datePublished: page.data.datePublished,
-};
 ---
 
 <GlobalWrapper pageTitle={page.data.title}>
-  <PageSplit>
-    <PageTitle slot="title" titleOptions={titleOptions} />
-    <ImageWithCaption
-      slot="content-left"
-      src={img}
-      caption="A portrait of me in England"
-    />
-    <MarkdownWrapper slot="content-right" hasBottomSection={false}>
-      <Content slot="content" components={customTypography} />
-    </MarkdownWrapper>
-  </PageSplit>
+  <PageTitle slot="title" title={page.data.title} />
+  <div slot="main" class="content">
+    <ContentWrapper>
+      <Content components={customTypography} />
+    </ContentWrapper>
+  </div>
 </GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-top: var(--space-100-160);
+  }
+</style>

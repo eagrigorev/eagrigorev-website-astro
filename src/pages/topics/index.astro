@@ -1,0 +1,57 @@
+---
+import type { Post, TopicItem } from '@utils/types';
+import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
+import topics from '@data/topics.json';
+import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/title/PageTitle.astro';
+
+const posts = await getCollection('posts');
+const lastUpdated = (topic: TopicItem): string => {
+  const topicPosts: Post[] = posts.filter(
+    (post: Post) => post.data.topic === topic.title
+  );
+  return sortPostsDesc(topicPosts)[0].data.datePublished;
+};
+const topicItems = topics.map((topic: TopicItem) => {
+  return {
+    title: topic.title,
+    url: topic.url,
+    description: topic.description,
+    lastUpdated: lastUpdated(topic),
+  };
+});
+
+const sortedTopicItems = () => {
+  return topicItems.sort((prev, next) =>
+    new Date(prev.lastUpdated) < new Date(next.lastUpdated) ? 1 : -1
+  );
+};
+---
+
+<GlobalWrapper pageTitle="Topics">
+  <PageTitle slot="title" title="Topics" />
+  <div slot="main" class="content">
+    {
+      sortedTopicItems().map((topic, index: number) => (
+        <ArchivePostCard
+          title={topic.title}
+          slug={`/topics/${topic.url}`}
+          description={topic.description}
+          datePublished={topic.lastUpdated}
+          index={index}
+        />
+      ))
+    }
+  </div>
+</GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: var(--space-100-160);
+  }
+</style>

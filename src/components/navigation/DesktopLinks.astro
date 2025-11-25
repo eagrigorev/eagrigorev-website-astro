@@ -1,0 +1,32 @@
+---
+import type { NavigationItem } from '@utils/types';
+import links from '@data/links.json';
+---
+
+<ul class="desktop-links" role="list">
+  {
+    links.map((link: NavigationItem) => (
+      <li>
+        <a class="link font-medium link-primary" href={link.url}>
+          {link.title}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .desktop-links {
+    align-items: center;
+    display: flex;
+    gap: var(--space-20-30);
+
+    @media only screen and (width <= 768px) {
+      display: none;
+    }
+  }
+
+  .link {
+    font-size: var(--font-size-m);
+  }
+</style>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+}
+
+const { quote, author }: Props = Astro.props;
+---
+
+<blockquote class="blockquote">
+  <p class="text font-italic">{quote}</p>
+  <p class="author font-uppercase">{author}</p>
+</blockquote>
+
+<style lang="scss">
+  .blockquote {
+    align-items: flex-end;
+    border-left: var(--color-primary) solid 1px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-left: var(--space-30-40);
+  }
+
+  .text {
+    font-size: var(--font-size-m);
+    line-height: 150%;
+  }
+
+  .author {
+    font-size: var(--font-size-xs);
+  }
+</style>

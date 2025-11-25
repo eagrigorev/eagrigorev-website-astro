@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Journal",
+    "url": "/"
+  },
+  {
+    "title": "About",
+    "url": "/about"
+  },
+  {
+    "title": "Archive",
+    "url": "/archive"
+  },
+  {
+    "title": "Topics",
+    "url": "/topics"
+  },
+  {
+    "title": "Tags",
+    "url": "/tags"
+  }
+]

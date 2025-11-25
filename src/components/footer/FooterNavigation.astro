@@ -1,0 +1,31 @@
+---
+import FooterBottom from '@components/footer/FooterBottom.astro';
+import FooterTop from '@components/footer/FooterTop.astro';
+---
+
+<div class="footer-navigation">
+  <div class="background">
+    <div class="content container">
+      <FooterTop />
+      <FooterBottom />
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  .footer-navigation {
+    padding-top: var(--space-100-160);
+  }
+
+  .background {
+    background-color: var(--color-bg-secondary);
+    border-top: var(--color-accent-secondary) 1px solid;
+    padding-top: var(--space-50-80);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+</style>

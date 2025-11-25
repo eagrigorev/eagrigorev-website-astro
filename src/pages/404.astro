@@ -1,20 +1,23 @@
 ---
-import type { PageTitleOptions } from '@utils/types';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/PageTitle.astro';
-import PageWide from '@layouts/PageWide.astro';
-
-const titleOptions: PageTitleOptions = {
-  heading: 'Page 404',
-  image: {
-    isShown: false,
-  },
-};
+import PageTitle from '@components/title/PageTitle.astro';
 ---
 
 <GlobalWrapper pageTitle="404">
-  <PageWide>
-    <PageTitle slot="title" titleOptions={titleOptions} />
-    <p slot="content">This page doesn't exist.</p>
-  </PageWide>
+  <PageTitle slot="title" title="404" />
+  <div slot="main" class="content">
+    <ContentWrapper>
+      <p>This page doesn't exist.</p>
+    </ContentWrapper>
+  </div>
 </GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-top: var(--space-100-160);
+  }
+</style>

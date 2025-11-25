@@ -1,0 +1,26 @@
+---
+import DesktopLinks from '@components/navigation/DesktopLinks.astro';
+import Logo from '@components/navigation/Logo.astro';
+import MobileLinks from '@components/navigation/MobileLinks.astro';
+---
+
+<div class="navigation">
+  <Logo />
+  <nav>
+    <DesktopLinks />
+    <MobileLinks />
+  </nav>
+</div>
+
+<style lang="scss">
+  .navigation {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-30-40) var(--space-40-100-wide);
+
+    @media only screen and (width <= 768px) {
+      padding: var(--space-30-40);
+    }
+  }
+</style>

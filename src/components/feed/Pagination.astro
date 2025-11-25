@@ -1,0 +1,40 @@
+---
+interface Props {
+  prevPage?: string | undefined;
+  nextPage?: string | undefined;
+  currentPage: number;
+  pagesTotal: number;
+}
+
+const { prevPage, nextPage, currentPage, pagesTotal }: Props = Astro.props;
+
+const index: string = `Page ${currentPage} of ${pagesTotal}`;
+---
+
+<div class="pagination font-uppercase">
+  {
+    prevPage ? (
+      <a class="link-primary" href={prevPage}>
+        Prev
+      </a>
+    ) : null
+  }
+  <p>{index}</p>
+  {
+    nextPage ? (
+      <a class="link-primary" href={nextPage}>
+        Next
+      </a>
+    ) : null
+  }
+</div>
+
+<style lang="scss">
+  .pagination {
+    align-items: center;
+    display: flex;
+    gap: 30px;
+    font-size: var(--font-size-xs);
+    padding-top: var(--space-100-160);
+  }
+</style>

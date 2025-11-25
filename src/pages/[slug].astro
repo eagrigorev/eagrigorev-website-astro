@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { Post } from '@utils/types';
+import { customTypography, generateTagItem } from '@utils/scripts';
+import { getCollection, render } from 'astro:content';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/title/PageTitle.astro';
+
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getCollection('posts');
+  return posts.map((post: Post) => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<GlobalWrapper pageTitle={post.data.title.value}>
+  <PageTitle
+    slot="title"
+    title={post.data.title.value}
+    date={post.data.datePublished}
+  />
+  <div slot="main" class="content">
+    <ContentWrapper>
+      <Content components={customTypography} />
+    </ContentWrapper>
+    <div class="tags">
+      {
+        post.data.tags.map((tag: string) => (
+          <a
+            class="tag font-regular link-primary"
+            href={`/tags/${generateTagItem(tag).url}`}
+          >
+            #{tag}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    padding-top: var(--space-100-160);
+  }
+
+  .tags {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .tag {
+    font-size: var(--font-size-s);
+  }
+</style>

@@ -1,0 +1,104 @@
+---
+import type { NavigationItem } from '@utils/types';
+import { Image } from 'astro:assets';
+import links from '@data/links.json';
+import menuIcon from '@images/assets/menu-icon.svg';
+import closeMenuIcon from '@images/assets/close-icon.svg';
+---
+
+<div class="mobile-links">
+  <button class="dropdown-button" id="mobile-links-button">
+    <Image
+      class="image"
+      id="open-menu-icon"
+      src={menuIcon}
+      alt="Menu icon"
+      width="25"
+      height="25"
+      decoding="async"
+      loading="eager"
+    />
+    <Image
+      class="image hidden"
+      id="close-menu-icon"
+      src={closeMenuIcon}
+      alt="Close menu icon"
+      width="25"
+      height="25"
+      decoding="async"
+      loading="eager"
+    />
+  </button>
+  <div class="dropdown hidden" id="mobile-links">
+    <ul class="links" role="list">
+      {
+        links.map((link: NavigationItem) => (
+          <li>
+            <a class="link font-medium link-primary" href={link.url}>
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  document
+    .querySelector('#mobile-links-button')
+    ?.addEventListener('click', () => {
+      document.querySelector('#mobile-links')?.classList.toggle('hidden');
+      document.querySelector('#open-menu-icon')?.classList.toggle('hidden');
+      document.querySelector('#close-menu-icon')?.classList.toggle('hidden');
+    });
+</script>
+
+<style lang="scss">
+  .mobile-links {
+    display: none;
+
+    @media only screen and (width <= 768px) {
+      display: block;
+      position: relative;
+    }
+  }
+
+  .dropdown-button {
+    background: none;
+    border: none;
+
+    &:focus,
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .image {
+    aspect-ratio: 1/1;
+    height: auto;
+    width: 25px;
+  }
+
+  .hidden {
+    display: none;
+  }
+
+  .dropdown {
+    background: var(--color-bg-primary);
+    position: absolute;
+    right: 0;
+    top: var(--space-30-40);
+  }
+
+  .links {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .link {
+    font-size: var(--font-size-m);
+  }
+</style>

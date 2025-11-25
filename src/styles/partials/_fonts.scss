@@ -1,0 +1,24 @@
+@use "@fontsource-variable/eb-garamond";
+@use "@fontsource-variable/eb-garamond/wght-italic.css";
+
+.font-medium {
+  font-style: normal;
+  font-weight: 500;
+}
+
+.font-regular {
+  font-style: normal;
+  font-weight: 400;
+}
+
+.font-italic {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.font-uppercase {
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}

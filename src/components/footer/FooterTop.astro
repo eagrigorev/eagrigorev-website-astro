@@ -1,0 +1,52 @@
+---
+import type { NavigationItem } from '@utils/types';
+import socialLinks from '@data/social-links.json';
+---
+
+<div class="footer-top">
+  <p class="outro font-regular">
+    I decided to create this journal in order to cope with anxiety, preserve
+    knowledge and memories, and reflect on my life. Thank you for stopping by.
+    You can browse topics and tags for more posts.
+  </p>
+  <nav>
+    <ul class="social-links" role="list">
+      {
+        socialLinks.map((link: NavigationItem) => (
+          <li>
+            <a class="social-link font-uppercase link-primary" href={link.url}>
+              {link.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<style lang="scss">
+  .footer-top {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .outro {
+    font-size: var(--font-size-s);
+    line-height: 150%;
+    text-align: center;
+  }
+
+  .social-links {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+  }
+
+  .social-link {
+    font-size: var(--font-size-xs);
+  }
+</style>
