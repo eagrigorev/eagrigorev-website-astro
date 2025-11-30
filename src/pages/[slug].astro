@@ -1,11 +1,12 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import type { Post } from '@utils/types';
-import { customTypography, generateTagItem } from '@utils/scripts';
+import { customTypography } from '@utils/scripts';
 import { getCollection, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/title/PageTitle.astro';
+import Tags from '@components/feed/Tags.astro';
 
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
@@ -29,18 +30,7 @@ const { Content } = await render(post);
     <ContentWrapper>
       <Content components={customTypography} />
     </ContentWrapper>
-    <div class="tags">
-      {
-        post.data.tags.map((tag: string) => (
-          <a
-            class="tag font-regular link-primary"
-            href={`/tags/${generateTagItem(tag).url}`}
-          >
-            #{tag}
-          </a>
-        ))
-      }
-    </div>
+    <Tags tags={post.data.tags} />
   </div>
 </GlobalWrapper>
 
@@ -50,16 +40,5 @@ const { Content } = await render(post);
     flex-direction: column;
     gap: var(--space-30-40);
     padding-top: var(--space-100-160);
-  }
-
-  .tags {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .tag {
-    font-size: var(--font-size-s);
   }
 </style>

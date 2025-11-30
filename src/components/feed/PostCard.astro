@@ -1,8 +1,9 @@
 ---
 import type { Post } from '@utils/types';
-import { customTypography, generateTagItem } from '@utils/scripts';
+import { customTypography } from '@utils/scripts';
 import { render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
+import Tags from '@components/feed/Tags.astro';
 
 interface Props {
   post: Post;
@@ -27,18 +28,7 @@ const { Content } = await render(post);
     <ContentWrapper>
       <Content components={customTypography} />
     </ContentWrapper>
-    <div class="tags">
-      {
-        post.data.tags.map((tag: string) => (
-          <a
-            class="tag font-regular link-primary"
-            href={`/tags/${generateTagItem(tag).url}`}
-          >
-            #{tag}
-          </a>
-        ))
-      }
-    </div>
+    <Tags tags={post.data.tags} />
   </div>
 </article>
 
@@ -77,16 +67,5 @@ const { Content } = await render(post);
   .title {
     font-size: var(--font-size-l);
     line-height: 150%;
-  }
-
-  .tags {
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
-  .tag {
-    font-size: var(--font-size-s);
   }
 </style>
