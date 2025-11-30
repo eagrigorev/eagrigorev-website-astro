@@ -1,0 +1,35 @@
+---
+import { generateTagItem } from '@utils/scripts';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags }: Props = Astro.props;
+---
+
+<div class="tags">
+  {
+    tags.map((tag: string) => (
+      <a
+        class="tag font-regular link-primary"
+        href={`/tags/${generateTagItem(tag).url}`}
+      >
+        #{tag}
+      </a>
+    ))
+  }
+</div>
+
+<style lang="scss">
+  .tags {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .tag {
+    font-size: var(--font-size-s);
+  }
+</style>
