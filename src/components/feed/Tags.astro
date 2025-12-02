@@ -12,7 +12,7 @@ const { tags }: Props = Astro.props;
   {
     tags.map((tag: string) => (
       <a
-        class="tag font-regular link-primary"
+        class="tag font-italic link-primary"
         href={`/tags/${generateTagItem(tag).url}`}
       >
         #{tag}
