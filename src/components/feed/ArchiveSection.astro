@@ -1,5 +1,6 @@
 ---
 import type { Post } from '@utils/types';
+import { formatDate } from '@utils/scripts';
 import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
 
 interface Props {
@@ -19,7 +20,7 @@ const { posts, title }: Props = Astro.props;
           title={post.data.title.value}
           slug={post.data.slug}
           description={post.data.description}
-          datePublished={post.data.datePublished}
+          datePublished={formatDate(post.data.datePublished)}
           index={index}
         />
       ))

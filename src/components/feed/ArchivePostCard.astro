@@ -1,6 +1,4 @@
 ---
-import { formatDate } from '@utils/scripts';
-
 interface Props {
   title: string;
   slug: string;
@@ -21,7 +19,7 @@ const postTitle: string = `${index + 1}. ${title}`;
     </a>
     {description ? <p class="description font-regular">{description}</p> : null}
   </div>
-  <p class="date font-italic">{formatDate(datePublished)}</p>
+  <p class="date font-italic">{datePublished}</p>
 </article>
 
 <style lang="scss">

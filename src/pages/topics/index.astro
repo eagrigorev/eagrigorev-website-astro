@@ -1,7 +1,7 @@
 ---
 import type { Post, TopicItem } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { sortPostsDesc } from '@utils/scripts';
+import { formatDate, sortPostsDesc } from '@utils/scripts';
 import topics from '@data/topics.json';
 import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
@@ -39,7 +39,7 @@ const sortedTopicItems = () => {
           title={topic.title}
           slug={`/topics/${topic.url}`}
           description={topic.description}
-          datePublished={topic.lastUpdated}
+          datePublished={formatDate(topic.lastUpdated)}
           index={index}
         />
       ))
