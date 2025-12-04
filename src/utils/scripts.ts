@@ -5,10 +5,19 @@ import Link from "@components/typography/Link.astro";
 
 export const sortPostsDesc = (posts: Post[]): Post[] => {
   return posts.sort((prev: Post, next: Post) =>
-    new Date(prev.data.datePublished) < new Date(next.data.datePublished)
+    new Date(prev.data.datePublished).getTime() <
+    new Date(next.data.datePublished).getTime()
       ? 1
       : -1,
   );
+};
+
+export const formatDate = (date: string): string => {
+  return new Date(date).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 };
 
 export const customTypography = {

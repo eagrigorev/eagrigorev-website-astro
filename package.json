@@ -1,6 +1,6 @@
 {
   "name": "eagrigorev-website-astro",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "homepage": "https://github.com/eagrigorev/eagrigorev-website-astro#readme",
   "bugs": {
@@ -29,15 +29,15 @@
     "@astrojs/ts-plugin": "^1.10.6",
     "@astrojs/vercel": "^9.0.2",
     "@fontsource-variable/eb-garamond": "^5.2.7",
-    "@vercel/analytics": "^1.6.0",
-    "@vercel/speed-insights": "^1.3.0",
+    "@vercel/analytics": "^1.6.1",
+    "@vercel/speed-insights": "^1.3.1",
     "astro": "^5.16.3",
     "astro-robots-txt": "^1.0.0",
     "typescript": "^5.9.3"
   },
   "devDependencies": {
     "postcss-html": "^1.8.0",
-    "prettier": "^3.7.3",
+    "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
     "sass": "^1.94.2",
     "stylelint": "^16.26.1",
