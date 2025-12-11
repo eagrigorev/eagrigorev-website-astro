@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import logo from '@assets/images/logo.jpg';
+
+interface Props {
+  showPhoto: boolean;
+  title: string;
+  subtitle: string;
+}
+
+const { showPhoto, title, subtitle }: Props = Astro.props;
+---
+
+<div class="page-title">
+  {
+    showPhoto ? (
+      <Image
+        class="image"
+        src={logo}
+        alt="Evgenii Grigorev"
+        width="100"
+        height="100"
+        decoding="async"
+        loading="eager"
+      />
+    ) : null
+  }
+  <div class="description">
+    <h1 class="title font-uppercase">{title}</h1>
+    <p class="subtitle font-regular">
+      {subtitle}
+    </p>
+  </div>
+</div>
+
+<style lang="scss">
+  .page-title {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding-top: var(--space-100-160);
+  }
+
+  .image {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    height: auto;
+    width: 100px;
+  }
+
+  .description {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .title {
+    font-size: var(--font-size-xl);
+    line-height: 135%;
+  }
+
+  .subtitle {
+    font-size: var(--font-size-m);
+    line-height: 135%;
+  }
+</style>

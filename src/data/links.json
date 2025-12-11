@@ -1,6 +1,6 @@
 [
   {
-    "title": "Journal",
+    "title": "Table of Contents",
     "url": "/"
   },
   {
@@ -10,13 +10,5 @@
   {
     "title": "Archive",
     "url": "/archive"
-  },
-  {
-    "title": "Topics",
-    "url": "/topics"
-  },
-  {
-    "title": "Tags",
-    "url": "/tags"
   }
 ]

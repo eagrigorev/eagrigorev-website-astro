@@ -2,8 +2,8 @@
 import type { NavigationItem } from '@utils/types';
 import { Image } from 'astro:assets';
 import links from '@data/links.json';
-import menuIcon from '@images/assets/menu-icon.svg';
-import closeMenuIcon from '@images/assets/close-icon.svg';
+import menuIcon from '@assets/icons/menu-icon.svg';
+import closeMenuIcon from '@assets/icons/close-icon.svg';
 ---
 
 <div class="mobile-links">
@@ -34,7 +34,7 @@ import closeMenuIcon from '@images/assets/close-icon.svg';
       {
         links.map((link: NavigationItem) => (
           <li>
-            <a class="link font-medium link-primary" href={link.url}>
+            <a class="link font-small-caps link-primary" href={link.url}>
               {link.title}
             </a>
           </li>
@@ -67,6 +67,7 @@ import closeMenuIcon from '@images/assets/close-icon.svg';
   .dropdown-button {
     background: none;
     border: none;
+    vertical-align: top;
 
     &:focus,
     &:hover {
@@ -99,6 +100,6 @@ import closeMenuIcon from '@images/assets/close-icon.svg';
   }
 
   .link {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
   }
 </style>
