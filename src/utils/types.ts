@@ -7,7 +7,6 @@ export interface NavigationItem {
 
 export interface TopicItem {
   title: string;
-  url: string;
   description: string;
 }
 

@@ -1,22 +1,22 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
 import type { Post, TopicItem } from '@utils/types';
-import { sortPostsDesc } from '@utils/scripts';
+import { generateSlug, sortPostsDesc } from '@utils/scripts';
 import { getCollection } from 'astro:content';
 import topics from '@data/topics.json';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 import Pagination from '@components/feed/Pagination.astro';
 import PostList from '@components/feed/PostList.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const allPosts: Post[] = await getCollection('posts');
   return topics.flatMap((topic: TopicItem) => {
-    const topicPosts = allPosts.filter(
-      (post: Post) => post.data.topic === topic.title
+    const topicPosts = allPosts.filter((post: Post) =>
+      post.data.tags.includes(topic.title)
     );
     return paginate(sortPostsDesc(topicPosts), {
-      params: { topic: topic.url },
+      params: { topic: generateSlug(topic.title) },
       props: { topicName: topic.title },
       pageSize: 10,
     });
@@ -32,7 +32,7 @@ const { page, topicName }: Props = Astro.props;
 ---
 
 <GlobalWrapper pageTitle=`Topic: ${topicName}`>
-  <PageTitle slot="title" title=`Topic: ${topicName}` />
+  <PageTitle slot="title" showPhoto={false} title=`Topic: ${topicName}` />
   <div slot="main" class="content">
     <PostList posts={page.data} />
     {

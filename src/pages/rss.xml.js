@@ -11,7 +11,7 @@ export async function GET(context) {
     items: sortPostsDesc(posts).map((post) => ({
       title: post.data.title,
       pubDate: post.data.datePublished,
-      link: `/${generateSlug(post.data.slug)}/`,
+      link: `/${generateSlug(post.data.title)}/`,
     })),
   });
 }

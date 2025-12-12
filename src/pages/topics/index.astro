@@ -1,23 +1,23 @@
 ---
 import type { Post, TopicItem } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { formatDate, sortPostsDesc } from '@utils/scripts';
+import { formatDate, generateSlug, sortPostsDesc } from '@utils/scripts';
 import topics from '@data/topics.json';
-import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
+import SmallCard from '@components/feed/SmallCard.astro';
 
 const posts = await getCollection('posts');
 const lastUpdated = (topic: TopicItem): string => {
-  const topicPosts: Post[] = posts.filter(
-    (post: Post) => post.data.topic === topic.title
+  const topicPosts: Post[] = posts.filter((post: Post) =>
+    post.data.tags.includes(topic.title)
   );
   return sortPostsDesc(topicPosts)[0].data.datePublished;
 };
 const topicItems = topics.map((topic: TopicItem) => {
   return {
     title: topic.title,
-    url: topic.url,
+    url: generateSlug(topic.title),
     description: topic.description,
     lastUpdated: lastUpdated(topic),
   };
@@ -31,16 +31,15 @@ const sortedTopicItems = () => {
 ---
 
 <GlobalWrapper pageTitle="Topics">
-  <PageTitle slot="title" title="Topics" />
+  <PageTitle slot="title" showPhoto={false} title="Topics" />
   <div slot="main" class="content">
     {
-      sortedTopicItems().map((topic, index: number) => (
-        <ArchivePostCard
+      sortedTopicItems().map((topic) => (
+        <SmallCard
           title={topic.title}
           slug={`/topics/${topic.url}`}
-          description={topic.description}
-          datePublished={formatDate(topic.lastUpdated)}
-          index={index}
+          subtitle={topic.description}
+          additionalInfo={formatDate(topic.lastUpdated)}
         />
       ))
     }
