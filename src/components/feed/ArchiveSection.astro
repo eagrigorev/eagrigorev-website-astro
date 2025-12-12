@@ -1,7 +1,7 @@
 ---
 import type { Post } from '@utils/types';
-import { formatDate } from '@utils/scripts';
-import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
+import { formatDate, generateSlug } from '@utils/scripts';
+import SmallCard from '@components/feed/SmallCard.astro';
 
 interface Props {
   posts: Post[];
@@ -12,16 +12,15 @@ const { posts, title }: Props = Astro.props;
 ---
 
 <div class="archive-section">
-  <h2 class="title font-medium">{title}</h2>
+  <h2 class="title font-uppercase">{title}</h2>
   <div class="posts">
     {
-      posts.map((post: Post, index: number) => (
-        <ArchivePostCard
-          title={post.data.title.value}
-          slug={post.data.slug}
-          description={post.data.description}
-          datePublished={formatDate(post.data.datePublished)}
-          index={index}
+      posts.map((post: Post) => (
+        <SmallCard
+          title={post.data.title}
+          slug={generateSlug(post.data.title)}
+          subtitle={post.data.options?.archiveSubtitle}
+          additionalInfo={formatDate(post.data.datePublished)}
         />
       ))
     }
@@ -36,7 +35,7 @@ const { posts, title }: Props = Astro.props;
   }
 
   .title {
-    font-size: var(--font-size-l);
+    font-size: var(--font-size-m);
   }
   .posts {
     display: flex;
