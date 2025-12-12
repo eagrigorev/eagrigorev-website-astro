@@ -1,5 +1,5 @@
 import { getCollection } from "astro:content";
-import { sortPostsDesc } from "@utils/scripts";
+import { generateSlug, sortPostsDesc } from "@utils/scripts";
 import rss from "@astrojs/rss";
 
 export async function GET(context) {
@@ -9,10 +9,9 @@ export async function GET(context) {
     description: "A Journal of the Buried Life",
     site: context.site,
     items: sortPostsDesc(posts).map((post) => ({
-      title: post.data.title.value,
+      title: post.data.title,
       pubDate: post.data.datePublished,
-      description: post.data.description,
-      link: `/${post.data.slug}/`,
+      link: `/${generateSlug(post.data.slug)}/`,
     })),
   });
 }
