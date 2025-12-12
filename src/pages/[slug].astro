@@ -1,17 +1,17 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import type { Post } from '@utils/types';
-import { customTypography } from '@utils/scripts';
+import { customTypography, generateSlug } from '@utils/scripts';
 import { getCollection, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 import Tags from '@components/feed/Tags.astro';
 
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
   return posts.map((post: Post) => ({
-    params: { slug: post.data.slug },
+    params: { slug: generateSlug(post.data.title) },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
@@ -20,11 +20,12 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<GlobalWrapper pageTitle={post.data.title.value}>
+<GlobalWrapper pageTitle={post.data.title}>
   <PageTitle
     slot="title"
-    title={post.data.title.value}
-    date={post.data.datePublished}
+    showPhoto={false}
+    title={post.data.title}
+    subtitle={post.data.datePublished}
   />
   <div slot="main" class="content">
     <ContentWrapper>

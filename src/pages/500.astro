@@ -1,11 +1,11 @@
 ---
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 ---
 
 <GlobalWrapper pageTitle="500">
-  <PageTitle slot="title" title="500" />
+  <PageTitle slot="title" showPhoto={false} title="500" />
   <div slot="main" class="content">
     <ContentWrapper>
       <p>Internal server error.</p>

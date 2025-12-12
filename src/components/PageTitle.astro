@@ -5,7 +5,7 @@ import logo from '@assets/images/logo.jpg';
 interface Props {
   showPhoto: boolean;
   title: string;
-  subtitle: string;
+  subtitle?: string;
 }
 
 const { showPhoto, title, subtitle }: Props = Astro.props;
@@ -27,9 +27,7 @@ const { showPhoto, title, subtitle }: Props = Astro.props;
   }
   <div class="description">
     <h1 class="title font-uppercase">{title}</h1>
-    <p class="subtitle font-regular">
-      {subtitle}
-    </p>
+    {subtitle ? <p class="subtitle font-regular">{subtitle}</p> : null}
   </div>
 </div>
 

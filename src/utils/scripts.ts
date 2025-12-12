@@ -26,10 +26,14 @@ export const customTypography = {
   h3: Heading3,
 };
 
+export const generateSlug = (item: string): string => {
+  return item.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and");
+};
+
 export const generateTagItem = (tag: string): NavigationItem => {
   return {
     title: tag,
-    url: tag.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and"),
+    url: generateSlug(tag),
   };
 };
 
