@@ -4,7 +4,7 @@ import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import JournalTitle from '@components/title/JournalTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 import Pagination from '@components/feed/Pagination.astro';
 import PostList from '@components/feed/PostList.astro';
 
@@ -22,8 +22,13 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="Boreal Heights">
-  <JournalTitle slot="title" />
+<GlobalWrapper pageTitle="A Journal of the Buried Life">
+  <PageTitle
+    slot="title"
+    showPhoto={true}
+    title="A Journal of the Buried Life"
+    subtitle="My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music."
+  />
   <div slot="main" class="content">
     <PostList posts={page.data} />
     {

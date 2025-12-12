@@ -35,6 +35,7 @@ const { showPhoto, title, subtitle }: Props = Astro.props;
 
 <style lang="scss">
   .page-title {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -49,18 +50,23 @@ const { showPhoto, title, subtitle }: Props = Astro.props;
   }
 
   .description {
+    align-items: center;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
 
   .title {
+    color: var(--color-accent-primary);
     font-size: var(--font-size-xl);
     line-height: 135%;
+    text-align: center;
   }
 
   .subtitle {
     font-size: var(--font-size-m);
     line-height: 135%;
+    max-width: 480px;
+    text-align: center;
   }
 </style>
