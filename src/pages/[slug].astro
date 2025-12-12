@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import type { Post } from '@utils/types';
-import { customTypography, generateSlug } from '@utils/scripts';
+import { customTypography, formatDate, generateSlug } from '@utils/scripts';
 import { getCollection, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
@@ -25,7 +25,7 @@ const { Content } = await render(post);
     slot="title"
     showPhoto={false}
     title={post.data.title}
-    subtitle={post.data.datePublished}
+    subtitle={formatDate(post.data.datePublished)}
   />
   <div slot="main" class="content">
     <ContentWrapper>

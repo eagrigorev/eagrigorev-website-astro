@@ -17,7 +17,10 @@ const { Content } = await render(post);
 <article class="post-card">
   <div class="content">
     <header>
-      <a class="post-header link-primary" href={generateSlug(post.data.title)}>
+      <a
+        class="post-header link-primary"
+        href={`/${generateSlug(post.data.title)}`}
+      >
         {
           post.data.options && post.data.options.hideTitle ? null : (
             <h2 class="title font-small-caps">{post.data.title}</h2>
@@ -45,7 +48,7 @@ const { Content } = await render(post);
           </ContentWrapper>
           <a
             class="read-more font-small-caps link-primary"
-            href={generateSlug(post.data.title)}
+            href={`/${generateSlug(post.data.title)}`}
           >
             Continue reading...
           </a>
