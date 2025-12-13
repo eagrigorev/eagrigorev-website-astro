@@ -19,7 +19,7 @@ const { src, caption }: Props = Astro.props;
     decoding="async"
     loading="eager"
   />
-  <p class="caption">{caption}</p>
+  <p class="caption font-caption">{caption}</p>
 </div>
 
 <style lang="scss">
@@ -36,8 +36,8 @@ const { src, caption }: Props = Astro.props;
   }
 
   .caption {
-    color: var(--color-secondary);
-    font-size: var(--font-size-s);
-    line-height: 150%;
+    color: var(--color-primary);
+    font-size: var(--font-size-xs);
+    line-height: 135%;
   }
 </style>
