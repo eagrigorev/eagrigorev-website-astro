@@ -15,7 +15,7 @@ const { tags }: Props = Astro.props;
         class="tag font-caption link-primary"
         href={`/tags/${generateTagItem(tag).url}`}
       >
-        #{tag}
+        {tag}
       </a>
     ))
   }

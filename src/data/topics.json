@@ -1,6 +1,11 @@
 [
   {
-    "title": "Mono No Aware",
-    "description": "Daily notes and the beauty of things passing."
+    "id": 1,
+    "title": "Daily Notes",
+    "description": "The beauty of things passing.",
+    "featuredImage": {
+      "url": "@assets/images/topics/daily-notes.jpg",
+      "alt": "Test alt text"
+    }
   }
 ]

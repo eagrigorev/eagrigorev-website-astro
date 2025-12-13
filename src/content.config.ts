@@ -1,4 +1,4 @@
-import { glob } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const posts = defineCollection({
@@ -39,7 +39,21 @@ const pages = defineCollection({
     }),
 });
 
+const topics = defineCollection({
+  loader: file("src/data/topics.json"),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      description: z.string(),
+      featuredImage: z.object({
+        url: image(),
+        alt: z.string(),
+      }),
+    }),
+});
+
 export const collections = {
   posts,
   pages,
+  topics,
 };
