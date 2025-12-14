@@ -27,7 +27,11 @@ export const customTypography = {
 };
 
 export const generateSlug = (item: string): string => {
-  return item.toLowerCase().replaceAll(/ /g, "-").replaceAll("&", "and");
+  return item
+    .toLowerCase()
+    .replaceAll(/ /g, "-")
+    .replaceAll("&", "and")
+    .replaceAll("'", "");
 };
 
 export const generateTagItem = (tag: string): NavigationItem => {

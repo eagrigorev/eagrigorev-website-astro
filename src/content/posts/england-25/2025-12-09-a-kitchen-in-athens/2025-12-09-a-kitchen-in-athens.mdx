@@ -1,10 +1,10 @@
 ---
 title: 'A Kitchen in Athens'
 datePublished: '2025-12-09T09:31:00'
-tags: ['core memories', 'greece', 'athens', 'Daily Notes', 'Mono No Aware']
+tags: ["England '25", 'Greece', 'Athens', 'Backlog']
 options:
   {
-    featuredImage: { url: '@assets/images/avatar.jpg', alt: 'Test' },
+    featuredImage: { url: './featured-image.jpg', alt: 'Test' },
     archiveSubtitle:
       'A small story that happened with me during our short trip to Athens the
       last January.',
@@ -15,6 +15,14 @@ options:
       years of living in Greece.',
   }
 ---
+
+import ImageWithCaption from '@components/typography/ImageWithCaption.astro';
+import featuredImage from './featured-image.jpg';
+
+<ImageWithCaption
+  src={featuredImage}
+  caption="A kitchen window with a view of an overgrown garden in Athens."
+/>
 
 At the beginning of the year, my wife and I took a short trip to Athens. It was
 only a two-day trip to complete all the formalities for our UK visa application,
