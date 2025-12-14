@@ -27,7 +27,7 @@ const { topic }: Props = Astro.props;
     >
       <h2 class="title font-small-caps">{topic.topic.data.title}</h2>
     </a>
-    <p class="date font-caption">{topic.lastUpdated}</p>
+    <p class="date font-caption">Last updated on {topic.lastUpdated}</p>
   </header>
   <p class="description">{topic.topic.data.description}</p>
 </article>
