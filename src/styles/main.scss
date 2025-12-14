@@ -10,8 +10,11 @@ body {
 }
 
 .container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
   margin-inline: auto;
-  max-width: 50rem; // 800px
+  max-width: 88.75rem; // 1420px
   padding-inline: var(--space-30-40);
 }
 
