@@ -1,31 +1,55 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
-import type { Post } from '@utils/types';
+import type { Post, Topic } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { sortPostsDesc } from '@utils/scripts';
+import { formatDate, sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import JournalTitle from '@components/title/JournalTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 import Pagination from '@components/feed/Pagination.astro';
-import PostList from '@components/feed/PostList.astro';
+import TagGrid from '@components/feed/TagGrid.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
-  return paginate(sortPostsDesc(posts), {
-    pageSize: 10,
+  const topics: Topic[] = await getCollection('topics');
+  const lastUpdated = (topic: Topic): string => {
+    const topicPosts: Post[] = posts.filter((post: Post) =>
+      post.data.tags.includes(topic.data.title)
+    );
+    return formatDate(sortPostsDesc(topicPosts)[0].data.datePublished);
+  };
+  const topicItems = topics.map((topic: Topic) => {
+    return {
+      topic: topic,
+      lastUpdated: lastUpdated(topic),
+    };
+  });
+
+  const sortedTopicItems = () => {
+    return topicItems.sort((prev, next) =>
+      new Date(prev.lastUpdated) < new Date(next.lastUpdated) ? 1 : -1
+    );
+  };
+  return paginate(sortedTopicItems(), {
+    pageSize: 6,
   });
 }) satisfies GetStaticPaths;
 
 interface Props {
-  page: Page<Post>;
+  page: Page<{ topic: Topic; lastUpdated: string }>;
 }
 
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="Boreal Heights">
-  <JournalTitle slot="title" />
+<GlobalWrapper pageTitle="A Journal of the Buried Life">
+  <PageTitle
+    slot="title"
+    showPhoto={true}
+    title="A Journal of the Buried Life"
+    subtitle="My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music."
+  />
   <div slot="main" class="content">
-    <PostList posts={page.data} />
+    <TagGrid featuredTags={page.data} />
     {
       page.lastPage === 1 ? null : (
         <Pagination

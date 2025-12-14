@@ -1,11 +1,10 @@
 ---
 import DesktopLinks from '@components/navigation/DesktopLinks.astro';
-import Logo from '@components/navigation/Logo.astro';
 import MobileLinks from '@components/navigation/MobileLinks.astro';
 ---
 
 <div class="navigation">
-  <Logo />
+  <a class="logo font-small-caps link-primary" href="/"> Evgenii Grigorev </a>
   <nav>
     <DesktopLinks />
     <MobileLinks />
@@ -19,8 +18,12 @@ import MobileLinks from '@components/navigation/MobileLinks.astro';
     justify-content: space-between;
     padding: var(--space-30-40) var(--space-40-100-wide);
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 1420px) {
       padding: var(--space-30-40);
     }
+  }
+
+  .logo {
+    font-size: var(--font-size-s);
   }
 </style>

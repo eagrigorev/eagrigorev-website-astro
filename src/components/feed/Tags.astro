@@ -12,10 +12,10 @@ const { tags }: Props = Astro.props;
   {
     tags.map((tag: string) => (
       <a
-        class="tag font-italic link-primary"
+        class="tag font-caption link-primary"
         href={`/tags/${generateTagItem(tag).url}`}
       >
-        #{tag}
+        {tag}
       </a>
     ))
   }
@@ -27,9 +27,10 @@ const { tags }: Props = Astro.props;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    row-gap: 10px;
   }
 
   .tag {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-xs);
   }
 </style>

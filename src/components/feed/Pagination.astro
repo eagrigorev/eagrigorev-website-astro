@@ -11,7 +11,7 @@ const { prevPage, nextPage, currentPage, pagesTotal }: Props = Astro.props;
 const index: string = `Page ${currentPage} of ${pagesTotal}`;
 ---
 
-<div class="pagination font-uppercase">
+<div class="pagination font-small-caps">
   {
     prevPage ? (
       <a class="link-primary" href={prevPage}>
@@ -34,7 +34,7 @@ const index: string = `Page ${currentPage} of ${pagesTotal}`;
     align-items: center;
     display: flex;
     gap: 30px;
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-s);
     padding-top: var(--space-100-160);
   }
 </style>

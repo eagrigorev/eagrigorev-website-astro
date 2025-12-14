@@ -7,7 +7,7 @@ import links from '@data/links.json';
   {
     links.map((link: NavigationItem) => (
       <li>
-        <a class="link font-medium link-primary" href={link.url}>
+        <a class="link font-small-caps link-primary" href={link.url}>
           {link.title}
         </a>
       </li>
@@ -21,12 +21,12 @@ import links from '@data/links.json';
     display: flex;
     gap: var(--space-20-30);
 
-    @media only screen and (width <= 768px) {
+    @media only screen and (width <= 480px) {
       display: none;
     }
   }
 
   .link {
-    font-size: var(--font-size-m);
+    font-size: var(--font-size-s);
   }
 </style>

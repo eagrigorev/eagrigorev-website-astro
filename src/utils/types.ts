@@ -5,12 +5,6 @@ export interface NavigationItem {
   url: string;
 }
 
-export interface TopicItem {
-  title: string;
-  url: string;
-  description: string;
-}
-
 export interface Post {
   id: string;
   body?: string;
@@ -25,6 +19,15 @@ export interface Page {
   body?: string;
   collection: "pages";
   data: InferEntrySchema<"pages">;
+  rendered?: RenderedContent;
+  filePath?: string;
+}
+
+export interface Topic {
+  id: string;
+  body?: string;
+  collection: "topics";
+  data: InferEntrySchema<"topics">;
   rendered?: RenderedContent;
   filePath?: string;
 }

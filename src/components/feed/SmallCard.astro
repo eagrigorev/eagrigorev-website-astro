@@ -1,0 +1,69 @@
+---
+interface Props {
+  title: string;
+  slug: string;
+  subtitle?: string;
+  additionalInfo: string;
+}
+
+const { title, slug, subtitle, additionalInfo }: Props = Astro.props;
+---
+
+<div class="small-card">
+  <div class="title-wrapper">
+    <a class="link-primary" href={slug}>
+      <h2 class="title font-small-caps">{title}</h2>
+    </a>
+    <p class="additional-info font-caption">{additionalInfo}</p>
+  </div>
+  {subtitle ? <p class="subtitle font-regular">{subtitle}</p> : null}
+</div>
+
+<style lang="scss">
+  .small-card {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+
+    @media only screen and (width <= 480px) {
+      gap: 10px;
+    }
+  }
+
+  .title-wrapper {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    @media only screen and (width <= 480px) {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  }
+
+  .title {
+    font-size: var(--font-size-m);
+    line-height: 135%;
+    max-width: 480px;
+
+    @media only screen and (width <= 480px) {
+      max-width: none;
+    }
+  }
+
+  .additional-info {
+    font-size: var(--font-size-xs);
+  }
+
+  .subtitle {
+    color: var(--color-secondary);
+    font-size: var(--font-size-s);
+    line-height: 135%;
+    max-width: 480px;
+
+    @media only screen and (width <= 480px) {
+      max-width: none;
+    }
+  }
+</style>

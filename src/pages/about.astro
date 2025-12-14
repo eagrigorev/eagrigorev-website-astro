@@ -4,7 +4,7 @@ import { customTypography } from '@utils/scripts';
 import { getEntry, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 
 const page: Page | undefined = await getEntry('pages', 'about');
 if (!page) {
@@ -15,7 +15,7 @@ const { Content } = await render(page);
 ---
 
 <GlobalWrapper pageTitle={page.data.title}>
-  <PageTitle slot="title" title={page.data.title} />
+  <PageTitle slot="title" showPhoto={false} title={page.data.title} />
   <div slot="main" class="content">
     <ContentWrapper>
       <Content components={customTypography} />
@@ -28,6 +28,7 @@ const { Content } = await render(page);
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
+    max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
   }
 </style>

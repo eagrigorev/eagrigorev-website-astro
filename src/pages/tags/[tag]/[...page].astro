@@ -4,7 +4,7 @@ import type { NavigationItem, Post } from '@utils/types';
 import { generateUniqueTags, sortPostsDesc } from '@utils/scripts';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
 import Pagination from '@components/feed/Pagination.astro';
 import PostList from '@components/feed/PostList.astro';
 
@@ -32,7 +32,7 @@ const { page, tagName }: Props = Astro.props;
 ---
 
 <GlobalWrapper pageTitle=`Tag: ${tagName}`>
-  <PageTitle slot="title" title=`Tag: ${tagName}` />
+  <PageTitle slot="title" showPhoto={false} title=`Tag: ${tagName}` />
   <div slot="main" class="content">
     <PostList posts={page.data} />
     {
@@ -53,5 +53,6 @@ const { page, tagName }: Props = Astro.props;
     align-items: center;
     display: flex;
     flex-direction: column;
+    max-width: var(--narrow-content);
   }
 </style>

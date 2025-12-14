@@ -1,10 +1,10 @@
 ---
 import type { NavigationItem, Post } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { generateUniqueTags } from '@utils/scripts';
-import ArchivePostCard from '@components/feed/ArchivePostCard.astro';
+import { generateSlug, generateUniqueTags } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/title/PageTitle.astro';
+import PageTitle from '@components/PageTitle.astro';
+import SmallCard from '@components/feed/SmallCard.astro';
 
 const posts = await getCollection('posts');
 const uniqueTags: NavigationItem[] = generateUniqueTags(posts);
@@ -24,19 +24,15 @@ const sortedTagItems = () => {
 ---
 
 <GlobalWrapper pageTitle="Tags">
-  <PageTitle slot="title" title="Tags" />
+  <PageTitle slot="title" showPhoto={false} title="Tags" />
   <div slot="main" class="content">
     {
       sortedTagItems().map(
-        (
-          tagItem: { title: string; url: string; count: number },
-          index: number
-        ) => (
-          <ArchivePostCard
+        (tagItem: { title: string; url: string; count: number }) => (
+          <SmallCard
             title={tagItem.title}
-            slug={`/tags/${tagItem.url}`}
-            datePublished={tagItem.count.toString()}
-            index={index}
+            slug={`/tags/${generateSlug(tagItem.url)}`}
+            additionalInfo={tagItem.count.toString()}
           />
         )
       )
@@ -49,6 +45,8 @@ const sortedTagItems = () => {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
+    width: 100%;
   }
 </style>
