@@ -7,5 +7,14 @@
       "url": "@assets/images/topics/daily-notes.jpg",
       "alt": "Test alt text"
     }
+  },
+  {
+    "id": 2,
+    "title": "Years of Reading",
+    "description": "Annual reading lists.",
+    "featuredImage": {
+      "url": "@assets/images/topics/years-of-reading.jpg",
+      "alt": "Years of Reading"
+    }
   }
 ]
