@@ -22,12 +22,12 @@ const { topic }: Props = Astro.props;
   />
   <header>
     <a
-      class="post-header link-secondary"
+      class="link-secondary"
       href={`tags/${generateSlug(topic.topic.data.title)}`}
     >
       <h2 class="title font-small-caps">{topic.topic.data.title}</h2>
-      <p class="date font-caption">{topic.lastUpdated}</p>
     </a>
+    <p class="date font-caption">{topic.lastUpdated}</p>
   </header>
   <p class="description">{topic.topic.data.description}</p>
 </article>
@@ -43,10 +43,6 @@ const { topic }: Props = Astro.props;
     aspect-ratio: 3/2;
     height: auto;
     width: 100%;
-  }
-
-  .post-header {
-    display: block;
   }
 
   .title {
