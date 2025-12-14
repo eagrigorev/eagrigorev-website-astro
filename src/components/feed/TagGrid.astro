@@ -23,5 +23,13 @@ const { featuredTags }: Props = Astro.props;
     gap: var(--space-30-40);
     grid-template-columns: repeat(3, 1fr);
     padding-top: var(--space-100-160);
+
+    @media only screen and (width <= 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (width <= 480px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 </style>

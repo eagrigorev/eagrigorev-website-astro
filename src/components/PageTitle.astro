@@ -39,13 +39,17 @@ const { showPhoto, title, subtitle }: Props = Astro.props;
     gap: 30px;
     max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
+
+    @media only screen and (width <= 768px) {
+      max-width: none;
+    }
   }
 
   .image {
     aspect-ratio: 1/1;
     border-radius: 50%;
-    height: auto;
-    width: 100px;
+    height: var(--space-75-100);
+    width: var(--space-75-100);
   }
 
   .description {
@@ -67,5 +71,9 @@ const { showPhoto, title, subtitle }: Props = Astro.props;
     line-height: 135%;
     max-width: 480px;
     text-align: center;
+
+    @media only screen and (width <= 480px) {
+      max-width: none;
+    }
   }
 </style>
