@@ -16,7 +16,7 @@ const { topic }: Props = Astro.props;
     src={topic.topic.data.featuredImage.url}
     alt={topic.topic.data.featuredImage.alt}
     width="420"
-    height="280"
+    height="560"
     decoding="async"
     loading="eager"
   />
@@ -40,7 +40,7 @@ const { topic }: Props = Astro.props;
   }
 
   .image {
-    aspect-ratio: 3/2;
+    aspect-ratio: 3/4;
     height: auto;
     width: 100%;
   }
