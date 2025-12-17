@@ -11,7 +11,7 @@ import Tags from '@components/feed/Tags.astro';
 export const getStaticPaths = (async () => {
   const posts: Post[] = await getCollection('posts');
   return posts.map((post: Post) => ({
-    params: { slug: generateSlug(post.data.title) },
+    params: { slug: generateSlug(post.data.title.value) },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
@@ -20,11 +20,11 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<GlobalWrapper pageTitle={post.data.title}>
+<GlobalWrapper pageTitle={post.data.title.value}>
   <PageTitle
     slot="title"
     showPhoto={false}
-    title={post.data.title}
+    title={post.data.title.value}
     subtitle={formatDate(post.data.datePublished)}
   />
   <div slot="main" class="content">

@@ -17,9 +17,9 @@ const { posts, title }: Props = Astro.props;
     {
       posts.map((post: Post) => (
         <SmallCard
-          title={post.data.title}
-          slug={generateSlug(post.data.title)}
-          subtitle={post.data.options?.archiveSubtitle}
+          title={post.data.title.value}
+          slug={generateSlug(post.data.title.value)}
+          subtitle={post.data.subtitle}
           additionalInfo={formatDate(post.data.datePublished)}
         />
       ))

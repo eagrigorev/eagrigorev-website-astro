@@ -9,9 +9,9 @@ export async function GET(context) {
     description: "A Journal of the Buried Life",
     site: context.site,
     items: sortPostsDesc(posts).map((post) => ({
-      title: post.data.title,
+      title: post.data.title.value,
       pubDate: post.data.datePublished,
-      link: `/${generateSlug(post.data.title)}/`,
+      link: `/${generateSlug(post.data.title.value)}/`,
     })),
   });
 }

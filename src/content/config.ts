@@ -1,37 +1,29 @@
-import { file, glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
 
 const posts = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/posts/",
-  }),
+  type: "content",
   schema: ({ image }) =>
     z.object({
-      title: z.string(),
+      title: z.object({
+        value: z.string(),
+        isVisible: z.boolean(),
+      }),
+      subtitle: z.string().optional(),
       datePublished: z.string(),
+      topicId: z.array(z.number()),
       tags: z.array(z.string()),
-      options: z
+      featuredImage: z
         .object({
-          featuredImage: z
-            .object({
-              url: image(),
-              alt: z.string(),
-            })
-            .optional(),
-          archiveSubtitle: z.string().optional(),
-          excerpt: z.string().optional(),
-          hideTitle: z.boolean().optional(),
+          url: image(),
+          alt: z.string(),
         })
         .optional(),
+      excerpt: z.string().optional(),
     }),
 });
 
 const pages = defineCollection({
-  loader: glob({
-    pattern: "**/*.{md,mdx}",
-    base: "./src/content/pages/",
-  }),
+  type: "content",
   schema: () =>
     z.object({
       title: z.string(),
@@ -40,11 +32,12 @@ const pages = defineCollection({
 });
 
 const topics = defineCollection({
-  loader: file("src/data/topics.json"),
+  type: "content",
   schema: ({ image }) =>
     z.object({
       title: z.string(),
       description: z.string(),
+      id: z.number(),
       featuredImage: z.object({
         url: image(),
         alt: z.string(),
