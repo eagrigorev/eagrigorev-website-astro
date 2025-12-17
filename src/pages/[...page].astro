@@ -13,7 +13,7 @@ export const getStaticPaths = (async ({ paginate }) => {
   const topics: Topic[] = await getCollection('topics');
   const lastUpdated = (topic: Topic): string => {
     const topicPosts: Post[] = posts.filter((post: Post) =>
-      post.data.tags.includes(topic.data.title)
+      post.data.topicId.includes(topic.data.id)
     );
     return formatDate(sortPostsDesc(topicPosts)[0].data.datePublished);
   };
