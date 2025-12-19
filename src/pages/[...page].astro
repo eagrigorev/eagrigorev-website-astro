@@ -1,41 +1,45 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
-import type { Post, Topic } from '@utils/types';
+import type { ExtendedTopic, Post, Topic } from '@utils/types';
 import { getCollection } from 'astro:content';
 import { formatDate, sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
-import Pagination from '@components/feed/Pagination.astro';
-import TagGrid from '@components/feed/TagGrid.astro';
+import Pagination from '@components/Pagination.astro';
+import TopicFeed from '@components/feeds/TopicFeed.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
   const topics: Topic[] = await getCollection('topics');
-  const lastUpdated = (topic: Topic): string => {
+
+  const topicsWithPosts = topics.filter((topic) =>
+    posts.some((post) => post.data.topicId.includes(topic.data.id))
+  );
+
+  const calculateLastUpdated = (topic: Topic): string => {
     const topicPosts: Post[] = posts.filter((post: Post) =>
       post.data.topicId.includes(topic.data.id)
     );
     return formatDate(sortPostsDesc(topicPosts)[0].data.datePublished);
   };
-  const topicItems = topics.map((topic: Topic) => {
-    return {
-      topic: topic,
-      lastUpdated: lastUpdated(topic),
-    };
-  });
 
-  const sortedTopicItems = () => {
-    return topicItems.sort((prev, next) =>
+  const extendedTopics: ExtendedTopic[] = topicsWithPosts
+    .map((topic: Topic) => {
+      return {
+        topic: topic,
+        lastUpdated: calculateLastUpdated(topic),
+      };
+    })
+    .sort((prev, next) =>
       new Date(prev.lastUpdated) < new Date(next.lastUpdated) ? 1 : -1
     );
-  };
-  return paginate(sortedTopicItems(), {
+  return paginate(extendedTopics, {
     pageSize: 6,
   });
 }) satisfies GetStaticPaths;
 
 interface Props {
-  page: Page<{ topic: Topic; lastUpdated: string }>;
+  page: Page<ExtendedTopic>;
 }
 
 const { page } = Astro.props;
@@ -49,7 +53,7 @@ const { page } = Astro.props;
     subtitle="My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music."
   />
   <div slot="main" class="content">
-    <TagGrid featuredTags={page.data} />
+    <TopicFeed extendedTopics={page.data} />
     {
       page.lastPage === 1 ? null : (
         <Pagination
@@ -68,5 +72,6 @@ const { page } = Astro.props;
     align-items: center;
     display: flex;
     flex-direction: column;
+    padding-top: var(--space-100-160);
   }
 </style>

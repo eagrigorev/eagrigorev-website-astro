@@ -1,10 +1,10 @@
 ---
 import type { Post } from '@utils/types';
-import { customTypography, formatDate, generateSlug } from '@utils/scripts';
+import { customTypography, formatDate } from '@utils/scripts';
 import { render } from 'astro:content';
 import { Image } from 'astro:assets';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
-import Tags from '@components/feed/Tags.astro';
+import Tags from '@components/Tags.astro';
 
 interface Props {
   post: Post;
@@ -17,26 +17,23 @@ const { Content } = await render(post);
 <article class="post-card">
   <div class="content">
     <header>
-      <a
-        class="post-header link-primary"
-        href={`/${generateSlug(post.data.title.value)}`}
-      >
+      <a class="post-header link-primary" href={`/${post.data.permalink}`}>
         {
-          !post.data.title.isVisible ? null : (
-            <h2 class="title font-small-caps">{post.data.title.value}</h2>
+          !post.data.options.showTitle ? null : (
+            <h2 class="title font-small-caps">{post.data.title}</h2>
           )
         }
         <p class="date font-caption">{formatDate(post.data.datePublished)}</p>
       </a>
     </header>
     {
-      post.data.excerpt ? (
+      post.data.options.excerpt ? (
         <div class="excerpt">
-          {post.data.featuredImage ? (
+          {post.data.options.featuredImage ? (
             <Image
               class="image"
-              src={post.data.featuredImage.url}
-              alt={post.data.featuredImage.alt}
+              src={post.data.options.featuredImage.url}
+              alt={post.data.options.featuredImage.alt}
               width="720"
               height="720"
               decoding="async"
@@ -44,11 +41,11 @@ const { Content } = await render(post);
             />
           ) : null}
           <ContentWrapper>
-            <p>{post.data.excerpt}</p>
+            <p>{post.data.options.excerpt}</p>
           </ContentWrapper>
           <a
             class="read-more font-small-caps link-primary"
-            href={`/${generateSlug(post.data.title.value)}`}
+            href={`/${post.data.permalink}`}
           >
             Continue reading...
           </a>

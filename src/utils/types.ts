@@ -8,3 +8,8 @@ export interface NavigationItem {
 export type Post = CollectionEntry<"posts">;
 export type Page = CollectionEntry<"pages">;
 export type Topic = CollectionEntry<"topics">;
+
+export interface ExtendedTopic {
+  topic: Topic;
+  lastUpdated: string;
+}
