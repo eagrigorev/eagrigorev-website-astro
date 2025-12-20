@@ -1,7 +1,7 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
-import type { NavigationItem, Post } from '@utils/types';
-import { generateUniqueTags, sortPostsDesc } from '@utils/scripts';
+import type { Post, Topic } from '@utils/types';
+import { sortPostsDesc } from '@utils/scripts';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
@@ -10,14 +10,17 @@ import PostFeed from '@components/feeds/PostFeed.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
-  const uniqueTags = generateUniqueTags(posts);
-  return uniqueTags.flatMap((tag: NavigationItem) => {
-    const tagPosts = posts.filter((post: Post) =>
-      post.data.tags.includes(tag.title)
+  const topics: Topic[] = await getCollection('topics');
+  return topics.flatMap((topic: Topic) => {
+    const topicPosts = posts.filter((post: Post) =>
+      post.data.topicId.includes(topic.data.id)
     );
-    return paginate(sortPostsDesc(tagPosts), {
-      params: { tag: tag.url },
-      props: { tagName: tag.title },
+    return paginate(sortPostsDesc(topicPosts), {
+      params: { topic: topic.slug },
+      props: {
+        topicName: topic.data.title,
+        topicDescription: topic.data.subtitle,
+      },
       pageSize: 10,
     });
   });
@@ -25,14 +28,20 @@ export const getStaticPaths = (async ({ paginate }) => {
 
 interface Props {
   page: Page<Post>;
-  tagName: string;
+  topicName: string;
+  topicDescription: string;
 }
 
-const { page, tagName }: Props = Astro.props;
+const { page, topicName, topicDescription }: Props = Astro.props;
 ---
 
-<GlobalWrapper pageTitle=`Tag: ${tagName}`>
-  <PageTitle slot="title" showPhoto={false} title=`Tag: ${tagName}` />
+<GlobalWrapper pageTitle={topicName}>
+  <PageTitle
+    slot="title"
+    title={topicName}
+    subtitle={topicDescription}
+    showPhoto={false}
+  />
   <div slot="main" class="content">
     <PostFeed posts={page.data} />
     {

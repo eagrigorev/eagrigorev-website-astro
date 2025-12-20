@@ -1,33 +1,15 @@
-import type { InferEntrySchema, RenderedContent } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 export interface NavigationItem {
   title: string;
   url: string;
 }
 
-export interface Post {
-  id: string;
-  body?: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">;
-  rendered?: RenderedContent;
-  filePath?: string;
-}
+export type Post = CollectionEntry<"posts">;
+export type Page = CollectionEntry<"pages">;
+export type Topic = CollectionEntry<"topics">;
 
-export interface Page {
-  id: string;
-  body?: string;
-  collection: "pages";
-  data: InferEntrySchema<"pages">;
-  rendered?: RenderedContent;
-  filePath?: string;
-}
-
-export interface Topic {
-  id: string;
-  body?: string;
-  collection: "topics";
-  data: InferEntrySchema<"topics">;
-  rendered?: RenderedContent;
-  filePath?: string;
+export interface ExtendedTopic {
+  topic: Topic;
+  lastUpdated: string;
 }

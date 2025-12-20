@@ -1,9 +1,7 @@
 ---
 import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { sortPostsDesc } from '@utils/scripts';
-import sections from '@data/sections.json';
-import ArchiveSection from '@components/feed/ArchiveSection.astro';
+import ArchiveFeed from '@components/feeds/ArchiveFeed.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
 
@@ -13,26 +11,12 @@ const posts: Post[] = await getCollection('posts');
 <GlobalWrapper pageTitle="Archive">
   <PageTitle slot="title" showPhoto={false} title="Archive" />
   <div slot="main" class="content">
-    {
-      sections.map((section: string) => (
-        <ArchiveSection
-          posts={sortPostsDesc(
-            posts.filter((post: Post) =>
-              post.data.datePublished.includes(section)
-            )
-          )}
-          title={section}
-        />
-      ))
-    }
+    <ArchiveFeed posts={posts} />
   </div>
 </GlobalWrapper>
 
 <style lang="scss">
   .content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-50-80);
     max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
     width: 100%;
