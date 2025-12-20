@@ -1,6 +1,6 @@
 {
   "name": "eagrigorev-website-astro",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "",
   "homepage": "https://github.com/eagrigorev/eagrigorev-website-astro#readme",
   "bugs": {
@@ -40,7 +40,7 @@
     "postcss-html": "^1.8.0",
     "prettier": "^3.7.4",
     "prettier-plugin-astro": "^0.14.1",
-    "sass": "^1.97.0",
+    "sass": "^1.97.1",
     "stylelint": "^16.26.1",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier-scss": "^1.0.0",

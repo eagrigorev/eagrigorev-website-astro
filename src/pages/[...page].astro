@@ -45,12 +45,12 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="A Journal of the Buried Life">
+<GlobalWrapper pageTitle="Gardens & Ruins">
   <PageTitle
     slot="title"
     showPhoto={true}
-    title="A Journal of the Buried Life"
-    subtitle="My name is Evgenii. Welcome to my website. I write about my hobbies and life, and I post my art and music."
+    title="Gardens & Ruins"
+    subtitle="My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self."
   />
   <div slot="main" class="content">
     <TopicFeed extendedTopics={page.data} />

@@ -6,7 +6,7 @@ export async function GET(context) {
   const posts = await getCollection("posts");
   return rss({
     title: "Evgenii Grigorev",
-    description: "A Journal of the Buried Life",
+    description: "Gardens & Ruins",
     site: context.site,
     items: sortPostsDesc(posts).map((post) => ({
       title: post.data.title,

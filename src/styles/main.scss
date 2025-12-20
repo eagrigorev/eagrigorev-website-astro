@@ -31,11 +31,19 @@ body {
 
 .link-secondary {
   color: var(--color-accent-primary);
-  text-decoration: underline;
+  text-decoration: none;
 
   &:focus,
   &:hover {
-    color: var(--color-primary);
-    text-decoration: none;
+    text-decoration: underline;
+  }
+}
+
+.link-opacity {
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
   }
 }

@@ -17,7 +17,10 @@ export const getStaticPaths = (async ({ paginate }) => {
     );
     return paginate(sortPostsDesc(topicPosts), {
       params: { topic: topic.slug },
-      props: { topicName: topic.data.title },
+      props: {
+        topicName: topic.data.title,
+        topicDescription: topic.data.subtitle,
+      },
       pageSize: 10,
     });
   });
@@ -26,13 +29,19 @@ export const getStaticPaths = (async ({ paginate }) => {
 interface Props {
   page: Page<Post>;
   topicName: string;
+  topicDescription: string;
 }
 
-const { page, topicName }: Props = Astro.props;
+const { page, topicName, topicDescription }: Props = Astro.props;
 ---
 
 <GlobalWrapper pageTitle={topicName}>
-  <PageTitle slot="title" title={topicName} showPhoto={false} />
+  <PageTitle
+    slot="title"
+    title={topicName}
+    subtitle={topicDescription}
+    showPhoto={false}
+  />
   <div slot="main" class="content">
     <PostFeed posts={page.data} />
     {

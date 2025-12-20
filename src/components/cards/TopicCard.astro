@@ -10,15 +10,21 @@ const { extendedTopic }: Props = Astro.props;
 ---
 
 <article class="topic-card">
-  <Image
-    class="image"
-    src={extendedTopic.topic.data.featuredImage.url}
-    alt={extendedTopic.topic.data.featuredImage.alt}
-    width="420"
-    height="560"
-    decoding="async"
-    loading="eager"
-  />
+  <a
+    class="link-opacity"
+    href={`topics/${extendedTopic.topic.slug}`}
+    tabindex="-1"
+  >
+    <Image
+      class="image"
+      src={extendedTopic.topic.data.featuredImage.url}
+      alt={extendedTopic.topic.data.featuredImage.alt}
+      width="420"
+      height="560"
+      decoding="async"
+      loading="eager"
+    />
+  </a>
   <header>
     <a class="link-secondary" href={`topics/${extendedTopic.topic.slug}`}>
       <h2 class="title font-small-caps">{extendedTopic.topic.data.title}</h2>
