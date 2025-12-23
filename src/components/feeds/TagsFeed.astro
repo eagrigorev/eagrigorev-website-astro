@@ -1,0 +1,84 @@
+---
+import type { NavigationItem, Post, TagItem } from '@utils/types';
+import { getCollection } from 'astro:content';
+import { generateUniqueTags } from '@utils/scripts';
+
+const posts = await getCollection('posts');
+const uniqueTags: NavigationItem[] = generateUniqueTags(posts);
+const tagItems: TagItem[] = uniqueTags.map((tag: NavigationItem) => {
+  return {
+    title: tag.title,
+    url: tag.url,
+    count: posts.filter((post: Post) => post.data.tags.includes(tag.title))
+      .length,
+  };
+});
+const sortedTagItems = () => {
+  return tagItems.sort((prev, next) => (prev.count < next.count ? 1 : -1));
+};
+---
+
+<div class="tags-feed">
+  <div class="tags-wrapper">
+    <h2 class="title font-uppercase">Tags:</h2>
+    <ul class="tags" role="list">
+      {
+        sortedTagItems().map((tagItem: TagItem) => (
+          <li class="tag">
+            <a
+              class="font-small-caps link-primary"
+              href={`/tags/${tagItem.url}`}
+            >
+              {tagItem.title}
+            </a>
+            <p class="count font-caption">{tagItem.count}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<style lang="scss">
+  .tags-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100-160);
+
+    &::after {
+      background: var(--color-accent-secondary);
+      content: '';
+      display: block;
+      height: 1px;
+      width: var(--space-100-160);
+    }
+  }
+
+  .tags-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+  }
+
+  .title {
+    font-size: var(--font-size-m);
+  }
+
+  .tags {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+  }
+
+  .tag {
+    align-items: flex-start;
+    display: flex;
+    font-size: var(--font-size-m);
+    gap: 10px;
+  }
+
+  .count {
+    font-size: var(--font-size-xs);
+  }
+</style>
