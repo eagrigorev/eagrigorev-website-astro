@@ -1,6 +1,7 @@
 @use "./partials/tokens";
 @use "./partials/normalize";
 @use "./partials/fonts";
+@use "./partials/links";
 
 body {
   background-color: var(--color-bg-primary);
@@ -16,34 +17,4 @@ body {
   margin-inline: auto;
   max-width: 88.75rem; // 1420px
   padding-inline: var(--space-30-40);
-}
-
-.link-primary {
-  color: var(--color-primary);
-  text-decoration: none;
-
-  &:focus,
-  &:hover {
-    color: var(--color-accent-primary);
-    text-decoration: underline;
-  }
-}
-
-.link-secondary {
-  color: var(--color-accent-primary);
-  text-decoration: none;
-
-  &:focus,
-  &:hover {
-    text-decoration: underline;
-  }
-}
-
-.link-opacity {
-  transition: opacity 0.3s;
-
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
 }

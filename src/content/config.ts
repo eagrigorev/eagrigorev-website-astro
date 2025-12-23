@@ -34,22 +34,7 @@ const pages = defineCollection({
     }),
 });
 
-const topics = defineCollection({
-  type: "content",
-  schema: ({ image }) =>
-    z.object({
-      title: z.string(),
-      subtitle: z.string(),
-      id: z.number(),
-      featuredImage: z.object({
-        url: image(),
-        alt: z.string(),
-      }),
-    }),
-});
-
 export const collections = {
   posts,
   pages,
-  topics,
 };

@@ -9,7 +9,7 @@ const posts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Archive">
-  <PageTitle slot="title" showPhoto={false} title="Archive" />
+  <PageTitle slot="title" title="Archive" />
   <div slot="main" class="content">
     <ArchiveFeed posts={posts} />
   </div>

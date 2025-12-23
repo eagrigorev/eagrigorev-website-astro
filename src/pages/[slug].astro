@@ -23,7 +23,6 @@ const { Content } = await render(post);
 <GlobalWrapper pageTitle={post.data.title}>
   <PageTitle
     slot="title"
-    showPhoto={false}
     title={post.data.title}
     subtitle={formatDate(post.data.datePublished)}
   />

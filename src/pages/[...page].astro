@@ -1,45 +1,22 @@
 ---
 import type { GetStaticPaths, Page } from 'astro';
-import type { ExtendedTopic, Post, Topic } from '@utils/types';
+import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
-import { formatDate, sortPostsDesc } from '@utils/scripts';
+import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
 import Pagination from '@components/Pagination.astro';
-import TopicFeed from '@components/feeds/TopicFeed.astro';
+import PostFeed from '@components/feeds/PostFeed.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
-  const topics: Topic[] = await getCollection('topics');
-
-  const topicsWithPosts = topics.filter((topic) =>
-    posts.some((post) => post.data.topicId.includes(topic.data.id))
-  );
-
-  const calculateLastUpdated = (topic: Topic): string => {
-    const topicPosts: Post[] = posts.filter((post: Post) =>
-      post.data.topicId.includes(topic.data.id)
-    );
-    return formatDate(sortPostsDesc(topicPosts)[0].data.datePublished);
-  };
-
-  const extendedTopics: ExtendedTopic[] = topicsWithPosts
-    .map((topic: Topic) => {
-      return {
-        topic: topic,
-        lastUpdated: calculateLastUpdated(topic),
-      };
-    })
-    .sort((prev, next) =>
-      new Date(prev.lastUpdated) < new Date(next.lastUpdated) ? 1 : -1
-    );
-  return paginate(extendedTopics, {
-    pageSize: 6,
+  return paginate(sortPostsDesc(posts), {
+    pageSize: 2,
   });
 }) satisfies GetStaticPaths;
 
 interface Props {
-  page: Page<ExtendedTopic>;
+  page: Page<Post>;
 }
 
 const { page } = Astro.props;
@@ -48,12 +25,11 @@ const { page } = Astro.props;
 <GlobalWrapper pageTitle="Gardens & Ruins">
   <PageTitle
     slot="title"
-    showPhoto={true}
     title="Gardens & Ruins"
     subtitle="My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self."
   />
   <div slot="main" class="content">
-    <TopicFeed extendedTopics={page.data} />
+    <PostFeed posts={page.data} />
     {
       page.lastPage === 1 ? null : (
         <Pagination
@@ -69,9 +45,11 @@ const { page } = Astro.props;
 
 <style lang="scss">
   .content {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
+    max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
+    width: 100%;
   }
 </style>

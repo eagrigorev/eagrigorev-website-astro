@@ -15,7 +15,7 @@ const { Content } = await render(page);
 ---
 
 <GlobalWrapper pageTitle={page.data.title}>
-  <PageTitle slot="title" showPhoto={false} title={page.data.title} />
+  <PageTitle slot="title" title={page.data.title} />
   <div slot="main" class="content">
     <ContentWrapper>
       <Content components={customTypography} />
