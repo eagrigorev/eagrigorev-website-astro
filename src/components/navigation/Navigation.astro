@@ -1,14 +1,34 @@
 ---
+import type { NavigationItem } from '@utils/types';
 import DesktopLinks from '@components/navigation/DesktopLinks.astro';
 import Logo from '@components/navigation/Logo.astro';
 import MobileLinks from '@components/navigation/MobileLinks.astro';
+
+const links: NavigationItem[] = [
+  {
+    title: 'Journal',
+    url: '/',
+  },
+  {
+    title: 'About',
+    url: '/about',
+  },
+  {
+    title: 'Reading',
+    url: '/reading',
+  },
+  {
+    title: 'Archive',
+    url: '/archive',
+  },
+];
 ---
 
 <div class="navigation">
   <Logo />
   <nav>
-    <DesktopLinks />
-    <MobileLinks />
+    <DesktopLinks links={links} />
+    <MobileLinks links={links} />
   </nav>
 </div>
 

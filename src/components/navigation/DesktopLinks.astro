@@ -1,6 +1,11 @@
 ---
 import type { NavigationItem } from '@utils/types';
-import links from '@data/links.json';
+
+interface Props {
+  links: NavigationItem[];
+}
+
+const { links }: Props = Astro.props;
 ---
 
 <ul class="desktop-links" role="list">

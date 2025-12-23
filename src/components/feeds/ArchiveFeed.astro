@@ -1,7 +1,6 @@
 ---
 import type { Post } from '@utils/types';
 import { formatDate, sortPostsDesc } from '@utils/scripts';
-import sections from '@data/sections.json';
 import SmallCard from '@components/cards/SmallCard.astro';
 
 interface Props {
@@ -9,6 +8,8 @@ interface Props {
 }
 
 const { posts }: Props = Astro.props;
+
+const sections: string[] = ['2025'];
 
 const sectionPosts = (section: string): Post[] => {
   return sortPostsDesc(

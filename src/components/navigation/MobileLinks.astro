@@ -1,9 +1,14 @@
 ---
 import type { NavigationItem } from '@utils/types';
 import { Image } from 'astro:assets';
-import links from '@data/links.json';
 import menuIcon from '@images/assets/icons/menu-icon.svg';
 import closeMenuIcon from '@images/assets/icons/close-icon.svg';
+
+interface Props {
+  links: NavigationItem[];
+}
+
+const { links }: Props = Astro.props;
 ---
 
 <div class="mobile-links">

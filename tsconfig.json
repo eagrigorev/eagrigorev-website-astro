@@ -14,7 +14,6 @@
     "allowJs": true,
     "paths": {
       "@components/*": ["src/components/*"],
-      "@data/*": ["src/data/*"],
       "@layouts/*": ["src/layouts/*"],
       "@images/*": ["src/images/*"],
       "@styles/*": ["src/styles/*"],
