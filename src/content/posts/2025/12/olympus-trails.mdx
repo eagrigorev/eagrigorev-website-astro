@@ -6,14 +6,31 @@ subtitle:
 permalink: 'olympus-trails'
 datePublished: '2025-12-22T22:20:00'
 tags: ['Blogging', 'Greece', 'Hiking', 'Mount Olympus', 'Anxiety']
-options: { showTitle: true }
+options:
+  {
+    showTitle: true,
+    featuredImage:
+      { url: '@images/posts/2025/olympus-trails.jpg', alt: 'A dog in the fog' },
+    excerpt:
+      'Yesterday, I went hiking up Mount Olympus. The trail was about ten
+      kilometers long with 900 meters of elevation gain, most of which occurred
+      in the first two hours. Everything was shrouded in dense fog, and the
+      humidity was so high that I even gave up on the idea of using my film
+      camera. For about five hours, I concentrated on walking — trying not to
+      trip or fall — climbing, and observing.',
+  }
 ---
+
+import ImageWithCaption from '@components/typography/ImageWithCaption.astro';
+import img from '@images/posts/2025/olympus-trails.jpg';
+
+<ImageWithCaption src={img} caption="A dog in the fog" />
 
 Yesterday, I went hiking up Mount Olympus. The trail was about ten kilometers
 long with 900 meters of elevation gain, most of which occurred in the first two
 hours. Everything was shrouded in dense fog, and the humidity was so high that I
 even gave up on the idea of using my film camera. For about five hours, I
-concentrated on walking—trying not to trip or fall—climbing, and observing.
+concentrated on walking — trying not to trip or fall — climbing, and observing.
 
 I felt strangely at peace with myself, which hadn't happened in quite a long
 time. No internet, no doom-scrolling, no "brain rot," and no fast distractions.
