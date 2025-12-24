@@ -6,6 +6,7 @@ import { getCollection, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
+import RecentPostsFeed from '@components/feeds/RecentPostsFeed.astro';
 import Tags from '@components/Tags.astro';
 
 export const getStaticPaths = (async () => {
@@ -23,24 +24,52 @@ const { Content } = await render(post);
 <GlobalWrapper pageTitle={post.data.title}>
   <PageTitle
     slot="title"
-    showPhoto={false}
     title={post.data.title}
-    subtitle={formatDate(post.data.datePublished)}
+    subtitle={post.data.subtitle}
   />
   <div slot="main" class="content">
-    <ContentWrapper>
-      <Content components={customTypography} />
-    </ContentWrapper>
-    <Tags tags={post.data.tags} />
+    <div class="post-wrapper">
+      <div class="post">
+        <ContentWrapper>
+          <Content components={customTypography} />
+          <p>{formatDate(post.data.datePublished)}</p>
+        </ContentWrapper>
+        <Tags tags={post.data.tags} />
+      </div>
+    </div>
+    <RecentPostsFeed />
   </div>
 </GlobalWrapper>
 
 <style lang="scss">
   .content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100-160);
+    max-width: var(--narrow-content);
+    padding-top: var(--space-100-160);
+  }
+
+  .post-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100-160);
+
+    &::after {
+      background: var(--color-accent-secondary);
+      content: '';
+      display: block;
+      height: 1px;
+      width: var(--space-100-160);
+    }
+  }
+
+  .post {
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
-    max-width: var(--narrow-content);
-    padding-top: var(--space-100-160);
   }
 </style>

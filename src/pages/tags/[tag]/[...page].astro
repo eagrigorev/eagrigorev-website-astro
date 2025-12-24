@@ -32,7 +32,7 @@ const { page, tagName }: Props = Astro.props;
 ---
 
 <GlobalWrapper pageTitle=`Tag: ${tagName}`>
-  <PageTitle slot="title" showPhoto={false} title=`Tag: ${tagName}` />
+  <PageTitle slot="title" title=`Tag: ${tagName}` />
   <div slot="main" class="content">
     <PostFeed posts={page.data} />
     {

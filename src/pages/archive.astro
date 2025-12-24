@@ -4,19 +4,25 @@ import { getCollection } from 'astro:content';
 import ArchiveFeed from '@components/feeds/ArchiveFeed.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import PageTitle from '@components/PageTitle.astro';
+import TagsFeed from '@components/feeds/TagsFeed.astro';
 
 const posts: Post[] = await getCollection('posts');
 ---
 
 <GlobalWrapper pageTitle="Archive">
-  <PageTitle slot="title" showPhoto={false} title="Archive" />
+  <PageTitle slot="title" title="Archive" />
   <div slot="main" class="content">
+    <TagsFeed />
     <ArchiveFeed posts={posts} />
   </div>
 </GlobalWrapper>
 
 <style lang="scss">
   .content {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-100-160);
     max-width: var(--narrow-content);
     padding-top: var(--space-100-160);
     width: 100%;

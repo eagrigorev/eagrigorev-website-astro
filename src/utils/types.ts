@@ -5,11 +5,11 @@ export interface NavigationItem {
   url: string;
 }
 
+export interface TagItem {
+  title: string;
+  url: string;
+  count: number;
+}
+
 export type Post = CollectionEntry<"posts">;
 export type Page = CollectionEntry<"pages">;
-export type Topic = CollectionEntry<"topics">;
-
-export interface ExtendedTopic {
-  topic: Topic;
-  lastUpdated: string;
-}

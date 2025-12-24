@@ -1,6 +1,11 @@
 ---
 import type { NavigationItem } from '@utils/types';
-import links from '@data/links.json';
+
+interface Props {
+  links: NavigationItem[];
+}
+
+const { links }: Props = Astro.props;
 ---
 
 <ul class="desktop-links" role="list">
@@ -21,7 +26,7 @@ import links from '@data/links.json';
     display: flex;
     gap: var(--space-20-30);
 
-    @media only screen and (width <= 480px) {
+    @media only screen and (width <= 768px) {
       display: none;
     }
   }

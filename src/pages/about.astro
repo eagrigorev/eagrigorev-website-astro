@@ -1,6 +1,6 @@
 ---
 import type { Page } from '@utils/types';
-import { customTypography } from '@utils/scripts';
+import { customTypography, formatDate } from '@utils/scripts';
 import { getEntry, render } from 'astro:content';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
@@ -15,10 +15,11 @@ const { Content } = await render(page);
 ---
 
 <GlobalWrapper pageTitle={page.data.title}>
-  <PageTitle slot="title" showPhoto={false} title={page.data.title} />
+  <PageTitle slot="title" title={page.data.title} />
   <div slot="main" class="content">
     <ContentWrapper>
       <Content components={customTypography} />
+      <p>{formatDate(page.data.datePublished)}</p>
     </ContentWrapper>
   </div>
 </GlobalWrapper>

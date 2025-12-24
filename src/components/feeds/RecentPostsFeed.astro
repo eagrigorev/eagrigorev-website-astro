@@ -1,0 +1,44 @@
+---
+import type { Post } from '@utils/types';
+import { formatDate, sortPostsDesc } from '@utils/scripts';
+import { getCollection } from 'astro:content';
+import SmallCard from '@components/cards/SmallCard.astro';
+
+const posts: Post[] = await getCollection('posts');
+const recentPosts: Post[] = sortPostsDesc(posts).slice(0, 2);
+---
+
+<div class="recent-posts-feed">
+  <h2 class="title font-uppercase">Recent Posts:</h2>
+  <div class="posts">
+    {
+      recentPosts.map((post: Post) => (
+        <SmallCard
+          title={post.data.title}
+          slug={post.data.permalink}
+          subtitle={post.data.subtitle}
+          additionalInfo={formatDate(post.data.datePublished)}
+        />
+      ))
+    }
+  </div>
+</div>
+
+<style lang="scss">
+  .recent-posts-feed {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-m);
+  }
+
+  .posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>

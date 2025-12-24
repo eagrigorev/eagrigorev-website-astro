@@ -1,7 +1,6 @@
 ---
 import type { Post } from '@utils/types';
 import { formatDate, sortPostsDesc } from '@utils/scripts';
-import sections from '@data/sections.json';
 import SmallCard from '@components/cards/SmallCard.astro';
 
 interface Props {
@@ -9,6 +8,8 @@ interface Props {
 }
 
 const { posts }: Props = Astro.props;
+
+const sections: string[] = ['2025'];
 
 const sectionPosts = (section: string): Post[] => {
   return sortPostsDesc(
@@ -21,16 +22,18 @@ const sectionPosts = (section: string): Post[] => {
   {
     sections.map((section: string) => (
       <div class="archive-section">
-        <h2 class="title font-uppercase">{section}</h2>
-        <div class="posts">
-          {sectionPosts(section).map((post: Post) => (
-            <SmallCard
-              title={post.data.title}
-              slug={post.data.permalink}
-              subtitle={post.data.subtitle}
-              additionalInfo={formatDate(post.data.datePublished)}
-            />
-          ))}
+        <div class="section-wrapper">
+          <h2 class="title font-uppercase">{section}</h2>
+          <div class="posts">
+            {sectionPosts(section).map((post: Post) => (
+              <SmallCard
+                title={post.data.title}
+                slug={post.data.permalink}
+                subtitle={post.data.subtitle}
+                additionalInfo={formatDate(post.data.datePublished)}
+              />
+            ))}
+          </div>
         </div>
       </div>
     ))
@@ -41,10 +44,21 @@ const sectionPosts = (section: string): Post[] => {
   .archive-feed {
     display: flex;
     flex-direction: column;
-    gap: var(--space-50-80);
+    gap: var(--space-100-160);
+    width: 100%;
+
+    &:not(:last-child) {
+      &::after {
+        background: var(--color-accent-secondary);
+        content: '';
+        display: block;
+        height: 1px;
+        width: var(--space-100-160);
+      }
+    }
   }
 
-  .archive-section {
+  .section-wrapper {
     display: flex;
     flex-direction: column;
     gap: var(--space-30-40);
@@ -53,6 +67,7 @@ const sectionPosts = (section: string): Post[] => {
   .title {
     font-size: var(--font-size-m);
   }
+
   .posts {
     display: flex;
     flex-direction: column;

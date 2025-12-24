@@ -1,0 +1,48 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '@images/assets/avatar.jpg';
+---
+
+<a class="logo" href="/">
+  <Image
+    class="image"
+    src={avatar}
+    alt="Avatar"
+    width="50"
+    height="50"
+    decoding="async"
+    loading="eager"
+  />
+  <div>
+    <p class="title font-uppercase">Gardens & Ruins</p>
+    <p class="author font-small-caps">Evgenii Grigorev</p>
+  </div>
+</a>
+
+<style lang="scss">
+  .logo {
+    align-items: center;
+    color: var(--color-primary);
+    display: flex;
+    gap: 20px;
+    text-decoration: none;
+  }
+
+  .image {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+    @media only screen and (width <= 480px) {
+      display: none;
+    }
+  }
+
+  .title {
+    color: var(--color-accent-primary);
+    font-size: var(--font-size-m);
+  }
+
+  .author {
+    font-size: var(--font-size-s);
+  }
+</style>
