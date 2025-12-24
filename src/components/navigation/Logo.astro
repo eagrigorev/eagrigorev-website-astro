@@ -31,6 +31,10 @@ import avatar from '@images/assets/avatar.jpg';
   .image {
     aspect-ratio: 1/1;
     border-radius: 50%;
+
+    @media only screen and (width <= 480px) {
+      display: none;
+    }
   }
 
   .title {

@@ -8,7 +8,6 @@ const posts = defineCollection({
       subtitle: z.string(),
       permalink: z.string(),
       datePublished: z.string(),
-      topicId: z.array(z.number()),
       tags: z.array(z.string()),
       options: z.object({
         showTitle: z.boolean(),
