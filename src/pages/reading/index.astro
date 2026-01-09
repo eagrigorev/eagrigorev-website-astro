@@ -1,0 +1,35 @@
+---
+import type { Page } from '@utils/types';
+import { customTypography, formatDate } from '@utils/scripts';
+import { getEntry, render } from 'astro:content';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
+import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import PageTitle from '@components/PageTitle.astro';
+
+const page: Page | undefined = await getEntry('pages', 'reading');
+if (!page) {
+  throw new Error('Could not find requested page');
+}
+
+const { Content } = await render(page);
+---
+
+<GlobalWrapper pageTitle={page.data.title}>
+  <PageTitle slot="title" title={page.data.title} />
+  <div slot="main" class="content">
+    <ContentWrapper>
+      <Content components={customTypography} />
+      <p>{formatDate(page.data.datePublished)}</p>
+    </ContentWrapper>
+  </div>
+</GlobalWrapper>
+
+<style lang="scss">
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-30-40);
+    max-width: var(--narrow-content);
+    padding-top: var(--space-100-160);
+  }
+</style>

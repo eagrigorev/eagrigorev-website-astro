@@ -27,6 +27,7 @@ const pages = defineCollection({
   schema: () =>
     z.object({
       title: z.string(),
+      type: z.enum(["Reading Year"]).optional(),
       subtitle: z.string().optional(),
       permalink: z.string(),
       datePublished: z.string(),
