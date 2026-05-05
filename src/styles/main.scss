@@ -1,7 +1,6 @@
 @use "./partials/tokens";
 @use "./partials/normalize";
 @use "./partials/fonts";
-@use "./partials/links";
 
 body {
   background-color: var(--color-bg-primary);
