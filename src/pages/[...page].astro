@@ -4,9 +4,6 @@ import type { Post } from '@utils/types';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/PageTitle.astro';
-import Pagination from '@components/Pagination.astro';
-import PostFeed from '@components/feeds/PostFeed.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: Post[] = await getCollection('posts');
@@ -22,26 +19,7 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="Gardens & Ruins">
-  <PageTitle
-    slot="title"
-    title="Gardens & Ruins"
-    subtitle="My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self."
-  />
-  <div slot="main" class="content">
-    <PostFeed posts={page.data} />
-    {
-      page.lastPage === 1 ? null : (
-        <Pagination
-          prevPage={page.url.prev}
-          nextPage={page.url.next}
-          currentPage={page.currentPage}
-          pagesTotal={page.lastPage}
-        />
-      )
-    }
-  </div>
-</GlobalWrapper>
+<GlobalWrapper pageTitle="Gardens & Ruins" />
 
 <style lang="scss">
   .content {
