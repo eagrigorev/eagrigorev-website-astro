@@ -1,6 +1,7 @@
 @use "./partials/tokens";
 @use "./partials/normalize";
-@use "./partials/fonts";
+@use "@fontsource-variable/eb-garamond";
+@use "@fontsource-variable/inter";
 
 body {
   background-color: var(--color-bg-primary);
@@ -14,6 +15,6 @@ body {
   display: flex;
   flex-direction: column;
   margin-inline: auto;
-  max-width: 88.75rem; // 1420px
-  padding-inline: var(--space-30-40);
+  max-width: 70rem; // 1120px
+  padding-inline: 40px;
 }
