@@ -1,0 +1,71 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '@images/avatar.jpg';
+
+const links: string[] = ['Illustrations', 'About', 'Journal', 'Photography'];
+---
+
+<div class="navigation-wrapper">
+  <Image
+    class="image"
+    src={avatar}
+    alt="Avatar"
+    width="120"
+    height="120"
+    decoding="async"
+    loading="eager"
+  />
+  <h1 class="title">Gardens & Ruins</h1>
+  <ul class="navigation-items" role="list">
+    {
+      links.map((link: string) => (
+        <li>
+          <a class="navigation-item" href={link.toLowerCase()}>
+            {link}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  .navigation-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 600px;
+  }
+
+  .image {
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+  }
+
+  .title {
+    font-family: 'EB Garamond Variable', serif;
+    font-size: 42px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.15;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .navigation-items {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+  }
+
+  .navigation-item {
+    font-family: 'Inter Variable', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+  }
+</style>

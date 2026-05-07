@@ -2,6 +2,7 @@
 import '@styles/main.scss';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Navigation from '@components/Navigation.astro';
 
 interface Props {
   pageTitle: string;
@@ -28,13 +29,21 @@ const { pageTitle } = Astro.props;
     <SpeedInsights />
   </head>
   <body>
-    <header></header>
+    <header class="header">
+      <div class="container">
+        <Navigation />
+      </div>
+    </header>
     <main></main>
     <footer class="sticky-footer"></footer>
   </body>
 </html>
 
 <style lang="scss">
+  .header {
+    padding-top: 160px;
+  }
+
   .sticky-footer {
     display: flex;
     flex-direction: column;
