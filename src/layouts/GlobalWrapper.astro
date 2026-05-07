@@ -1,15 +1,22 @@
 ---
 import '@styles/main.scss';
+import { getEntry } from 'astro:content';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
 import Intro from '@components/Intro.astro';
 import Navigation from '@components/Navigation.astro';
+import PostCard from '@components/PostCard.astro';
 
 interface Props {
   pageTitle: string;
 }
 
 const { pageTitle } = Astro.props;
+
+const post = await getEntry('posts', 'test/test-post-1/test-post-1');
+if (!post) {
+  throw new Error('Could not find requested page');
+}
 ---
 
 <html lang="en">
@@ -31,12 +38,21 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <header class="header">
-      <div class="container">
+      <div class="header-container container">
         <Navigation />
         <Intro />
       </div>
     </header>
-    <main></main>
+    <main class="main">
+      <div class="container grid">
+        <PostCard post={post} />
+        <PostCard post={post} />
+        <PostCard post={post} />
+        <PostCard post={post} />
+        <PostCard post={post} />
+        <PostCard post={post} />
+      </div>
+    </main>
     <footer class="sticky-footer"></footer>
   </body>
 </html>
@@ -46,8 +62,12 @@ const { pageTitle } = Astro.props;
     padding-top: 160px;
   }
 
-  .container {
+  .header-container {
     gap: 160px;
+  }
+
+  .main {
+    padding-top: 120px;
   }
 
   .sticky-footer {
