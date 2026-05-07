@@ -1,0 +1,50 @@
+---
+// For future pages
+
+// type Intro = 'default' | 'none';
+
+// interface Props {
+//   introText: Intro;
+// }
+
+// const { introText }: Props = Astro.props;
+
+// const showTitle = introText === 'none' ? false : true;
+---
+
+<div class="intro-wrapper">
+  <h2 class="intro">
+    Lorem ipsum dolor sit amet consectetur. Eu adipiscing enim etiam donec magna
+    eu mus etiam euismod. Ullamcorper turpis nibh nunc cras tristique morbi id
+    ultrices.
+  </h2>
+  <p class="asterism">⁂</p>
+</div>
+
+<style lang="scss">
+  .intro-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 600px;
+  }
+
+  .intro {
+    font-family: 'EB Garamond Variable', serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+  }
+
+  .asterism {
+    color: var(--color-accent-primary);
+    font-family: 'EB Garamond Variable', serif;
+    font-size: 26px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.25;
+  }
+</style>

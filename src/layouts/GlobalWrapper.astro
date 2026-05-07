@@ -2,6 +2,7 @@
 import '@styles/main.scss';
 import Analytics from '@vercel/analytics/astro';
 import SpeedInsights from '@vercel/speed-insights/astro';
+import Intro from '@components/Intro.astro';
 import Navigation from '@components/Navigation.astro';
 
 interface Props {
@@ -32,6 +33,7 @@ const { pageTitle } = Astro.props;
     <header class="header">
       <div class="container">
         <Navigation />
+        <Intro />
       </div>
     </header>
     <main></main>
@@ -42,6 +44,10 @@ const { pageTitle } = Astro.props;
 <style lang="scss">
   .header {
     padding-top: 160px;
+  }
+
+  .container {
+    gap: 160px;
   }
 
   .sticky-footer {
