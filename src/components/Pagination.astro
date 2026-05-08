@@ -1,16 +1,32 @@
 ---
-// interface Props {
-//   prevPage?: string | undefined;
-//   nextPage?: string | undefined;
-// }
+interface Props {
+  prevPage?: string | undefined;
+  nextPage?: string | undefined;
+}
 
-// const { prevPage, nextPage }: Props = Astro.props;
+const { prevPage, nextPage }: Props = Astro.props;
 ---
 
 <div class="pagination-wrapper">
   <div class="pagination">
-    <p class="page-link">Previous</p>
-    <p class="page-link">Next</p>
+    {
+      prevPage ? (
+        <a class="page-link" href={prevPage}>
+          Previous
+        </a>
+      ) : (
+        <div />
+      )
+    }
+    {
+      nextPage ? (
+        <a class="page-link" href={nextPage}>
+          Next
+        </a>
+      ) : (
+        <div />
+      )
+    }
   </div>
 </div>
 
@@ -35,6 +51,7 @@
     font-weight: 400;
     line-height: 1.15;
     letter-spacing: 0.1em;
+    text-decoration: none;
     text-transform: uppercase;
   }
 </style>
