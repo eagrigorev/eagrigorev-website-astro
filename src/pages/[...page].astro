@@ -3,6 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import { getCollection } from 'astro:content';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import Intro from '@components/Intro.astro';
 import PostGrid from '@components/PostGrid.astro';
 import Pagination from '@components/Pagination.astro';
 
@@ -21,6 +22,7 @@ const { page } = Astro.props;
 ---
 
 <GlobalWrapper pageTitle="Gardens & Ruins">
+  <Intro slot="header" />
   <PostGrid slot="main" posts={page.data} />
   <Pagination slot="main" prevPage={page.url.prev} nextPage={page.url.next} />
 </GlobalWrapper>
