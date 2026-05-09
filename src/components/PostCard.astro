@@ -11,14 +11,16 @@ const { post }: Props = Astro.props;
 
 <article class="post-card-wrapper">
   <div class="image-wrapper">
-    <Image
-      src={post.data.featuredImage.url}
-      alt={post.data.featuredImage.alt}
-      width="320"
-      height="400"
-      decoding="async"
-      loading="eager"
-    />
+    <a href={post.data.permalink}>
+      <Image
+        src={post.data.featuredImage.url}
+        alt={post.data.featuredImage.alt}
+        width="320"
+        height="400"
+        decoding="async"
+        loading="eager"
+      />
+    </a>
   </div>
   <div class="description-wrapper">
     <div class="title-wrapper">
@@ -33,9 +35,13 @@ const { post }: Props = Astro.props;
           }
         </p>
         ·
-        <p class="meta">{post.data.category}</p>
+        <a class="meta" href={`/${post.data.category.toLowerCase()}`}
+          >{post.data.category}</a
+        >
       </div>
-      <h3 class="title">{post.data.title}</h3>
+      <a href={post.data.permalink}>
+        <h3 class="title">{post.data.title}</h3>
+      </a>
     </div>
     <p class="description">{post.data.description}</p>
   </div>

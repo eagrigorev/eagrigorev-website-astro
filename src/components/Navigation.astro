@@ -6,16 +6,18 @@ const links: string[] = ['Journal', 'About', 'Photography', 'Illustrations'];
 ---
 
 <div class="navigation-wrapper">
-  <Image
-    class="image"
-    src={avatar}
-    alt="Avatar"
-    width="120"
-    height="120"
-    decoding="async"
-    loading="eager"
-  />
-  <h1 class="title">Gardens & Ruins</h1>
+  <a href="/"
+    ><Image
+      class="image"
+      src={avatar}
+      alt="Avatar"
+      width="120"
+      height="120"
+      decoding="async"
+      loading="eager"
+    /></a
+  >
+  <a href="/"><h1 class="title">Gardens & Ruins</h1></a>
   <ul class="navigation-items" role="list">
     {
       links.map((link: string) => (
