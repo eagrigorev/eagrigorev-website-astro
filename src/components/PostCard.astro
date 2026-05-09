@@ -11,7 +11,7 @@ const { post }: Props = Astro.props;
 
 <article class="post-card-wrapper">
   <div class="image-wrapper">
-    <a href={post.data.permalink}>
+    <a class="clean-link" href={post.data.permalink}>
       <Image
         src={post.data.featuredImage.url}
         alt={post.data.featuredImage.alt}
@@ -35,11 +35,11 @@ const { post }: Props = Astro.props;
           }
         </p>
         ·
-        <a class="meta" href={`/${post.data.category.toLowerCase()}`}
+        <a class="clean-link meta" href={`/${post.data.category.toLowerCase()}`}
           >{post.data.category}</a
         >
       </div>
-      <a href={post.data.permalink}>
+      <a class="clean-link" href={post.data.permalink}>
         <h3 class="title">{post.data.title}</h3>
       </a>
     </div>
@@ -57,6 +57,11 @@ const { post }: Props = Astro.props;
 
   .image-wrapper {
     border: 1px solid var(--color-secondary);
+  }
+
+  .clean-link {
+    color: var(--color-primary);
+    text-decoration: none;
   }
 
   .description-wrapper {
