@@ -20,7 +20,7 @@ const { pageTitle } = Astro.props;
         <slot name="header" />
       </div>
     </header>
-    <main class="main">
+    <main>
       <div class="container">
         <slot name="main" />
       </div>
@@ -36,10 +36,6 @@ const { pageTitle } = Astro.props;
 <style lang="scss">
   .header-wrapper {
     gap: 160px;
-  }
-
-  .main {
-    padding-top: 120px;
   }
 
   .sticky-footer {
