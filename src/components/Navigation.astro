@@ -44,6 +44,12 @@ const links: string[] = ['Journal', 'About', 'Photography', 'Illustrations'];
   .clean-link {
     color: var(--color-primary);
     text-decoration: none;
+    transition: color 0.3s;
+
+    &:focus,
+    &:hover {
+      color: var(--color-accent-primary);
+    }
   }
 
   .image {

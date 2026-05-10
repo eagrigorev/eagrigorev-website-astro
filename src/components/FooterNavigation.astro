@@ -48,5 +48,11 @@
   .clean-link {
     color: var(--color-secondary);
     text-decoration: none;
+    transition: color 0.3s;
+
+    &:focus,
+    &:hover {
+      color: var(--color-accent-primary);
+    }
   }
 </style>

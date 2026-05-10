@@ -54,5 +54,11 @@ const { prevPage, nextPage }: Props = Astro.props;
     letter-spacing: 0.1em;
     text-decoration: none;
     text-transform: uppercase;
+    transition: color 0.3s;
+
+    &:focus,
+    &:hover {
+      color: var(--color-accent-primary);
+    }
   }
 </style>
