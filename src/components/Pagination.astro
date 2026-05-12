@@ -11,7 +11,7 @@ const { prevPage, nextPage }: Props = Astro.props;
   <div class="pagination">
     {
       prevPage ? (
-        <a class="page-link" href={prevPage}>
+        <a class="pagination-link" href={prevPage}>
           Previous
         </a>
       ) : (
@@ -20,7 +20,7 @@ const { prevPage, nextPage }: Props = Astro.props;
     }
     {
       nextPage ? (
-        <a class="page-link" href={nextPage}>
+        <a class="pagination-link" href={nextPage}>
           Next
         </a>
       ) : (
@@ -44,7 +44,7 @@ const { prevPage, nextPage }: Props = Astro.props;
     padding-top: 40px;
   }
 
-  .page-link {
+  .pagination-link {
     color: var(--color-secondary);
     font-family: 'Inter Variable', sans-serif;
     font-size: 14px;

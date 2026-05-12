@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import { getCollection } from 'astro:content';
+import { sortPostsDesc } from '@utils/scripts';
 import GlobalWrapper from '@layouts/GlobalWrapper.astro';
 import Intro from '@components/Intro.astro';
 import PostGrid from '@components/PostGrid.astro';
@@ -9,7 +10,7 @@ import Pagination from '@components/Pagination.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: CollectionEntry<'posts'>[] = await getCollection('posts');
-  return paginate(posts, {
+  return paginate(sortPostsDesc(posts), {
     pageSize: 6,
   });
 }) satisfies GetStaticPaths;
@@ -26,14 +27,3 @@ const { page } = Astro.props;
   <PostGrid slot="main" posts={page.data} />
   <Pagination slot="main" prevPage={page.url.prev} nextPage={page.url.next} />
 </GlobalWrapper>
-
-<style lang="scss">
-  .content {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    max-width: var(--narrow-content);
-    padding-top: var(--space-100-160);
-    width: 100%;
-  }
-</style>

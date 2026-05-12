@@ -6,23 +6,23 @@ const links: string[] = ['Journal', 'About', 'Photography', 'Illustrations'];
 ---
 
 <div class="navigation-wrapper">
-  <a class="clean-link" href="/"
+  <a href="/" tabindex="-1"
     ><Image
       class="image"
       src={avatar}
-      alt="Avatar"
+      alt="Evgenii Grigorev"
       width="120"
       height="120"
       decoding="async"
       loading="eager"
     /></a
   >
-  <a class="clean-link" href="/"><h1 class="title">Gardens & Ruins</h1></a>
+  <a class="link-red" href="/"><h1 class="title">Gardens & Ruins</h1></a>
   <ul class="navigation-items" role="list">
     {
       links.map((link: string) => (
         <li>
-          <a class="clean-link navigation-item" href={link.toLowerCase()}>
+          <a class="link-red navigation-item" href={link.toLowerCase()}>
             {link}
           </a>
         </li>
@@ -39,17 +39,6 @@ const links: string[] = ['Journal', 'About', 'Photography', 'Illustrations'];
     gap: 24px;
     max-width: 600px;
     padding-top: 160px;
-  }
-
-  .clean-link {
-    color: var(--color-primary);
-    text-decoration: none;
-    transition: color 0.3s;
-
-    &:focus,
-    &:hover {
-      color: var(--color-accent-primary);
-    }
   }
 
   .image {

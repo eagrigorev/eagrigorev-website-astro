@@ -18,3 +18,23 @@ body {
   max-width: 70rem; // 1120px
   padding-inline: 40px;
 }
+
+.link-red {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:focus,
+  &:hover {
+    color: var(--color-accent-primary);
+  }
+}
+
+.link-image {
+  transition: opacity 0.3s;
+
+  &:hover,
+  &:focus {
+    opacity: 0.8;
+  }
+}
