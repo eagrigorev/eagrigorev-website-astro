@@ -1,22 +1,26 @@
 ---
-// For future pages
+interface Props {
+  introType: 'default' | 'category' | 'none';
+  introText?: string;
+}
 
-// type Intro = 'default' | 'none';
+const { introType, introText }: Props = Astro.props;
 
-// interface Props {
-//   introText: Intro;
-// }
+const defaultIntro =
+  'My name is Evgenii, welcome. I created this journal in order to cope with anxiety, preserve memories, and reflect on my life. Thank you for stopping by.';
 
-// const { introText }: Props = Astro.props;
-
-// const showTitle = introText === 'none' ? false : true;
+const categoryIntro = `Browsing posts by category: ${introText}`;
 ---
 
 <div class="intro-wrapper">
   <h2 class="intro">
-    My name is Evgenii, welcome. I created this journal in order to cope with
-    anxiety, preserve memories, and reflect on my life. Thank you for stopping
-    by.
+    {
+      introType === 'category'
+        ? categoryIntro
+        : introType === 'none'
+          ? null
+          : defaultIntro
+    }
   </h2>
   <p class="asterism">⁂</p>
 </div>

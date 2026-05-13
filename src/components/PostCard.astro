@@ -12,7 +12,7 @@ const { post }: Props = Astro.props;
 
 <article class="post-card-wrapper">
   <div class="image-wrapper">
-    <a class="link-image" href={post.data.permalink}>
+    <a class="link-image" href={post.data.permalink} tabindex="-1">
       <Image
         src={post.data.featuredImage.url}
         alt={post.data.featuredImage.alt}
@@ -30,7 +30,9 @@ const { post }: Props = Astro.props;
           {formatDate(post.data.date)}
         </p>
         ·
-        <a class="link-red meta" href={`/${post.data.category.toLowerCase()}`}
+        <a
+          class="link-red meta"
+          href={`/categories/${post.data.category.toLowerCase()}`}
           >{post.data.category}</a
         >
       </div>

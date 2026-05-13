@@ -10,20 +10,30 @@ import Pagination from '@components/Pagination.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: CollectionEntry<'posts'>[] = await getCollection('posts');
-  return paginate(sortPostsDesc(posts), {
-    pageSize: 6,
+  return posts.flatMap((post: CollectionEntry<'posts'>) => {
+    const categoryPosts: CollectionEntry<'posts'>[] = posts.filter(
+      (categoryPost: CollectionEntry<'posts'>) =>
+        categoryPost.data.category === post.data.category
+    );
+    return paginate(sortPostsDesc(categoryPosts), {
+      params: { category: post.data.category.toLowerCase() },
+      props: { category: post.data.category },
+      pageSize: 3,
+    });
   });
 }) satisfies GetStaticPaths;
 
 interface Props {
   page: Page<CollectionEntry<'posts'>>;
+  category: string;
 }
 
-const { page } = Astro.props;
+const { page, category }: Props = Astro.props;
 ---
 
 <GlobalWrapper pageTitle="Gardens & Ruins">
-  <Intro slot="header" introType="default" />
+  <Intro slot="header" introType="category" introText={category} />
+  {category}
   <PostGrid slot="main" posts={page.data} />
   <Pagination slot="main" prevPage={page.url.prev} nextPage={page.url.next} />
 </GlobalWrapper>
