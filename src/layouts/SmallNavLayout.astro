@@ -1,8 +1,8 @@
 ---
 import '@styles/main.scss';
-import FooterNavigation from '@components/FooterNavigation.astro';
+import FooterNavigationBig from '@components/FooterNavigationBig.astro';
 import Head from '@components/Head.astro';
-import Navigation from '@components/Navigation.astro';
+import NavigationSmall from '@components/NavigationSmall.astro';
 
 interface Props {
   pageTitle: string;
@@ -16,7 +16,7 @@ const { pageTitle } = Astro.props;
   <body>
     <header>
       <div class="container header-wrapper">
-        <Navigation />
+        <NavigationSmall />
         <slot name="header" />
       </div>
     </header>
@@ -27,7 +27,7 @@ const { pageTitle } = Astro.props;
     </main>
     <footer class="sticky-footer">
       <div class="container">
-        <FooterNavigation />
+        <FooterNavigationBig />
       </div>
     </footer>
   </body>

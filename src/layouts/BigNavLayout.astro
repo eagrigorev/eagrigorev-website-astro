@@ -1,0 +1,46 @@
+---
+import '@styles/main.scss';
+import FooterNavigationSmall from '@components/FooterNavigationSmall.astro';
+import Head from '@components/Head.astro';
+import NavigationBig from '@components/NavigationBig.astro';
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+  <Head pageTitle={pageTitle} />
+  <body>
+    <header>
+      <div class="container header-wrapper">
+        <NavigationBig />
+        <slot name="header" />
+      </div>
+    </header>
+    <main>
+      <div class="container">
+        <slot name="main" />
+      </div>
+    </main>
+    <footer class="sticky-footer">
+      <div class="container">
+        <FooterNavigationSmall />
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  .header-wrapper {
+    gap: 160px;
+  }
+
+  .sticky-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+</style>

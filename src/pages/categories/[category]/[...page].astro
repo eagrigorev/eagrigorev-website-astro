@@ -3,21 +3,23 @@ import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
-import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import BigNavLayout from '@layouts/BigNavLayout.astro';
 import Intro from '@components/Intro.astro';
 import PostGrid from '@components/PostGrid.astro';
 import Pagination from '@components/Pagination.astro';
 
 export const getStaticPaths = (async ({ paginate }) => {
   const posts: CollectionEntry<'posts'>[] = await getCollection('posts');
-  return posts.flatMap((post: CollectionEntry<'posts'>) => {
-    const categoryPosts: CollectionEntry<'posts'>[] = posts.filter(
-      (categoryPost: CollectionEntry<'posts'>) =>
-        categoryPost.data.category === post.data.category
+  const categories: string[] = Array.from(
+    new Set(posts.map((post) => post.data.category.toLowerCase()))
+  );
+  return categories.flatMap((category) => {
+    const categoryPosts = posts.filter(
+      (post) => post.data.category.toLowerCase() === category
     );
     return paginate(sortPostsDesc(categoryPosts), {
-      params: { category: post.data.category.toLowerCase() },
-      props: { category: post.data.category },
+      params: { category },
+      props: { category },
       pageSize: 3,
     });
   });
@@ -31,9 +33,9 @@ interface Props {
 const { page, category }: Props = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="Gardens & Ruins">
+<BigNavLayout pageTitle="Gardens & Ruins">
   <Intro slot="header" introType="category" introText={category} />
   {category}
   <PostGrid slot="main" posts={page.data} />
   <Pagination slot="main" prevPage={page.url.prev} nextPage={page.url.next} />
-</GlobalWrapper>
+</BigNavLayout>

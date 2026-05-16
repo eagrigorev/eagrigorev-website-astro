@@ -3,7 +3,7 @@ import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths, Page } from 'astro';
 import { getCollection } from 'astro:content';
 import { sortPostsDesc } from '@utils/scripts';
-import GlobalWrapper from '@layouts/GlobalWrapper.astro';
+import BigNavLayout from '@layouts/BigNavLayout.astro';
 import Intro from '@components/Intro.astro';
 import PostGrid from '@components/PostGrid.astro';
 import Pagination from '@components/Pagination.astro';
@@ -22,7 +22,7 @@ interface Props {
 const { page } = Astro.props;
 ---
 
-<GlobalWrapper pageTitle="Gardens & Ruins">
+<BigNavLayout pageTitle="Gardens & Ruins">
   <Intro slot="header" introType="default" />
   <PostGrid slot="main" posts={page.data} />
   {
@@ -34,4 +34,4 @@ const { page } = Astro.props;
       />
     )
   }
-</GlobalWrapper>
+</BigNavLayout>
