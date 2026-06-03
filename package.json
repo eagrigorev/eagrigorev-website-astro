@@ -16,7 +16,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
-    "lint": "stylelint --allow-empty-input \"**/*.{css,scss}\"",
+    "lint:css": "stylelint --allow-empty-input \"**/*.{css,scss}\"",
+    "lint:js": "eslint . --ext .js,.ts,.tsx,.astro,.mdx",
+    "lint": "npm run lint:css && npm run lint:js",
     "format": "prettier --check --write .",
     "build": "npm run lint && npm run format && astro check && astro build",
     "preview": "astro preview"
@@ -37,6 +39,14 @@
     "typescript": "^6.0.3"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.60.1",
+    "@typescript-eslint/parser": "^8.60.1",
+    "astro-eslint-parser": "^1.4.0",
+    "eslint": "^10.4.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-mdx": "^3.8.1",
+    "eslint-plugin-astro": "^1.7.0",
+    "eslint-plugin-mdx": "^3.8.1",
     "postcss-html": "^1.8.1",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",

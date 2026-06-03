@@ -1,7 +1,8 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import { getCollection, render } from 'astro:content';
+//import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 import SmallNavLayout from '@layouts/SmallNavLayout.astro';
 
 export const getStaticPaths = (async () => {
@@ -13,7 +14,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+///const { Content } = await render(post);
 ---
 
 <SmallNavLayout pageTitle={post.data.title}>
