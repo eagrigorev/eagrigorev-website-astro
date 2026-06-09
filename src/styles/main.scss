@@ -1,40 +1,40 @@
-@use "./partials/tokens";
-@use "./partials/normalize";
-@use "@fontsource-variable/eb-garamond";
-@use "@fontsource-variable/inter";
+// @use "./partials/tokens";
+// @use "./partials/normalize";
+// @use "@fontsource-variable/eb-garamond";
+// @use "@fontsource-variable/inter";
 
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-primary);
-  display: flex;
-  flex-direction: column;
-}
+// body {
+//   background-color: var(--color-bg-primary);
+//   color: var(--color-primary);
+//   display: flex;
+//   flex-direction: column;
+// }
 
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  max-width: 70rem; // 1120px
-  padding-inline: 40px;
-}
+// .container {
+//   align-items: center;
+//   display: flex;
+//   flex-direction: column;
+//   margin-inline: auto;
+//   max-width: 70rem; // 1120px
+//   padding-inline: 40px;
+// }
 
-.link-red {
-  color: var(--color-primary);
-  text-decoration: none;
-  transition: color 0.3s;
+// .link-red {
+//   color: var(--color-primary);
+//   text-decoration: none;
+//   transition: color 0.3s;
 
-  &:focus,
-  &:hover {
-    color: var(--color-accent-primary);
-  }
-}
+//   &:focus,
+//   &:hover {
+//     color: var(--color-accent-primary);
+//   }
+// }
 
-.link-image {
-  transition: opacity 0.3s;
+// .link-image {
+//   transition: opacity 0.3s;
 
-  &:hover,
-  &:focus {
-    opacity: 0.8;
-  }
-}
+//   &:hover,
+//   &:focus {
+//     opacity: 0.8;
+//   }
+// }
