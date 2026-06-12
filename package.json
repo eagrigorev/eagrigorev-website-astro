@@ -34,7 +34,7 @@
     "@fontsource-variable/inter": "^5.2.8",
     "@vercel/analytics": "^2.0.1",
     "@vercel/speed-insights": "^2.0.0",
-    "astro": "^6.4.4",
+    "astro": "^6.4.6",
     "astro-robots-txt": "^1.0.0",
     "typescript": "^6.0.3"
   },
@@ -50,7 +50,7 @@
     "postcss-html": "^1.8.1",
     "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "sass": "^1.100.0",
+    "sass": "^1.101.0",
     "stylelint": "^17.13.0",
     "stylelint-config-html": "^1.1.0",
     "stylelint-config-prettier-scss": "^1.0.0",
