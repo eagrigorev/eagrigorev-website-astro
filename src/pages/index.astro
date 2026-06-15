@@ -1,6 +1,11 @@
 ---
 import '@styles/main.scss';
+import { getCollection } from 'astro:content';
 import Head from '@components/Head.astro';
+
+const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+
+// TODO: add types and components
 ---
 
 <html lang="en">
@@ -11,6 +16,15 @@ import Head from '@components/Head.astro';
     </header>
     <main>
       <p>Test main</p>
+      {
+        posts.map((post) => (
+          <div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.category}</p>
+            <a href={post.data.slug}>Read more</a>
+          </div>
+        ))
+      }
     </main>
     <footer class="sticky-footer">
       <p>Test footer</p>

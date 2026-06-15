@@ -9,6 +9,7 @@ const posts = defineCollection({
     slug: z.string(),
     date: z.date(),
     category: z.enum(["illustrations", "photography", "journal"]),
+    description: z.string(),
     growthStage: z.enum(["seed", "sprout", "evergreen"]),
     featuredImage: z
       .object({
