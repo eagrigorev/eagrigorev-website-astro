@@ -13,11 +13,16 @@
     "strictNullChecks": true,
     "allowJs": true,
     "paths": {
+      // TODO: Add the following shortcuts
+
       "@components/*": ["src/components/*"],
-      "@layouts/*": ["src/layouts/*"],
-      "@images/*": ["src/images/*"],
-      "@styles/*": ["src/styles/*"],
-      "@utils/*": ["src/utils/*"]
+
+      // "@layouts/*": ["src/layouts/*"],
+      // "@images/*": ["src/images/*"],
+
+      "@styles/*": ["src/styles/*"]
+
+      // "@utils/*": ["src/utils/*"]
     },
     "ignoreDeprecations": "6.0"
   }

@@ -1,1 +1,27 @@
+---
+import '@styles/main.scss';
+import Head from '@components/Head.astro';
+---
 
+<html lang="en">
+  <Head pageTitle="Gardens & Ruins" />
+  <body>
+    <header>
+      <h1>Website title</h1>
+    </header>
+    <main>
+      <p>Test main</p>
+    </main>
+    <footer class="sticky-footer">
+      <p>Test footer</p>
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  .sticky-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+</style>
