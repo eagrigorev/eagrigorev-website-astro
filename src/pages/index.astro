@@ -21,7 +21,7 @@ const posts = await getCollection('posts', ({ data }) => !data.isDraft);
           <div>
             <h2>{post.data.title}</h2>
             <p>{post.data.category}</p>
-            <a href={post.data.slug}>Read more</a>
+            <a href={`/${post.data.slug}`}>Read more</a>
           </div>
         ))
       }

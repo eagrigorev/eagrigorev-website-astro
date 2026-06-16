@@ -18,4 +18,6 @@ const { Content } = await render(post);
 
 <div>
   <Content />
+  <p>This post is under category:</p>
+  <a href={`/category/${post.data.category}`}>{post.data.category}</a>
 </div>

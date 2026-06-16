@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+  const categories = ['illustrations', 'photography', 'journal'];
+  return categories.map((category) => {
+    const categorySlug = category.replace(/\s+/g, '-');
+    const filteredPosts = posts
+      .filter((post) => post.data.category === category)
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+    return {
+      params: { categorySlug },
+      props: { categoryName: category, posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+const { categoryName, posts } = Astro.props;
+
+//TODO: Add components
+---
+
+<div>
+  <p>{`Here go posts by category ${categoryName}`}</p>
+  {
+    posts.map((post) => (
+      <div>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.category}</p>
+        <a href={`/${post.data.slug}`}>Read more</a>
+      </div>
+    ))
+  }
+</div>
