@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  function slugify(text: string): string {
+    return text
+      .toString()
+      .toLowerCase()
+      .trim()
+      .replace(/\s+/g, '-') // Replace spaces with -
+      .replace(/[^\w\-]+/g, '') // Remove all non-word chars
+      .replace(/\-\-+/g, '-') // Replace multiple - with single -
+      .replace(/^-+/, '') // Trim - from start
+      .replace(/-+$/, ''); // Trim - from end
+  }
+  const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+  const uniqueTags = [...new Set(posts.flatMap((post) => post.data.tags))];
+  return uniqueTags.map((tag) => {
+    const tagSlug = slugify(tag);
+    const filteredPosts = posts
+      .filter((post) => post.data.tags.includes(tag))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+    return {
+      params: { tagSlug },
+      props: { tagName: tag, posts: filteredPosts },
+    };
+  });
+}
+
+const { tagName, posts } = Astro.props;
+
+// TODO: Add everything here
+---
+
+<div>
+  <p>{`Here go posts by tag ${tagName}`}</p>
+  {
+    posts.map((post) => (
+      <div>
+        <h2>{post.data.title}</h2>
+        <p>{post.data.category}</p>
+        <a href={`/${post.data.slug}`}>Read more</a>
+      </div>
+    ))
+  }
+</div>

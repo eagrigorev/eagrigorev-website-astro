@@ -20,4 +20,10 @@ const { Content } = await render(post);
   <Content />
   <p>This post is under category:</p>
   <a href={`/category/${post.data.category}`}>{post.data.category}</a>
+  <p>THere are also tags assigned:</p>
+  {
+    post.data.tags.map((tag) => (
+      <a href={`/tag/${tag.replace(/\s+/g, '-')}`}>{tag}</a>
+    ))
+  }
 </div>
