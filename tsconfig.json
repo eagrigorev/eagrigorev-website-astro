@@ -16,8 +16,8 @@
       // TODO: Add the following shortcuts
 
       "@components/*": ["src/components/*"],
+      "@layouts/*": ["src/layouts/*"],
 
-      // "@layouts/*": ["src/layouts/*"],
       // "@images/*": ["src/images/*"],
 
       "@styles/*": ["src/styles/*"],

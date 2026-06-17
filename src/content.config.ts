@@ -1,6 +1,7 @@
 import { defineCollection } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "astro/zod";
+import { growthStage, postCategories } from "@utils/types";
 
 const posts = defineCollection({
   loader: glob({ pattern: "**/index.{md,mdx}", base: "./src/content/posts" }),
@@ -8,9 +9,9 @@ const posts = defineCollection({
     title: z.string(),
     slug: z.string(),
     date: z.date(),
-    category: z.enum(["illustrations", "photography", "journal"]),
+    category: z.enum(postCategories),
     description: z.string(),
-    growthStage: z.enum(["seed", "sprout", "evergreen"]),
+    growthStage: z.enum(growthStage),
     featuredImage: z
       .object({
         url: z.string(),

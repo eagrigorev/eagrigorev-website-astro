@@ -1,0 +1,40 @@
+---
+import Head from '@components/Head.astro';
+
+interface Props {
+  pageTitle: string;
+  description?: string;
+}
+
+const { pageTitle, description } = Astro.props;
+---
+
+<html lang="en">
+  <Head pageTitle={pageTitle} description={description} />
+  <body>
+    <header>
+      <slot name="header" />
+    </header>
+    <main>
+      <slot name="main" />
+    </main>
+    <footer class="sticky-footer">
+      <slot name="footer" />
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  body {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  .sticky-footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+  }
+</style>

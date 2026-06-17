@@ -1,7 +1,7 @@
 ---
 import '@styles/main.scss';
 import { getCollection } from 'astro:content';
-import Head from '@components/Head.astro';
+import BaseWrapper from '@layouts/BaseWrapper.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
 
@@ -14,41 +14,34 @@ const randomizerPool = posts.map((post) => ({
 // TODO: add types and components
 ---
 
-<html lang="en">
-  <Head pageTitle="Gardens & Ruins" />
-  <body>
-    <header>
-      <h1>Website title</h1>
-    </header>
-    <main>
-      <p>Test main</p>
-      {
-        posts.map((post) => (
-          <div>
-            <h2>{post.data.title}</h2>
-            <p>{post.data.category}</p>
-            <a href={`/${post.data.slug}`}>Read more</a>
-          </div>
-        ))
-      }
-      <section style="background: #eee; padding: 20px; margin: 20px 0;">
-        <h2>🎲 Serendipity</h2>
-        <p>Don't know where to start? Let the garden choose a path for you:</p>
+<BaseWrapper pageTitle="Gardens & Ruins">
+  <h1 slot="header">Website title</h1>
+  <div slot="main">
+    <p>Test main</p>
+    {
+      posts.map((post) => (
+        <div>
+          <h2>{post.data.title}</h2>
+          <p>{post.data.category}</p>
+          <a href={`/${post.data.slug}`}>Read more</a>
+        </div>
+      ))
+    }
+    <section style="background: #eee; padding: 20px; margin: 20px 0;">
+      <h2>🎲 Serendipity</h2>
+      <p>Don't know where to start? Let the garden choose a path for you:</p>
 
-        <a
-          id="random-walk-btn"
-          href="#"
-          style="font-weight: bold; font-size: 1.2rem;"
-        >
-          ✨ Take a Random Stroll...
-        </a>
-      </section>
-    </main>
-    <footer class="sticky-footer">
-      <p>Test footer</p>
-    </footer>
-  </body>
-</html>
+      <a
+        id="random-walk-btn"
+        href="#"
+        style="font-weight: bold; font-size: 1.2rem;"
+      >
+        ✨ Take a Random Stroll...
+      </a>
+    </section>
+  </div>
+  <p slot="footer">Test footer</p>
+</BaseWrapper>
 
 <script define:vars={{ randomizerPool }}>
   // 1. Double check that we actually have notes to pick from
