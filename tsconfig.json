@@ -20,9 +20,8 @@
       // "@layouts/*": ["src/layouts/*"],
       // "@images/*": ["src/images/*"],
 
-      "@styles/*": ["src/styles/*"]
-
-      // "@utils/*": ["src/utils/*"]
+      "@styles/*": ["src/styles/*"],
+      "@utils/*": ["src/utils/*"]
     },
     "ignoreDeprecations": "6.0"
   }

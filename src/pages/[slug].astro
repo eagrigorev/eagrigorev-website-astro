@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import { getGardenGraph } from '@utils/generateGraph';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -12,6 +13,9 @@ export const getStaticPaths = (async () => {
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+const { backlinksMap } = await getGardenGraph();
+const backlinks = backlinksMap[post.data.slug] || [];
 
 // TODO: Add types and stuff
 ---
@@ -25,5 +29,20 @@ const { Content } = await render(post);
     post.data.tags.map((tag) => (
       <a href={`/tag/${tag.replace(/\s+/g, '-')}`}>{tag}</a>
     ))
+  }
+
+  <h3>Links pointing to this note</h3>
+  {
+    backlinks.length > 0 ? (
+      <ul>
+        {backlinks.map((link) => (
+          <li>
+            <a href={`/${link.slug}`}>{link.title}</a>
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p>No other notes link here yet.</p>
+    )
   }
 </div>
