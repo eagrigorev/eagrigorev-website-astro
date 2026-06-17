@@ -5,6 +5,12 @@ import Head from '@components/Head.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
 
+// Map down to a lightweight array of just slugs and titles for the browser script
+const randomizerPool = posts.map((post) => ({
+  slug: post.data.slug,
+  title: post.data.title,
+}));
+
 // TODO: add types and components
 ---
 
@@ -25,12 +31,40 @@ const posts = await getCollection('posts', ({ data }) => !data.isDraft);
           </div>
         ))
       }
+      <section style="background: #eee; padding: 20px; margin: 20px 0;">
+        <h2>🎲 Serendipity</h2>
+        <p>Don't know where to start? Let the garden choose a path for you:</p>
+
+        <a
+          id="random-walk-btn"
+          href="#"
+          style="font-weight: bold; font-size: 1.2rem;"
+        >
+          ✨ Take a Random Stroll...
+        </a>
+      </section>
     </main>
     <footer class="sticky-footer">
       <p>Test footer</p>
     </footer>
   </body>
 </html>
+
+<script define:vars={{ randomizerPool }}>
+  // 1. Double check that we actually have notes to pick from
+  if (randomizerPool && randomizerPool.length > 0) {
+    const button = document.getElementById('random-walk-btn');
+
+    // 2. Pick a random item from the array
+    const randomNote =
+      randomizerPool[Math.floor(Math.random() * randomizerPool.length)];
+
+    // 3. Update the anchor tag's destination and text
+    // Since your permalinks are flat root urls (/[slug]), we just link directly to the slug
+    button.href = `/${randomNote.slug}`;
+    button.innerHTML = `✨ Stroll into: "${randomNote.title}"`;
+  }
+</script>
 
 <style lang="scss">
   .sticky-footer {
