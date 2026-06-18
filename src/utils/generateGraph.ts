@@ -1,13 +1,13 @@
 import { getCollection } from "astro:content";
 import fs from "fs";
 import path from "path";
+import type { BacklinkRef, PostLinkGraph } from "@utils/types";
 
-export async function getGardenGraph() {
+export async function getGardenGraph(): Promise<{
+  backlinksMap: PostLinkGraph;
+}> {
   const notes = await getCollection("posts", ({ data }) => !data.isDraft);
-  const backlinksMap: Record<
-    string,
-    Array<{ slug: string; title: string }>
-  > = {};
+  const backlinksMap: PostLinkGraph = {};
 
   // Initialize map keys using frontmatter slugs
   notes.forEach((note) => {
@@ -61,7 +61,9 @@ export async function getGardenGraph() {
           backlinksMap[urlSlug].push({
             slug: note.data.slug,
             title: note.data.title,
-          });
+            category: note.data.category,
+            description: note.data.description,
+          } as BacklinkRef);
         }
       }
     }

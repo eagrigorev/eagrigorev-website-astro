@@ -1,0 +1,38 @@
+---
+import type { Post } from '@utils/types';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+
+const randomizerPool = posts.map((post: Post) => ({
+  slug: post.data.slug,
+  title: post.data.title,
+  category: post.data.category,
+  description: post.data.description,
+}));
+---
+
+<div>
+  <h2>Serendipity</h2>
+  <p>Don't know where to start? Let the garden choose a path for you:</p>
+  <a id="random-walk-btn" href="#"> Take a Random Stroll...</a>
+</div>
+
+<script define:vars={{ randomizerPool }}>
+  // 1. Double check that we actually have notes to pick from
+  if (randomizerPool && randomizerPool.length > 0) {
+    const button = document.getElementById('random-walk-btn');
+
+    // 2. Pick a random item from the array
+    const randomNote =
+      randomizerPool[Math.floor(Math.random() * randomizerPool.length)];
+
+    // 3. Update the anchor tag's destination and text
+    // Since your permalinks are flat root urls (/[slug]), we just link directly to the slug
+    button.href = `/${randomNote.slug}`;
+    button.innerHTML = `✨ Stroll into: "${randomNote.title}"`;
+  }
+</script>

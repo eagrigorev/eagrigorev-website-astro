@@ -1,0 +1,15 @@
+---
+import type { Post } from '@utils/types';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article>
+  <h2>{post.data.title}</h2>
+  <p>{post.data.category}</p>
+  <a href={`/${post.data.slug}`}>Read more</a>
+</article>

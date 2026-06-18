@@ -1,6 +1,7 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
+import type { BacklinkRef } from '@utils/types';
 import { getGardenGraph } from '@utils/generateGraph';
 
 export const getStaticPaths = (async () => {
@@ -15,9 +16,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const { backlinksMap } = await getGardenGraph();
-const backlinks = backlinksMap[post.data.slug] || [];
-
-// TODO: Add types and stuff
+const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
 ---
 
 <div>
