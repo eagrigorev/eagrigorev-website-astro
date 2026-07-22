@@ -1,20 +1,76 @@
 ---
-
+import { Image } from 'astro:assets';
+import avatar from '@images/avatar.jpg';
 ---
 
-<div>
-  <h1>This is a global big website header</h1>
+<div class="header-navigation-wrapper">
+  <a class="logo" href="/"
+    ><Image
+      class="avatar"
+      src={avatar}
+      alt="Evgenii Grigorev"
+      width="120"
+      height="120"
+      decoding="async"
+      loading="eager"
+    />
+    <h1 class="font-serif-all-caps title">Gardens & Ruins</h1>
+  </a>
   <nav>
-    <ul>
+    <ul class="font-sans-serif-secondary links" role="list">
       <li>
-        <a href="/">Link 1</a>
+        <a class="link" href="/">Explore the Garden</a>
       </li>
       <li>
-        <a href="/">Link 2</a>
+        <a class="link" href="/">Info</a>
       </li>
       <li>
-        <a href="/">Link 3</a>
+        <a class="link" href="/">Goat Tracks</a>
       </li>
     </ul>
   </nav>
 </div>
+
+<style lang="scss">
+  .header-navigation-wrapper {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16-24);
+    max-width: 600px;
+    padding-top: var(--space-80-160);
+  }
+
+  .logo {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16-24);
+    text-decoration: none;
+  }
+
+  .avatar {
+    aspect-ratio: 1/1;
+    border: solid 1px var(--color-muted);
+    border-radius: 50%;
+    height: var(--space-80-120);
+    width: var(--space-80-120);
+  }
+
+  .title {
+    color: var(--color-text);
+    font-size: var(--fs-5xl);
+  }
+
+  .links {
+    align-items: center;
+    display: flex;
+    gap: 32px;
+  }
+
+  .link {
+    color: var(--color-text);
+    font-size: var(--fs-2xs);
+    text-decoration: none;
+  }
+</style>

@@ -1,0 +1,19 @@
+@import "@fontsource-variable/eb-garamond/wght.css";
+@import "@fontsource-variable/inter/wght.css";
+
+.font-serif-all-caps {
+  font-family: "EB Garamond Variable", serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.15em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.font-sans-serif-secondary {
+  font-family: "Inter Variable", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}

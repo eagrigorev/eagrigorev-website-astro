@@ -1,0 +1,39 @@
+:root {
+  /* Color */
+  --color-text: #222222;
+  --color-muted: #6b6b6b;
+  --color-bg: #f9f9f7;
+  --color-border: #e0e0e0;
+  --color-accent: #b02626;
+
+  /* Font Size */
+  --fs-6xl: clamp(2.625rem, 2.4716rem + 0.6818vw, 3rem);
+  --fs-5xl: clamp(2.375rem, 2.2727rem + 0.4545vw, 2.625rem); // Website title
+  --fs-4xl: clamp(2.125rem, 2.0227rem + 0.4545vw, 2.375rem);
+  --fs-3xl: clamp(1.875rem, 1.7727rem + 0.4545vw, 2.125rem);
+  --fs-2xl: clamp(1.625rem, 1.5227rem + 0.4545vw, 1.875rem);
+  --fs-xl: clamp(1.5rem, 1.4489rem + 0.2273vw, 1.625rem); // Intro text
+  --fs-l: clamp(
+    1.3125rem,
+    1.2358rem + 0.3409vw,
+    1.5rem
+  ); // Post card title, CTA
+  --fs-m: clamp(1.1875rem, 1.1364rem + 0.2273vw, 1.3125rem); // Main body
+  --fs-s: clamp(1.0625rem, 1.0114rem + 0.2273vw, 1.1875rem);
+  --fs-xs: clamp(0.875rem, 0.7983rem + 0.3409vw, 1.0625rem);
+  --fs-2xs: clamp(
+    0.8125rem,
+    0.7869rem + 0.1136vw,
+    0.875rem
+  ); // Top nav, post card excerpt
+  --fs-3xs: clamp(0.75rem, 0.7244rem + 0.1136vw, 0.8125rem);
+  --fs-4xs: clamp(0.625rem, 0.5739rem + 0.2273vw, 0.75rem); // Post card meta
+  --fs-5xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
+  --fs-6xs: clamp(0.5rem, 0.4744rem + 0.1136vw, 0.5625rem);
+
+  /* Space */
+  --space-80-160: clamp(5rem, 2.9545rem + 9.0909vw, 10rem);
+  --space-80-120: clamp(5rem, 3.9773rem + 4.5455vw, 7.5rem);
+  --space-24-40: clamp(1.5rem, 1.0909rem + 1.8182vw, 2.5rem);
+  --space-16-24: clamp(1rem, 0.7955rem + 0.9091vw, 1.5rem);
+}
