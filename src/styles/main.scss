@@ -1,6 +1,6 @@
-@use "./partials/tokens";
-@use "./partials/normalize";
-@use "./partials/fonts";
+@use "./partials/variables";
+@use "./partials/reset";
+@use "./partials/typography";
 
 body {
   background-color: var(--color-bg);
