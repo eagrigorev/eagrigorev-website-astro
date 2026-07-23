@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import avatar from '@images/avatar.jpg';
 ---
 
-<div class="header-navigation-wrapper">
-  <a class="logo" href="/"
+<div class="header-nav">
+  <a class="header-nav__branding" href="/"
     ><Image
-      class="avatar"
+      class="header-nav__avatar"
       src={avatar}
       alt="Evgenii Grigorev"
       width="120"
@@ -14,63 +14,73 @@ import avatar from '@images/avatar.jpg';
       decoding="async"
       loading="eager"
     />
-    <h1 class="font-serif-all-caps title">Gardens & Ruins</h1>
+    <h1 class="font-serif-all-caps header-nav__title">Gardens & Ruins</h1>
   </a>
   <nav>
-    <ul class="font-sans-serif-secondary links" role="list">
+    <ul class="font-sans-serif-secondary header-nav__menu" role="list">
       <li>
-        <a class="link" href="/">Explore the Garden</a>
+        <a class="header-nav__link" href="/">Explore the Garden</a>
       </li>
       <li>
-        <a class="link" href="/">Info</a>
+        <a class="header-nav__link" href="/">Info</a>
       </li>
       <li>
-        <a class="link" href="/">Goat Tracks</a>
+        <a class="header-nav__link" href="/">Goat Tracks</a>
       </li>
     </ul>
   </nav>
 </div>
 
 <style lang="scss">
-  .header-navigation-wrapper {
+  .header-nav {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: var(--space-16-24);
     max-width: 600px;
     padding-top: var(--space-80-160);
-  }
 
-  .logo {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-16-24);
-    text-decoration: none;
-  }
+    &__branding {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16-24);
+      text-decoration: none;
+    }
 
-  .avatar {
-    aspect-ratio: 1/1;
-    border: solid 1px var(--color-muted);
-    border-radius: 50%;
-    height: var(--space-80-120);
-    width: var(--space-80-120);
-  }
+    &__avatar {
+      aspect-ratio: 1/1;
+      border: solid 1px var(--color-muted);
+      border-radius: 50%;
+      height: var(--space-80-120);
+      width: var(--space-80-120);
+    }
 
-  .title {
-    color: var(--color-text);
-    font-size: var(--fs-5xl);
-  }
+    &__title {
+      color: var(--color-text);
+      font-size: var(--fs-5xl);
+      text-align: center;
+    }
 
-  .links {
-    align-items: center;
-    display: flex;
-    gap: 32px;
-  }
+    &__menu {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      row-gap: 24px;
+    }
 
-  .link {
-    color: var(--color-text);
-    font-size: var(--fs-2xs);
-    text-decoration: none;
+    &__link {
+      color: var(--color-text);
+      font-size: var(--fs-2xs);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-muted);
+      }
+    }
   }
 </style>
