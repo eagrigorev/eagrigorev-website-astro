@@ -1,0 +1,105 @@
+---
+import type { Post } from '@utils/types';
+import { Image } from 'astro:assets';
+import { formatDate } from '@utils/scripts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="featured-post">
+  <a class="featured-post__image-link" href={post.data.slug}>
+    <Image
+      class="featured-post__image"
+      src={post.data.featuredImage.url}
+      alt={post.data.featuredImage.alt}
+      width="360"
+      height="480"
+      decoding="async"
+      loading="eager"
+    />
+  </a>
+  <div class="featured-post__description">
+    <p class="text-meta featured-post__meta">
+      {formatDate(post.data.date)} · <a
+        class="featured-post__category-link"
+        href={`/category/${post.data.category}`}>{post.data.category}</a
+      >
+    </p>
+    <a class="featured-post__title-link" href={post.data.slug}>
+      <h2 class="heading-text featured-post__title">{post.data.title}</h2>
+    </a>
+    <p class="text-secondary featured-post__excerpt">
+      {post.data.description}
+    </p>
+  </div>
+</article>
+
+<style lang="scss">
+  .featured-post {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 360px;
+
+    &__image-link {
+      transition: opacity 0.3s;
+
+      &:hover,
+      &:focus {
+        opacity: 0.8;
+      }
+    }
+
+    &__image {
+      aspect-ratio: 3/4;
+      border: solid 1px var(--color-muted);
+      height: var(--space-416-480);
+      width: var(--space-312-360);
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__meta {
+      font-size: var(--fs-4xs);
+    }
+
+    &__category-link {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-muted);
+      }
+    }
+
+    &__title-link {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    &__title {
+      font-size: var(--fs-l);
+    }
+
+    &__excerpt {
+      color: var(--color-muted);
+      font-size: var(--fs-2xs);
+    }
+  }
+</style>
