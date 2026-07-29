@@ -4,7 +4,7 @@ import { getCollection } from 'astro:content';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import HeaderNavigation from '@components/HeaderNavigation.astro';
 import Intro from '@components/Intro.astro';
-import FeaturedPostCard from '@components/FeaturedPostCard.astro';
+import FeaturedGrid from '@components/FeaturedGrid.astro';
 import RandomPost from '@components/RandomPost.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -16,7 +16,7 @@ const posts = await getCollection('posts', ({ data }) => !data.isDraft);
   <HeaderNavigation slot="header" />
   <Intro slot="header" />
   <div slot="main">
-    {posts.map((post) => <FeaturedPostCard post={post} />)}
+    <FeaturedGrid posts={posts} />
     <section>
       <RandomPost posts={posts} />
     </section>

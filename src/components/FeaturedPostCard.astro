@@ -16,8 +16,8 @@ const { post } = Astro.props;
       class="featured-post__image"
       src={post.data.featuredImage.url}
       alt={post.data.featuredImage.alt}
-      width="360"
-      height="480"
+      width="420"
+      height="560"
       decoding="async"
       loading="eager"
     />
@@ -43,7 +43,6 @@ const { post } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 24px;
-    max-width: 360px;
 
     &__image-link {
       transition: opacity 0.3s;
@@ -57,8 +56,8 @@ const { post } = Astro.props;
     &__image {
       aspect-ratio: 3/4;
       border: solid 1px var(--color-muted);
-      height: var(--space-416-480);
-      width: var(--space-312-360);
+      height: auto;
+      width: 100%;
     }
 
     &__description {
