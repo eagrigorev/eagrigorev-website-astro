@@ -1,6 +1,6 @@
 :root {
   /* Color */
-  --color-text: #222222;
+  --color-text: #222;
   --color-muted: #6b6b6b;
   --color-bg: #f9f9f7;
   --color-border: #e0e0e0;
@@ -18,6 +18,7 @@
     1.2358rem + 0.3409vw,
     1.5rem
   ); // Post card title, CTA
+
   --fs-m: clamp(1.1875rem, 1.1364rem + 0.2273vw, 1.3125rem); // Main body
   --fs-s: clamp(1.0625rem, 1.0114rem + 0.2273vw, 1.1875rem);
   --fs-xs: clamp(0.875rem, 0.7983rem + 0.3409vw, 1.0625rem);
@@ -26,6 +27,7 @@
     0.7869rem + 0.1136vw,
     0.875rem
   ); // Top nav, post card excerpt
+
   --fs-3xs: clamp(0.75rem, 0.7244rem + 0.1136vw, 0.8125rem);
   --fs-4xs: clamp(0.625rem, 0.5739rem + 0.2273vw, 0.75rem); // Post card meta
   --fs-5xs: clamp(0.5625rem, 0.5369rem + 0.1136vw, 0.625rem);
@@ -34,10 +36,12 @@
   /* Space */
   --space-416-480: clamp(26rem, 24.3636rem + 7.2727vw, 30rem);
   --space-312-360: clamp(19.5rem, 18.2727rem + 5.4545vw, 22.5rem);
+  --space-96-160: clamp(6rem, 4.3636rem + 7.2727vw, 10rem);
   --space-96-120: clamp(6rem, 5.3864rem + 2.7273vw, 7.5rem);
   --space-80-160: clamp(5rem, 2.9545rem + 9.0909vw, 10rem);
   --space-80-120: clamp(5rem, 3.9773rem + 4.5455vw, 7.5rem);
   --space-48-80: clamp(3rem, 2.1818rem + 3.6364vw, 5rem);
+  --space-40-48: clamp(2.5rem, 2.2955rem + 0.9091vw, 3rem);
   --space-24-40: clamp(1.5rem, 1.0909rem + 1.8182vw, 2.5rem);
   --space-16-24: clamp(1rem, 0.7955rem + 0.9091vw, 1.5rem);
 }

@@ -6,7 +6,7 @@ import HeaderNavigation from '@components/HeaderNavigation.astro';
 import Intro from '@components/Intro.astro';
 import FeaturedGrid from '@components/FeaturedGrid.astro';
 import RandomPost from '@components/RandomPost.astro';
-import ButtonWIthSubtitle from '@components/ButtonWIthSubtitle.astro';
+import PostList from '@components/PostList.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
 
@@ -18,15 +18,10 @@ const posts = await getCollection('posts', ({ data }) => !data.isDraft);
   <Intro slot="header" />
   <div slot="main">
     <FeaturedGrid posts={posts.slice(0, 6)} />
+    <PostList posts={posts} showLog={true} />
     <section>
       <RandomPost posts={posts} />
     </section>
-    <ButtonWIthSubtitle
-      isCentered={true}
-      link="/"
-      title="Explore the Garden"
-      subtitle="Begin reading."
-    />
   </div>
   <p slot="footer">Test footer</p>
 </BaseWrapper>

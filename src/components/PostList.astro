@@ -1,0 +1,78 @@
+---
+import type { Post } from '@utils/types';
+import PostItem from './PostItem.astro';
+import TitleWithSubtitle from './TitleWithSubtitle.astro';
+
+interface Props {
+  posts: Post[];
+  showLog: boolean;
+}
+
+const { posts, showLog } = Astro.props;
+---
+
+<div class="post-list">
+  <div class="post-list__title">
+    <TitleWithSubtitle
+      isCentered={false}
+      link="/"
+      title="Explore the Garden"
+      subtitle="Begin reading."
+      isClickable={true}
+    />
+    {
+      showLog ? (
+        <p class="text-secondary post-list__log">
+          <span class="post-list__dot">•</span>{' '}
+          <a class="post-list__log-link" href="/">
+            Under the Log
+          </a>
+        </p>
+      ) : null
+    }
+  </div>
+  <ul class="post-list__items">
+    {posts.map((post: Post) => <PostItem post={post} type="post" />)}
+  </ul>
+</div>
+
+<style lang="scss">
+  .post-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-40-48);
+    max-width: 600px;
+    padding-top: var(--space-96-160);
+
+    &__title {
+      align-items: center;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__log {
+      font-size: var(--fs-2xs);
+    }
+
+    &__log-link {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-muted);
+      }
+    }
+
+    &__dot {
+      color: var(--color-accent);
+    }
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16-24);
+    }
+  }
+</style>

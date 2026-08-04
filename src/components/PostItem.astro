@@ -1,0 +1,53 @@
+---
+import type { Post } from '@utils/types';
+import { formatDate } from '@utils/scripts';
+
+interface Props {
+  post: Post;
+  type: 'post' | 'related' | 'mention';
+}
+
+const { post, type } = Astro.props;
+---
+
+<li class="post-item">
+  <p class="heading-text post-item__title">
+    {
+      type === 'post'
+        ? null
+        : type === 'mention'
+          ? 'Mentioned in: '
+          : 'Related: '
+    }<a class="post-item__title-link" href={post.data.slug}>{post.data.title}</a
+    >
+  </p>
+  <p class="text-secondary post-item__meta">{formatDate(post.data.date)}</p>
+</li>
+
+<style lang="scss">
+  .post-item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+
+    &__title {
+      font-size: var(--fs-m);
+    }
+
+    &__title-link {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-accent);
+      }
+    }
+
+    &__meta {
+      font-size: var(--fs-2xs);
+    }
+  }
+</style>
