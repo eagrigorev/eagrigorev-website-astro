@@ -2,6 +2,7 @@
 import Head from '@components/Head.astro';
 import HeaderNavigation from '@components/HeaderNavigation.astro';
 import Intro from '@components/Intro.astro';
+import FooterNavigation from '@components/FooterNavigation.astro';
 
 interface Props {
   pageTitle: string;
@@ -24,7 +25,7 @@ const { pageTitle, description } = Astro.props;
       <slot />
     </main>
     <footer class="sticky-footer">
-      <slot name="footer"> Default footer </slot>
+      <slot name="footer"><FooterNavigation /></slot>
     </footer>
   </body>
 </html>
@@ -47,5 +48,7 @@ const { pageTitle, description } = Astro.props;
     display: flex;
     flex-direction: column;
     margin-top: auto;
+    max-width: 600px;
+    width: 100%;
   }
 </style>
