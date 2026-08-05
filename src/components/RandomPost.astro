@@ -1,5 +1,6 @@
 ---
 import type { Post } from '@utils/types';
+import TitleWithSubtitle from './TitleWithSubtitle.astro';
 
 interface Props {
   posts: Post[];
@@ -13,26 +14,27 @@ const randomizerPool = posts.map((post: Post) => ({
   category: post.data.category,
   description: post.data.description,
 }));
+
+const randomNote =
+  randomizerPool.length > 0
+    ? randomizerPool[Math.floor(Math.random() * randomizerPool.length)]
+    : null;
+
+const randomLink = randomNote ? `/${randomNote.slug}` : '#';
 ---
 
-<div>
-  <h2>Serendipity</h2>
-  <p>Don't know where to start? Let the garden choose a path for you:</p>
-  <a id="random-walk-btn" href="#"> Take a Random Stroll...</a>
+<div class="random-post">
+  <TitleWithSubtitle
+    isCentered={true}
+    isClickable={true}
+    link={randomLink}
+    title="Get Lost in the Ruins"
+    subtitle="Read the random post."
+  />
 </div>
 
-<script define:vars={{ randomizerPool }}>
-  // 1. Double check that we actually have notes to pick from
-  if (randomizerPool && randomizerPool.length > 0) {
-    const button = document.getElementById('random-walk-btn');
-
-    // 2. Pick a random item from the array
-    const randomNote =
-      randomizerPool[Math.floor(Math.random() * randomizerPool.length)];
-
-    // 3. Update the anchor tag's destination and text
-    // Since your permalinks are flat root urls (/[slug]), we just link directly to the slug
-    button.href = `/${randomNote.slug}`;
-    button.innerHTML = `✨ Stroll into: "${randomNote.title}"`;
+<style lang="scss">
+  .random-post {
+    padding-top: var(--space-96-120);
   }
-</script>
+</style>

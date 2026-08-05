@@ -2,8 +2,6 @@
 import '@styles/main.scss';
 import { getCollection } from 'astro:content';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
-import HeaderNavigation from '@components/HeaderNavigation.astro';
-import Intro from '@components/Intro.astro';
 import FeaturedGrid from '@components/FeaturedGrid.astro';
 import RandomPost from '@components/RandomPost.astro';
 import PostList from '@components/PostList.astro';
@@ -14,16 +12,9 @@ const posts = await getCollection('posts', ({ data }) => !data.isDraft);
 ---
 
 <BaseWrapper pageTitle="Gardens & Ruins">
-  <HeaderNavigation slot="header" />
-  <Intro slot="header" />
-  <div slot="main">
-    <FeaturedGrid posts={posts.slice(0, 6)} />
-    <PostList posts={posts} showLog={true} />
-    <section>
-      <RandomPost posts={posts} />
-    </section>
-  </div>
-  <p slot="footer">Test footer</p>
+  <FeaturedGrid posts={posts.slice(0, 6)} />
+  <PostList posts={posts} showLog={true} />
+  <RandomPost posts={posts} />
 </BaseWrapper>
 
 <style lang="scss">
