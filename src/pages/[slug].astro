@@ -3,6 +3,9 @@ import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import type { BacklinkRef } from '@utils/types';
 import { getGardenGraph } from '@utils/generateGraph';
+import BaseWrapper from '@layouts/BaseWrapper.astro';
+import BackToIndex from '@components/BackToIndex.astro';
+import PageTitle from '@components/PageTitle.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -19,29 +22,33 @@ const { backlinksMap } = await getGardenGraph();
 const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
 ---
 
-<div>
-  <Content />
-  <p>This post is under category:</p>
-  <a href={`/category/${post.data.category}`}>{post.data.category}</a>
-  <p>THere are also tags assigned:</p>
-  {
-    post.data.tags.map((tag) => (
-      <a href={`/tag/${tag.replace(/\s+/g, '-')}`}>{tag}</a>
-    ))
-  }
+<BaseWrapper pageTitle={post.data.title}>
+  <BackToIndex slot="header" />
+  <PageTitle slot="header" post={post} />
+  <div>
+    <Content />
+    <p>This post is under category:</p>
+    <a href={`/category/${post.data.category}`}>{post.data.category}</a>
+    <p>THere are also tags assigned:</p>
+    {
+      post.data.tags.map((tag) => (
+        <a href={`/tag/${tag.replace(/\s+/g, '-')}`}>{tag}</a>
+      ))
+    }
 
-  <h3>Links pointing to this note</h3>
-  {
-    backlinks.length > 0 ? (
-      <ul>
-        {backlinks.map((link) => (
-          <li>
-            <a href={`/${link.slug}`}>{link.title}</a>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p>No other notes link here yet.</p>
-    )
-  }
-</div>
+    <h3>Links pointing to this note</h3>
+    {
+      backlinks.length > 0 ? (
+        <ul>
+          {backlinks.map((link) => (
+            <li>
+              <a href={`/${link.slug}`}>{link.title}</a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No other notes link here yet.</p>
+      )
+    }
+  </div>
+</BaseWrapper>

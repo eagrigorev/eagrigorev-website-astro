@@ -1,0 +1,70 @@
+---
+import type { Post } from '@utils/types';
+import { formatDate } from '@utils/scripts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<div class="page-title">
+  <div class="page-title__heading">
+    <p class="text-meta page-title__meta">
+      {formatDate(post.data.date)} · <a
+        class="page-title__category-link"
+        href={`/category/${post.data.category}`}>{post.data.category}</a
+      >
+    </p>
+    <h2 class="heading-text page-title__text">
+      {post.data.title}
+    </h2>
+  </div>
+
+  <p class="page-title__asterism">⁂</p>
+</div>
+
+<style lang="scss">
+  .page-title {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48-80);
+    max-width: 600px;
+    padding-top: var(--space-80-160);
+    width: 100%;
+
+    &__heading {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-8-16);
+    }
+
+    &__meta {
+      font-size: var(--fs-4xs);
+    }
+
+    &__category-link {
+      color: var(--color-text);
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:focus,
+      &:hover {
+        color: var(--color-muted);
+      }
+    }
+
+    &__text {
+      font-size: var(--fs-5xl);
+      text-align: center;
+    }
+
+    &__asterism {
+      color: var(--color-accent);
+      font-size: var(--fs-xl);
+    }
+  }
+</style>

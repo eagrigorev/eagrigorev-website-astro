@@ -8,7 +8,12 @@
 
   /* Font Size */
   --fs-6xl: clamp(2.625rem, 2.4716rem + 0.6818vw, 3rem);
-  --fs-5xl: clamp(2.375rem, 2.2727rem + 0.4545vw, 2.625rem); // Website title
+  --fs-5xl: clamp(
+    2.375rem,
+    2.2727rem + 0.4545vw,
+    2.625rem
+  ); // Website title, page title
+
   --fs-4xl: clamp(2.125rem, 2.0227rem + 0.4545vw, 2.375rem);
   --fs-3xl: clamp(1.875rem, 1.7727rem + 0.4545vw, 2.125rem);
   --fs-2xl: clamp(1.625rem, 1.5227rem + 0.4545vw, 1.875rem);
@@ -44,4 +49,5 @@
   --space-40-48: clamp(2.5rem, 2.2955rem + 0.9091vw, 3rem);
   --space-24-40: clamp(1.5rem, 1.0909rem + 1.8182vw, 2.5rem);
   --space-16-24: clamp(1rem, 0.7955rem + 0.9091vw, 1.5rem);
+  --space-8-16: clamp(0.5rem, 0.2955rem + 0.9091vw, 1rem);
 }

@@ -1,4 +1,5 @@
 ---
+import '@styles/main.scss';
 import Head from '@components/Head.astro';
 import HeaderNavigation from '@components/HeaderNavigation.astro';
 import Intro from '@components/Intro.astro';
@@ -36,6 +37,13 @@ const { pageTitle, description } = Astro.props;
     flex-direction: column;
     margin: 0;
     min-height: 100vh;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
   }
 
   main {
