@@ -2,10 +2,12 @@
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import type { BacklinkRef } from '@utils/types';
+import { customTypography } from '@utils/scripts';
 import { getGardenGraph } from '@utils/generateGraph';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import BackToIndex from '@components/BackToIndex.astro';
 import PageTitle from '@components/PageTitle.astro';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -26,9 +28,9 @@ const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
   <BackToIndex slot="header" />
   <PageTitle slot="header" post={post} />
   <div>
-    <Content />
-    <p>This post is under category:</p>
-    <a href={`/category/${post.data.category}`}>{post.data.category}</a>
+    <ContentWrapper>
+      <Content components={customTypography} />
+    </ContentWrapper>
     <p>THere are also tags assigned:</p>
     {
       post.data.tags.map((tag) => (

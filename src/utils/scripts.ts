@@ -1,3 +1,5 @@
+import Heading2 from "@components/custom-typography/Heading2.astro";
+
 export const generateSlug = (text: string): string => {
   return text
     .toString()
@@ -16,4 +18,8 @@ export const formatDate = (date: Date): string => {
     month: "long",
     day: "numeric",
   });
+};
+
+export const customTypography = {
+  h2: Heading2,
 };
