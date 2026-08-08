@@ -1,13 +1,40 @@
-@import "@fontsource-variable/eb-garamond/wght.css";
-@import "@fontsource-variable/inter/wght.css";
-
-.heading-primary {
+@mixin heading-serif-all-caps {
   font-family: "EB Garamond Variable", serif;
   font-style: normal;
   font-weight: 400;
   letter-spacing: 0.15em;
   line-height: 1.2;
   text-transform: uppercase;
+}
+
+@mixin text-sans-serif-secondary {
+  font-family: "Inter Variable", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  line-height: 1.5;
+}
+
+@mixin link-text-to-muted {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:focus,
+  &:hover {
+    color: var(--color-muted);
+  }
+}
+
+@mixin link-muted-to-text {
+  color: var(--color-muted);
+  text-decoration: none;
+  transition: color 0.3s;
+
+  &:focus,
+  &:hover {
+    color: var(--color-text);
+  }
 }
 
 .heading-text {
