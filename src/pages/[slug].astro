@@ -5,7 +5,7 @@ import type { BacklinkRef } from '@utils/types';
 import { customTypography } from '@utils/scripts';
 import { getGardenGraph } from '@utils/generateGraph';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
-import BackToIndex from '@components/BackToIndex.astro';
+import BackToIndex from '@components/navigation/BackToIndex.astro';
 import PageTitle from '@components/PageTitle.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 
@@ -26,7 +26,7 @@ const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
 
 <BaseWrapper pageTitle={post.data.title}>
   <BackToIndex slot="header" />
-  <PageTitle slot="header" post={post} />
+  <PageTitle slot="page-title" post={post} />
   <div>
     <ContentWrapper>
       <Content components={customTypography} />
