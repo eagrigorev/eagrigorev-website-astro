@@ -1,6 +1,6 @@
 ---
 import '@styles/main.scss';
-import Head from '@components/Head.astro';
+import HeadMetadata from '@components/HeadMetadata.astro';
 import GlobalHeader from '@components/navigation/GlobalHeader.astro';
 import Intro from '@components/Intro.astro';
 import GlobalFooter from '@components/navigation/GlobalFooter.astro';
@@ -14,7 +14,7 @@ const { pageTitle, description } = Astro.props;
 ---
 
 <html lang="en">
-  <Head pageTitle={pageTitle} description={description} />
+  <HeadMetadata pageTitle={pageTitle} description={description} />
   <body class="container">
     <header>
       <slot name="header">
