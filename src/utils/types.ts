@@ -6,11 +6,7 @@ export const postCategories = [
   "journal",
 ] as const;
 
-export const growthStage = ["seed", "sprout", "evergreen"] as const;
-
 export type PostCategory = (typeof postCategories)[number];
-
-export type GrowthStage = (typeof growthStage)[number];
 
 export interface BacklinkRef {
   slug: string;

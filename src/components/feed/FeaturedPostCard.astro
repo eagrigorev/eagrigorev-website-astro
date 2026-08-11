@@ -11,17 +11,21 @@ const { post } = Astro.props;
 ---
 
 <article class="featured-post">
-  <a class="featured-post__image-link" href={post.data.slug}>
-    <Image
-      class="featured-post__image"
-      src={post.data.featuredImage.url}
-      alt={post.data.featuredImage.alt}
-      width="420"
-      height="560"
-      decoding="async"
-      loading="eager"
-    />
-  </a>
+  {
+    post.data.featuredImage ? (
+      <a class="featured-post__image-link" href={post.data.slug}>
+        <Image
+          class="featured-post__image"
+          src={post.data.featuredImage.url}
+          alt={post.data.featuredImage.alt}
+          width="420"
+          height="560"
+          decoding="async"
+          loading="eager"
+        />
+      </a>
+    ) : null
+  }
   <div class="featured-post__description">
     <p class="featured-post__meta">
       {formatDate(post.data.date)} · <a
