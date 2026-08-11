@@ -1,7 +1,7 @@
 ---
 import type { Post } from '@utils/types';
-import PostItem from './PostItem.astro';
-import TitleWithSubtitle from './TitleWithSubtitle.astro';
+import PostListItem from '@components/feed/PostListItem.astro';
+import CallToAction from '@components/navigation/CallToAction.astro';
 
 interface Props {
   posts: Post[];
@@ -13,16 +13,15 @@ const { posts, showLog } = Astro.props;
 
 <div class="post-list">
   <div class="post-list__title">
-    <TitleWithSubtitle
+    <CallToAction
       isCentered={false}
       link="/"
       title="Explore the Garden"
       subtitle="Begin reading."
-      isClickable={true}
     />
     {
       showLog ? (
-        <p class="text-secondary post-list__log">
+        <p class="post-list__log">
           <span class="post-list__dot">•</span>{' '}
           <a class="post-list__log-link" href="/">
             Under the Log
@@ -32,11 +31,13 @@ const { posts, showLog } = Astro.props;
     }
   </div>
   <ul class="post-list__items">
-    {posts.map((post: Post) => <PostItem post={post} type="post" />)}
+    {posts.map((post: Post) => <PostListItem post={post} type="post" />)}
   </ul>
 </div>
 
 <style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
   .post-list {
     display: flex;
     flex-direction: column;
@@ -52,18 +53,12 @@ const { posts, showLog } = Astro.props;
     }
 
     &__log {
-      font-size: var(--fs-2xs);
+      @include text-sans-serif-secondary;
+      font-size: var(--step--1);
     }
 
     &__log-link {
-      color: var(--color-text);
-      text-decoration: none;
-      transition: color 0.3s;
-
-      &:focus,
-      &:hover {
-        color: var(--color-muted);
-      }
+      @include link-text-to-muted;
     }
 
     &__dot {

@@ -2,8 +2,8 @@
 import { getCollection } from 'astro:content';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import FeaturedGrid from '@components/feed/FeaturedGrid.astro';
-import RandomPost from '@components/RandomPost.astro';
-import PostList from '@components/PostList.astro';
+import RandomPost from '@components/feed/RandomPost.astro';
+import PostList from '@components/feed/PostList.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
 

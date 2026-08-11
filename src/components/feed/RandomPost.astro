@@ -1,6 +1,6 @@
 ---
 import type { Post } from '@utils/types';
-import TitleWithSubtitle from './TitleWithSubtitle.astro';
+import CallToAction from '@components/navigation/CallToAction.astro';
 
 interface Props {
   posts: Post[];
@@ -24,9 +24,8 @@ const randomLink = randomNote ? `/${randomNote.slug}` : '#';
 ---
 
 <div class="random-post">
-  <TitleWithSubtitle
+  <CallToAction
     isCentered={true}
-    isClickable={true}
     link={randomLink}
     title="Get Lost in the Ruins"
     subtitle="Read the random post."
