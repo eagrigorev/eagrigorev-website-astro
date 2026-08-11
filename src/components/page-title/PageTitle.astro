@@ -11,13 +11,13 @@ const { post } = Astro.props;
 
 <div class="page-title">
   <div class="page-title__heading">
-    <p class="text-meta page-title__meta">
+    <p class="page-title__meta">
       {formatDate(post.data.date)} · <a
         class="page-title__category-link"
         href={`/category/${post.data.category}`}>{post.data.category}</a
       >
     </p>
-    <h2 class="heading-text page-title__text">
+    <h2 class="page-title__text">
       {post.data.title}
     </h2>
   </div>
@@ -26,14 +26,14 @@ const { post } = Astro.props;
 </div>
 
 <style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
   .page-title {
     align-items: center;
     display: flex;
     flex-direction: column;
     gap: var(--space-48-80);
-    max-width: 600px;
     padding-top: var(--space-80-160);
-    width: 100%;
 
     &__heading {
       align-items: center;
@@ -43,28 +43,24 @@ const { post } = Astro.props;
     }
 
     &__meta {
-      font-size: var(--fs-4xs);
+      @include text-sans-serif-all-caps;
+      font-size: var(--step--2);
     }
 
     &__category-link {
-      color: var(--color-text);
-      text-decoration: none;
-      transition: color 0.3s;
-
-      &:focus,
-      &:hover {
-        color: var(--color-muted);
-      }
+      @include link-text-to-muted;
     }
 
     &__text {
-      font-size: var(--fs-5xl);
+      @include heading-serif-primary;
+      font-size: var(--step-4);
       text-align: center;
     }
 
     &__asterism {
+      @include heading-serif-primary;
       color: var(--color-accent);
-      font-size: var(--fs-xl);
+      font-size: var(--step-2);
     }
   }
 </style>
