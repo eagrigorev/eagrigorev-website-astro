@@ -9,6 +9,7 @@ import PageTitle from '@components/page-title/PageTitle.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import TagCloud from '@components/navigation/TagCloud.astro';
 import PostList from '@components/feed/PostList.astro';
+import ExploreTheGarden from '@components/navigation/ExploreTheGarden.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -52,20 +53,5 @@ const morePosts = [...backlinks, ...relatedPosts];
     title="Backlinks & Related Posts"
     subtitle="Read more."
   />
-  <!-- <div>
-    <h3>Links pointing to this note</h3>
-    {
-      backlinks.length > 0 ? (
-        <ul>
-          {backlinks.map((link) => (
-            <li>
-              <a href={`/${link.data.slug}`}>{link.data.title}</a>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p>No other notes link here yet.</p>
-      )
-    }
-  </div> -->
+  <ExploreTheGarden />
 </BaseWrapper>
