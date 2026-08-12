@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  src: ImageMetadata;
+  caption: string;
+}
+
+const { src, caption } = Astro.props;
+---
+
+<div class="image">
+  <Image
+    class="image__src"
+    src={src}
+    alt={caption}
+    width={src.width}
+    height={src.height}
+    decoding="async"
+    loading="eager"
+  />
+  <p class="image__caption">{caption}</p>
+</div>
+
+<style lang="scss">
+  @use '../styles/partials/typography' as *;
+
+  .image {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-8-16);
+
+    &__src {
+      aspect-ratio: auto;
+      border: solid 1px var(--color-muted);
+      height: auto;
+      width: 100%;
+    }
+
+    &__caption {
+      @include text-sans-serif-secondary;
+      color: var(--color-muted);
+      font-size: var(--step--1);
+    }
+  }
+</style>
