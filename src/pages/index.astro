@@ -1,4 +1,5 @@
 ---
+import type { Post, PostLink } from '@utils/types';
 import { getCollection } from 'astro:content';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import FeaturedGrid from '@components/feed/FeaturedGrid.astro';
@@ -6,13 +7,27 @@ import RandomPost from '@components/feed/RandomPost.astro';
 import PostList from '@components/feed/PostList.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+const listPosts: PostLink[] = posts.map((post: Post) => {
+  return {
+    title: post.data.title,
+    slug: post.data.slug,
+    date: post.data.date,
+    type: 'post',
+  };
+});
 
 // TODO: add types and components
 ---
 
 <BaseWrapper pageTitle="Gardens & Ruins">
   <FeaturedGrid posts={posts.slice(0, 6)} />
-  <PostList posts={posts} showLog={true} />
+  <PostList
+    posts={listPosts}
+    showLog={true}
+    title="Explore the Garden"
+    link="/"
+    subtitle="Begin reading."
+  />
   <RandomPost posts={posts} />
 </BaseWrapper>
 

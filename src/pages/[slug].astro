@@ -1,13 +1,14 @@
 ---
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import type { BacklinkRef } from '@utils/types';
-import { customTypography } from '@utils/scripts';
+import type { PostLink } from '@utils/types';
 import { getGardenGraph } from '@utils/generateGraph';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import BackToIndex from '@components/navigation/BackToIndex.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
+import TagCloud from '@components/navigation/TagCloud.astro';
+import PostList from '@components/feed/PostList.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);
@@ -21,30 +22,44 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 
 const { backlinksMap } = await getGardenGraph();
-const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
+const backlinks: PostLink[] = backlinksMap[post.data.slug] || [];
+const relatedPosts: PostLink[] = await getCollection(
+  'posts',
+  ({ data }) => !data.isDraft && data.category === post.data.category
+).then((response) =>
+  response.map((post) => {
+    return {
+      title: post.data.title,
+      slug: post.data.slug,
+      date: post.data.date,
+      type: 'related',
+    };
+  })
+);
+const morePosts = [...backlinks, ...relatedPosts];
 ---
 
 <BaseWrapper pageTitle={post.data.title}>
   <BackToIndex slot="header" />
   <PageTitle slot="page-title" post={post} />
-  <div>
-    <ContentWrapper>
-      <Content components={customTypography} />
-    </ContentWrapper>
-    <p>THere are also tags assigned:</p>
-    {
-      post.data.tags.map((tag) => (
-        <a href={`/tag/${tag.replace(/\s+/g, '-')}`}>{tag}</a>
-      ))
-    }
-
+  <ContentWrapper>
+    <Content />
+  </ContentWrapper>
+  <TagCloud tags={post.data.tags} />
+  <PostList
+    posts={morePosts}
+    showLog={false}
+    title="Backlinks & Related Posts"
+    subtitle="Read more."
+  />
+  <!-- <div>
     <h3>Links pointing to this note</h3>
     {
       backlinks.length > 0 ? (
         <ul>
           {backlinks.map((link) => (
             <li>
-              <a href={`/${link.slug}`}>{link.title}</a>
+              <a href={`/${link.data.slug}`}>{link.data.title}</a>
             </li>
           ))}
         </ul>
@@ -52,5 +67,5 @@ const backlinks: BacklinkRef[] = backlinksMap[post.data.slug] || [];
         <p>No other notes link here yet.</p>
       )
     }
-  </div>
+  </div> -->
 </BaseWrapper>

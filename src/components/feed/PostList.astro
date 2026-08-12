@@ -1,23 +1,26 @@
 ---
-import type { Post } from '@utils/types';
+import type { PostLink } from '@utils/types';
 import PostListItem from '@components/feed/PostListItem.astro';
 import CallToAction from '@components/navigation/CallToAction.astro';
 
 interface Props {
-  posts: Post[];
+  posts: PostLink[];
   showLog: boolean;
+  title: string;
+  link?: string | undefined;
+  subtitle: string;
 }
 
-const { posts, showLog } = Astro.props;
+const { posts, showLog, title, link, subtitle } = Astro.props;
 ---
 
 <div class="post-list">
   <div class="post-list__title">
     <CallToAction
       isCentered={false}
-      link="/"
-      title="Explore the Garden"
-      subtitle="Begin reading."
+      link={link}
+      title={title}
+      subtitle={subtitle}
     />
     {
       showLog ? (
@@ -31,7 +34,7 @@ const { posts, showLog } = Astro.props;
     }
   </div>
   <ul class="post-list__items">
-    {posts.map((post: Post) => <PostListItem post={post} type="post" />)}
+    {posts.map((post: PostLink) => <PostListItem post={post} />)}
   </ul>
 </div>
 

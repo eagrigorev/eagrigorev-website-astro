@@ -1,27 +1,25 @@
 ---
-import type { Post } from '@utils/types';
+import type { PostLink } from '@utils/types';
 import { formatDate } from '@utils/scripts';
 
 interface Props {
-  post: Post;
-  type: 'post' | 'related' | 'mention';
+  post: PostLink;
 }
 
-const { post, type } = Astro.props;
+const { post } = Astro.props;
 ---
 
 <li class="post-item">
   <p class="post-item__title">
     {
-      type === 'post'
+      post.type === 'post'
         ? null
-        : type === 'mention'
+        : post.type === 'mention'
           ? 'Mentioned in: '
           : 'Related: '
-    }<a class="post-item__title-link" href={post.data.slug}>{post.data.title}</a
-    >
+    }<a class="post-item__title-link" href={post.slug}>{post.title}</a>
   </p>
-  <p class="post-item__meta">{formatDate(post.data.date)}</p>
+  <p class="post-item__meta">{formatDate(post.date)}</p>
 </li>
 
 <style lang="scss">

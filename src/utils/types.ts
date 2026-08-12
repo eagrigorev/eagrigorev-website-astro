@@ -8,12 +8,12 @@ export const postCategories = [
 
 export type PostCategory = (typeof postCategories)[number];
 
-export interface BacklinkRef {
-  slug: string;
+export interface PostLink {
   title: string;
-  category: PostCategory;
-  description: string;
+  slug: string;
+  date: Date;
+  type: "post" | "related" | "mention";
 }
 
 export type Post = CollectionEntry<"posts">;
-export type PostLinkGraph = Record<string, BacklinkRef[]>;
+export type PostLinkGraph = Record<string, PostLink[]>;

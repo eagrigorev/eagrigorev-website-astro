@@ -1,7 +1,7 @@
 import { getCollection } from "astro:content";
 import fs from "fs";
 import path from "path";
-import type { BacklinkRef, PostLinkGraph } from "@utils/types";
+import type { PostLink, PostLinkGraph } from "@utils/types";
 
 export async function getGardenGraph(): Promise<{
   backlinksMap: PostLinkGraph;
@@ -21,7 +21,7 @@ export async function getGardenGraph(): Promise<{
   const linkRegex = /\]\(\/([a-zA-Z0-9-_\/]+)\)/g;
 
   // Track the absolute root path to your content directory
-  const contentDir = path.resolve("./src/content/garden");
+  const contentDir = path.resolve("./src/content/posts");
 
   notes.forEach((note) => {
     let rawContent = "";
@@ -59,11 +59,11 @@ export async function getGardenGraph(): Promise<{
       if (targetNote && backlinksMap[urlSlug]) {
         if (!backlinksMap[urlSlug].some((b) => b.slug === note.data.slug)) {
           backlinksMap[urlSlug].push({
-            slug: note.data.slug,
             title: note.data.title,
-            category: note.data.category,
-            description: note.data.description,
-          } as BacklinkRef);
+            slug: note.data.slug,
+            date: note.data.date,
+            type: "mention",
+          } as PostLink);
         }
       }
     }
