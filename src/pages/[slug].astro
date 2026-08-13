@@ -9,7 +9,7 @@ import PageTitle from '@components/page-title/PageTitle.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import TagCloud from '@components/navigation/TagCloud.astro';
 import PostList from '@components/feed/PostList.astro';
-import ExploreTheGarden from '@components/navigation/ExploreTheGarden.astro';
+import ExploreTheGarden from '@components/call-to-action/ExploreTheGarden.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getCollection('posts', ({ data }) => !data.isDraft);

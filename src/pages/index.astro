@@ -3,7 +3,7 @@ import type { Post, PostLink } from '@utils/types';
 import { getCollection } from 'astro:content';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import FeaturedGrid from '@components/feed/FeaturedGrid.astro';
-import RandomPost from '@components/feed/RandomPost.astro';
+import RandomPost from '@components/call-to-action/RandomPost.astro';
 import PostList from '@components/feed/PostList.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.isDraft);
