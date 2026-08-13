@@ -1,18 +1,22 @@
 import { getCollection } from "astro:content";
 import fs from "fs";
 import path from "path";
-import type { PostLink, PostLinkGraph } from "@utils/types";
+import type { Post, PostLinkGraph } from "@utils/types";
+import { mapPostToPostLink } from "@utils/scripts";
 
 export async function getGardenGraph(): Promise<{
   backlinksMap: PostLinkGraph;
 }> {
-  const notes = await getCollection("posts", ({ data }) => !data.isDraft);
+  const posts: Post[] = await getCollection(
+    "posts",
+    ({ data }) => !data.isDraft,
+  );
   const backlinksMap: PostLinkGraph = {};
 
   // Initialize map keys using frontmatter slugs
-  notes.forEach((note) => {
-    if (note.data.slug) {
-      backlinksMap[note.data.slug] = [];
+  posts.forEach((post: Post) => {
+    if (post.data.slug) {
+      backlinksMap[post.data.slug] = [];
     }
   });
 
@@ -23,47 +27,44 @@ export async function getGardenGraph(): Promise<{
   // Track the absolute root path to your content directory
   const contentDir = path.resolve("./src/content/posts");
 
-  notes.forEach((note) => {
+  posts.forEach((post: Post) => {
     let rawContent = "";
 
     // 1. Fallback to reading the file directly from disk if note.body is empty
     try {
       // Astro content layer notes provide an internal path reference via note.filePath
       // If that's missing, we manually map to your nested index file bundle structure
-      const filePath = note.filePath
-        ? path.resolve(note.filePath)
-        : path.join(contentDir, note.id, "index.mdx");
+      const filePath = post.filePath
+        ? path.resolve(post.filePath)
+        : path.join(contentDir, post.id, "index.mdx");
 
       if (fs.existsSync(filePath)) {
         rawContent = fs.readFileSync(filePath, "utf-8");
       }
     } catch (e) {
       console.error(
-        `[Garden Graph] Could not read file path directly for: ${note.id}`,
+        `[Garden Graph] Could not read file path directly for: ${post.id}`,
         e,
       );
-      rawContent = note.body || ""; // last resort fallback
+      rawContent = post.body || ""; // last resort fallback
     }
 
-    let match;
+    let match: RegExpExecArray | null;
     // 2. This while loop will absolutely execute now because rawContent contains strings!
     while ((match = linkRegex.exec(rawContent)) !== null) {
       const urlSlug = match[1].trim();
 
       console.log(
-        `[Garden Graph Logger] Success! Found link to "/${urlSlug}" inside file: "${note.id}"`,
+        `[Garden Graph Logger] Success! Found link to "/${urlSlug}" inside file: "${post.id}"`,
       );
 
-      const targetNote = notes.find((n) => n.data.slug === urlSlug);
+      const targetPost: Post | undefined = posts.find(
+        (post: Post) => post.data.slug === urlSlug,
+      );
 
-      if (targetNote && backlinksMap[urlSlug]) {
-        if (!backlinksMap[urlSlug].some((b) => b.slug === note.data.slug)) {
-          backlinksMap[urlSlug].push({
-            title: note.data.title,
-            slug: note.data.slug,
-            date: note.data.date,
-            type: "mention",
-          } as PostLink);
+      if (targetPost && backlinksMap[urlSlug]) {
+        if (!backlinksMap[urlSlug].some((b) => b.slug === post.data.slug)) {
+          backlinksMap[urlSlug].push(mapPostToPostLink(post, "mention"));
         }
       }
     }
@@ -71,5 +72,3 @@ export async function getGardenGraph(): Promise<{
 
   return { backlinksMap };
 }
-
-// TODO: Add types

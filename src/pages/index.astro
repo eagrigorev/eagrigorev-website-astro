@@ -1,28 +1,29 @@
 ---
 import type { Post, PostLink } from '@utils/types';
 import { getCollection } from 'astro:content';
+import { mapPostToPostLink, sortPostsDesc } from '@utils/scripts';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import FeaturedGrid from '@components/feed/FeaturedGrid.astro';
 import RandomPost from '@components/call-to-action/RandomPost.astro';
 import PostList from '@components/feed/PostList.astro';
 
-const posts = await getCollection('posts', ({ data }) => !data.isDraft);
-const listPosts: PostLink[] = posts.map((post: Post) => {
-  return {
-    title: post.data.title,
-    slug: post.data.slug,
-    date: post.data.date,
-    type: 'post',
-  };
-});
-
-// TODO: add types and components
+const posts: Post[] = await getCollection('posts', ({ data }) => !data.isDraft);
+const sortedPosts: Post[] = sortPostsDesc(posts);
+const featuredPosts: Post[] = sortedPosts
+  .filter((post: Post) => post.data.isFeatured)
+  .slice(0, 6);
+const recentPosts: PostLink[] = sortedPosts
+  .filter((post: Post) => !post.data.isFeatured)
+  .map((post: Post) => {
+    return mapPostToPostLink(post, 'post');
+  })
+  .slice(0, 10);
 ---
 
 <BaseWrapper pageTitle="Gardens & Ruins">
-  <FeaturedGrid posts={posts.slice(0, 6)} />
+  <FeaturedGrid posts={featuredPosts} />
   <PostList
-    posts={listPosts}
+    posts={recentPosts}
     showLog={true}
     title="Explore the Garden"
     link="/"

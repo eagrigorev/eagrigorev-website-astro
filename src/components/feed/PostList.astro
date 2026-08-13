@@ -33,9 +33,17 @@ const { posts, showLog, title, link, subtitle } = Astro.props;
       ) : null
     }
   </div>
-  <ul class="post-list__items">
-    {posts.map((post: PostLink) => <PostListItem post={post} />)}
-  </ul>
+  {
+    posts.length ? (
+      <ul class="post-list__items">
+        {posts.map((post: PostLink) => (
+          <PostListItem post={post} />
+        ))}
+      </ul>
+    ) : (
+      <p class="post-list__empty">No posts yet.</p>
+    )
+  }
 </div>
 
 <style lang="scss">
@@ -72,6 +80,11 @@ const { posts, showLog, title, link, subtitle } = Astro.props;
       display: flex;
       flex-direction: column;
       gap: var(--space-16-24);
+    }
+
+    &__empty {
+      @include heading-serif-primary;
+      font-size: var(--step-0);
     }
   }
 </style>

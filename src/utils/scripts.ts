@@ -1,4 +1,4 @@
-import type { Post } from "@utils/types";
+import type { Post, PostLink } from "@utils/types";
 
 export const generateSlug = (text: string): string => {
   return text
@@ -18,6 +18,18 @@ export const formatDate = (date: Date): string => {
     month: "long",
     day: "numeric",
   });
+};
+
+export const mapPostToPostLink = (
+  post: Post,
+  type: "mention" | "related" | "post",
+): PostLink => {
+  return {
+    title: post.data.title,
+    slug: post.data.slug,
+    date: post.data.date,
+    type: type,
+  };
 };
 
 export const sortPostsDesc = (posts: Post[]): Post[] => {

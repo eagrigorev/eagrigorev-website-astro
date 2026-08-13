@@ -2,6 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
 import type { PostLink } from '@utils/types';
+import { mapPostToPostLink } from '@utils/scripts';
 import { getGardenGraph } from '@utils/generateGraph';
 import BaseWrapper from '@layouts/BaseWrapper.astro';
 import BackToIndex from '@components/navigation/BackToIndex.astro';
@@ -26,15 +27,13 @@ const { backlinksMap } = await getGardenGraph();
 const backlinks: PostLink[] = backlinksMap[post.data.slug] || [];
 const relatedPosts: PostLink[] = await getCollection(
   'posts',
-  ({ data }) => !data.isDraft && data.category === post.data.category
+  ({ data }) =>
+    !data.isDraft &&
+    data.category === post.data.category &&
+    data.title !== post.data.title
 ).then((response) =>
   response.map((post) => {
-    return {
-      title: post.data.title,
-      slug: post.data.slug,
-      date: post.data.date,
-      type: 'related',
-    };
+    return mapPostToPostLink(post, 'related');
   })
 );
 const morePosts = [...backlinks, ...relatedPosts];
