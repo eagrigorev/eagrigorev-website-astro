@@ -2,7 +2,7 @@ import { getCollection } from "astro:content";
 import fs from "fs";
 import path from "path";
 import type { Post, PostLinkGraph } from "@utils/types";
-import { mapPostToPostLink } from "@utils/scripts";
+import { mapPostToPostLink, sortPostsDesc } from "@utils/scripts";
 
 export async function getGardenGraph(): Promise<{
   backlinksMap: PostLinkGraph;
@@ -10,7 +10,7 @@ export async function getGardenGraph(): Promise<{
   const posts: Post[] = await getCollection(
     "posts",
     ({ data }) => !data.isDraft,
-  );
+  ).then((response) => sortPostsDesc(response));
   const backlinksMap: PostLinkGraph = {};
 
   // Initialize map keys using frontmatter slugs
