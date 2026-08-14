@@ -1,5 +1,10 @@
 ---
-// TODO: Add everything here
+import BaseWrapper from '@layouts/BaseWrapper.astro';
+import PageIntro from '@components/page-title/PageIntro.astro';
+
+const introText: string = '404: Page not found.';
 ---
 
-<div>404 Error</div>
+<BaseWrapper pageTitle="404">
+  <PageIntro slot="page-title" text={introText} />
+</BaseWrapper>
