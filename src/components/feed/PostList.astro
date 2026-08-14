@@ -9,30 +9,33 @@ interface Props {
   title: string;
   link?: string | undefined;
   subtitle: string;
+  showHeading: boolean;
 }
 
-const { posts, showLog, title, link, subtitle } = Astro.props;
+const { posts, showLog, title, link, subtitle, showHeading } = Astro.props;
 ---
 
 <div class="post-list">
-  <div class="post-list__title">
-    <CallToAction
-      isCentered={false}
-      link={link}
-      title={title}
-      subtitle={subtitle}
-    />
-    {
-      showLog ? (
-        <p class="post-list__log">
-          <span class="post-list__dot">•</span>{' '}
-          <a class="post-list__log-link" href="/">
-            Under the Log
-          </a>
-        </p>
-      ) : null
-    }
-  </div>
+  {
+    showHeading ? (
+      <div class="post-list__title">
+        <CallToAction
+          isCentered={false}
+          link={link}
+          title={title}
+          subtitle={subtitle}
+        />
+        {showLog ? (
+          <p class="post-list__log">
+            <span class="post-list__dot">•</span>{' '}
+            <a class="post-list__log-link" href="/">
+              Under the Log
+            </a>
+          </p>
+        ) : null}
+      </div>
+    ) : null
+  }
   {
     posts.length ? (
       <ul class="post-list__items">

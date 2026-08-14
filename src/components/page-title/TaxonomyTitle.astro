@@ -1,0 +1,39 @@
+---
+interface Props {
+  taxonomy: string;
+  type: 'tag' | 'category';
+}
+
+const { taxonomy, type } = Astro.props;
+---
+
+<div class="intro">
+  <h2 class="intro__text">
+    {`Browsing posts by ${type}: ${taxonomy}`}
+  </h2>
+  <p class="intro__asterism">⁂</p>
+</div>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .intro {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48-80);
+    padding-top: var(--space-80-160);
+
+    &__text {
+      @include heading-serif-primary;
+      font-size: var(--step-2);
+      text-align: center;
+    }
+
+    &__asterism {
+      @include heading-serif-primary;
+      color: var(--color-accent);
+      font-size: var(--step-2);
+    }
+  }
+</style>

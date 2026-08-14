@@ -17,7 +17,7 @@ const { post } = Astro.props;
         : post.type === 'mention'
           ? 'Mentioned in: '
           : 'Related: '
-    }<a class="post-item__title-link" href={post.slug}>{post.title}</a>
+    }<a class="post-item__title-link" href=`/${post.slug}`>{post.title}</a>
   </p>
   <p class="post-item__meta">{formatDate(post.date)}</p>
 </li>
