@@ -1,23 +1,24 @@
 ---
 import '@styles/main.scss';
-import HeadMetadata from '@components/HeadMetadata.astro';
+import Metadata from '@components/Metadata.astro';
 import GlobalHeader from '@components/navigation/GlobalHeader.astro';
 import PageIntro from '@components/page-title/PageIntro.astro';
 import GlobalFooter from '@components/navigation/GlobalFooter.astro';
 
 interface Props {
   pageTitle: string;
-  description?: string;
 }
 
-const { pageTitle, description } = Astro.props;
+const { pageTitle } = Astro.props;
 
 const introText: string =
   'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
 ---
 
 <html lang="en">
-  <HeadMetadata pageTitle={pageTitle} description={description} />
+  <head>
+    <Metadata pageTitle={pageTitle} />
+  </head>
   <body class="container">
     <header>
       <slot name="header">
