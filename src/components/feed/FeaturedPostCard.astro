@@ -1,0 +1,94 @@
+---
+import type { Post } from '@utils/types';
+import { Image } from 'astro:assets';
+import { formatDate } from '@utils/scripts';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="featured-post">
+  {
+    post.data.featuredImage ? (
+      <a class="featured-post__image-link" href={post.data.slug}>
+        <Image
+          class="featured-post__image"
+          src={post.data.featuredImage.url}
+          alt={post.data.featuredImage.alt}
+          width="420"
+          height="560"
+          decoding="async"
+          loading="eager"
+        />
+      </a>
+    ) : null
+  }
+  <div class="featured-post__description">
+    <p class="featured-post__meta">
+      {formatDate(post.data.date)} · <a
+        class="featured-post__category-link"
+        href={`/category/${post.data.category}`}>{post.data.category}</a
+      >
+    </p>
+    <a class="featured-post__title-link" href={post.data.slug}>
+      <h2 class="featured-post__title">{post.data.title}</h2>
+    </a>
+    <p class="featured-post__excerpt">
+      {post.data.description}
+    </p>
+  </div>
+</article>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .featured-post {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &__image-link {
+      @include link-image;
+    }
+
+    &__image {
+      aspect-ratio: 3/4;
+      border: solid 1px var(--color-muted);
+      height: auto;
+      width: 100%;
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__meta {
+      @include text-sans-serif-all-caps;
+      font-size: var(--step-negative-2);
+    }
+
+    &__category-link {
+      @include link-text-to-muted;
+    }
+
+    &__title-link {
+      @include link-text-to-accent;
+    }
+
+    &__title {
+      @include heading-serif-primary;
+      font-size: var(--step-1);
+    }
+
+    &__excerpt {
+      @include text-sans-serif-secondary;
+      color: var(--color-muted);
+      font-size: var(--step-negative-1);
+    }
+  }
+</style>

@@ -1,15 +1,19 @@
 import type { CollectionEntry } from "astro:content";
 
-export interface NavigationItem {
-  title: string;
-  url: string;
-}
+export const postCategories = [
+  "illustrations",
+  "photography",
+  "journal",
+] as const;
 
-export interface TagItem {
+export type PostCategory = (typeof postCategories)[number];
+
+export interface PostLink {
   title: string;
-  url: string;
-  count: number;
+  slug: string;
+  date: Date;
+  type: "post" | "related" | "mention";
 }
 
 export type Post = CollectionEntry<"posts">;
-export type Page = CollectionEntry<"pages">;
+export type PostLinkGraph = Record<string, PostLink[]>;

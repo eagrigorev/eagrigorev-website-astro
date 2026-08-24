@@ -1,0 +1,32 @@
+:root {
+  /* Color */
+  --color-text: #222;
+  --color-muted: #6b6b6b;
+  --color-bg: #f9f9f7;
+  --color-border: #e0e0e0;
+  --color-accent: #b02626;
+
+  /* Font Size */
+  --step-4: clamp(2.375rem, 2.2727rem + 0.4545vw, 2.625rem);
+  --step-3: clamp(1.625rem, 1.5227rem + 0.4545vw, 1.875rem);
+  --step-2: clamp(1.5rem, 1.4489rem + 0.2273vw, 1.625rem);
+  --step-1: clamp(1.3125rem, 1.2358rem + 0.3409vw, 1.5rem);
+  --step-0: clamp(1.1875rem, 1.1364rem + 0.2273vw, 1.3125rem);
+  --step-negative-1: clamp(0.8125rem, 0.7869rem + 0.1136vw, 0.875rem);
+  --step-negative-2: clamp(0.625rem, 0.5739rem + 0.2273vw, 0.75rem);
+
+  /* Space */
+  --space-96-160: clamp(6rem, 4.3636rem + 7.2727vw, 10rem);
+  --space-96-120: clamp(6rem, 5.3864rem + 2.7273vw, 7.5rem);
+  --space-80-160: clamp(5rem, 2.9545rem + 9.0909vw, 10rem);
+  --space-80-120: clamp(5rem, 3.9773rem + 4.5455vw, 7.5rem);
+  --space-64-96: clamp(4rem, 3.1818rem + 3.6364vw, 6rem);
+  --space-48-80: clamp(3rem, 2.1818rem + 3.6364vw, 5rem);
+  --space-48-64: clamp(3rem, 2.5909rem + 1.8182vw, 4rem);
+  --space-40-72: clamp(2.5rem, 1.6818rem + 3.6364vw, 4.5rem);
+  --space-40-48: clamp(2.5rem, 2.2955rem + 0.9091vw, 3rem);
+  --space-24-40: clamp(1.5rem, 1.0909rem + 1.8182vw, 2.5rem);
+  --space-24-32: clamp(1.5rem, 1.2955rem + 0.9091vw, 2rem);
+  --space-16-24: clamp(1rem, 0.7955rem + 0.9091vw, 1.5rem);
+  --space-8-16: clamp(0.5rem, 0.2955rem + 0.9091vw, 1rem);
+}

@@ -1,18 +1,18 @@
-import type { NavigationItem, Post } from "@utils/types";
-import Heading2 from "@components/typography/Heading2.astro";
-import Heading3 from "@components/typography/Heading3.astro";
-import Link from "@components/typography/Link.astro";
+import type { Post, PostLink } from "@utils/types";
 
-export const sortPostsDesc = (posts: Post[]): Post[] => {
-  return posts.sort((prev: Post, next: Post) =>
-    new Date(prev.data.datePublished).getTime() <
-    new Date(next.data.datePublished).getTime()
-      ? 1
-      : -1,
-  );
+export const generateSlug = (text: string): string => {
+  return text
+    .toString()
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
 };
 
-export const formatDate = (date: string): string => {
+export const formatDate = (date: Date): string => {
   return new Date(date).toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
@@ -20,37 +20,22 @@ export const formatDate = (date: string): string => {
   });
 };
 
-export const customTypography = {
-  a: Link,
-  h2: Heading2,
-  h3: Heading3,
-};
-
-export const generateSlug = (item: string): string => {
-  return item
-    .toLowerCase()
-    .replaceAll(/ /g, "-")
-    .replaceAll("&", "and")
-    .replaceAll("'", "");
-};
-
-export const generateTagItem = (tag: string): NavigationItem => {
+export const mapPostToPostLink = (
+  post: Post,
+  type: "mention" | "related" | "post",
+): PostLink => {
   return {
-    title: tag,
-    url: generateSlug(tag),
+    title: post.data.title,
+    slug: post.data.slug,
+    date: post.data.date,
+    type: type,
   };
 };
 
-export const generateUniqueTags = (posts: Post[]): NavigationItem[] => {
-  const allTags: string[] = [];
-  posts.forEach((post: Post) => {
-    post.data.tags.map((tag: string) => {
-      allTags.push(tag);
-    });
-  });
-  const uniqueTags: NavigationItem[] = [];
-  allTags
-    .filter((tag: string, index: number) => allTags.indexOf(tag) === index)
-    .map((tag: string) => uniqueTags.push(generateTagItem(tag)));
-  return uniqueTags;
+export const sortPostsDesc = (posts: Post[]): Post[] => {
+  return posts.sort((prev: Post, next: Post) =>
+    new Date(prev.data.date).getTime() < new Date(next.data.date).getTime()
+      ? 1
+      : -1,
+  );
 };

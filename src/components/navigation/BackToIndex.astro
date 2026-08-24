@@ -1,0 +1,43 @@
+---
+import { Image } from 'astro:assets';
+import avatar from '@images/avatar.jpg';
+---
+
+<div class="back-to-index">
+  <a class="back-to-index__link" href="/">Back to Index</a>
+  <Image
+    class="back-to-index__logo"
+    src={avatar}
+    alt="Evgenii Grigorev"
+    width="80"
+    height="80"
+    decoding="async"
+    loading="eager"
+  />
+</div>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .back-to-index {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding-top: var(--space-24-40);
+    width: 100%;
+
+    &__link {
+      @include text-sans-serif-secondary;
+      @include link-text-to-muted;
+      font-size: var(--step-negative-1);
+    }
+
+    &__logo {
+      aspect-ratio: 1/1;
+      border: solid 1px var(--color-muted);
+      border-radius: 50%;
+      height: var(--space-48-80);
+      width: var(--space-48-80);
+    }
+  }
+</style>

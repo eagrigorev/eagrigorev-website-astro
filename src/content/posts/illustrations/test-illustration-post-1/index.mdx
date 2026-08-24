@@ -1,0 +1,69 @@
+---
+title: 'Test Illustrations Post 1'
+slug: 'test-illustrations-post-1'
+date: 2026-06-15
+category: 'illustrations'
+tags: ['test post', 'drawing']
+description:
+  'Contrary to popular belief, Lorem Ipsum is not simply random text. It has
+  roots in a piece of classical Latin literature.'
+featuredImage:
+  url: './featured.png'
+  alt: 'Featured image alt caption'
+isDraft: false
+isFeatured: true
+---
+
+import ImageWithCaption from '@components/ImageWithCaption.astro';
+import TwoImages from '@components/TwoImages.astro';
+import Blockquote from '@components/Blockquote.astro';
+import img from './image.png';
+import imgLeft from './imgLeft.png';
+import imgRight from './imgRight.png';
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+Ipsum has been the industry's standard dummy text ever since 1966, when
+designers at Letraset and James Mosley, the librarian at St Bride Printing
+Library in London, took a 1914 Cicero translation and scrambled it to make dummy
+text for Letraset's Body Type sheets.
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+Ipsum has been the industry's standard dummy text ever since 1966, when
+designers at Letraset and James Mosley, the librarian at St Bride Printing
+Library in London, took a 1914 Cicero translation and scrambled it to make dummy
+text for Letraset's Body Type sheets.
+
+<ImageWithCaption src={img} caption="Test caption goes here" />
+
+It has survived not only many decades, but also the leap into electronic
+typesetting, remaining essentially unchanged.
+
+<Blockquote
+  quote="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since 1966."
+  author="Haruki Murakami"
+/>
+
+It has survived not only many decades, but also the leap into electronic
+typesetting, remaining essentially unchanged.
+
+## This is Heading 2
+
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+Ipsum has been the industry's standard dummy text ever since 1966, when
+designers at Letraset and James Mosley, the librarian at St Bride Printing
+Library in London, took a 1914 Cicero translation and scrambled it to make dummy
+text for Letraset's Body Type sheets.
+
+### This is Heading 3
+
+It has survived not only many decades, but also the leap into electronic
+typesetting, remaining essentially unchanged.
+
+<TwoImages
+  srcLeft={imgLeft}
+  captionLeft="Caption on the left."
+  srcRight={imgRight}
+  captionRight="Caption on the right"
+/>
+
+Test post content should be rendered here.

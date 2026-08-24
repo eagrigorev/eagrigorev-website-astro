@@ -1,0 +1,60 @@
+---
+import { generateSlug } from '@utils/scripts';
+
+interface Props {
+  tags: string[];
+}
+
+const { tags } = Astro.props;
+---
+
+<div class="tag-cloud">
+  <p class="tag-cloud__title">Tags:</p>
+  <ul class="tag-cloud__items" role="list">
+    {
+      tags.map((tag) => (
+        <li>
+          <a class="tag-cloud__item" href={`/tag/${generateSlug(tag)}`}>
+            {tag}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .tag-cloud {
+    align-items: center;
+    display: flex;
+    gap: 48px;
+    max-width: 600px;
+    padding-top: var(--space-96-160);
+    width: 100%;
+
+    @media only screen and (width <= 480px) {
+      align-items: flex-start;
+    }
+
+    &__title {
+      @include text-sans-serif-secondary;
+      font-size: var(--step-negative-1);
+    }
+
+    &__items {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      row-gap: 24px;
+    }
+
+    &__item {
+      @include text-sans-serif-secondary;
+      @include link-muted-to-text;
+      font-size: var(--step-negative-1);
+    }
+  }
+</style>

@@ -1,0 +1,83 @@
+---
+import '@styles/main.scss';
+import Metadata from '@components/Metadata.astro';
+import GlobalHeader from '@components/navigation/GlobalHeader.astro';
+import PageIntro from '@components/page-title/PageIntro.astro';
+import GlobalFooter from '@components/navigation/GlobalFooter.astro';
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+
+const introText: string =
+  'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
+---
+
+<html lang="en">
+  <head>
+    <Metadata pageTitle={pageTitle} />
+  </head>
+  <body class="container">
+    <header>
+      <slot name="header">
+        <GlobalHeader />
+      </slot>
+      <slot name="page-title">
+        <PageIntro text={introText} />
+      </slot>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <slot name="footer">
+        <GlobalFooter />
+      </slot>
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    max-width: 600px;
+    width: 100%;
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    max-width: 77.5rem; // 1240px
+    padding-inline: var(--space-24-40);
+  }
+</style>

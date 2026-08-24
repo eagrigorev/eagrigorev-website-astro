@@ -1,0 +1,47 @@
+---
+import type { PostLink } from '@utils/types';
+import { formatDate } from '@utils/scripts';
+
+interface Props {
+  post: PostLink;
+}
+
+const { post } = Astro.props;
+---
+
+<li class="post-item">
+  <p class="post-item__title">
+    {
+      post.type === 'post'
+        ? null
+        : post.type === 'mention'
+          ? 'Mentioned in: '
+          : 'Related: '
+    }<a class="post-item__title-link" href=`/${post.slug}`>{post.title}</a>
+  </p>
+  <p class="post-item__meta">{formatDate(post.date)}</p>
+</li>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .post-item {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+
+    &__title {
+      @include heading-serif-primary;
+      font-size: var(--step-0);
+    }
+
+    &__title-link {
+      @include link-text-to-accent;
+    }
+
+    &__meta {
+      @include text-sans-serif-secondary;
+      font-size: var(--step-negative-1);
+    }
+  }
+</style>
