@@ -1,9 +1,6 @@
 ---
 import '@styles/main.scss';
 import Metadata from '@components/Metadata.astro';
-import GlobalHeader from '@components/navigation/GlobalHeader.astro';
-import PageIntro from '@components/page-title/PageIntro.astro';
-import GlobalFooter from '@components/navigation/GlobalFooter.astro';
 
 interface Props {
   pageTitle: string;
@@ -11,8 +8,10 @@ interface Props {
 
 const { pageTitle } = Astro.props;
 
-const introText: string =
-  'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
+// const introText: string =
+//   'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
+
+// TODO: Add components
 ---
 
 <html lang="en">
@@ -22,10 +21,10 @@ const introText: string =
   <body class="container">
     <header>
       <slot name="header">
-        <GlobalHeader />
+        <!-- <GlobalHeader /> -->
       </slot>
       <slot name="page-title">
-        <PageIntro text={introText} />
+        <!-- <PageIntro text={introText} /> -->
       </slot>
     </header>
     <main>
@@ -33,7 +32,7 @@ const introText: string =
     </main>
     <footer>
       <slot name="footer">
-        <GlobalFooter />
+        <!-- <GlobalFooter /> -->
       </slot>
     </footer>
   </body>
@@ -53,7 +52,7 @@ const introText: string =
     align-items: center;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: var(--container-narrow);
     width: 100%;
   }
 
@@ -68,7 +67,7 @@ const introText: string =
     display: flex;
     flex-direction: column;
     margin-top: auto;
-    max-width: 600px;
+    max-width: var(--container-narrow);
     width: 100%;
   }
 
@@ -77,7 +76,7 @@ const introText: string =
     display: flex;
     flex-direction: column;
     margin-inline: auto;
-    max-width: 77.5rem; // 1240px
+    max-width: var(--container-desktop);
     padding-inline: var(--space-24-40);
   }
 </style>
