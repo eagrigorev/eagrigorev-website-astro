@@ -8,6 +8,11 @@ export const postCategories = [
 
 export type PostCategory = (typeof postCategories)[number];
 
+export interface NavigationItem {
+  name: string;
+  url: string;
+}
+
 export interface PostLink {
   title: string;
   slug: string;

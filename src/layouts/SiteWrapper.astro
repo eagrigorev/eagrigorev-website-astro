@@ -1,15 +1,16 @@
 ---
 import '@styles/main.scss';
+import { SITE } from '@utils/const';
 import Metadata from '@components/Metadata.astro';
+import SiteHeader from '@components/navigation/SiteHeader.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import SiteFooter from '@components/navigation/SiteFooter.astro';
 
 interface Props {
   pageTitle: string;
 }
 
 const { pageTitle } = Astro.props;
-
-// const introText: string =
-//   'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
 
 // TODO: Add components
 ---
@@ -21,19 +22,17 @@ const { pageTitle } = Astro.props;
   <body class="container">
     <header>
       <slot name="header">
-        <!-- <GlobalHeader /> -->
+        <SiteHeader />
       </slot>
       <slot name="page-title">
-        <!-- <PageIntro text={introText} /> -->
+        <PageTitle pageTitle={SITE.INTRO} />
       </slot>
     </header>
     <main>
       <slot />
     </main>
     <footer>
-      <slot name="footer">
-        <!-- <GlobalFooter /> -->
-      </slot>
+      <SiteFooter />
     </footer>
   </body>
 </html>

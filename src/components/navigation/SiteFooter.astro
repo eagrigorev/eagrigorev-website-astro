@@ -1,0 +1,64 @@
+---
+import type { NavigationItem } from '@utils/types';
+import { FOOTER_LINKS, SITE } from '@utils/const';
+
+const copyright = `${SITE.AUTHOR} © ${new Date().getFullYear()}`;
+---
+
+<div class="site-footer">
+  <div class="site-footer__content">
+    <p>{copyright}</p>
+    <nav>
+      <ul class="site-footer__menu" role="list">
+        {
+          FOOTER_LINKS.map((link: NavigationItem) => (
+            <li>
+              {link.url === '' ? (
+                <p class="site-footer__menu-item">{link.name}</p>
+              ) : (
+                <a class="site-footer__menu-item" href={link.url}>
+                  {link.name}
+                </a>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .site-footer {
+    padding-top: var(--space-96-160);
+
+    &__content {
+      @include text-sans-serif-secondary;
+      align-items: center;
+      border-top: solid 1px var(--color-border);
+      color: var(--color-muted);
+      display: flex;
+      font-size: var(--step-negative-1);
+      justify-content: space-between;
+      padding: var(--space-24-40) 0;
+
+      @media only screen and (max-width: 30rem) {
+        flex-direction: column;
+        gap: var(--space-16-24);
+      }
+    }
+
+    &__menu {
+      align-items: center;
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-8-16);
+    }
+
+    &__menu-item {
+      @include link-muted-to-text;
+    }
+  }
+</style>
