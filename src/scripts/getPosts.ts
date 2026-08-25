@@ -21,3 +21,10 @@ export const getRecentPosts = async (): Promise<Post[]> => {
   const posts: Post[] = await getSortedPosts();
   return posts.slice(0, 10);
 };
+
+export const getRandomPost = async (): Promise<Post | null> => {
+  const posts: Post[] = await getSortedPosts();
+  const randomPost: Post | null =
+    posts.length > 0 ? posts[Math.floor(Math.random() * posts.length)] : null;
+  return randomPost;
+};

@@ -13,7 +13,7 @@ const { post } = Astro.props;
 <article class="post-card">
   {
     post.data.featuredImage ? (
-      <a class="post-card__image-link" href={post.data.slug}>
+      <a class="post-card__image-link" href={post.data.slug} tabindex={-1}>
         <Image
           class="post-card__image"
           src={post.data.featuredImage.url}

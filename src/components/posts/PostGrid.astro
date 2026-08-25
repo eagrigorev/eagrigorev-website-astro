@@ -9,12 +9,12 @@ interface Props {
 const { posts } = Astro.props;
 ---
 
-<div class="featured-grid">
+<div class="post-grid">
   {posts.map((post: Post) => <PostCard post={post} />)}
 </div>
 
 <style lang="scss">
-  .featured-grid {
+  .post-grid {
     display: grid;
     gap: var(--space-24-40);
     grid-template-columns: repeat(3, 1fr);

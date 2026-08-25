@@ -1,13 +1,19 @@
 ---
 import type { Post } from '@utils/types';
 import { SITE } from '@utils/const';
-import { getFeaturedPosts, getRecentPosts } from '@scripts/getPosts';
+import {
+  getFeaturedPosts,
+  getRecentPosts,
+  getRandomPost,
+} from '@scripts/getPosts';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PostGrid from '@components/posts/PostGrid.astro';
 import CallToAction from '@components/posts/CallToAction.astro';
 
 const featuredPosts: Post[] = await getFeaturedPosts();
 const recentPosts: Post[] = await getRecentPosts();
+const randomPost: Post | null = await getRandomPost();
+const randomPostSlug: string = randomPost ? randomPost.data.slug : '#';
 ---
 
 <SiteWrapper pageTitle={SITE.TITLE}>
@@ -15,6 +21,6 @@ const recentPosts: Post[] = await getRecentPosts();
   <CallToAction
     title="Get Lost in the Ruins"
     description="Read the random post."
-    url=""
+    url={randomPostSlug}
   />
 </SiteWrapper>
