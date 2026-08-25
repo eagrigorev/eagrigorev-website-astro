@@ -8,16 +8,25 @@ import {
 } from '@scripts/getPosts';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PostGrid from '@components/posts/PostGrid.astro';
+import PostList from '@components/posts/PostList.astro';
 import CallToAction from '@components/posts/CallToAction.astro';
 
 const featuredPosts: Post[] = await getFeaturedPosts();
 const recentPosts: Post[] = await getRecentPosts();
 const randomPost: Post | null = await getRandomPost();
 const randomPostSlug: string = randomPost ? randomPost.data.slug : '#';
+
+// TODO: Add links
 ---
 
 <SiteWrapper pageTitle={SITE.TITLE}>
   <PostGrid posts={featuredPosts} />
+  <PostList
+    posts={recentPosts}
+    title="Explore the Garden"
+    description="Begin reading."
+    url="/"
+  />
   <CallToAction
     title="Get Lost in the Ruins"
     description="Read the random post."
