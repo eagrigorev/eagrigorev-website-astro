@@ -1,12 +1,7 @@
 import type { CollectionEntry } from "astro:content";
+import { CATEGORIES } from "@utils/const";
 
-export const postCategories = [
-  "illustrations",
-  "photography",
-  "journal",
-] as const;
-
-export type PostCategory = (typeof postCategories)[number];
+export type PostCategory = (typeof CATEGORIES)[number];
 
 export interface NavigationItem {
   name: string;

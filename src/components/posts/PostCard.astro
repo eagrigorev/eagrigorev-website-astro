@@ -1,0 +1,102 @@
+---
+import type { Post } from '@utils/types';
+import { Image } from 'astro:assets';
+import { formatDate } from '@scripts/common';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<article class="post-card">
+  {
+    post.data.featuredImage ? (
+      <a class="post-card__image-link" href={post.data.slug}>
+        <Image
+          class="post-card__image"
+          src={post.data.featuredImage.url}
+          alt={post.data.featuredImage.alt}
+          width="420"
+          height="560"
+          decoding="async"
+          loading="eager"
+        />
+      </a>
+    ) : null
+  }
+  <div class="post-card__description">
+    <div class="post-card__heading">
+      <p class="post-card__meta">
+        {formatDate(post.data.date)} · <a
+          class="post-card__category-link"
+          href={`/category/${post.data.category}`}>{post.data.category}</a
+        >
+      </p>
+      <a class="post-card__title-link" href={post.data.slug}>
+        <h2 class="post-card__title">{post.data.title}</h2>
+      </a>
+    </div>
+    <p class="post-card__excerpt">
+      {post.data.description}
+    </p>
+  </div>
+</article>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-16-24);
+
+    &__image-link {
+      @include link-image;
+    }
+
+    &__image {
+      aspect-ratio: 3/4;
+      border: solid 1px var(--color-muted);
+      height: auto;
+      width: 100%;
+    }
+
+    &__description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    &__meta {
+      @include text-sans-serif-all-caps;
+      font-size: var(--step-negative-2);
+    }
+
+    &__category-link {
+      @include link-text-to-muted;
+    }
+
+    &__title-link {
+      @include link-text-to-accent;
+    }
+
+    &__title {
+      @include heading-serif-primary;
+      font-size: var(--step-1);
+    }
+
+    &__excerpt {
+      @include text-sans-serif-secondary;
+      color: var(--color-muted);
+      font-size: var(--step-negative-1);
+    }
+  }
+</style>

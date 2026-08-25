@@ -52,3 +52,11 @@ export const FOOTER_LINKS: NavigationItem[] = [
     url: "/",
   },
 ];
+
+export const CATEGORIES: string[] = [
+  "Illustrations",
+  "Photography",
+  "Journal",
+  "Music",
+  "Tabs",
+];
