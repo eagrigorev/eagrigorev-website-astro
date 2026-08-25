@@ -4,6 +4,7 @@ import { SITE } from '@utils/const';
 import Metadata from '@components/Metadata.astro';
 import SiteHeader from '@components/navigation/SiteHeader.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
+import CallToAction from '@components/posts/CallToAction.astro';
 import SiteFooter from '@components/navigation/SiteFooter.astro';
 
 interface Props {
@@ -11,8 +12,6 @@ interface Props {
 }
 
 const { pageTitle } = Astro.props;
-
-// TODO: Add components
 ---
 
 <html lang="en">
@@ -29,6 +28,11 @@ const { pageTitle } = Astro.props;
       </slot>
     </header>
     <main>
+      <CallToAction
+        title="Get Lost in the Ruins"
+        description="Read the random post."
+        url=""
+      />
       <slot />
     </main>
     <footer>

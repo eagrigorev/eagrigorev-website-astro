@@ -1,0 +1,42 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+}
+
+const { title, description, url } = Astro.props;
+---
+
+<div class="call-to-action">
+  <a class="call-to-action__title-link" href={`/${url}`}>
+    {title}
+  </a>
+  <p class="call-to-action__description">{description}</p>
+</div>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .call-to-action {
+    align-items: center;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    max-width: fit-content;
+    padding-top: var(--space-96-120);
+    text-decoration: none;
+
+    &__title-link {
+      @include heading-serif-primary;
+      @include link-text-to-accent;
+      font-size: var(--step-1);
+    }
+
+    &__description {
+      @include text-sans-serif-secondary;
+      color: var(--color-muted);
+      font-size: var(--step-negative-1);
+    }
+  }
+</style>
