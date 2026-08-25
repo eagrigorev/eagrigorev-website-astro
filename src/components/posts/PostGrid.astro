@@ -1,0 +1,32 @@
+---
+import type { Post } from '@utils/types';
+import PostCard from '@components/posts/PostCard.astro';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="featured-grid">
+  {posts.map((post: Post) => <PostCard post={post} />)}
+</div>
+
+<style lang="scss">
+  .featured-grid {
+    display: grid;
+    gap: var(--space-24-40);
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: var(--space-96-120);
+
+    @media only screen and (width <= 48rem) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media only screen and (width <= 30rem) {
+      gap: 40px;
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+</style>
