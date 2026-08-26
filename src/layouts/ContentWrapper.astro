@@ -1,0 +1,144 @@
+---
+
+---
+
+<div class="text-primary content">
+  <slot />
+</div>
+
+<style lang="scss">
+  @use '../styles/partials/typography' as *;
+
+  .content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    padding-top: var(--space-96-120);
+    max-width: var(--container-wide);
+    width: 100%;
+
+    :global(p:not([class])) {
+      @include text-serif-primary;
+      font-size: var(--step-0);
+      max-width: var(--container-narrow);
+      width: 100%;
+
+      /* p -> p */
+      + :global(p:not([class])) {
+        margin-top: var(--space-24-32);
+      }
+
+      /* p -> major breaks (h2, image, gallery) */
+      + :global(h2),
+      + :global(div.image),
+      + :global(div.gallery) {
+        margin-top: var(--space-64-96);
+      }
+
+      /* p -> minor breaks (h3, blockquote) */
+      + :global(h3),
+      + :global(blockquote.blockquote) {
+        margin-top: var(--space-48-64);
+      }
+    }
+
+    :global(h2) {
+      @include heading-serif-primary;
+      font-size: var(--step-3);
+      max-width: var(--container-narrow);
+      width: 100%;
+
+      /* h2 -> text or h3 (tight connection to subsection/prose below) */
+      + :global(p:not([class])),
+      + :global(h3) {
+        margin-top: var(--space-16-24);
+      }
+
+      /* h2 -> media, blockquote, or back-to-back h2 */
+      + :global(div.image),
+      + :global(div.gallery),
+      + :global(blockquote.blockquote),
+      + :global(h2) {
+        margin-top: var(--space-24-40);
+      }
+    }
+
+    :global(h3) {
+      @include heading-serif-primary;
+      font-size: var(--step-2);
+      max-width: var(--container-narrow);
+      width: 100%;
+
+      /* h3 -> text (very tight proximity) */
+      + :global(p:not([class])) {
+        margin-top: var(--space-8-16);
+      }
+
+      /* h3 -> media, blockquote, or h3 */
+      + :global(div.image),
+      + :global(div.gallery),
+      + :global(blockquote.blockquote),
+      + :global(h3) {
+        margin-top: var(--space-24-32);
+      }
+
+      /* h3 -> major section reset (h2) */
+      + :global(h2) {
+        margin-top: var(--space-64-96);
+      }
+    }
+
+    :global(div.image),
+    :global(div.gallery) {
+      width: 100%;
+
+      /* media -> text, blockquote, or media */
+      + :global(p:not([class])),
+      + :global(blockquote.blockquote),
+      + :global(div.image),
+      + :global(div.gallery) {
+        margin-top: var(--space-48-64);
+      }
+
+      /* media -> major chapter header (h2) */
+      + :global(h2) {
+        margin-top: var(--space-64-96);
+      }
+
+      /* media -> subhead (h3) */
+      + :global(h3) {
+        margin-top: var(--space-48-64);
+      }
+    }
+
+    :global(blockquote.blockquote) {
+      max-width: var(--container-narrow);
+      width: 100%;
+
+      /* blockquote -> text or blockquote */
+      + :global(p:not([class])),
+      + :global(blockquote.blockquote) {
+        margin-top: var(--space-24-40);
+      }
+
+      /* blockquote -> media */
+      + :global(div.image),
+      + :global(div.gallery) {
+        margin-top: var(--space-48-64);
+      }
+
+      /* blockquote -> headings */
+      + :global(h2) {
+        margin-top: var(--space-64-96);
+      }
+
+      + :global(h3) {
+        margin-top: var(--space-48-64);
+      }
+    }
+
+    :global(a) {
+      @include link-accent-to-text-underline;
+    }
+  }
+</style>

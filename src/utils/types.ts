@@ -8,12 +8,5 @@ export interface NavigationItem {
   url: string;
 }
 
-export interface PostLink {
-  title: string;
-  slug: string;
-  date: Date;
-  type: "post" | "related" | "mention";
-}
-
 export type Post = CollectionEntry<"posts">;
-export type PostLinkGraph = Record<string, PostLink[]>;
+export type PostLinkGraph = Record<string, Post[]>;
