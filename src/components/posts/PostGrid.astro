@@ -20,11 +20,11 @@ const { posts } = Astro.props;
     grid-template-columns: repeat(3, 1fr);
     padding-top: var(--space-96-120);
 
-    @media only screen and (width <= 48rem) {
+    @media only screen and (max-width: 48rem) {
       grid-template-columns: repeat(2, 1fr);
     }
 
-    @media only screen and (width <= 30rem) {
+    @media only screen and (max-width: 30rem) {
       gap: 40px;
       grid-template-columns: repeat(1, 1fr);
     }

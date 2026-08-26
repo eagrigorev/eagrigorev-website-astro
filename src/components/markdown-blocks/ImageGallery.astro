@@ -1,0 +1,29 @@
+---
+import ImageWithCaption from '@components/markdown-blocks/ImageWithCaption.astro';
+
+interface Props {
+  srcLeft: ImageMetadata;
+  captionLeft: string;
+  srcRight: ImageMetadata;
+  captionRight: string;
+}
+
+const { srcLeft, captionLeft, srcRight, captionRight } = Astro.props;
+---
+
+<div class="image-gallery">
+  <ImageWithCaption src={srcLeft} caption={captionLeft} />
+  <ImageWithCaption src={srcRight} caption={captionRight} />
+</div>
+
+<style lang="scss">
+  .image-gallery {
+    align-items: center;
+    display: flex;
+    gap: var(--space-40-72);
+
+    @media only screen and (max-width: 48rem) {
+      flex-direction: column;
+    }
+  }
+</style>
