@@ -14,9 +14,9 @@ isDraft: false
 isFeatured: true
 ---
 
-import ImageWithCaption from '@components/ImageWithCaption.astro';
-import TwoImages from '@components/TwoImages.astro';
-import Blockquote from '@components/Blockquote.astro';
+import ImageWithCaption from '@components/markdown-blocks/ImageWithCaption.astro';
+import ImageGallery from '@components/markdown-blocks/ImageGallery.astro';
+import Blockquote from '@components/markdown-blocks/Blockquote.astro';
 import img from './image.png';
 import imgLeft from './imgLeft.png';
 import imgRight from './imgRight.png';
@@ -59,7 +59,7 @@ text for Letraset's Body Type sheets.
 It has survived not only many decades, but also the leap into electronic
 typesetting, remaining essentially unchanged.
 
-<TwoImages
+<ImageGallery
   srcLeft={imgLeft}
   captionLeft="Caption on the left."
   srcRight={imgRight}

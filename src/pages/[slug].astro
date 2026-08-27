@@ -7,7 +7,7 @@ import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageHeader from '@components/navigation/PageHeader.astro';
 import PageTitleWithMeta from '@components/page-title/PageTitleWithMeta.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
-// import TagCloud from '@components/navigation/TagCloud.astro';
+import TagCloud from '@components/markdown-blocks/TagCloud.astro';
 import PostList from '@components/posts/PostList.astro';
 import CallToAction from '@components/posts/CallToAction.astro';
 
@@ -32,6 +32,7 @@ const backlinks: Post[] = backlinksMap[post.data.slug] || [];
   <ContentWrapper>
     <Content />
   </ContentWrapper>
+  <TagCloud tags={post.data.tags} />
   <PostList
     posts={backlinks}
     title="Backlinks"
