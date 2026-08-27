@@ -1,0 +1,9 @@
+---
+import { SITE } from '@utils/const';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+---
+
+<SiteWrapper pageTitle={SITE.PAGE_NOT_FOUND}>
+  <PageTitle slot="page-title" pageTitle={SITE.PAGE_NOT_FOUND_MESSAGE} />
+</SiteWrapper>

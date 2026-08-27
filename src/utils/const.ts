@@ -5,6 +5,10 @@ export enum SITE {
   TITLE = "Gardens & Ruins",
   DESCRIPTION = "Personal logs, film photography fragments, and digital artifacts",
   INTRO = "My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.",
+  PAGE_NOT_FOUND = "Page not Found",
+  PAGE_NOT_FOUND_MESSAGE = "404: Page not found.",
+  SERVER_ERROR = "Internal Server Error",
+  SERVER_ERROR_MESSAGE = "500: Internal server error.",
 }
 
 export const HEADER_LINKS: NavigationItem[] = [
