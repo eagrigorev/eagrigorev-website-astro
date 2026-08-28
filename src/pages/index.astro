@@ -15,11 +15,6 @@ const recentPosts: Post[] = await getRecentPosts();
 
 <SiteWrapper pageTitle={SITE.TITLE}>
   <PostGrid posts={featuredPosts} />
-  <PostList
-    posts={recentPosts}
-    title="Explore the Garden"
-    description="Begin reading."
-    url="/"
-  />
+  <PostList posts={recentPosts} description="Begin reading." />
   <RandomPost />
 </SiteWrapper>

@@ -34,11 +34,6 @@ const backlinks: Post[] = backlinksMap[post.data.slug] || [];
     <Content />
   </ContentWrapper>
   <TagCloud tags={post.data.tags} />
-  <PostList
-    posts={backlinks}
-    title="Backlinks"
-    description="Read more."
-    url="/"
-  />
+  <PostList posts={backlinks} description="List of backlinks below." />
   <RandomPost />
 </SiteWrapper>

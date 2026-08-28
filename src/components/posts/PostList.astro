@@ -4,12 +4,10 @@ import { formatDate } from '@scripts/common';
 
 interface Props {
   posts: Post[];
-  title: string;
   description: string;
-  url: string;
 }
 
-const { posts, title, description, url } = Astro.props;
+const { posts, description } = Astro.props;
 
 // TODO: Add show/hide heading probably, links
 ---
@@ -18,7 +16,7 @@ const { posts, title, description, url } = Astro.props;
   <header class="post-list__header">
     <div class="post-list__intro">
       <h2 class="post-list__title">
-        <a class="post-list__title-link" href={`/${url}`}>{title}</a>
+        <a class="post-list__title-link" href="/">Explore the Garden</a>
       </h2>
       <p class="post-list__description">{description}</p>
     </div>
