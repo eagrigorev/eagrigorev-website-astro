@@ -8,15 +8,15 @@ interface Props {
 }
 
 const { posts, description } = Astro.props;
-
-// TODO: Add show/hide heading probably, links
 ---
 
 <section class="post-list">
   <header class="post-list__header">
     <div class="post-list__intro">
       <h2 class="post-list__title">
-        <a class="post-list__title-link" href="/">Explore the Garden</a>
+        <a class="post-list__title-link" href="/the-garden"
+          >Explore the Garden</a
+        >
       </h2>
       <p class="post-list__description">{description}</p>
     </div>

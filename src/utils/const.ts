@@ -14,7 +14,7 @@ export enum SITE {
 export const HEADER_LINKS: NavigationItem[] = [
   {
     name: "Explore the Garden",
-    url: "/",
+    url: "/the-garden",
   },
   {
     name: "Info",

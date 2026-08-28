@@ -1,0 +1,17 @@
+---
+import type { Post } from '@utils/types';
+import { SITE } from '@utils/const';
+import { getSortedPosts } from '@scripts/getPosts';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import PostListTaxonomy from '@components/posts/PostListTaxonomy.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
+
+const posts: Post[] = await getSortedPosts();
+---
+
+<SiteWrapper pageTitle="The Garden">
+  <PageTitle slot="page-title" pageTitle={SITE.INTRO} />
+  <PostListTaxonomy posts={posts} />
+  <RandomPost />
+</SiteWrapper>
