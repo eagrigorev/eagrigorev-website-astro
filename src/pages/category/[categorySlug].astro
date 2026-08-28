@@ -1,0 +1,33 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { Post, PostCategory } from '@utils/types';
+import { getPostsByCategory } from '@scripts/getPosts';
+import { CATEGORIES } from '@utils/const';
+import { generateSlug } from '@scripts/common';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+
+export const getStaticPaths = (async () => {
+  return Promise.all(
+    CATEGORIES.map(async (category: PostCategory) => {
+      const categorySlug: string = generateSlug(category);
+      const posts: Post[] = await getPostsByCategory(category);
+      return {
+        params: { categorySlug },
+        props: {
+          categoryName: category,
+          posts: posts,
+        },
+      };
+    })
+  );
+}) satisfies GetStaticPaths;
+
+const { categoryName } = Astro.props;
+
+const pageTitle: string = `Browsing posts by category: ${categoryName}`;
+---
+
+<SiteWrapper pageTitle={pageTitle}>
+  <PageTitle slot="page-title" pageTitle={pageTitle} />
+</SiteWrapper>

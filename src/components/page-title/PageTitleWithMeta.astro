@@ -1,6 +1,6 @@
 ---
 import type { Post } from '@utils/types';
-import { formatDate } from '@scripts/common';
+import { formatDate, generateSlug } from '@scripts/common';
 
 interface Props {
   post: Post;
@@ -14,7 +14,8 @@ const { post } = Astro.props;
     <p class="page-title-with-meta__meta">
       {formatDate(post.data.date)} · <a
         class="page-title-with-meta__category-link"
-        href={`/category/${post.data.category}`}>{post.data.category}</a
+        href={`/category/${generateSlug(post.data.category)}`}
+        >{post.data.category}</a
       >
     </p>
     <h2 class="page-title-with-meta__text">

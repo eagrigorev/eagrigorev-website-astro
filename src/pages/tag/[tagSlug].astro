@@ -1,0 +1,36 @@
+---
+import type { Post } from '@utils/types';
+import type { GetStaticPaths } from 'astro';
+import { getSortedPosts, getPostsByTag } from '@scripts/getPosts';
+import { generateSlug } from '@scripts/common';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getSortedPosts();
+  const uniqueTags: string[] = [
+    ...new Set(posts.flatMap((post) => post.data.tags)),
+  ];
+  return Promise.all(
+    uniqueTags.map(async (tag: string) => {
+      const tagSlug: string = generateSlug(tag);
+      const tagPosts: Post[] = await getPostsByTag(tag);
+      return {
+        params: { tagSlug },
+        props: {
+          tagName: tag,
+          posts: tagPosts,
+        },
+      };
+    })
+  );
+}) satisfies GetStaticPaths;
+
+const { tagName } = Astro.props;
+
+const pageTitle: string = `Browsing posts by tag: ${tagName}`;
+---
+
+<SiteWrapper pageTitle={pageTitle}>
+  <PageTitle slot="page-title" pageTitle={pageTitle} />
+</SiteWrapper>

@@ -1,7 +1,7 @@
 ---
 import type { Post } from '@utils/types';
 import { Image } from 'astro:assets';
-import { formatDate } from '@scripts/common';
+import { formatDate, generateSlug } from '@scripts/common';
 
 interface Props {
   post: Post;
@@ -31,7 +31,8 @@ const { post } = Astro.props;
       <p class="post-card__meta">
         {formatDate(post.data.date)} · <a
           class="post-card__category-link"
-          href={`/category/${post.data.category}`}>{post.data.category}</a
+          href={`/category/${generateSlug(post.data.category)}`}
+          >{post.data.category}</a
         >
       </p>
       <a class="post-card__title-link" href={post.data.slug}>

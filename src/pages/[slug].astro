@@ -1,7 +1,8 @@
 ---
 import type { GetStaticPaths } from 'astro';
 import type { Post } from '@utils/types';
-import { getCollection, render } from 'astro:content';
+import { getSortedPosts } from '@scripts/getPosts';
+import { render } from 'astro:content';
 import { generateGraph } from '@scripts/generateGraph';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageHeader from '@components/navigation/PageHeader.astro';
@@ -12,7 +13,7 @@ import PostList from '@components/posts/PostList.astro';
 import CallToAction from '@components/posts/CallToAction.astro';
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+  const posts = await getSortedPosts();
   return posts.map((post) => ({
     params: { slug: post.data.slug },
     props: { post },
