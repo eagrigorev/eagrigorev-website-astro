@@ -1,34 +1,35 @@
 ---
-import type { Post, PostLink } from '@utils/types';
-import { getCollection } from 'astro:content';
-import { mapPostToPostLink, sortPostsDesc } from '@utils/scripts';
-import BaseWrapper from '@layouts/BaseWrapper.astro';
-import FeaturedGrid from '@components/feed/FeaturedGrid.astro';
-import RandomPost from '@components/call-to-action/RandomPost.astro';
-import PostList from '@components/feed/PostList.astro';
+import type { Post } from '@utils/types';
+import { SITE } from '@utils/const';
+import {
+  getFeaturedPosts,
+  getRecentPosts,
+  getRandomPost,
+} from '@scripts/getPosts';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PostGrid from '@components/posts/PostGrid.astro';
+import PostList from '@components/posts/PostList.astro';
+import CallToAction from '@components/posts/CallToAction.astro';
 
-const posts: Post[] = await getCollection('posts', ({ data }) => !data.isDraft);
-const sortedPosts: Post[] = sortPostsDesc(posts);
-const featuredPosts: Post[] = sortedPosts
-  .filter((post: Post) => post.data.isFeatured)
-  .slice(0, 6);
-const recentPosts: PostLink[] = sortedPosts
-  .filter((post: Post) => !post.data.isFeatured)
-  .map((post: Post) => {
-    return mapPostToPostLink(post, 'post');
-  })
-  .slice(0, 10);
+const featuredPosts: Post[] = await getFeaturedPosts();
+const recentPosts: Post[] = await getRecentPosts();
+const randomPost: Post | null = await getRandomPost();
+const randomPostSlug: string = randomPost ? randomPost.data.slug : '#';
+
+// TODO: Add links
 ---
 
-<BaseWrapper pageTitle="Gardens & Ruins">
-  <FeaturedGrid posts={featuredPosts} />
+<SiteWrapper pageTitle={SITE.TITLE}>
+  <PostGrid posts={featuredPosts} />
   <PostList
     posts={recentPosts}
-    showLog={true}
     title="Explore the Garden"
-    link="/"
-    subtitle="Begin reading."
-    showHeading={true}
+    description="Begin reading."
+    url="/"
   />
-  <RandomPost posts={posts} />
-</BaseWrapper>
+  <CallToAction
+    title="Get Lost in the Ruins"
+    description="Read the random post."
+    url={randomPostSlug}
+  />
+</SiteWrapper>

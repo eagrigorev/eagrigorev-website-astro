@@ -1,0 +1,25 @@
+---
+import type { Post } from '@utils/types';
+import PostCardTaxonomy from '@components/posts/PostCardTaxonomy.astro';
+
+interface Props {
+  posts: Post[];
+}
+
+const { posts } = Astro.props;
+---
+
+<div class="post-list-taxonomy">
+  {posts.map((post: Post) => <PostCardTaxonomy post={post} />)}
+</div>
+
+<style lang="scss">
+  .post-list-taxonomy {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-48-80);
+    max-width: var(--container-narrow);
+    padding-top: var(--space-96-120);
+    width: 100%;
+  }
+</style>

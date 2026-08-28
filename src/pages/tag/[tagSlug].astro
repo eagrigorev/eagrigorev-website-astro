@@ -1,46 +1,38 @@
 ---
 import type { Post } from '@utils/types';
-import { getCollection } from 'astro:content';
-import { generateSlug, mapPostToPostLink, sortPostsDesc } from '@utils/scripts';
-import BaseWrapper from '@layouts/BaseWrapper.astro';
-import TaxonomyTitle from '@components/page-title/TaxonomyTitle.astro';
-import PostList from '@components/feed/PostList.astro';
-import ExploreTheGarden from '@components/call-to-action/ExploreTheGarden.astro';
+import type { GetStaticPaths } from 'astro';
+import { getSortedPosts, getPostsByTag } from '@scripts/getPosts';
+import { generateSlug } from '@scripts/common';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import PostListTaxonomy from '@components/posts/PostListTaxonomy.astro';
 
-export async function getStaticPaths() {
-  const posts: Post[] = await getCollection(
-    'posts',
-    ({ data }) => !data.isDraft
-  ).then((response) => sortPostsDesc(response));
+export const getStaticPaths = (async () => {
+  const posts: Post[] = await getSortedPosts();
   const uniqueTags: string[] = [
     ...new Set(posts.flatMap((post) => post.data.tags)),
   ];
-  return uniqueTags.map((tag: string) => {
-    const tagSlug = generateSlug(tag);
-    const filteredPosts: Post[] = posts.filter((post) =>
-      post.data.tags.includes(tag)
-    );
-    return {
-      params: { tagSlug },
-      props: {
-        tagName: tag,
-        posts: filteredPosts.map((post) => mapPostToPostLink(post, 'post')),
-      },
-    };
-  });
-}
+  return Promise.all(
+    uniqueTags.map(async (tag: string) => {
+      const tagSlug: string = generateSlug(tag);
+      const tagPosts: Post[] = await getPostsByTag(tag);
+      return {
+        params: { tagSlug },
+        props: {
+          tagName: tag,
+          posts: tagPosts,
+        },
+      };
+    })
+  );
+}) satisfies GetStaticPaths;
 
 const { tagName, posts } = Astro.props;
+
+const pageTitle: string = `Browsing posts by tag: ${tagName}`;
 ---
 
-<BaseWrapper pageTitle=`Browsing posts by tag: ${tagName}`>
-  <TaxonomyTitle slot="page-title" taxonomy={tagName} type="tag" />
-  <PostList
-    posts={posts}
-    showLog={false}
-    title="Explore the Garden"
-    subtitle="Begin reading."
-    showHeading={false}
-  />
-  <ExploreTheGarden />
-</BaseWrapper>
+<SiteWrapper pageTitle={pageTitle}>
+  <PageTitle slot="page-title" pageTitle={pageTitle} />
+  <PostListTaxonomy posts={posts} />
+</SiteWrapper>

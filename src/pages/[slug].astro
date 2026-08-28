@@ -1,19 +1,19 @@
 ---
-import { getCollection, render } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import type { PostLink } from '@utils/types';
-import { mapPostToPostLink, sortPostsDesc } from '@utils/scripts';
-import { getGardenGraph } from '@utils/generateGraph';
-import BaseWrapper from '@layouts/BaseWrapper.astro';
-import BackToIndex from '@components/navigation/BackToIndex.astro';
-import PageTitle from '@components/page-title/PageTitle.astro';
+import type { Post } from '@utils/types';
+import { getSortedPosts } from '@scripts/getPosts';
+import { render } from 'astro:content';
+import { generateGraph } from '@scripts/generateGraph';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageHeader from '@components/navigation/PageHeader.astro';
+import PageTitleWithMeta from '@components/page-title/PageTitleWithMeta.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
-import TagCloud from '@components/navigation/TagCloud.astro';
-import PostList from '@components/feed/PostList.astro';
-import ExploreTheGarden from '@components/call-to-action/ExploreTheGarden.astro';
+import TagCloud from '@components/markdown-blocks/TagCloud.astro';
+import PostList from '@components/posts/PostList.astro';
+import CallToAction from '@components/posts/CallToAction.astro';
 
 export const getStaticPaths = (async () => {
-  const posts = await getCollection('posts', ({ data }) => !data.isDraft);
+  const posts = await getSortedPosts();
   return posts.map((post) => ({
     params: { slug: post.data.slug },
     props: { post },
@@ -23,37 +23,26 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const { backlinksMap } = await getGardenGraph();
-const backlinks: PostLink[] = backlinksMap[post.data.slug] || [];
-const relatedPosts: PostLink[] = await getCollection(
-  'posts',
-  ({ data }) =>
-    !data.isDraft &&
-    data.category === post.data.category &&
-    data.title !== post.data.title
-)
-  .then((response) => sortPostsDesc(response))
-  .then((response) =>
-    response.map((post) => {
-      return mapPostToPostLink(post, 'related');
-    })
-  );
-const morePosts = [...backlinks, ...relatedPosts];
+const { backlinksMap } = await generateGraph();
+const backlinks: Post[] = backlinksMap[post.data.slug] || [];
 ---
 
-<BaseWrapper pageTitle={post.data.title}>
-  <BackToIndex slot="header" />
-  <PageTitle slot="page-title" post={post} />
+<SiteWrapper pageTitle={post.data.title}>
+  <PageHeader slot="header" />
+  <PageTitleWithMeta slot="page-title" post={post} />
   <ContentWrapper>
     <Content />
   </ContentWrapper>
   <TagCloud tags={post.data.tags} />
   <PostList
-    posts={morePosts}
-    showLog={false}
-    title="Backlinks & Related Posts"
-    subtitle="Read more."
-    showHeading={true}
+    posts={backlinks}
+    title="Backlinks"
+    description="Read more."
+    url="/"
   />
-  <ExploreTheGarden />
-</BaseWrapper>
+  <CallToAction
+    title="Explore the Garden"
+    description="Try another path."
+    url="/"
+  />
+</SiteWrapper>

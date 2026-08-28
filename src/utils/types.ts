@@ -1,19 +1,12 @@
 import type { CollectionEntry } from "astro:content";
+import { CATEGORIES } from "@utils/const";
 
-export const postCategories = [
-  "illustrations",
-  "photography",
-  "journal",
-] as const;
+export type PostCategory = (typeof CATEGORIES)[number];
 
-export type PostCategory = (typeof postCategories)[number];
-
-export interface PostLink {
-  title: string;
-  slug: string;
-  date: Date;
-  type: "post" | "related" | "mention";
+export interface NavigationItem {
+  name: string;
+  url: string;
 }
 
 export type Post = CollectionEntry<"posts">;
-export type PostLinkGraph = Record<string, PostLink[]>;
+export type PostLinkGraph = Record<string, Post[]>;

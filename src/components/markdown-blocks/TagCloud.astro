@@ -1,5 +1,5 @@
 ---
-import { generateSlug } from '@utils/scripts';
+import { generateSlug } from '@scripts/common';
 
 interface Props {
   tags: string[];
@@ -12,7 +12,7 @@ const { tags } = Astro.props;
   <p class="tag-cloud__title">Tags:</p>
   <ul class="tag-cloud__items" role="list">
     {
-      tags.map((tag) => (
+      tags.map((tag: string) => (
         <li>
           <a class="tag-cloud__item" href={`/tag/${generateSlug(tag)}`}>
             {tag}
@@ -29,12 +29,12 @@ const { tags } = Astro.props;
   .tag-cloud {
     align-items: center;
     display: flex;
-    gap: 48px;
-    max-width: 600px;
+    gap: var(--space-24-40);
+    max-width: var(--container-narrow);
     padding-top: var(--space-96-160);
     width: 100%;
 
-    @media only screen and (width <= 480px) {
+    @media only screen and (max-width: 30rem) {
       align-items: flex-start;
     }
 
@@ -47,8 +47,8 @@ const { tags } = Astro.props;
       align-items: center;
       display: flex;
       flex-wrap: wrap;
-      gap: 32px;
-      row-gap: 24px;
+      gap: var(--space-24-40);
+      row-gap: var(--space-16-24);
     }
 
     &__item {

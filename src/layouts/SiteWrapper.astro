@@ -1,18 +1,16 @@
 ---
 import '@styles/main.scss';
+import { SITE } from '@utils/const';
 import Metadata from '@components/Metadata.astro';
-import GlobalHeader from '@components/navigation/GlobalHeader.astro';
-import PageIntro from '@components/page-title/PageIntro.astro';
-import GlobalFooter from '@components/navigation/GlobalFooter.astro';
+import SiteHeader from '@components/navigation/SiteHeader.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import SiteFooter from '@components/navigation/SiteFooter.astro';
 
 interface Props {
   pageTitle: string;
 }
 
 const { pageTitle } = Astro.props;
-
-const introText: string =
-  'My name is Evgenii. Welcome to my journal and digital garden where I reflect on my life, trying to re-discover my real self.';
 ---
 
 <html lang="en">
@@ -22,19 +20,17 @@ const introText: string =
   <body class="container">
     <header>
       <slot name="header">
-        <GlobalHeader />
+        <SiteHeader />
       </slot>
       <slot name="page-title">
-        <PageIntro text={introText} />
+        <PageTitle pageTitle={SITE.INTRO} />
       </slot>
     </header>
     <main>
       <slot />
     </main>
     <footer>
-      <slot name="footer">
-        <GlobalFooter />
-      </slot>
+      <SiteFooter />
     </footer>
   </body>
 </html>
@@ -53,7 +49,7 @@ const introText: string =
     align-items: center;
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: var(--container-narrow);
     width: 100%;
   }
 
@@ -68,7 +64,7 @@ const introText: string =
     display: flex;
     flex-direction: column;
     margin-top: auto;
-    max-width: 600px;
+    max-width: var(--container-narrow);
     width: 100%;
   }
 
@@ -77,7 +73,7 @@ const introText: string =
     display: flex;
     flex-direction: column;
     margin-inline: auto;
-    max-width: 77.5rem; // 1240px
+    max-width: var(--container-desktop);
     padding-inline: var(--space-24-40);
   }
 </style>

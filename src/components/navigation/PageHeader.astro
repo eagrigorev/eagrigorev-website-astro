@@ -3,10 +3,10 @@ import { Image } from 'astro:assets';
 import avatar from '@images/avatar.jpg';
 ---
 
-<div class="back-to-index">
-  <a class="back-to-index__link" href="/">Back to Index</a>
+<div class="page-header">
+  <a class="page-header__link" href="/">Back to Index</a>
   <Image
-    class="back-to-index__logo"
+    class="page-header__logo"
     src={avatar}
     alt="Evgenii Grigorev"
     width="80"
@@ -19,7 +19,7 @@ import avatar from '@images/avatar.jpg';
 <style lang="scss">
   @use '../../styles/partials/typography' as *;
 
-  .back-to-index {
+  .page-header {
     align-items: center;
     display: flex;
     justify-content: space-between;

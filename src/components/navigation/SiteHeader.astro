@@ -1,20 +1,14 @@
 ---
+import type { NavigationItem } from '@utils/types';
 import { Image } from 'astro:assets';
 import avatar from '@images/avatar.jpg';
-
-const links = [
-  { name: 'Explore the Garden', url: '/' },
-  { name: 'Info', url: '/' },
-  { name: 'The Thicket', url: '/' },
-];
-
-// TODO: type for links, probably move to const
+import { HEADER_LINKS, SITE } from '@utils/const';
 ---
 
-<div class="header-nav">
-  <a class="header-nav__logo-link" href="/"
+<div class="site-header">
+  <a class="site-header__logo-link" href="/"
     ><Image
-      class="header-nav__logo"
+      class="site-header__logo"
       src={avatar}
       alt="Evgenii Grigorev"
       width="120"
@@ -22,14 +16,14 @@ const links = [
       decoding="async"
       loading="eager"
     />
-    <h1 class="header-nav__title">Gardens & Ruins</h1>
+    <h1 class="site-header__title">{SITE.TITLE}</h1>
   </a>
   <nav>
-    <ul class="header-nav__menu" role="list">
+    <ul class="site-header__menu" role="list">
       {
-        links.map((link) => (
+        HEADER_LINKS.map((link: NavigationItem) => (
           <li>
-            <a class="header-nav__menu-item" href={link.url}>
+            <a class="site-header__menu-item" href={link.url}>
               {link.name}
             </a>
           </li>
@@ -42,7 +36,7 @@ const links = [
 <style lang="scss">
   @use '../../styles/partials/typography' as *;
 
-  .header-nav {
+  .site-header {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -77,8 +71,8 @@ const links = [
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 32px;
-      row-gap: 24px;
+      gap: var(--space-24-32);
+      row-gap: var(--space-16-24);
     }
 
     &__menu-item {

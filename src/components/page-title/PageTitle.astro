@@ -1,27 +1,15 @@
 ---
-import type { Post } from '@utils/types';
-import { formatDate } from '@utils/scripts';
-
 interface Props {
-  post: Post;
+  pageTitle: string;
 }
 
-const { post } = Astro.props;
+const { pageTitle } = Astro.props;
 ---
 
 <div class="page-title">
-  <div class="page-title__heading">
-    <p class="page-title__meta">
-      {formatDate(post.data.date)} · <a
-        class="page-title__category-link"
-        href={`/category/${post.data.category}`}>{post.data.category}</a
-      >
-    </p>
-    <h2 class="page-title__text">
-      {post.data.title}
-    </h2>
-  </div>
-
+  <h2 class="page-title__text">
+    {pageTitle}
+  </h2>
   <p class="page-title__asterism">⁂</p>
 </div>
 
@@ -35,26 +23,9 @@ const { post } = Astro.props;
     gap: var(--space-48-80);
     padding-top: var(--space-80-160);
 
-    &__heading {
-      align-items: center;
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-8-16);
-    }
-
-    &__meta {
-      @include text-sans-serif-all-caps;
-      font-size: var(--step-negative-2);
-      text-align: center;
-    }
-
-    &__category-link {
-      @include link-text-to-muted;
-    }
-
     &__text {
       @include heading-serif-primary;
-      font-size: var(--step-4);
+      font-size: var(--step-2);
       text-align: center;
     }
 

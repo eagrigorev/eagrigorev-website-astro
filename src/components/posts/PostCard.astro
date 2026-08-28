@@ -1,7 +1,7 @@
 ---
 import type { Post } from '@utils/types';
 import { Image } from 'astro:assets';
-import { formatDate } from '@utils/scripts';
+import { formatDate, generateSlug } from '@scripts/common';
 
 interface Props {
   post: Post;
@@ -10,12 +10,16 @@ interface Props {
 const { post } = Astro.props;
 ---
 
-<article class="featured-post">
+<article class="post-card">
   {
     post.data.featuredImage ? (
-      <a class="featured-post__image-link" href={post.data.slug}>
+      <a
+        class="post-card__image-link"
+        href={`/${post.data.slug}`}
+        tabindex={-1}
+      >
         <Image
-          class="featured-post__image"
+          class="post-card__image"
           src={post.data.featuredImage.url}
           alt={post.data.featuredImage.alt}
           width="420"
@@ -26,17 +30,20 @@ const { post } = Astro.props;
       </a>
     ) : null
   }
-  <div class="featured-post__description">
-    <p class="featured-post__meta">
-      {formatDate(post.data.date)} · <a
-        class="featured-post__category-link"
-        href={`/category/${post.data.category}`}>{post.data.category}</a
-      >
-    </p>
-    <a class="featured-post__title-link" href={post.data.slug}>
-      <h2 class="featured-post__title">{post.data.title}</h2>
-    </a>
-    <p class="featured-post__excerpt">
+  <div class="post-card__description">
+    <div class="post-card__heading">
+      <p class="post-card__meta">
+        {formatDate(post.data.date)} · <a
+          class="post-card__category-link"
+          href={`/category/${generateSlug(post.data.category)}`}
+          >{post.data.category}</a
+        >
+      </p>
+      <a class="post-card__title-link" href={`/${post.data.slug}`}>
+        <h2 class="post-card__title">{post.data.title}</h2>
+      </a>
+    </div>
+    <p class="post-card__excerpt">
       {post.data.description}
     </p>
   </div>
@@ -45,10 +52,10 @@ const { post } = Astro.props;
 <style lang="scss">
   @use '../../styles/partials/typography' as *;
 
-  .featured-post {
+  .post-card {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: var(--space-16-24);
 
     &__image-link {
       @include link-image;
@@ -65,6 +72,12 @@ const { post } = Astro.props;
       display: flex;
       flex-direction: column;
       gap: 8px;
+    }
+
+    &__heading {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
     }
 
     &__meta {

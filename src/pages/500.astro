@@ -1,10 +1,9 @@
 ---
-import BaseWrapper from '@layouts/BaseWrapper.astro';
-import PageIntro from '@components/page-title/PageIntro.astro';
-
-const introText: string = '500: Internal server error.';
+import { SITE } from '@utils/const';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
 ---
 
-<BaseWrapper pageTitle="500">
-  <PageIntro slot="page-title" text={introText} />
-</BaseWrapper>
+<SiteWrapper pageTitle={SITE.SERVER_ERROR}>
+  <PageTitle slot="page-title" pageTitle={SITE.SERVER_ERROR_MESSAGE} />
+</SiteWrapper>

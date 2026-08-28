@@ -1,45 +1,35 @@
 ---
-import { getCollection } from 'astro:content';
 import type { GetStaticPaths } from 'astro';
-import type { Post } from '@utils/types';
-import { postCategories } from '@utils/types';
-import { mapPostToPostLink, sortPostsDesc, generateSlug } from '@utils/scripts';
-import BaseWrapper from '@layouts/BaseWrapper.astro';
-import TaxonomyTitle from '@components/page-title/TaxonomyTitle.astro';
-import PostList from '@components/feed/PostList.astro';
-import ExploreTheGarden from '@components/call-to-action/ExploreTheGarden.astro';
+import type { Post, PostCategory } from '@utils/types';
+import { getPostsByCategory } from '@scripts/getPosts';
+import { CATEGORIES } from '@utils/const';
+import { generateSlug } from '@scripts/common';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import PostListTaxonomy from '@components/posts/PostListTaxonomy.astro';
 
 export const getStaticPaths = (async () => {
-  const posts: Post[] = await getCollection(
-    'posts',
-    ({ data }) => !data.isDraft
-  ).then((response) => sortPostsDesc(response));
-  return postCategories.map((category) => {
-    const categorySlug: string = generateSlug(category);
-    const filteredPosts: Post[] = posts.filter(
-      (post) => post.data.category === category
-    );
-    return {
-      params: { categorySlug },
-      props: {
-        categoryName: category,
-        posts: filteredPosts.map((post) => mapPostToPostLink(post, 'post')),
-      },
-    };
-  });
+  return Promise.all(
+    CATEGORIES.map(async (category: PostCategory) => {
+      const categorySlug: string = generateSlug(category);
+      const posts: Post[] = await getPostsByCategory(category);
+      return {
+        params: { categorySlug },
+        props: {
+          categoryName: category,
+          posts: posts,
+        },
+      };
+    })
+  );
 }) satisfies GetStaticPaths;
 
-const { posts, categoryName } = Astro.props;
+const { categoryName, posts } = Astro.props;
+
+const pageTitle: string = `Browsing posts by category: ${categoryName}`;
 ---
 
-<BaseWrapper pageTitle=`Browsing posts by category: ${categoryName}`>
-  <TaxonomyTitle slot="page-title" taxonomy={categoryName} type="category" />
-  <PostList
-    posts={posts}
-    showLog={false}
-    title="Explore the Garden"
-    subtitle="Begin reading."
-    showHeading={false}
-  />
-  <ExploreTheGarden />
-</BaseWrapper>
+<SiteWrapper pageTitle={pageTitle}>
+  <PageTitle slot="page-title" pageTitle={pageTitle} />
+  <PostListTaxonomy posts={posts} />
+</SiteWrapper>
