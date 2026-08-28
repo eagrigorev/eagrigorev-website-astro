@@ -7,6 +7,7 @@ import { generateSlug } from '@scripts/common';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
 import PostListTaxonomy from '@components/posts/PostListTaxonomy.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
 
 export const getStaticPaths = (async () => {
   return Promise.all(
@@ -32,4 +33,5 @@ const pageTitle: string = `Browsing posts by category: ${categoryName}`;
 <SiteWrapper pageTitle={pageTitle}>
   <PageTitle slot="page-title" pageTitle={pageTitle} />
   <PostListTaxonomy posts={posts} />
+  <RandomPost />
 </SiteWrapper>

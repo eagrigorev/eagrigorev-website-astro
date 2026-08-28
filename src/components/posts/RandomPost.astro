@@ -1,18 +1,16 @@
 ---
-interface Props {
-  title: string;
-  description: string;
-  url: string;
-}
+import type { Post } from '@utils/types';
+import { getRandomPost } from '@scripts/getPosts';
 
-const { title, description, url } = Astro.props;
+const randomPost: Post | null = await getRandomPost();
+const randomPostSlug: string = randomPost ? randomPost.data.slug : '#';
 ---
 
 <div class="call-to-action">
-  <a class="call-to-action__title-link" href={`/${url}`}>
-    {title}
+  <a class="call-to-action__title-link" href={`/${randomPostSlug}`}>
+    Get Lost in the Ruins
   </a>
-  <p class="call-to-action__description">{description}</p>
+  <p class="call-to-action__description">Read the random post.</p>
 </div>
 
 <style lang="scss">

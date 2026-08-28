@@ -10,7 +10,7 @@ import PageTitleWithMeta from '@components/page-title/PageTitleWithMeta.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import TagCloud from '@components/markdown-blocks/TagCloud.astro';
 import PostList from '@components/posts/PostList.astro';
-import CallToAction from '@components/posts/CallToAction.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
 
 export const getStaticPaths = (async () => {
   const posts = await getSortedPosts();
@@ -40,9 +40,5 @@ const backlinks: Post[] = backlinksMap[post.data.slug] || [];
     description="Read more."
     url="/"
   />
-  <CallToAction
-    title="Explore the Garden"
-    description="Try another path."
-    url="/"
-  />
+  <RandomPost />
 </SiteWrapper>
