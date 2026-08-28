@@ -6,6 +6,7 @@ import { CATEGORIES } from '@utils/const';
 import { generateSlug } from '@scripts/common';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
+import PostListTaxonomy from '@components/posts/PostListTaxonomy.astro';
 
 export const getStaticPaths = (async () => {
   return Promise.all(
@@ -23,11 +24,12 @@ export const getStaticPaths = (async () => {
   );
 }) satisfies GetStaticPaths;
 
-const { categoryName } = Astro.props;
+const { categoryName, posts } = Astro.props;
 
 const pageTitle: string = `Browsing posts by category: ${categoryName}`;
 ---
 
 <SiteWrapper pageTitle={pageTitle}>
   <PageTitle slot="page-title" pageTitle={pageTitle} />
+  <PostListTaxonomy posts={posts} />
 </SiteWrapper>
