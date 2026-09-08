@@ -26,30 +26,6 @@ export const FOOTER_LINKS: NavigationItem[] = [
     name: "Index",
     url: "/",
   },
-  {
-    name: "·",
-    url: "",
-  },
-  {
-    name: "Info",
-    url: "/",
-  },
-  {
-    name: "·",
-    url: "",
-  },
-  {
-    name: "Elsewhere",
-    url: "/",
-  },
-  {
-    name: "·",
-    url: "",
-  },
-  {
-    name: "RSS",
-    url: "/",
-  },
 ];
 
 export const CATEGORIES: string[] = [

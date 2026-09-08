@@ -1,10 +1,8 @@
 ---
 import type { NavigationItem } from '@utils/types';
-import { FOOTER_LINKS, SITE } from '@utils/const';
+import { FOOTER_LINKS, SITE_INFO } from '@utils/const';
 
-const copyright = `${SITE.AUTHOR} © ${new Date().getFullYear()}`;
-
-// TODO: Add logic for links separator and proper urls
+const copyright = `${SITE_INFO.AUTHOR} © ${new Date().getFullYear()}`;
 ---
 
 <div class="site-footer">
@@ -15,13 +13,9 @@ const copyright = `${SITE.AUTHOR} © ${new Date().getFullYear()}`;
         {
           FOOTER_LINKS.map((link: NavigationItem) => (
             <li>
-              {link.url === '' ? (
-                <p class="site-footer__menu-item">{link.name}</p>
-              ) : (
-                <a class="site-footer__menu-item" href={link.url}>
-                  {link.name}
-                </a>
-              )}
+              <a class="site-footer__menu-item" href={link.url}>
+                {link.name}
+              </a>
             </li>
           ))
         }
@@ -57,10 +51,18 @@ const copyright = `${SITE.AUTHOR} © ${new Date().getFullYear()}`;
       display: flex;
       flex-wrap: wrap;
       gap: var(--space-8-16);
+
+      li:not(:last-child) .site-footer__menu-item::after {
+        content: '·';
+        display: block;
+      }
     }
 
     &__menu-item {
       @include link-muted-to-text;
+      align-items: center;
+      display: flex;
+      gap: var(--space-8-16);
     }
   }
 </style>

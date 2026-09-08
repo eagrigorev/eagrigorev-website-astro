@@ -1,15 +1,12 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import type { Post } from '@utils/types';
 import { getSortedPosts } from '@scripts/getPosts';
 import { render } from 'astro:content';
-import { generateGraph } from '@scripts/generateGraph';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageHeader from '@components/navigation/PageHeader.astro';
 import PageTitleWithMeta from '@components/page-title/PageTitleWithMeta.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
 import TagCloud from '@components/markdown-blocks/TagCloud.astro';
-import PostList from '@components/posts/PostList.astro';
 import RandomPost from '@components/posts/RandomPost.astro';
 
 export const getStaticPaths = (async () => {
@@ -23,8 +20,8 @@ export const getStaticPaths = (async () => {
 const { post } = Astro.props;
 const { Content } = await render(post);
 
-const { backlinksMap } = await generateGraph();
-const backlinks: Post[] = backlinksMap[post.data.slug] || [];
+// const { backlinksMap } = await generateGraph();
+// const backlinks: Post[] = backlinksMap[post.data.slug] || [];
 ---
 
 <SiteWrapper pageTitle={post.data.title}>
@@ -34,6 +31,5 @@ const backlinks: Post[] = backlinksMap[post.data.slug] || [];
     <Content />
   </ContentWrapper>
   <TagCloud tags={post.data.tags} />
-  <PostList posts={backlinks} description="List of backlinks below." />
   <RandomPost />
 </SiteWrapper>
