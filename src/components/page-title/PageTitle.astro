@@ -7,32 +7,30 @@ const { pageTitle } = Astro.props;
 ---
 
 <div class="page-title">
-  <h2 class="page-title__text">
+  <h2 class="page-title__heading">
     {pageTitle}
   </h2>
-  <p class="page-title__asterism">⁂</p>
+  <p class="page-title__divider">⁂</p>
 </div>
 
 <style lang="scss">
   @use '../../styles/partials/typography' as *;
 
   .page-title {
+    @include heading-serif-primary;
     align-items: center;
     display: flex;
     flex-direction: column;
+    font-size: var(--step-2);
     gap: var(--space-48-80);
     padding-top: var(--space-80-160);
 
-    &__text {
-      @include heading-serif-primary;
-      font-size: var(--step-2);
+    &__heading {
       text-align: center;
     }
 
-    &__asterism {
-      @include heading-serif-primary;
+    &__divider {
       color: var(--color-accent);
-      font-size: var(--step-2);
     }
   }
 </style>

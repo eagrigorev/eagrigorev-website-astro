@@ -1,20 +1,19 @@
 ---
 import type { Post } from '@utils/types';
 import { SITE } from '@utils/const';
-import { getFeaturedPosts, getRecentPosts } from '@scripts/getPosts';
+import { getSortedPosts } from '@scripts/getPosts';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PostGrid from '@components/posts/PostGrid.astro';
-import PostList from '@components/posts/PostList.astro';
 import RandomPost from '@components/posts/RandomPost.astro';
 
-const featuredPosts: Post[] = await getFeaturedPosts();
-const recentPosts: Post[] = await getRecentPosts();
+const recentPosts: Post[] = await getSortedPosts().then((response: Post[]) =>
+  response.slice(0, 6)
+);
 
 // TODO: Add links
 ---
 
 <SiteWrapper pageTitle={SITE.TITLE}>
-  <PostGrid posts={featuredPosts} />
-  <PostList posts={recentPosts} description="Begin reading." />
+  <PostGrid posts={recentPosts} />
   <RandomPost />
 </SiteWrapper>

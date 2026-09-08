@@ -1,6 +1,6 @@
 ---
 import '@styles/main.scss';
-import { SITE } from '@utils/const';
+import { SITE_INFO } from '@utils/const';
 import Metadata from '@components/Metadata.astro';
 import SiteHeader from '@components/navigation/SiteHeader.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
@@ -23,7 +23,7 @@ const { pageTitle } = Astro.props;
         <SiteHeader />
       </slot>
       <slot name="page-title">
-        <PageTitle pageTitle={SITE.INTRO} />
+        <PageTitle pageTitle={SITE_INFO.INTRO} />
       </slot>
     </header>
     <main>

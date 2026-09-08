@@ -6,26 +6,19 @@ import { CATEGORIES } from "@utils/const";
 const posts = defineCollection({
   loader: glob({ pattern: "**/index.{md,mdx}", base: "./src/content/posts" }),
   schema: ({ image }) =>
-    z
-      .object({
-        title: z.string(),
-        slug: z.string(),
-        date: z.date(),
-        category: z.enum(CATEGORIES),
-        tags: z.array(z.string()).default([]),
-        description: z.string(),
-        featuredImage: z
-          .object({
-            url: image(),
-            alt: z.string(),
-          })
-          .optional(),
-        isDraft: z.boolean().default(false),
-        isFeatured: z.boolean().default(false),
-      })
-      .refine((data) => !data.isFeatured || data.featuredImage, {
-        message: "Featured posts must include a featuredImage",
+    z.object({
+      title: z.string(),
+      slug: z.string(),
+      date: z.date(),
+      category: z.enum(CATEGORIES),
+      tags: z.array(z.string()).default([]),
+      description: z.string(),
+      featuredImage: z.object({
+        url: image(),
+        alt: z.string(),
       }),
+      isDraft: z.boolean().default(false),
+    }),
 });
 
 export const collections = {

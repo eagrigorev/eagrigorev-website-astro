@@ -11,39 +11,31 @@ const { post } = Astro.props;
 ---
 
 <article class="post-card">
-  {
-    post.data.featuredImage ? (
-      <a
-        class="post-card__image-link"
-        href={`/${post.data.slug}`}
-        tabindex={-1}
-      >
-        <Image
-          class="post-card__image"
-          src={post.data.featuredImage.url}
-          alt={post.data.featuredImage.alt}
-          width="420"
-          height="560"
-          decoding="async"
-          loading="eager"
-        />
-      </a>
-    ) : null
-  }
-  <div class="post-card__description">
-    <div class="post-card__heading">
-      <p class="post-card__meta">
+  <a class="card-media" href={`/${post.data.slug}`} tabindex={-1}>
+    <Image
+      class="card-media__image"
+      src={post.data.featuredImage.url}
+      alt={post.data.featuredImage.alt}
+      width="420"
+      height="560"
+      decoding="async"
+      loading="eager"
+    />
+  </a>
+  <div class="card-content">
+    <div class="card-content__heading">
+      <p class="card-content__meta">
         {formatDate(post.data.date)} · <a
-          class="post-card__category-link"
+          class="card-content__category"
           href={`/category/${generateSlug(post.data.category)}`}
           >{post.data.category}</a
         >
       </p>
-      <a class="post-card__title-link" href={`/${post.data.slug}`}>
-        <h2 class="post-card__title">{post.data.title}</h2>
+      <a class="card-content__title" href={`/${post.data.slug}`}>
+        <h2>{post.data.title}</h2>
       </a>
     </div>
-    <p class="post-card__excerpt">
+    <p class="card-content__excerpt">
       {post.data.description}
     </p>
   </div>
@@ -56,10 +48,10 @@ const { post } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: var(--space-16-24);
+  }
 
-    &__image-link {
-      @include link-image;
-    }
+  .card-media {
+    @include link-image;
 
     &__image {
       aspect-ratio: 3/4;
@@ -67,12 +59,12 @@ const { post } = Astro.props;
       height: auto;
       width: 100%;
     }
+  }
 
-    &__description {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 
     &__heading {
       display: flex;
@@ -85,16 +77,13 @@ const { post } = Astro.props;
       font-size: var(--step-negative-2);
     }
 
-    &__category-link {
+    &__category {
       @include link-text-to-muted;
-    }
-
-    &__title-link {
-      @include link-text-to-accent;
     }
 
     &__title {
       @include heading-serif-primary;
+      @include link-text-to-accent;
       font-size: var(--step-1);
     }
 
