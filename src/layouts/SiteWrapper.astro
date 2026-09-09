@@ -1,0 +1,79 @@
+---
+import '@styles/main.scss';
+import { SITE_INFO } from '@utils/const';
+import Metadata from '@components/Metadata.astro';
+import SiteHeader from '@components/navigation/SiteHeader.astro';
+import PageTitle from '@components/page-title/PageTitle.astro';
+import SiteFooter from '@components/navigation/SiteFooter.astro';
+
+interface Props {
+  pageTitle: string;
+}
+
+const { pageTitle } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <Metadata pageTitle={pageTitle} />
+  </head>
+  <body class="container">
+    <header>
+      <slot name="header">
+        <SiteHeader />
+      </slot>
+      <slot name="page-title">
+        <PageTitle pageTitle={SITE_INFO.INTRO} />
+      </slot>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer>
+      <SiteFooter />
+    </footer>
+  </body>
+</html>
+
+<style lang="scss">
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    min-height: 100vh;
+  }
+
+  header {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: var(--container-narrow);
+    width: 100%;
+  }
+
+  main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  footer {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;
+    max-width: var(--container-narrow);
+    width: 100%;
+  }
+
+  .container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-inline: auto;
+    max-width: var(--container-desktop);
+    padding-inline: var(--space-24-40);
+  }
+</style>

@@ -1,0 +1,48 @@
+---
+interface Props {
+  quote: string;
+  author: string;
+}
+
+const { quote, author } = Astro.props;
+---
+
+<blockquote class="blockquote">
+  <div class="blockquote__content">
+    <p class="blockquote__text">{quote}</p>
+    <p class="blockquote__author">{author}</p>
+  </div>
+</blockquote>
+
+<style lang="scss">
+  @use '../../styles/partials/typography' as *;
+
+  .blockquote {
+    max-width: var(--width-blockquote);
+    width: 100%;
+
+    &__content {
+      align-items: flex-end;
+      border-left: var(--color-accent) solid 1px;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-24-40);
+      padding-left: var(--space-24-40);
+      padding-right: var(--space-24-40);
+
+      @media only screen and (max-width: 30rem) {
+        padding-right: 0;
+      }
+    }
+
+    &__text {
+      @include text-serif-primary-italic;
+      font-size: var(--step-1);
+    }
+
+    &__author {
+      @include text-sans-serif-all-caps;
+      font-size: var(--step-negative-2);
+    }
+  }
+</style>

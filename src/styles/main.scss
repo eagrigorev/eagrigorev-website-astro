@@ -1,20 +1,6 @@
-@use "./partials/tokens";
-@use "./partials/normalize";
-@use "./partials/fonts";
-@use "./partials/links";
-
-body {
-  background-color: var(--color-bg-primary);
-  color: var(--color-primary);
-  display: flex;
-  flex-direction: column;
-}
-
-.container {
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  margin-inline: auto;
-  max-width: 88.75rem; // 1420px
-  padding-inline: var(--space-30-40);
-}
+@use "./partials/variables";
+@use "./partials/reset";
+@use "./partials/typography";
+@import "@fontsource-variable/eb-garamond/wght.css";
+@import "@fontsource-variable/eb-garamond/wght-italic.css";
+@import "@fontsource-variable/inter/wght.css";

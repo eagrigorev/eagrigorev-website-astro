@@ -1,0 +1,19 @@
+---
+import type { Post } from '@utils/types';
+import { SITE_INFO } from '@utils/const';
+import { getSortedPosts } from '@scripts/getPosts';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PostGrid from '@components/posts/PostGrid.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
+
+const recentPosts: Post[] = await getSortedPosts().then((response: Post[]) =>
+  response.slice(0, 6)
+);
+
+// TODO: Add links
+---
+
+<SiteWrapper pageTitle={SITE_INFO.TITLE}>
+  <PostGrid posts={recentPosts} />
+  <RandomPost />
+</SiteWrapper>

@@ -1,75 +1,35 @@
 ---
 import type { GetStaticPaths } from 'astro';
-import type { Post } from '@utils/types';
-import { customTypography, formatDate } from '@utils/scripts';
-import { getCollection, render } from 'astro:content';
+import { getSortedPosts } from '@scripts/getPosts';
+import { render } from 'astro:content';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageHeader from '@components/navigation/PageHeader.astro';
+import PageTitleWithMeta from '@components/page-title/PageTitleWithMeta.astro';
 import ContentWrapper from '@layouts/ContentWrapper.astro';
-import GlobalWrapper from '@layouts/GlobalWrapper.astro';
-import PageTitle from '@components/PageTitle.astro';
-import RecentPostsFeed from '@components/feeds/RecentPostsFeed.astro';
-import Tags from '@components/Tags.astro';
+import TagCloud from '@components/markdown-blocks/TagCloud.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
 
 export const getStaticPaths = (async () => {
-  const posts: Post[] = await getCollection('posts');
-  return posts.map((post: Post) => ({
-    params: { slug: post.data.permalink },
+  const posts = await getSortedPosts();
+  return posts.map((post) => ({
+    params: { slug: post.data.slug },
     props: { post },
   }));
 }) satisfies GetStaticPaths;
 
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+// const { backlinksMap } = await generateGraph();
+// const backlinks: Post[] = backlinksMap[post.data.slug] || [];
 ---
 
-<GlobalWrapper pageTitle={post.data.title}>
-  <PageTitle
-    slot="title"
-    title={post.data.title}
-    subtitle={post.data.subtitle}
-  />
-  <div slot="main" class="content">
-    <div class="post-wrapper">
-      <div class="post">
-        <ContentWrapper>
-          <Content components={customTypography} />
-          <p>{formatDate(post.data.datePublished)}</p>
-        </ContentWrapper>
-        <Tags tags={post.data.tags} />
-      </div>
-    </div>
-    <RecentPostsFeed />
-  </div>
-</GlobalWrapper>
-
-<style lang="scss">
-  .content {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-100-160);
-    max-width: var(--narrow-content);
-    padding-top: var(--space-100-160);
-  }
-
-  .post-wrapper {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-100-160);
-
-    &::after {
-      background: var(--color-accent-secondary);
-      content: '';
-      display: block;
-      height: 1px;
-      width: var(--space-100-160);
-    }
-  }
-
-  .post {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-30-40);
-  }
-</style>
+<SiteWrapper pageTitle={post.data.title}>
+  <PageHeader slot="header" />
+  <PageTitleWithMeta slot="page-title" post={post} />
+  <ContentWrapper>
+    <Content />
+  </ContentWrapper>
+  <TagCloud tags={post.data.tags} />
+  <RandomPost />
+</SiteWrapper>
