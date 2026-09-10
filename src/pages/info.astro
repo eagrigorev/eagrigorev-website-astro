@@ -1,0 +1,20 @@
+---
+import type { Page } from '@utils/types';
+import { render } from 'astro:content';
+import { getSinglePage } from '@scripts/getPosts';
+import SiteWrapper from '@layouts/SiteWrapper.astro';
+import PageHeader from '@components/navigation/PageHeader.astro';
+import ContentWrapper from '@layouts/ContentWrapper.astro';
+import RandomPost from '@components/posts/RandomPost.astro';
+
+const page: Page = await getSinglePage('info');
+const { Content } = await render(page);
+---
+
+<SiteWrapper pageTitle="Info">
+  <PageHeader slot="header" />
+  <ContentWrapper>
+    <Content />
+  </ContentWrapper>
+  <RandomPost />
+</SiteWrapper>

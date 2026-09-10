@@ -1,5 +1,5 @@
-import type { Post, PostCategory } from "@utils/types";
-import { getCollection } from "astro:content";
+import type { Page, Post, PostCategory } from "@utils/types";
+import { getCollection, getEntry } from "astro:content";
 import { sortPostsDesc } from "@scripts/common";
 
 export const getSortedPosts = async (): Promise<Post[]> => {
@@ -27,4 +27,12 @@ export const getPostsByCategory = async (
 export const getPostsByTag = async (tag: string): Promise<Post[]> => {
   const posts: Post[] = await getSortedPosts();
   return posts.filter((post: Post) => post.data.tags.includes(tag));
+};
+
+export const getSinglePage = async (title: string): Promise<Page> => {
+  const page = await getEntry("pages", title);
+  if (!page) {
+    throw new Error("Entry not found!");
+  }
+  return page;
 };
