@@ -2,13 +2,19 @@
 title: 'Info'
 slug: 'info'
 date: 2026-09-10
-description: ''
 isDraft: false
 ---
+
+import ImageWithCaption from '@components/markdown-blocks/ImageWithCaption.astro';
+import img1 from './1.jpg';
 
 I spent 10 years as a military engineer and, prior to that, worked as a
 bookseller. Then I transitioned into software development. I like clean and
 minimal interfaces, accessible web applications, and digital gardens.
+
+## Personal
+
+<ImageWithCaption src={img1} caption="Evgenii" />
 
 I was born in Saint Petersburg and received my master's degree in Automation and
 Engineering in 2010 from Baltic State Technological University. Over the years,
@@ -19,3 +25,20 @@ job.
 
 In my free time, I enjoy hiking, calisthenics, drawing, playing guitar, reading,
 and film photography.
+
+## Gardens & Ruins
+
+This website is my small digital garden: a place for essays, photographs, and
+illustrations that I want to keep in a quiet, readable form. I wanted it to feel
+like a notebook made for the web, simple, intentional, and a little atmospheric.
+
+It is built with Astro 7 and TypeScript, with content written in MDX and
+organized through Astro content collections. The styling is handled with Sass,
+while EB Garamond Variable lends the site its more literary, editorial feel and
+Inter Variable provides the cleaner supporting text. I also keep the project
+grounded with the usual tools for linting, formatting, and production builds, so
+the experience remains both polished and easy to maintain.
+
+The site is designed to support a modest publishing workflow: posts and pages
+live in structured content collections and the website is hosted on Vercel,
+which makes the whole thing feel lightweight and straightforward in practice.

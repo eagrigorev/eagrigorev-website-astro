@@ -28,7 +28,6 @@ const pages = defineCollection({
       title: z.string(),
       slug: z.string(),
       date: z.date(),
-      description: z.string(),
       isDraft: z.boolean().default(false),
     }),
 });
