@@ -34,6 +34,10 @@ export const FOOTER_LINKS: NavigationItem[] = [
     name: "Info",
     url: "/info",
   },
+  {
+    name: "Elsewhere",
+    url: "/elsewhere",
+  },
 ];
 
 export const CATEGORIES: string[] = [
