@@ -19,12 +19,24 @@ export const HEADER_LINKS: NavigationItem[] = [
     name: "Explore the Garden",
     url: "/the-garden",
   },
+  {
+    name: "Info",
+    url: "/info",
+  },
 ];
 
 export const FOOTER_LINKS: NavigationItem[] = [
   {
     name: "Index",
     url: "/",
+  },
+  {
+    name: "Info",
+    url: "/info",
+  },
+  {
+    name: "Elsewhere",
+    url: "/elsewhere",
   },
 ];
 

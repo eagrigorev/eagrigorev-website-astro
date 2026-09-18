@@ -14,10 +14,12 @@ const { src, caption } = Astro.props;
     class="image__src"
     src={src}
     alt={caption}
-    width={src.width}
-    height={src.height}
+    width={960}
     decoding="async"
     loading="eager"
+    quality={90}
+    densities={[1, 2]}
+    format="avif"
   />
   <p class="image__caption">{caption}</p>
 </div>
