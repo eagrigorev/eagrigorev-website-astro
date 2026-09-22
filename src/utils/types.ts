@@ -8,5 +8,6 @@ export interface NavigationItem {
   url: string;
 }
 
+export type Page = CollectionEntry<"pages">;
 export type Post = CollectionEntry<"posts">;
 export type PostLinkGraph = Record<string, Post[]>;
