@@ -4,9 +4,11 @@ import { Image } from 'astro:assets';
 interface Props {
   src: ImageMetadata;
   caption: string;
+  width: 600 | 960;
+  loading: 'eager' | 'lazy';
 }
 
-const { src, caption } = Astro.props;
+const { src, caption, width, loading } = Astro.props;
 ---
 
 <div class="image">
@@ -14,10 +16,10 @@ const { src, caption } = Astro.props;
     class="image__src"
     src={src}
     alt={caption}
-    width={960}
+    width={width}
     decoding="async"
-    loading="eager"
-    quality={90}
+    loading={loading}
+    quality={80}
     densities={[1, 2]}
     format="avif"
   />

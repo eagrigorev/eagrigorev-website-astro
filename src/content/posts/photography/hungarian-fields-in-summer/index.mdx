@@ -14,55 +14,103 @@ isDraft: false
 ---
 
 import ImageWithCaption from '@components/markdown-blocks/ImageWithCaption.astro';
-import img1 from './1.jpg';
-import img2 from './2.jpg';
-import img3 from './3.jpg';
-import img4 from './4.jpg';
-import img5 from './5.jpg';
-import img6 from './6.jpg';
-import img7 from './7.jpg';
-import img8 from './8.jpg';
-import img9 from './9.jpg';
-import img10 from './10.jpg';
-import img11 from './11.jpg';
-import img12 from './12.jpg';
-import img13 from './13.jpg';
-import img14 from './14.jpg';
-import img15 from './15.jpg';
-import img16 from './16.jpg';
+import img01t from './01t.jpg';
+import img02t from './02t.jpg';
+import img01w from './01w.jpg';
+import img02w from './02w.jpg';
+import img03w from './03w.jpg';
+import img04w from './04w.jpg';
+import img05w from './05w.jpg';
+import img06w from './06w.jpg';
+import img07w from './07w.jpg';
+import img08w from './08w.jpg';
+import img09w from './09w.jpg';
+import img10w from './10w.jpg';
 
 Pictures from the summer trip to Hungary, mostly shot in the fields here and
 there. I wish I could spend more time there. I used Kodak 100-8 (Kodacolor 100)
 with my Olympus OM-2N and a default Zuiko MC 50mm f/1.8 lens.
 
-<ImageWithCaption src={img1} caption="Between Paks and Budapest" />
+<ImageWithCaption
+  src={img01w}
+  caption="Between Paks and Budapest"
+  width={960}
+  loading="eager"
+/>
 
-<ImageWithCaption src={img2} caption="Danube River" />
+<ImageWithCaption
+  src={img02w}
+  caption="Hungarian fields"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img3} caption="Windy fields" />
+<ImageWithCaption
+  src={img03w}
+  caption="Paks, Hungary"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img4} caption="Streets of Paks" />
+<ImageWithCaption
+  src={img01t}
+  caption="Paks, Hungary"
+  width={600}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img5} caption="Streets of Paks" />
+<ImageWithCaption
+  src={img04w}
+  caption="Hungarian fields"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img6} caption="Sunflowers" />
+<ImageWithCaption
+  src={img02t}
+  caption="In a small village"
+  width={600}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img7} caption="Sunflowers" />
+<ImageWithCaption
+  src={img05w}
+  caption="Between Paks and Budapest"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img8} caption="Sunflowers" />
+<ImageWithCaption
+  src={img06w}
+  caption="In a small village"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img9} caption="In a small village" />
+<ImageWithCaption
+  src={img07w}
+  caption="House interiors"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img10} caption="In a small village" />
+<ImageWithCaption
+  src={img08w}
+  caption="Traditional house"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img11} caption="In a small village" />
+<ImageWithCaption
+  src={img09w}
+  caption="Hungarian fields"
+  width={960}
+  loading="lazy"
+/>
 
-<ImageWithCaption src={img12} caption="In a small village" />
-
-<ImageWithCaption src={img13} caption="In a small village" />
-
-<ImageWithCaption src={img14} caption="Fields" />
-
-<ImageWithCaption src={img15} caption="Streets of Paks" />
-
-<ImageWithCaption src={img16} caption="Windy fields" />
+<ImageWithCaption
+  src={img10w}
+  caption="One of my favourite pictures from the series. I really like how grass and sign are pointing at different directions."
+  width={960}
+  loading="lazy"
+/>
