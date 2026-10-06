@@ -10,15 +10,13 @@ const copyright = `${SITE_INFO.AUTHOR} © ${new Date().getFullYear()}`;
     <p>{copyright}</p>
     <nav>
       <ul class="site-footer__menu" role="list">
-        {
-          FOOTER_LINKS.map((link: NavigationItem) => (
-            <li>
-              <a class="site-footer__menu-item" href={link.url}>
-                {link.name}
-              </a>
-            </li>
-          ))
-        }
+        {FOOTER_LINKS.map((link: NavigationItem) => (
+          <li>
+            <a class="site-footer__menu-item" href={link.url}>
+              {link.name}
+            </a>
+          </li>
+        ))}
       </ul>
     </nav>
   </div>

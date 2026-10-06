@@ -12,15 +12,15 @@ const { post } = Astro.props;
 <div class="page-title-with-meta">
   <div class="page-title-with-meta__heading">
     <p class="page-title-with-meta__meta">
-      {formatDate(post.data.date)} · <a
+      {formatDate(post.data.date)} ·{' '}
+      <a
         class="page-title-with-meta__category-link"
         href={`/category/${generateSlug(post.data.category)}`}
-        >{post.data.category}</a
       >
+        {post.data.category}
+      </a>
     </p>
-    <h2 class="page-title-with-meta__text">
-      {post.data.title}
-    </h2>
+    <h2 class="page-title-with-meta__text">{post.data.title}</h2>
   </div>
 
   <p class="page-title-with-meta__asterism">⁂</p>

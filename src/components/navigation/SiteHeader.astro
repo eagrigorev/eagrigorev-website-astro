@@ -6,8 +6,8 @@ import { HEADER_LINKS, SITE_INFO } from '@utils/const';
 ---
 
 <div class="site-header">
-  <a class="site-logo" href="/"
-    ><Image
+  <a class="site-logo" href="/">
+    <Image
       class="site-logo__image"
       src={avatar}
       alt={SITE_INFO.AUTHOR}
@@ -23,15 +23,13 @@ import { HEADER_LINKS, SITE_INFO } from '@utils/const';
   </a>
   <nav>
     <ul class="site-navigation" role="list">
-      {
-        HEADER_LINKS.map((link: NavigationItem) => (
-          <li>
-            <a class="site-navigation__item" href={link.url}>
-              {link.name}
-            </a>
-          </li>
-        ))
-      }
+      {HEADER_LINKS.map((link: NavigationItem) => (
+        <li>
+          <a class="site-navigation__item" href={link.url}>
+            {link.name}
+          </a>
+        </li>
+      ))}
     </ul>
   </nav>
 </div>
