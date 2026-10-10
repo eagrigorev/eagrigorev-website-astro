@@ -9,4 +9,11 @@ export default defineConfig({
   site: "https://www.eagrigorev.com",
   integrations: [mdx(), sitemap(), robotsTxt()],
   adapter: vercel(),
+  image: {
+    service: {
+      config: {
+        quality: 90,
+      },
+    },
+  },
 });

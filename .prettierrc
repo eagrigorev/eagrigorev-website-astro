@@ -11,7 +11,6 @@
         "singleQuote": true,
         "trailingComma": "es5",
         "bracketSpacing": true,
-        "jsxBracketSameLine": false,
         "proseWrap": "always"
       }
     },
@@ -24,7 +23,6 @@
         "singleQuote": true,
         "trailingComma": "es5",
         "bracketSpacing": true,
-        "jsxBracketSameLine": false,
         "proseWrap": "always"
       }
     }

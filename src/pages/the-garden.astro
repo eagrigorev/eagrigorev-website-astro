@@ -1,6 +1,5 @@
 ---
 import type { Post } from '@utils/types';
-import { SITE_INFO } from '@utils/const';
 import { getSortedPosts } from '@scripts/getPosts';
 import SiteWrapper from '@layouts/SiteWrapper.astro';
 import PageTitle from '@components/page-title/PageTitle.astro';
@@ -11,7 +10,7 @@ const posts: Post[] = await getSortedPosts();
 ---
 
 <SiteWrapper pageTitle="The Garden">
-  <PageTitle slot="page-title" pageTitle={SITE_INFO.INTRO} />
+  <PageTitle slot="page-title" pageTitle="The Garden" />
   <PostGrid posts={posts} />
   <RandomPost />
 </SiteWrapper>

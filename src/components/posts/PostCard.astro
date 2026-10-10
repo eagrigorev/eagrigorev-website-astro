@@ -20,24 +20,27 @@ const { post } = Astro.props;
       height="560"
       decoding="async"
       loading="eager"
+      quality={80}
+      densities={[1, 2]}
+      format="avif"
     />
   </a>
   <div class="card-content">
     <div class="card-content__heading">
       <p class="card-content__meta">
-        {formatDate(post.data.date)} · <a
+        {formatDate(post.data.date)} ·{' '}
+        <a
           class="card-content__category"
           href={`/category/${generateSlug(post.data.category)}`}
-          >{post.data.category}</a
         >
+          {post.data.category}
+        </a>
       </p>
       <a class="card-content__title" href={`/${post.data.slug}`}>
         <h2>{post.data.title}</h2>
       </a>
     </div>
-    <p class="card-content__excerpt">
-      {post.data.description}
-    </p>
+    <p class="card-content__excerpt">{post.data.description}</p>
   </div>
 </article>
 

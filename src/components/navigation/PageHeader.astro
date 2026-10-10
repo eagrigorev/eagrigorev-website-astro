@@ -4,7 +4,9 @@ import avatar from '@images/avatar.jpg';
 ---
 
 <div class="page-header">
-  <a class="page-header__link" href="/">Back to Index</a>
+  <a class="page-header__link" href="/">
+    Back to Index
+  </a>
   <Image
     class="page-header__logo"
     src={avatar}
@@ -13,6 +15,9 @@ import avatar from '@images/avatar.jpg';
     height="80"
     decoding="async"
     loading="eager"
+    quality={80}
+    densities={[1, 2]}
+    format="avif"
   />
 </div>
 

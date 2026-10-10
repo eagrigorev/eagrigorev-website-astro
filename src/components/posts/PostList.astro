@@ -14,33 +14,33 @@ const { posts, description } = Astro.props;
   <header class="post-list__header">
     <div class="post-list__intro">
       <h2 class="post-list__title">
-        <a class="post-list__title-link" href="/the-garden"
-          >Explore the Garden</a
-        >
+        <a class="post-list__title-link" href="/the-garden">
+          Explore the Garden
+        </a>
       </h2>
       <p class="post-list__description">{description}</p>
     </div>
     <p class="post-list__context">
       <span class="post-list__dot">• </span>
-      <a class="post-list__context-link" href="/">The Thicket</a>
+      <a class="post-list__context-link" href="/">
+        The Thicket
+      </a>
     </p>
   </header>
-  {
-    posts.length ? (
-      <ul class="post-list__items" role="list">
-        {posts.map((post: Post) => (
-          <li class="post-list__item">
-            <a class="post-list__link" href={`/${post.data.slug}`}>
-              {post.data.title}
-            </a>
-            <p class="post-list__date">{formatDate(post.data.date)}</p>
-          </li>
-        ))}
-      </ul>
-    ) : (
-      <p class="post-list__empty">No posts yet.</p>
-    )
-  }
+  {posts.length ? (
+    <ul class="post-list__items" role="list">
+      {posts.map((post: Post) => (
+        <li class="post-list__item">
+          <a class="post-list__link" href={`/${post.data.slug}`}>
+            {post.data.title}
+          </a>
+          <p class="post-list__date">{formatDate(post.data.date)}</p>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p class="post-list__empty">No posts yet.</p>
+  )}
 </section>
 
 <style lang="scss">
