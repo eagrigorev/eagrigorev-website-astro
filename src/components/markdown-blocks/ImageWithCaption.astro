@@ -4,14 +4,15 @@ import { Image } from 'astro:assets';
 interface Props {
   src: ImageMetadata;
   caption: string;
+  showCaption: boolean;
   width: 600 | 960;
   loading: 'eager' | 'lazy';
 }
 
-const { src, caption, width, loading } = Astro.props;
+const { src, caption, showCaption, width, loading } = Astro.props;
 ---
 
-<div class="image">
+<figure class="image">
   <Image
     class="image__src"
     src={src}
@@ -23,8 +24,10 @@ const { src, caption, width, loading } = Astro.props;
     densities={[1, 2]}
     format="avif"
   />
-  <p class="image__caption">{caption}</p>
-</div>
+  {showCaption ? (
+    <figcaption class="image__caption">{caption}</figcaption>
+  ) : null}
+</figure>
 
 <style lang="scss">
   @use '../../styles/partials/typography' as *;
